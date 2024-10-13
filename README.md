@@ -24,7 +24,7 @@ Las propuestas desarrollan leyes, de las que deseamos conocer su código identif
 
 Las leyes forman un código civil, del que necesitamos conocer, su código identificadivo, la cantidad de leyes que lo conforman y fecha de última modificación.
 
-El código civil rige a un país (del que se quiere conocer su nombre y número de ciudadanos capacitados para votar que habitan en el) y un país solo puede ser regido por un único código civil. 
+El código civil rige a un país (del que se quiere conocer su nombre y cantidad de políticos y ciudadanos que tiene) y un país solo puede ser regido por un único código civil. 
 
 
 
