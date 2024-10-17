@@ -28,6 +28,7 @@ Las leyes forman un código civil, del que necesitamos conocer, su código ident
 
 El código civil rige a un país (del que se quiere conocer su nombre, cantidad de políticos y ciudadanos que tiene) y un país solo puede ser regido por un único código civil. 
 
+![ModeloER](https://github.com/user-attachments/assets/6cc000e3-1a23-4c12-b1f2-129a3832ae3c)
 
 
 
