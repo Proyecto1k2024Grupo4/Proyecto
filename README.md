@@ -14,7 +14,7 @@ De cada ciudadano que esté capacitado para votar se desea conocer su nombre, ap
 
 De los políticos también queremos saber su nombre, apellidos, sexo, fecha de nacimiento, pasaporte. Estos proponen propuestas y queremos almacenar el número de propuestas públicas que han aportado y de esas propuestas, las que han sido aceptadas y las que han sido rechazadas por la población.
 
-Los políticos forman un congreso, el cual hace públicas las propuestas y del cual queremos saber el número de propuestas que han aceptado para ser públicas y de estas mismas las que han sido aceptadas o rechazadas por la población, además queremos saber el número de políticos que lo conforma.
+Los políticos forman un congreso, el cual hace una votación para decidir si hacer públicas las propuestas y del cual queremos saber el número de propuestas que han aceptado para ser públicas y de estas mismas las que han sido aceptadas o rechazadas por la población, además queremos saber el número de políticos que lo conforma.
 
 De las propuestas necesitamos saber su código, la fecha de presentación al congreso, la fecha de publicación, la fecha en la que acaba el plazo de su votación, la fecha en la que se aplican sus efectos en caso de ser aceptada por los ciudadanos, la descripción de la propuesta y el título.
 
@@ -24,7 +24,7 @@ Las propuestas desarrollan leyes, de las que deseamos conocer su código identif
 
 Las leyes forman un código civil, del que necesitamos conocer, su código identificadivo, la cantidad de leyes que lo conforman y fecha de última modificación.
 
-El código civil rige a un país (del que se quiere conocer su nombre y cantidad de políticos y ciudadanos que tiene) y un país solo puede ser regido por un único código civil. 
+El código civil rige a un país (del que se quiere conocer su nombre, cantidad de políticos y ciudadanos que tiene) y un país solo puede ser regido por un único código civil. 
 
 
 
