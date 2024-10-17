@@ -32,5 +32,6 @@ El código civil rige a un país (del que se quiere conocer su nombre, cantidad 
 
 ![ModeloER](https://github.com/user-attachments/assets/6cc000e3-1a23-4c12-b1f2-129a3832ae3c)
 
+![ModeloERDigital](https://github.com/user-attachments/assets/af67ab92-eb90-4582-9b8e-b419652e8279)
 
 
