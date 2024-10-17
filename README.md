@@ -5,7 +5,7 @@ Sistema de Gestión de Votaciones y Propuestas de Reforma Legal a Nivel Internac
 - Diego Fernando Valencia Correa
 - Pablo Bernabeu Robles
 - Jonathan Villalba Moran
-- Abdil
+- Abdel Moghit Samini
 
 ### Descripción del proyecto:
 Somos una organización mundial conformada por varios países y queremos almacenar las votaciones de propuestas de reforma de ley de cada país.
@@ -32,7 +32,8 @@ El código civil rige a un país (del que se quiere conocer su nombre, cantidad 
 
 ![ModeloER](https://github.com/user-attachments/assets/6cc000e3-1a23-4c12-b1f2-129a3832ae3c)
 
+![image](https://github.com/user-attachments/assets/40fd0cdf-7400-4066-8348-e97fd310b05a)
 
-![image](https://github.com/user-attachments/assets/fd57dc5f-ff1b-49a3-84b1-87310aec54be)
+
 
 
