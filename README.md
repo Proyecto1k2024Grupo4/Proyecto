@@ -4,7 +4,7 @@ Sistema de Gestión de Votaciones y Propuestas de Reforma Legal a Nivel Internac
 ### Participantes:
 - [Diego Fernando Valencia Correa](https://github.com/DocD1306)
 - Pablo Bernabeu Robles
-- Jonathan Villalba Moran
+- [Jonathan Villalba Moran](https://github.com/JonathanWick21)
 - Abdel Moghit Samini
 
 ### Descripción del proyecto:
