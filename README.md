@@ -2,7 +2,7 @@
 Sistema de Gestión de Votaciones y Propuestas de Reforma Legal a Nivel Internacional
 
 ### Participantes:
-- Diego Fernando Valencia Correa
+- [Diego Fernando Valencia Correa](https://github.com/DocD1306)
 - Pablo Bernabeu Robles
 - Jonathan Villalba Moran
 - Abdel Moghit Samini
