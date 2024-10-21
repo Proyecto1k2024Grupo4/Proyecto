@@ -5,7 +5,7 @@ Sistema de Gestión de Votaciones y Propuestas de Reforma Legal a Nivel Internac
 - [Diego Fernando Valencia Correa](https://github.com/DocD1306)
 - [Pablo Bernabeu Robles](https://github.com/bernabeu17)
 - [Jonathan Villalba Moran](https://github.com/JonathanWick21)
-- Abdel Moghit Samini
+- [Abdel Moghit Samini](https://github.com/Samini04)
 
 ### Descripción del proyecto:
 Somos una organización mundial conformada por varios países y queremos almacenar las votaciones de propuestas de reforma de ley de cada país.
