@@ -18,11 +18,11 @@ Un ciudadano capacitado puede opositar para convertirse en político, aunque tam
 
 Los políticos forman un congreso, el cual hace una votación para decidir si hacer públicas las propuestas y del cual queremos saber el número de propuestas que han aceptado para ser públicas y de estas mismas las que han sido aceptadas o rechazadas por la población, además queremos saber el número de políticos que lo conforma.
 
-De las propuestas necesitamos saber su código, la fecha de presentación al congreso, la fecha de publicación, la fecha en la que acaba el plazo de su votación, la fecha en la que se aplican sus efectos en caso de ser aceptada por los ciudadanos, la descripción de la propuesta y el título.
+De las propuestas necesitamos saber su código, la fecha de presentación al congreso, la fecha de publicación, la fecha en la que acaba el plazo de su votación, la descripción de la propuesta y el título.
 
-Las propuestas pueden ser votadas por los ciudadanos capacitados pero no por los políticos.
+Las propuestas pueden ser votadas por los ciudadanos capacitados pero no por los políticos, para que la votación sea valida tienen que votar como mínimo el 51% de los ciudadanos. 
 
-Las propuestas desarrollan leyes, de las que deseamos conocer su código identificativo, su descripción, fecha de última modificación y fecha de primera implementación.
+Las propuestas desarrollan leyes, de las que deseamos conocer su código identificativo, su descripción, fecha de última modificación, fecha de primera implementación y la fecha en la que se aplican sus efectos.
 
 Las leyes forman un código civil, del que necesitamos conocer, su código identificadivo, la cantidad de leyes que lo conforman y fecha de última modificación.
 
@@ -33,6 +33,10 @@ El código civil rige a un país (del que se quiere conocer su nombre, cantidad 
 ![image](https://github.com/user-attachments/assets/420e302a-43a3-423e-ae1e-bd084eaf2799)
 
 Hemos creado una superclase PERSONA para almacenar los datos de POLITICO y CIUDADANO porque ambos comparten muchos atributos iguales.
+
+La entidad LEY representa una ley en concreto
+
+La fecha de expiración de una propuesta tiene que ser anterior a la fecha de aplicación de esta misma.
 
 
 PAIS (
