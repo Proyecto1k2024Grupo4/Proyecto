@@ -41,7 +41,7 @@ La fecha de expiración de una propuesta tiene que ser anterior a la fecha de ap
 
 ### Modelo Relacional
 
-PAIS (<u>nombre<u>)  
+PAIS (<u>nombre<\u>)  
 PK (nombre)
 
 
