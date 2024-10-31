@@ -20,7 +20,7 @@ Los políticos forman un congreso, el cual hace una votación para decidir si ha
 
 De las propuestas necesitamos saber su código, la fecha de presentación al congreso, la fecha de publicación, la fecha en la que acaba el plazo de su votación, la descripción de la propuesta y el título.
 
-Las propuestas pueden ser votadas por los ciudadanos capacitados pero no por los políticos, para que la votación sea valida tienen que votar como mínimo el 51% de los ciudadanos. 
+Las propuestas pueden ser votadas por los ciudadanos capacitados pero no por los políticos, para que la votación sea valida tienen que votar como mínimo el 51% de los ciudadanos. Para que la propuesta sea aceptada ha de tener mínimo un 51% de votos a favor.
 
 Las propuestas desarrollan leyes, de las que deseamos conocer su código identificativo, su descripción, fecha de última modificación, fecha de primera implementación y la fecha en la que se aplican sus efectos.
 
@@ -38,8 +38,6 @@ La entidad LEY representa una ley en concreto
 
 La fecha de expiración de una propuesta tiene que ser anterior a la fecha de aplicación de esta misma.
 
-
-PAIS (
 
 
 
