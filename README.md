@@ -44,4 +44,14 @@ La fecha de expiración de una propuesta tiene que ser anterior a la fecha de ap
 **PAIS** (nombre)  
 PK (nombre)
 
+**PERSONA** (numPasaporte, nombre, primerApellido, segundoApellido, fnac, sexo, paisNacimiento*)
+PK (numPasaporte)
+FK (paisNacimiento) -> PAIS
 
+**POLITICO** (numPasaporte, fechaIniciacion)
+PK (numPasaporte)
+FK (numPasaporte) -> PERSONA
+
+**CIUDADANO** (numPasaporte)
+PK (numPasaporte)
+FK (numPasaporte) -> PERSONA
