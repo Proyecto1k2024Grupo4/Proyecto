@@ -39,6 +39,8 @@ La entidad LEY representa una ley en concreto
 La fecha de expiración de una propuesta tiene que ser anterior a la fecha de aplicación de esta misma.
 
 
+### Modelo Relacional
+
 
 
 
