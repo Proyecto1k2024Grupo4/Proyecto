@@ -41,12 +41,14 @@ La fecha de expiración de una propuesta tiene que ser anterior a la fecha de ap
 
 ### Modelo Relacional
 
-**PAIS** (nombre)  
-PK (nombre)
+``` 
+PAIS (_nombre_)  
+  PK (nombre)
 
-**PERSONA** (numPasaporte, nombre, primerApellido, segundoApellido, fnac, sexo, paisNacimiento*)
-PK (numPasaporte)
-FK (paisNacimiento) -> PAIS
+PERSONA (numPasaporte, nombre, primerApellido, segundoApellido, fnac, sexo, paisNacimiento*)
+  PK (numPasaporte)
+  FK (paisNacimiento) -> PAIS
+```
 
 **POLITICO** (numPasaporte, fechaIniciacion)
 PK (numPasaporte)
