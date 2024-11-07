@@ -43,54 +43,54 @@ La fecha de expiración de una propuesta tiene que ser anterior a la fecha de ap
 
 ``` 
 PAIS (_nombre_)  
-  PK (nombre)
+    PK (nombre)
 
 CONGRESO (_id_, nombrePais*)
-  PK (id)
-  FK (nombrePais) -> PAIS
-  VNN (nombrePais)
-  UK (nombrePais)
+    PK (id)
+    FK (nombrePais) -> PAIS
+    VNN (nombrePais)
+    UK (nombrePais)
 
 PERSONA (_numPasaporte_, nombre, primerApellido, segundoApellido, fnac, sexo, paisNacimiento*)
-  PK (numPasaporte)
-  FK (paisNacimiento) -> PAIS
-  VNN (paisNacimiento)
+    PK (numPasaporte)
+    FK (paisNacimiento) -> PAIS
+    VNN (paisNacimiento)
 
 POLITICO (_numPasaporte_*, fechaIniciacion, idCongreso*)
-  PK (numPasaporte)
-  FK (numPasaporte) -> PERSONA
-     (idCongreso) -> CONGRESO
-  VNN (idCongreso)
+    PK (numPasaporte)
+    FK (numPasaporte) -> PERSONA
+       (idCongreso) -> CONGRESO
+    VNN (idCongreso)
 
 CIUDADANO (_numPasaporte_*)
-  PK (numPasaporte)
-  FK (numPasaporte) -> PERSONA
+    PK (numPasaporte)
+    FK (numPasaporte) -> PERSONA
 
 PROPUESTA (_id_, titulo, descripcion, fechaExpiracion, estado, idCongreso*, numPasaportePolitico*, fechaProposicion, fechaAceptacion, fechaPublicacion)
-  PK (id)
-  FK (idCongreso) -> CONGRESO
-     (numPasaportePolitico) -> POLITICO
-  VNN (idCongreso)
-      (numPasaportePolitico)
+    PK (id)
+    FK (idCongreso) -> CONGRESO
+       (numPasaportePolitico) -> POLITICO
+    VNN (idCongreso)
+        (numPasaportePolitico)
 
 VOTAR (_numPasaporteCiudadano_*, _idPropuesta_*, decision)
-  PK (numPasaporteCiudadano, idPropuesta)
-  FK (numPasaporteCiudadano) -> CIUDADANO
-     (idPropuesta) -> PROPUESTA
+    PK (numPasaporteCiudadano, idPropuesta)
+    FK (numPasaporteCiudadano) -> CIUDADANO
+       (idPropuesta) -> PROPUESTA
 
 LEY (_id_, descripcion, fechaAplicacion, fechaModificacion, fImplementacion, idCodigoCivil*)
-  PK (id)
-  FK (idCodigoCivil) -> CODIGO_CIVIL
-  VNN (idCodigoCivil)
-
+    PK (id)
+    FK (idCodigoCivil) -> CODIGO_CIVIL
+    VNN (idCodigoCivil)
+  
 DESARROLLAR (_idPropuesta_*, _idLey_*)
-  PK (idPropuesta, idLey)
-  FK (idPropuesta) -> PROPUESTA
-     (idLey) -> LEY
+    PK (idPropuesta, idLey)
+    FK (idPropuesta) -> PROPUESTA
+       (idLey) -> LEY
 
 CODIGO_CIVIL (_id_, nombrePais*)
-  PK (id)
-  FK (nombrePais) -> PAIS
-  VNN (nombrePais)
-  UK (nombrePais)
+    PK (id)
+    FK (nombrePais) -> PAIS
+    VNN (nombrePais)
+    UK (nombrePais)
 ```
