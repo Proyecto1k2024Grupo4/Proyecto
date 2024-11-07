@@ -73,8 +73,24 @@ PROPUESTA (_id_, titulo, descripcion, fechaExpiracion, estado, idCongreso*, numP
   VNN (idCongreso)
       (numPasaportePolitico)
 
-VOTAR (_numPasaporteCiudadano_*, _idPropuesta_*)
+VOTAR (_numPasaporteCiudadano_*, _idPropuesta_*, decision)
   PK (numPasaporteCiudadano, idPropuesta)
-  F
+  FK (numPasaporteCiudadano) -> CIUDADANO
+     (idPropuesta) -> PROPUESTA
 
+LEY (_id_, descripcion, fechaAplicacion, fechaModificacion, fImplementacion, idCodigoCivil*)
+  PK (id)
+  FK (idCodigoCivil) -> CODIGO_CIVIL
+  VNN (idCodigoCivil)
+
+DESARROLLAR (_idPropuesta_*, _idLey_*)
+  PK (idPropuesta, idLey)
+  FK (idPropuesta) -> PROPUESTA
+     (idLey) -> LEY
+
+CODIGO_CIVIL (_id_, nombrePais*)
+  PK (id)
+  FK (nombrePais) -> PAIS
+  VNN (nombrePais)
+  UK (nombrePais)
 ```
