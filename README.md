@@ -30,7 +30,7 @@ El código civil rige a un país (del que se quiere conocer su nombre, cantidad 
 
 ### Modelo Entidad-Relación
 
-![image](https://github.com/user-attachments/assets/ec7b4b3c-fce2-4ac1-8120-ad3f614f0db0)
+![image](https://github.com/user-attachments/assets/2094ab2c-4eaf-4dc7-ab9a-057e69edd438)
 
 Hemos creado una superclase PERSONA para almacenar los datos de POLITICO y CIUDADANO porque ambos comparten muchos atributos iguales.
 
@@ -45,15 +45,36 @@ La fecha de expiración de una propuesta tiene que ser anterior a la fecha de ap
 PAIS (_nombre_)  
   PK (nombre)
 
-PERSONA (numPasaporte, nombre, primerApellido, segundoApellido, fnac, sexo, paisNacimiento*)
+CONGRESO (_id_, nombrePais*)
+  PK (id)
+  FK (nombrePais) -> PAIS
+  VNN (nombrePais)
+  UK (nombrePais)
+
+PERSONA (_numPasaporte_, nombre, primerApellido, segundoApellido, fnac, sexo, paisNacimiento*)
   PK (numPasaporte)
   FK (paisNacimiento) -> PAIS
+  VNN (paisNacimiento)
+
+POLITICO (_numPasaporte_*, fechaIniciacion, idCongreso*)
+  PK (numPasaporte)
+  FK (numPasaporte) -> PERSONA
+     (idCongreso) -> CONGRESO
+  VNN (idCongreso)
+
+CIUDADANO (_numPasaporte_*)
+  PK (numPasaporte)
+  FK (numPasaporte) -> PERSONA
+
+PROPUESTA (_id_, titulo, descripcion, fechaExpiracion, estado, idCongreso*, numPasaportePolitico*, fechaProposicion, fechaAceptacion, fechaPublicacion)
+  PK (id)
+  FK (idCongreso) -> CONGRESO
+     (numPasaportePolitico) -> POLITICO
+  VNN (idCongreso)
+      (numPasaportePolitico)
+
+VOTAR (_numPasaporteCiudadano_*, _idPropuesta_*)
+  PK (numPasaporteCiudadano, idPropuesta)
+  F
+
 ```
-
-**POLITICO** (numPasaporte, fechaIniciacion)
-PK (numPasaporte)
-FK (numPasaporte) -> PERSONA
-
-**CIUDADANO** (numPasaporte)
-PK (numPasaporte)
-FK (numPasaporte) -> PERSONA
