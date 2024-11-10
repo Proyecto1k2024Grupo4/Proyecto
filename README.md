@@ -111,7 +111,6 @@ En el modelo relacional no se ha incluido la relación entre ciudadano y políti
 | nombre | VARCHAR(64) | Clave primaria. Nombre del país |
 
 
-
 **CONGRESO**
 | Columna | Tipo de Dato | Descripción |
 |--------------|--------------|--------------|
