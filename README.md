@@ -102,11 +102,13 @@ DESARROLLAR (_idPropuesta_*, _idLey_*)
 |--------------|--------------|--------------|
 | nombre | VARCHAR(64) | Clave primaria. Nombre del país |
 
+
 **CONGRESO**
 | Columna | Tipo de Dato | Descripción |
 |--------------|--------------|--------------|
 | id | INT | Clave primaria. Número que identifica al congreso |
 | nombrePais | VARCHAR(64) | Clave foránea que apunta a PAIS.nombre e indica el país al que pertenece el congreso. |
+
 
 **PERSONA**
 | Columna | Tipo de Dato | Descripción |
@@ -119,6 +121,7 @@ DESARROLLAR (_idPropuesta_*, _idLey_*)
 | sexo | VARCHAR(1) | Género biológico de la persona |
 | paisNacimiento | VARCHAR(64) | Clave foránea que apunta a PAIS.nombre e indica el país en el que nació la persona |
 
+
 **POLITICO**
 | Columna | Tipo de Dato | Descripción |
 |--------------|--------------|--------------|
@@ -126,10 +129,12 @@ DESARROLLAR (_idPropuesta_*, _idLey_*)
 | fechaIniciacion | DATE | Indica la fecha en la que el político tomó su cargo |
 | idCongreso | INT | Clave foránea que apunta a CONGRESO.id e indica el congreso al que pertenece el político |
 
+
 **CIUDADANO**
 | Columna | Tipo de Dato | Descripción |
 |--------------|--------------|--------------|
 | numPasaporte | VARCHAR(32) | Clave primaria y foránea que apunta a PERSONA.numPasaporte e indica el número de pasaporte del ciudadano |
+
 
 **PROPUESTA**
 | Columna | Tipo de Dato | Descripción |
@@ -145,6 +150,7 @@ DESARROLLAR (_idPropuesta_*, _idLey_*)
 | fechaAceptacion | DATE | Indica la fecha en la que el congresó aceptó o no la propuesta para que fuese pública |
 | fechaPublicacion | DATE | Indica la fecha en la que, después de ser aceptada por el congreso, la propuesta se hizo pública |
 
+
 **VOTAR**
 | Columna | Tipo de Dato | Descripción |
 |--------------|--------------|--------------|
@@ -152,11 +158,13 @@ DESARROLLAR (_idPropuesta_*, _idLey_*)
 | idPropuesta | INT | Clave primaria y foránea que apunta a PROPUESTA.id e indica la propuesta a la que se vota |
 | decision | VARCHAR(1) | Indica si el voto fué a favor o en contra |
 
+
 **CODIGO_CIVIL**
 | Columna | Tipo de Dato | Descripción |
 |--------------|--------------|--------------|
 | id | INT | Clave primaria. Número que identifica el código civil |
 | nombrePais | VARCHAR(64) | Clave foránea que apunta a PAIS.nombre e indica el país a que pertenece el código civil |
+
 
 **LEY**
 | Columna | Tipo de Dato | Descripción |
@@ -167,6 +175,7 @@ DESARROLLAR (_idPropuesta_*, _idLey_*)
 | fechaModificacion | DATE | Fecha en la que se modifica la ley |
 | fImplementacion | DATE | Fecha de la vez en la que se creó la ley |
 | idCodigoCivil | INT | Clave foránea que apunta a CODIGO_CIVIL.id e indica el código civil al que pertenece la ley |
+
 
 **DESAROLLAR**
 | Columna | Tipo de Dato | Descripción |
