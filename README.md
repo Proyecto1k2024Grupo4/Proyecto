@@ -95,6 +95,8 @@ DESARROLLAR (_idPropuesta_*, _idLey_*)
        (idLey) -> LEY
 ```
 
+En el modelo relacional no se ha incluido la relación entre ciudadano y político debido a que cuando un ciudadano capacitado oposita para político y accede al cargo se eliminan sus datos del registro de ciudadanos capacitados, ya que un político no puede votar.
+
 ### Diccionario de Datos
 
 **PAIS**
