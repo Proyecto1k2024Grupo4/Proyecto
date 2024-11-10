@@ -177,7 +177,7 @@ DESARROLLAR (_idPropuesta_*, _idLey_*)
 | idCodigoCivil | INT | Clave foránea que apunta a CODIGO_CIVIL.id e indica el código civil al que pertenece la ley |
 
 
-**DESAROLLAR**
+**DESARROLLAR**
 | Columna | Tipo de Dato | Descripción |
 |--------------|--------------|--------------|
 | idPropuesta | INT | Clave primaria y foránea que apunta a PROPUESTA.id e indica la propuesta que desarrolla a una ley |
