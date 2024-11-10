@@ -12,7 +12,7 @@ Somos una organización mundial conformada por varios países y queremos almacen
 
 De cada ciudadano que esté capacitado (ha pasado por una prueba de conocimentos mínimos) para votar se desea conocer su nombre, apellidos, sexo, fecha de nacimiento, pasaporte y país de nacimiento.
 
-De los políticos también queremos saber su nombre, apellidos, sexo, fecha de nacimiento, pasaporte y además la fecha en la que tomaron el cargo. Estos proponen propuestas y queremos almacenar el número de propuestas públicas que han aportado y de esas propuestas, las que han sido aceptadas y las que han sido rechazadas por la población.
+De los políticos también queremos saber su nombre, apellidos, sexo, fecha de nacimiento, pasaporte y además la fecha en la que tomaron el cargo. Estos proponen propuestas.
 
 Un ciudadano capacitado puede opositar para convertirse en político, aunque también pueden haber ciudadanos no capacitados (de los cuales no guardamos información) que opositen y se conviertan en políticos directamente.
 
