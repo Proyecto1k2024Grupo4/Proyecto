@@ -30,7 +30,7 @@ El código civil rige a un país (del que se quiere conocer su nombre, cantidad 
 
 ### Modelo Entidad-Relación
 
-![image](https://github.com/user-attachments/assets/49744573-66ed-4320-9cf7-4b41c670f948)
+![image (1)](https://github.com/user-attachments/assets/3c6bcb00-c5f3-4f60-9b57-262b172e94b7)
 
 Hemos creado una superclase PERSONA para almacenar los datos de POLITICO y CIUDADANO porque ambos comparten muchos atributos iguales.
 
