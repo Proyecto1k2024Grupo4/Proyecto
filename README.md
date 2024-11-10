@@ -94,3 +94,55 @@ CODIGO_CIVIL (_id_, nombrePais*)
     VNN (nombrePais)
     UK (nombrePais)
 ```
+
+### Diccionario de Datos
+
+**PAIS**
+| Columna | Tipo de Dato | Descripción |
+|--------------|--------------|--------------|
+| nombre | VARCHAR(64) | Nombre del país |
+
+**CONGRESO**
+| Columna | Tipo de Dato | Descripción |
+|--------------|--------------|--------------|
+|  |  |  |
+
+**PERSONA**
+| Columna | Tipo de Dato | Descripción |
+|--------------|--------------|--------------|
+|  |  |  |
+
+**POLITICO**
+| Columna | Tipo de Dato | Descripción |
+|--------------|--------------|--------------|
+|  |  |  |
+
+**CIUDADANO**
+| Columna | Tipo de Dato | Descripción |
+|--------------|--------------|--------------|
+|  |  |  |
+
+**PROPUESTA**
+| Columna | Tipo de Dato | Descripción |
+|--------------|--------------|--------------|
+|  |  |  |
+
+**VOTAR**
+| Columna | Tipo de Dato | Descripción |
+|--------------|--------------|--------------|
+|  |  |  |
+
+**LEY**
+| Columna | Tipo de Dato | Descripción |
+|--------------|--------------|--------------|
+|  |  |  |
+
+**DESAROLLAR**
+| Columna | Tipo de Dato | Descripción |
+|--------------|--------------|--------------|
+|  |  |  |
+
+**CODIGO_CIVIL**
+| Columna | Tipo de Dato | Descripción |
+|--------------|--------------|--------------|
+|  |  |  |
