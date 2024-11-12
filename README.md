@@ -194,6 +194,22 @@ En el modelo relacional no se ha incluido la relación entre ciudadano y políti
 
 ### Decisiones en caso de modificaciones/eliminaciones en tablas
 
-Actualizaciones/Modificaciones **Rechazadas:**
+Eliminaciones/Modificaciones **Rechazadas:**
 
-Actualizaciones/Modificaciones **Propagadas**
+En caso de que se realize cualquier modificación o se elimine un elemento el cual es referenciado por otros, se rechazará dicha acción. Esto se ha decidido así para que no se vez afectada la integridad de la base de datos.
+
+Entidades en las que se rechaza: 
+
+- **PAIS**
+- **CONGRESO**
+- **CODIGO_CIVIL**
+- **PROPUESTA**
+
+Eliminaciones/Modificaciones **Anuladas**
+
+En caso de que se realize cualquier modificación o se elimine un elemento el cual es referenciado por otros, se anula dicha acción, es decir, se borra/modifica el registro y las tuplas que lo referencian se ponen en nulo.
+
+Entidades en las que se anula: 
+
+- **PERSONA** (Incluye **POLITICO** Y **CIUDADANO**)
+- **LEY**
