@@ -203,7 +203,6 @@ Entidades en las que se rechaza:
 - **PAIS**
 - **CONGRESO**
 - **CODIGO_CIVIL**
-- **PROPUESTA**
 
 Eliminaciones/Modificaciones **Anuladas**
 
@@ -211,5 +210,6 @@ En caso de que se realize cualquier modificación o se elimine un elemento el cu
 
 Entidades en las que se anula: 
 
+- **PROPUESTA**
 - **PERSONA** (Incluye **POLITICO** Y **CIUDADANO**)
 - **LEY**
