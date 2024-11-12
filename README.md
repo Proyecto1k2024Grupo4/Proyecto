@@ -191,3 +191,9 @@ En el modelo relacional no se ha incluido la relación entre ciudadano y políti
 | idPropuesta | INT | Clave primaria y foránea que apunta a PROPUESTA.id e indica la propuesta que desarrolla a una ley |
 | idLey | INT | Clave primaria y foránea que apunta a LEY.id e indica la ley que se está desarrollando |
 
+
+### Decisiones en caso de modificaciones/eliminaciones en tablas
+
+Actualizaciones/Modificaciones **Rechazadas:**
+
+Actualizaciones/Modificaciones **Propagadas**
