@@ -40,7 +40,7 @@ En el modelo entidad relación que hemos creado, las propuestas tienen un id ún
 
 La fecha de proposición es anterior a la fecha de aceptación, la fecha de aceptación es anterior a la fecha de publicación y la fecha de publicación es anterior a la fecha de expiración. La fecha de expiración puede ser anterior o igual a la fecha de modificación o implementación. La fecha de aplicación debe ser posterior a la fecha de modificación o implementación.
 
-El estado de una propuesta es dictaminado por la fechas fechas entre las que se encuentre, es decir, si una propuesta ha sido presentada al congreso y todavía no se ha aceptado, se encuentra en estado de aceptación.
+El estado de una propuesta es dictaminado por las fechas entre las que se encuentre, es decir, si una propuesta ha sido presentada al congreso y todavía no se ha aceptado, se encuentra en estado de aceptación.
 
 La entidad LEY representa una ley en concreto. Cuando una propuesta desarrolla una ley, si la crea, su fecha de implementación y modificación serán la misma, ya que la fecha de implementación indica cuando se creó dicha ley.
 
