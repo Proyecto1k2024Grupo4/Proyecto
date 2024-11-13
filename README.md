@@ -34,7 +34,7 @@ El código civil rige a un **país** (del que se quiere conocer su nombre, canti
 
 En país hemos puesto como atributos derivados el número de ciudadanos y políticos ya que eso se conoce por la relación que existe entre ellos. Lo mismo pasa con los demás atributos derivados que aparecen, como por ejemplo: Codigo civil y número de leyes o Propuesta y votos.
 
-Hemos creado una superclase PERSONA para almacenar los datos de POLITICO y CIUDADANO porque ambos comparten muchos atributos iguales.
+Hemos creado una superclase PERSONA para almacenar los datos de POLITICO y CIUDADANO porque ambos comparten muchos atributos iguales. Es una relación total porque todas las personas que almacenamos en el sitema son obligatoriamente o un POLITICO o un CIUDADANO y además es una generalización disjunta porque un POLITICO no puede ser un CIUDADANO ni viceversa.
 
 En el modelo entidad relación que hemos creado, las propuestas tienen un id único independientemente del páis que sea, es decir, si en Estados Unidos se crea una propuesta con el id 1, no puede haber una propuesta en el Reino Unido con el mismo id.
 
@@ -192,24 +192,48 @@ En el modelo relacional no se ha incluido la relación entre ciudadano y políti
 | idLey | INT | Clave primaria y foránea que apunta a LEY.id e indica la ley que se está desarrollando |
 
 
-### Decisiones en caso de modificaciones/eliminaciones en tablas
+### Restricciones de modificaciones/eliminaciones en tablas
 
-Eliminaciones/Modificaciones **Rechazadas:**
+**Eliminaciones RECHAZADAS**
 
-En caso de que se realize cualquier modificación o se elimine un elemento el cual es referenciado por otros, se rechazará dicha acción. Esto se ha decidido así para que no se vez afectada la integridad de la base de datos.
-
-Entidades en las que se rechaza: 
+La eliminacion de cualquier instancia de las siguientes entidades se rechazará:
 
 - **PAIS**
 - **CONGRESO**
 - **CODIGO_CIVIL**
-
-Eliminaciones/Modificaciones **Anuladas**
-
-En caso de que se realize cualquier modificación o se elimine un elemento el cual es referenciado por otros, se anula dicha acción, es decir, se borra/modifica el registro y las tuplas que lo referencian se ponen en nulo.
-
-Entidades en las que se anula: 
-
 - **PROPUESTA**
-- **PERSONA** (Incluye **POLITICO** Y **CIUDADANO**)
+
+
+**Eliminaciones PROPAGADAS**
+
+La eliminación de cualquier instancia de las siguientes entidades se propagará, es decir, se borrará la instancia y todas las instancias que apunten a esta
+
 - **LEY**
+
+
+**Eliminaciones ANULADAS**
+
+La eliminacion de cualquier instancia de las siguientes entidades se anulará, es decir, se eliminará la instancia y en las claves foráneas que apunten a esta se marcarán como nulas:
+
+- **POLITICO**
+- **CIUDADANO**
+
+
+**Modificaciones RECHAZADAS**
+
+La modificación de cualquier instancia de las siguientes entidades se rechazará:
+
+- **PAIS**
+- **CODIGO_CIVIL**
+- **CONGRESO**
+- **PROPUESTA**
+
+**Modificaciones PROPAGADAS**
+
+La modificación de cualquier instancia de las siguientes entidades será propagada, es decir, se modificará la instancia y todos los campos que la referencien desde otras instancias:
+
+- **POLITICO**
+- **CIUDADANO**
+- **LEY**
+
+
