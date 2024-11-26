@@ -121,7 +121,7 @@ En el modelo relacional no se ha incluido la relación entre ciudadano y políti
 **PERSONA**
 | Columna | Tipo de Dato | Descripción |
 |--------------|--------------|--------------|
-| numPasaporte | VARCHAR(32) | Clave primaria. Indica el número de pasaporte de la persona |
+| numPasaporte | VARCHAR(16) | Clave primaria. Indica el número de pasaporte de la persona |
 | nombre | VARCHAR(64) | Nombre de la persona |
 | primerApellido | VARCHAR (32) | Primer apellido de la persona |
 | segundoApellido | VARCHAR (32) | Segundo apellido de la persona |
@@ -133,7 +133,7 @@ En el modelo relacional no se ha incluido la relación entre ciudadano y políti
 **POLITICO**
 | Columna | Tipo de Dato | Descripción |
 |--------------|--------------|--------------|
-| numPasaporte | VARCHAR(32) | Clave primaria y foránea que apunta a PERSONA.numPasaporte e indica el número de pasaporte del político |
+| numPasaporte | VARCHAR(16) | Clave primaria y foránea que apunta a PERSONA.numPasaporte e indica el número de pasaporte del político |
 | fechaIniciacion | DATE | Indica la fecha en la que el político tomó su cargo |
 | idCongreso | INT | Clave foránea que apunta a CONGRESO.id e indica el congreso al que pertenece el político |
 
@@ -141,7 +141,7 @@ En el modelo relacional no se ha incluido la relación entre ciudadano y políti
 **CIUDADANO**
 | Columna | Tipo de Dato | Descripción |
 |--------------|--------------|--------------|
-| numPasaporte | VARCHAR(32) | Clave primaria y foránea que apunta a PERSONA.numPasaporte e indica el número de pasaporte del ciudadano |
+| numPasaporte | VARCHAR(16) | Clave primaria y foránea que apunta a PERSONA.numPasaporte e indica el número de pasaporte del ciudadano |
 
 
 **PROPUESTA**
