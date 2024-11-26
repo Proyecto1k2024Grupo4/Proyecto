@@ -3,7 +3,7 @@ CREATE TABLE PERSONA(
     nombre VARCHAR(32) NOT NULL,
     primerApellido VARCHAR(32),
     segundoApellido VARCHAR(32),
-    fnac DATE,
+    fnac DATE NOT NULL,
     sexo CHAR(1),
     paisNacimiento VARCHAR(64) NOT NULL,
     CONSTRAINT PK_PERSONA PRIMARY KEY (numPasaporte),
