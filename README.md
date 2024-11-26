@@ -153,7 +153,7 @@ En el modelo relacional no se ha incluido la relación entre ciudadano y políti
 | fechaExpiracion | DATE | Fecha en la que termina el plazo para votar la propuesta |
 | estado | VARCHAR(16) | Indica el estado/fase en la que se encuentra la propuesta |
 | idCongreso | INT | Clave foránea que apunta a CONGRESO.id e indica el congreso que acepta la propuesta para que sea pública |
-| numPasaportePolitico | VARCHAR(32) | Clave foránea que apunta a POLITICO.numPasaporte e indica el político que inició la propuesta |
+| numPasaportePolitico | VARCHAR(16) | Clave foránea que apunta a POLITICO.numPasaporte e indica el político que inició la propuesta |
 | fechaProposicion | DATE | Indica la fecha en la que la se presentó la propuesta al congreso |
 | fechaAceptacion | DATE | Indica la fecha en la que el congresó aceptó o no la propuesta para que fuese pública |
 | fechaPublicacion | DATE | Indica la fecha en la que, después de ser aceptada por el congreso, la propuesta se hizo pública |
@@ -162,7 +162,7 @@ En el modelo relacional no se ha incluido la relación entre ciudadano y políti
 **VOTAR**
 | Columna | Tipo de Dato | Descripción |
 |--------------|--------------|--------------|
-| numPasaporteCiudadano | VARCHAR(32) | Clave primaria y foránea que apunta a CIUDADANO.numPasaporte e indica qué ciudadano vota  |
+| numPasaporteCiudadano | VARCHAR(16) | Clave primaria y foránea que apunta a CIUDADANO.numPasaporte e indica qué ciudadano vota  |
 | idPropuesta | INT | Clave primaria y foránea que apunta a PROPUESTA.id e indica la propuesta a la que se vota |
 | decision | VARCHAR(1) | Indica si el voto fué a favor o en contra |
 
