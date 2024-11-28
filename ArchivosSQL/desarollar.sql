@@ -1,5 +1,5 @@
 CREATE TABLE DESAROLLAR (
-    idPropuesta ,
+    idPropuesta INT,
     idLey INT,
 
     CONSTRAINT PK_PROPUESTA PRIMARY KEY (idPropuesta),
