@@ -1,4 +1,0 @@
-CREATE TABLE PAIS (
-    nombre VARCHAR(64),
-    CONSTRAINT PK_PAIS PRIMARY KEY (nombre)
-);
