@@ -209,6 +209,7 @@ La eliminacion de cualquier instancia de las siguientes entidades se rechazará:
 La eliminación de cualquier instancia de las siguientes entidades se propagará, es decir, se borrará la instancia y todas las instancias que apunten a esta
 
 - **LEY**
+- **PERSONA**
 
 
 **Eliminaciones ANULADAS**
@@ -232,6 +233,7 @@ La modificación de cualquier instancia de las siguientes entidades se rechazar�
 
 La modificación de cualquier instancia de las siguientes entidades será propagada, es decir, se modificará la instancia y todos los campos que la referencien desde otras instancias:
 
+- **PERSONA**
 - **POLITICO**
 - **CIUDADANO**
 - **LEY**
