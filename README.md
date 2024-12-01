@@ -122,11 +122,11 @@ En el modelo relacional no se ha incluido la relación entre ciudadano y políti
 | Columna | Tipo de Dato | Descripción |
 |--------------|--------------|--------------|
 | numPasaporte | VARCHAR(16) | Clave primaria. Indica el número de pasaporte de la persona |
-| nombre | VARCHAR(64) | Nombre de la persona |
+| nombre | VARCHAR(32) | Nombre de la persona |
 | primerApellido | VARCHAR (32) | Primer apellido de la persona |
 | segundoApellido | VARCHAR (32) | Segundo apellido de la persona |
 | fnac | DATE | Fecha de nacimiento de la persona |
-| sexo | VARCHAR(1) | Género biológico de la persona |
+| sexo | ENUM | Género biológico de la persona |
 | paisNacimiento | VARCHAR(64) | Clave foránea que apunta a PAIS.nombre e indica el país en el que nació la persona |
 
 
@@ -151,7 +151,7 @@ En el modelo relacional no se ha incluido la relación entre ciudadano y políti
 | titulo | VARCHAR(100) | Titulo de la propuesta |
 | descripcion | VARCHAR(2000) | Descripción de la propuesta |
 | fechaExpiracion | DATE | Fecha en la que termina el plazo para votar la propuesta |
-| estado | VARCHAR(16) | Indica el estado/fase en la que se encuentra la propuesta |
+| estado | ENUM | Indica el estado/fase en la que se encuentra la propuesta |
 | idCongreso | INT | Clave foránea que apunta a CONGRESO.id e indica el congreso que acepta la propuesta para que sea pública |
 | numPasaportePolitico | VARCHAR(16) | Clave foránea que apunta a POLITICO.numPasaporte e indica el político que inició la propuesta |
 | fechaProposicion | DATE | Indica la fecha en la que la se presentó la propuesta al congreso |
