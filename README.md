@@ -93,7 +93,7 @@ CODIGO_CIVIL (_id_, nombrePais*)
 LEY (_id_, descripcion, fechaAplicacion, fechaModificacion, fImplementacion, idCodigoCivil*)
     PK (id)
     FK (idCodigoCivil) -> CODIGO_CIVIL
-    VNN (idCodigoCivil)
+    VNN (idCodigoCivil, descripcion, fechaImplementacion)
   
 DESARROLLAR (_idPropuesta_*, _idLey_*)
     PK (idPropuesta, idLey)
@@ -115,7 +115,7 @@ En el modelo relacional no se ha incluido la relación entre ciudadano y políti
 | Columna | Tipo de Dato | Descripción |
 |--------------|--------------|--------------|
 | id | INT | Clave primaria. Número que identifica al congreso |
-| nombrePais | VARCHAR(64) | Clave foránea que apunta a PAIS.nombre e indica el país al que pertenece el congreso. |
+| nombrePais | VARCHAR(64) | Clave foránea y única que apunta a PAIS.nombre e indica el país al que pertenece el congreso. |
 
 
 **PERSONA**
@@ -171,7 +171,7 @@ En el modelo relacional no se ha incluido la relación entre ciudadano y políti
 | Columna | Tipo de Dato | Descripción |
 |--------------|--------------|--------------|
 | id | INT | Clave primaria. Número que identifica el código civil |
-| nombrePais | VARCHAR(64) | Clave foránea que apunta a PAIS.nombre e indica el país a que pertenece el código civil |
+| nombrePais | VARCHAR(64) | Clave foránea y única que apunta a PAIS.nombre e indica el país a que pertenece el código civil |
 
 
 **LEY**
