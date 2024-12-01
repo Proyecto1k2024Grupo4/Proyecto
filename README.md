@@ -60,13 +60,13 @@ CONGRESO (_id_, nombrePais*)
 PERSONA (_numPasaporte_, nombre, primerApellido, segundoApellido, fnac, sexo, paisNacimiento*)
     PK (numPasaporte)
     FK (paisNacimiento) -> PAIS
-    VNN (paisNacimiento)
+    VNN (paisNacimiento, nombre, fnac)
 
 POLITICO (_numPasaporte_*, fechaIniciacion, idCongreso*)
     PK (numPasaporte)
     FK (numPasaporte) -> PERSONA
        (idCongreso) -> CONGRESO
-    VNN (idCongreso)
+    VNN (idCongreso, fechaIniciacion)
 
 CIUDADANO (_numPasaporte_*)
     PK (numPasaporte)
@@ -76,13 +76,13 @@ PROPUESTA (_id_, titulo, descripcion, fechaExpiracion, estado, idCongreso*, numP
     PK (id)
     FK (idCongreso) -> CONGRESO
        (numPasaportePolitico) -> POLITICO
-    VNN (idCongreso)
-        (numPasaportePolitico)
+    VNN (idCongreso, numPasaportePolitico, titulo, descripcion, estado, fechaProposicion)
 
 VOTAR (_numPasaporteCiudadano_*, _idPropuesta_*, decision)
     PK (numPasaporteCiudadano, idPropuesta)
     FK (numPasaporteCiudadano) -> CIUDADANO
        (idPropuesta) -> PROPUESTA
+    VNN (decision)
 
 CODIGO_CIVIL (_id_, nombrePais*)
     PK (id)
@@ -93,7 +93,7 @@ CODIGO_CIVIL (_id_, nombrePais*)
 LEY (_id_, descripcion, fechaAplicacion, fechaModificacion, fImplementacion, idCodigoCivil*)
     PK (id)
     FK (idCodigoCivil) -> CODIGO_CIVIL
-    VNN (idCodigoCivil)
+    VNN (idCodigoCivil, descripcion, fechaImplementacion)
   
 DESARROLLAR (_idPropuesta_*, _idLey_*)
     PK (idPropuesta, idLey)
@@ -115,18 +115,18 @@ En el modelo relacional no se ha incluido la relación entre ciudadano y políti
 | Columna | Tipo de Dato | Descripción |
 |--------------|--------------|--------------|
 | id | INT | Clave primaria. Número que identifica al congreso |
-| nombrePais | VARCHAR(64) | Clave foránea que apunta a PAIS.nombre e indica el país al que pertenece el congreso. |
+| nombrePais | VARCHAR(64) | Clave foránea y única que apunta a PAIS.nombre e indica el país al que pertenece el congreso. |
 
 
 **PERSONA**
 | Columna | Tipo de Dato | Descripción |
 |--------------|--------------|--------------|
 | numPasaporte | VARCHAR(16) | Clave primaria. Indica el número de pasaporte de la persona |
-| nombre | VARCHAR(64) | Nombre de la persona |
+| nombre | VARCHAR(32) | Nombre de la persona |
 | primerApellido | VARCHAR (32) | Primer apellido de la persona |
 | segundoApellido | VARCHAR (32) | Segundo apellido de la persona |
 | fnac | DATE | Fecha de nacimiento de la persona |
-| sexo | VARCHAR(1) | Género biológico de la persona |
+| sexo | ENUM | Género biológico de la persona |
 | paisNacimiento | VARCHAR(64) | Clave foránea que apunta a PAIS.nombre e indica el país en el que nació la persona |
 
 
@@ -151,7 +151,7 @@ En el modelo relacional no se ha incluido la relación entre ciudadano y políti
 | titulo | VARCHAR(100) | Titulo de la propuesta |
 | descripcion | VARCHAR(2000) | Descripción de la propuesta |
 | fechaExpiracion | DATE | Fecha en la que termina el plazo para votar la propuesta |
-| estado | VARCHAR(16) | Indica el estado/fase en la que se encuentra la propuesta |
+| estado | ENUM | Indica el estado/fase en la que se encuentra la propuesta |
 | idCongreso | INT | Clave foránea que apunta a CONGRESO.id e indica el congreso que acepta la propuesta para que sea pública |
 | numPasaportePolitico | VARCHAR(16) | Clave foránea que apunta a POLITICO.numPasaporte e indica el político que inició la propuesta |
 | fechaProposicion | DATE | Indica la fecha en la que la se presentó la propuesta al congreso |
@@ -164,14 +164,14 @@ En el modelo relacional no se ha incluido la relación entre ciudadano y políti
 |--------------|--------------|--------------|
 | numPasaporteCiudadano | VARCHAR(16) | Clave primaria y foránea que apunta a CIUDADANO.numPasaporte e indica qué ciudadano vota  |
 | idPropuesta | INT | Clave primaria y foránea que apunta a PROPUESTA.id e indica la propuesta a la que se vota |
-| decision | VARCHAR(1) | Indica si el voto fué a favor o en contra |
+| decision | BOOLEAN | Indica si el voto fué a favor o en contra |
 
 
 **CODIGO_CIVIL**
 | Columna | Tipo de Dato | Descripción |
 |--------------|--------------|--------------|
 | id | INT | Clave primaria. Número que identifica el código civil |
-| nombrePais | VARCHAR(64) | Clave foránea que apunta a PAIS.nombre e indica el país a que pertenece el código civil |
+| nombrePais | VARCHAR(64) | Clave foránea y única que apunta a PAIS.nombre e indica el país a que pertenece el código civil |
 
 
 **LEY**
