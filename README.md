@@ -60,13 +60,13 @@ CONGRESO (_id_, nombrePais*)
 PERSONA (_numPasaporte_, nombre, primerApellido, segundoApellido, fnac, sexo, paisNacimiento*)
     PK (numPasaporte)
     FK (paisNacimiento) -> PAIS
-    VNN (paisNacimiento)
+    VNN (paisNacimiento, nombre, fnac)
 
 POLITICO (_numPasaporte_*, fechaIniciacion, idCongreso*)
     PK (numPasaporte)
     FK (numPasaporte) -> PERSONA
        (idCongreso) -> CONGRESO
-    VNN (idCongreso)
+    VNN (idCongreso, fechaIniciacion)
 
 CIUDADANO (_numPasaporte_*)
     PK (numPasaporte)
@@ -76,13 +76,13 @@ PROPUESTA (_id_, titulo, descripcion, fechaExpiracion, estado, idCongreso*, numP
     PK (id)
     FK (idCongreso) -> CONGRESO
        (numPasaportePolitico) -> POLITICO
-    VNN (idCongreso)
-        (numPasaportePolitico)
+    VNN (idCongreso, numPasaportePolitico, titulo, descripcion, estado, fechaProposicion)
 
 VOTAR (_numPasaporteCiudadano_*, _idPropuesta_*, decision)
     PK (numPasaporteCiudadano, idPropuesta)
     FK (numPasaporteCiudadano) -> CIUDADANO
        (idPropuesta) -> PROPUESTA
+    VNN (decision)
 
 CODIGO_CIVIL (_id_, nombrePais*)
     PK (id)
