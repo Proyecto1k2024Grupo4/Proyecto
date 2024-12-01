@@ -164,7 +164,7 @@ En el modelo relacional no se ha incluido la relación entre ciudadano y políti
 |--------------|--------------|--------------|
 | numPasaporteCiudadano | VARCHAR(16) | Clave primaria y foránea que apunta a CIUDADANO.numPasaporte e indica qué ciudadano vota  |
 | idPropuesta | INT | Clave primaria y foránea que apunta a PROPUESTA.id e indica la propuesta a la que se vota |
-| decision | VARCHAR(1) | Indica si el voto fué a favor o en contra |
+| decision | BOOLEAN | Indica si el voto fué a favor o en contra |
 
 
 **CODIGO_CIVIL**
