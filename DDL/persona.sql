@@ -4,7 +4,7 @@ CREATE TABLE PERSONA(
     primerApellido VARCHAR(32),
     segundoApellido VARCHAR(32),
     fnac DATE NOT NULL,
-    sexo CHAR(1),
+    sexo ENUM ('H', 'M'),
     paisNacimiento VARCHAR(64) NOT NULL,
     CONSTRAINT PK_PERSONA PRIMARY KEY (numPasaporte),
     CONSTRAINT FK_PERSONA_PAIS FOREIGN KEY (paisNacimiento) REFERENCES PAIS(nombre)
