@@ -1,11 +1,11 @@
-INSERT INTO CODIGO_CIVIL(nombrePais) VALUES 
-("España"),
-("Colombia"),
-("Estados Unidos"),
-("Rusia"),
-("China"),
-("Mongolia"),
-("Italia"),
-("Grecia"),
-("Francia"),
-("Reino Unido");
+INSERT INTO CODIGO_CIVIL(idPais) VALUES 
+(1),
+(2),
+(3),
+(4),
+(5),
+(6),
+(7),
+(8),
+(9),
+(10);
