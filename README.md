@@ -378,3 +378,29 @@ CREATE TABLE VOTAR(
 Se han seguido todas las restricciones sobre modificación/eliminación en la creación de las instrucciones DDL, además se han utilizado checks para verificar que ciertas fechas sean posteriores a otras.
 
 El tipo de datos de los atributos en las tablas de las instrucciones DDL es acorde al diccionario de datos.
+
+#### Script para vaciar todas las tablas
+
+```
+use RPI;
+
+set foreign_key_checks = 0;
+
+TRUNCATE TABLE CIUDADANO;
+TRUNCATE TABLE CODIGO_CIVIL;
+TRUNCATE TABLE CONGRESO;
+TRUNCATE TABLE DESARROLLAR;
+TRUNCATE TABLE PAIS;
+TRUNCATE TABLE LEY;
+TRUNCATE TABLE PERSONA;
+TRUNCATE TABLE POLITICO;
+TRUNCATE TABLE PROPUESTA;
+TRUNCATE TABLE VOTAR;
+
+set foreign_key_checks = 1;
+```
+
+### Instrucciones DML
+
+
+
