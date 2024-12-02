@@ -56,17 +56,17 @@ INSERT INTO PERSONA(numPasaporte, nombre, primerApellido, segundoApellido, fnac,
 ("23456789J", "Charles", "Darwin", "Natural", '1950/2/2', 'H', "Reino Unido"),
 ("12345678J", "Isabel", "The", "Queen", '1200/1/25', 'M', "Reino Unido");
 
-INSERT INTO POLITICO(numPasaporte, fechaIniciacion, fechaRetirada) VALUES
-("123456789A", '2008/5/5', NULL),
-("12345678B", '2009/5/5', NULL),
-("A1234567C", '2010/5/5', NULL),
-("23456789012D", '2011/5/5', NULL),
-("12345E", '2008/5/5', NULL),
-("234567891F", '2008/5/5', NULL),
-("234G", '2009/5/5', NULL),
-("2345678901234H", '2009/5/5', NULL),
-("123456I", '2012/5/5', NULL),
-("23456789J", '2012/5/5', NULL);
+INSERT INTO POLITICO(numPasaporte, fechaIniciacion, fechaRetirada, idCongreso) VALUES
+("123456789A", '2008/5/5', NULL, 1),
+("12345678B", '2009/5/5', NULL, 2),
+("A1234567C", '2010/5/5', NULL, 3),
+("23456789012D", '2011/5/5', NULL, 4),
+("12345E", '2008/5/5', NULL, 5),
+("234567891F", '2008/5/5', NULL, 6),
+("234G", '2009/5/5', NULL, 7),
+("2345678901234H", '2009/5/5', NULL, 8),
+("123456I", '2012/5/5', NULL, 9),
+("23456789J", '2012/5/5', NULL, 10);
 
 
 INSERT INTO CIUDADANO(numPasaporte) VALUES
