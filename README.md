@@ -12,7 +12,7 @@ Somos una **organización mundial** conformada por varios países y queremos alm
 
 De cada **ciudadano** que esté capacitado (ha pasado por una prueba de conocimentos mínimos) para votar se desea conocer su nombre, apellidos, sexo, fecha de nacimiento, pasaporte y país de nacimiento.
 
-De los **políticos** también queremos saber su nombre, apellidos, sexo, fecha de nacimiento, pasaporte y además la fecha en la que tomaron el cargo. Estos proponen propuestas y queremos almacenar el número de propuestas que han iniciado.
+De los **políticos** también queremos saber su nombre, apellidos, sexo, fecha de nacimiento, pasaporte, fecha en la que tomaron el cargo y fecha en la que se retiraron (en caso de que lo hayan hecho). Estos proponen propuestas y queremos almacenar el número de propuestas que han iniciado.
 
 Un ciudadano capacitado puede opositar para convertirse en político, aunque también pueden haber ciudadanos no capacitados (de los cuales no guardamos información) que opositen y se conviertan en políticos directamente.
 
@@ -30,13 +30,15 @@ El código civil rige a un **país** (del que se quiere conocer su nombre, canti
 
 ### Modelo Entidad-Relación
 
-![image (1)](https://github.com/user-attachments/assets/3c6bcb00-c5f3-4f60-9b57-262b172e94b7)
+![image](https://github.com/user-attachments/assets/286a4e48-9f22-4737-ba12-0a234fe314d5)
 
 En país hemos puesto como atributos derivados el número de ciudadanos y políticos ya que eso se conoce por la relación que existe entre ellos. Lo mismo pasa con los demás atributos derivados que aparecen, como por ejemplo: Codigo civil y número de leyes o Propuesta y votos.
 
 Hemos creado una superclase PERSONA para almacenar los datos de POLITICO y CIUDADANO porque ambos comparten muchos atributos iguales. Es una relación total porque todas las personas que almacenamos en el sitema son obligatoriamente o un POLITICO o un CIUDADANO y además es una generalización disjunta porque un POLITICO no puede ser un CIUDADANO ni viceversa.
 
 En el modelo entidad relación que hemos creado, las propuestas tienen un id único independientemente del páis que sea, es decir, si en Estados Unidos se crea una propuesta con el id 1, no puede haber una propuesta en el Reino Unido con el mismo id.
+
+En político hay un atributo derivado "estado" que indica si está retirado o no y viene de las fechas de iniciación y retirada. La fecha de retirada debe ser posterior a la fecha de iniciación.
 
 La fecha de proposición es anterior a la fecha de aceptación, la fecha de aceptación es anterior a la fecha de publicación y la fecha de publicación es anterior a la fecha de expiración. La fecha de expiración puede ser anterior o igual a la fecha de modificación o implementación. La fecha de aplicación debe ser posterior a la fecha de modificación o implementación.
 
@@ -62,7 +64,7 @@ PERSONA (_numPasaporte_, nombre, primerApellido, segundoApellido, fnac, sexo, pa
     FK (paisNacimiento) -> PAIS
     VNN (paisNacimiento, nombre, fnac)
 
-POLITICO (_numPasaporte_*, fechaIniciacion, idCongreso*)
+POLITICO (_numPasaporte_*, fechaIniciacion, fechaRetirada, idCongreso*)
     PK (numPasaporte)
     FK (numPasaporte) -> PERSONA
        (idCongreso) -> CONGRESO
@@ -76,7 +78,7 @@ PROPUESTA (_id_, titulo, descripcion, fechaExpiracion, estado, idCongreso*, numP
     PK (id)
     FK (idCongreso) -> CONGRESO
        (numPasaportePolitico) -> POLITICO
-    VNN (idCongreso, titulo, descripcion, estado, fechaProposicion)
+    VNN (idCongreso, numPasaportePolitico, titulo, descripcion, estado, fechaProposicion)
 
 VOTAR (_numPasaporteCiudadano_*, _idPropuesta_*, decision)
     PK (numPasaporteCiudadano, idPropuesta)
@@ -135,6 +137,7 @@ En el modelo relacional no se ha incluido la relación entre ciudadano y políti
 |--------------|--------------|--------------|
 | numPasaporte | VARCHAR(16) | Clave primaria y foránea que apunta a PERSONA.numPasaporte e indica el número de pasaporte del político |
 | fechaIniciacion | DATE | Indica la fecha en la que el político tomó su cargo |
+| fechaRetirada | DATE | Indica la fecha en la que el político se retíro de su cargo |
 | idCongreso | INT | Clave foránea que apunta a CONGRESO.id e indica el congreso al que pertenece el político |
 
 
@@ -202,6 +205,7 @@ La eliminacion de cualquier instancia de las siguientes entidades se rechazará:
 - **CONGRESO**
 - **CODIGO_CIVIL**
 - **PROPUESTA**
+- **POLITICO**
 
 
 **Eliminaciones PROPAGADAS**
@@ -216,7 +220,6 @@ La eliminación de cualquier instancia de las siguientes entidades se propagará
 
 La eliminacion de cualquier instancia de las siguientes entidades se anulará, es decir, se eliminará la instancia y en las claves foráneas que apunten a esta se marcarán como nulas:
 
-- **POLITICO**
 - **CIUDADANO**
 
 
