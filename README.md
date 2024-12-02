@@ -76,7 +76,7 @@ PROPUESTA (_id_, titulo, descripcion, fechaExpiracion, estado, idCongreso*, numP
     PK (id)
     FK (idCongreso) -> CONGRESO
        (numPasaportePolitico) -> POLITICO
-    VNN (idCongreso, numPasaportePolitico, titulo, descripcion, estado, fechaProposicion)
+    VNN (idCongreso, titulo, descripcion, estado, fechaProposicion)
 
 VOTAR (_numPasaporteCiudadano_*, _idPropuesta_*, decision)
     PK (numPasaporteCiudadano, idPropuesta)
