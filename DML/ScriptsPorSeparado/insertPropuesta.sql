@@ -1,0 +1,2 @@
+INSERT INTO PROPUESTA(titulo, descripcion, fechaExpiracion, estado, idCongreso, numPasaportePolitico, fechaProposicion, fechaAceptacion, fechaPublicacion) VALUES
+("Reforma ley de salud", "Cambiar la ley de salud",'2025/2/2'),
