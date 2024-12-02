@@ -6,7 +6,7 @@ INSERT INTO PERSONA(numPasaporte, nombre, primerApellido, segundoApellido, fnac,
 ("A1234567C", "Wilson", "Jackson", "Person", '2001/5/1', 'H', "Estados Unidos"),
 ("A2345678C", "Tracy", "Mary", "Larson", '1999/5/10', 'M', "Estados Unidos"),
 ("12345678901D", "Bladimyr", "Bostov", "Artyom", '1997/6/15', 'H', "Rusia"),
-("12345678901D", "Marie", "Azkaya", "Ligla", '1980/9/15', 'M', "Rusia"),
+("23456789012D", "Marie", "Azkaya", "Ligla", '1980/9/15', 'M', "Rusia"),
 ("12345E", "Xi", "Ginpin", "Tzu", '1997/6/15', 'H', "China"),
 ("23456E", "Xensue", "Laocao", "Lu", '2002/8/17', 'H', "China"),
 ("123456789F", "Gengis", "Khan", "Yangau", '2002/9/17', NULL, "Mongolia"),
@@ -17,19 +17,5 @@ INSERT INTO PERSONA(numPasaporte, nombre, primerApellido, segundoApellido, fnac,
 ("2345678901234H", "Bracut", "Nagal", "Sinsi", '1960/1/30', 'H', "Grecia"),
 ("123456I", "Bagguette", "Croisant", "Eifel", '1999/12/1', 'H', "Francia"),
 ("234567I", "Wi", "Wi", "Lacamoua", '2003/12/2', 'M', "Francia"),
-("12345678J", "Charles", "Darwin", "Natural", '1950/2/2', 'H', "Reino Unido"),
+("23456789J", "Charles", "Darwin", "Natural", '1950/2/2', 'H', "Reino Unido"),
 ("12345678J", "Isabel", "The", "Queen", '1200/1/25', 'M', "Reino Unido");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
