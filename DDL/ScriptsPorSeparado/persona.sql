@@ -5,9 +5,9 @@ CREATE TABLE PERSONA(
     segundoApellido VARCHAR(32),
     fnac DATE NOT NULL,
     sexo ENUM ('H', 'M'),
-    paisNacimiento VARCHAR(64) NOT NULL,
+    paisNacimiento INT UNSIGNED NOT NULL,
     CONSTRAINT PK_PERSONA PRIMARY KEY (numPasaporte),
-    CONSTRAINT FK_PERSONA_PAIS FOREIGN KEY (paisNacimiento) REFERENCES PAIS(nombre)
+    CONSTRAINT FK_PERSONA_PAIS FOREIGN KEY (paisNacimiento) REFERENCES PAIS(id)
         ON DELETE NO ACTION
         ON UPDATE NO ACTION
  );
