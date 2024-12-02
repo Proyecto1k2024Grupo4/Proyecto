@@ -1,0 +1,8 @@
+INSERT INTO VOTAR(numPasaporteCiudadano, idPropuesta, decision) VALUES
+("234567891A", 1, TRUE),
+("23456789B", 2, FALSE),
+("123456789F", 6, TRUE),
+("123G", 7, TRUE),
+("1234567890123H", 8, FALSE),
+("234567I", 9, TRUE),
+("12345678J", 10, FALSE);
