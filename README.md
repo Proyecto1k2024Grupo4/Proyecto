@@ -110,14 +110,15 @@ En el modelo relacional no se ha incluido la relación entre ciudadano y políti
 **PAIS**
 | Columna | Tipo de Dato | Descripción |
 |--------------|--------------|--------------|
-| nombre | VARCHAR(64) | Clave primaria. Nombre del país |
+| id | INT |Clave primaria. Número identificador del país. |
+| nombre | VARCHAR(64) |Nombre del país |
 
 
 **CONGRESO**
 | Columna | Tipo de Dato | Descripción |
 |--------------|--------------|--------------|
 | id | INT | Clave primaria. Número que identifica al congreso |
-| nombrePais | VARCHAR(64) | Clave foránea y única que apunta a PAIS.nombre e indica el país al que pertenece el congreso. |
+| idPais | INT | Clave foránea y única que apunta a PAIS.id e indica el país al que pertenece el congreso. |
 
 
 **PERSONA**
@@ -129,7 +130,7 @@ En el modelo relacional no se ha incluido la relación entre ciudadano y políti
 | segundoApellido | VARCHAR (32) | Segundo apellido de la persona |
 | fnac | DATE | Fecha de nacimiento de la persona |
 | sexo | ENUM | Género biológico de la persona |
-| paisNacimiento | VARCHAR(64) | Clave foránea que apunta a PAIS.nombre e indica el país en el que nació la persona |
+| paisNacimiento | INT | Clave foránea que apunta a PAIS.id e indica el país en el que nació la persona |
 
 
 **POLITICO**
@@ -174,7 +175,7 @@ En el modelo relacional no se ha incluido la relación entre ciudadano y políti
 | Columna | Tipo de Dato | Descripción |
 |--------------|--------------|--------------|
 | id | INT | Clave primaria. Número que identifica el código civil |
-| nombrePais | VARCHAR(64) | Clave foránea y única que apunta a PAIS.nombre e indica el país a que pertenece el código civil |
+| idPais | INT | Clave foránea y única que apunta a PAIS.id e indica el país a que pertenece el código civil |
 
 
 **LEY**
