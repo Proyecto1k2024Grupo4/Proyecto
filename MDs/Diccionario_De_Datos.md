@@ -78,7 +78,7 @@
 | descripcion | VARCHAR(2000) | Descripción de la ley |
 | fechaAplicacion | DATE | Fecha en la que se aplican los efectos de la ley |
 | fechaModificacion | DATE | Fecha en la que se modifica la ley |
-| fImplementacion | DATE | Fecha de la vez en la que se creó la ley |
+| fechaImplementacion | DATE | Fecha de la vez en la que se creó la ley |
 | idCodigoCivil | INT | Clave foránea que apunta a CODIGO_CIVIL.id e indica el código civil al que pertenece la ley |
 
 
