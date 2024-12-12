@@ -1,14 +1,14 @@
 ### Modelo Relacional
 
 ``` 
-PAIS (_nombre_)  
-    PK (nombre)
-
-CONGRESO (_id_, nombrePais*)
+PAIS (_id_, nombre)  
     PK (id)
-    FK (nombrePais) -> PAIS
-    VNN (nombrePais)
-    UK (nombrePais)
+
+CONGRESO (_id_, idPais*)
+    PK (id)
+    FK (idPais) -> PAIS
+    VNN (idPais)
+    UK (idPais)
 
 PERSONA (_numPasaporte_, nombre, primerApellido, segundoApellido, fnac, sexo, paisNacimiento*)
     PK (numPasaporte)
@@ -37,11 +37,11 @@ VOTAR (_numPasaporteCiudadano_*, _idPropuesta_*, decision)
        (idPropuesta) -> PROPUESTA
     VNN (decision)
 
-CODIGO_CIVIL (_id_, nombrePais*)
+CODIGO_CIVIL (_id_, idPais*)
     PK (id)
-    FK (nombrePais) -> PAIS
-    VNN (nombrePais)
-    UK (nombrePais)
+    FK (idPais) -> PAIS
+    VNN (idPais)
+    UK (idPais)
 
 LEY (_id_, descripcion, fechaAplicacion, fechaModificacion, fImplementacion, idCodigoCivil*)
     PK (id)
