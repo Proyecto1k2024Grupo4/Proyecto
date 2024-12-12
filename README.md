@@ -29,7 +29,7 @@ Las leyes forman un **código civil**, del que necesitamos conocer, su código i
 El código civil rige a un **país** (del que se quiere conocer su nombre, cantidad de políticos y ciudadanos capacitados que tiene) y un país solo puede ser regido por un único código civil. 
 
 
-![Modelo_Entidad-Relacion.md](#modelo-entidad-relación)
+-[Modelo_Entidad-Relacion](#modelo-entidad-relación)
 
 ### Modelo Entidad-Relación
 
