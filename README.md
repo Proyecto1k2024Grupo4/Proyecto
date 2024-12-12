@@ -10,13 +10,13 @@ Sistema de Gestión de Votaciones y Propuestas de Reforma Legal a Nivel Internac
 
 ### Links archivos
 
-- [Modelo Entidad-Relacion](Modelo_Entidad-Relacion.md)
-- [Modelo Relacional](Modelo-Relacional.md)
-- [Diccionario de Datos](Diccionario_De_Datos.md)
-- [Restricciones de Borrado/Modificación de tablas](Restricciones_Borrado_Tablas.md)
-- [Instrucciones DDL](Instrucciones_DDL.md)
-- [Script para vaciar las tablas](Script_Vaciar_Tablas.md)
-- [Instrucciones DML](Instrucciones_DML.md)
+- [Modelo Entidad-Relacion](MDs/Modelo_Entidad-Relacion.md)
+- [Modelo Relacional](MDs/Modelo-Relacional.md)
+- [Diccionario de Datos](MDs/Diccionario_De_Datos.md)
+- [Restricciones de Borrado/Modificación de tablas](MDs/Restricciones_Borrado_Tablas.md)
+- [Instrucciones DDL](MDs/Instrucciones_DDL.md)
+- [Script para vaciar las tablas](MDs/Script_Vaciar_Tablas.md)
+- [Instrucciones DML](MDs/Instrucciones_DML.md)
 
 
 ### Descripción del proyecto:
