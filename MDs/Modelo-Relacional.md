@@ -43,7 +43,7 @@ CODIGO_CIVIL (_id_, idPais*)
     VNN (idPais)
     UK (idPais)
 
-LEY (_id_, descripcion, fechaAplicacion, fechaModificacion, fImplementacion, idCodigoCivil*)
+LEY (_id_, descripcion, fechaAplicacion, fechaModificacion, fechaImplementacion, idCodigoCivil*)
     PK (id)
     FK (idCodigoCivil) -> CODIGO_CIVIL
     VNN (idCodigoCivil, descripcion, fechaImplementacion)
