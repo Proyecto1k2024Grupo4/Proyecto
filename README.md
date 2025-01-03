@@ -17,6 +17,7 @@ Sistema de Gestión de Votaciones y Propuestas de Reforma Legal a Nivel Internac
 - [Instrucciones DDL](MDs/Instrucciones_DDL.md)
 - [Script para vaciar las tablas](MDs/Script_Vaciar_Tablas.md)
 - [Instrucciones DML](MDs/Instrucciones_DML.md)
+- [Consultas](MDs/Consultas.md)
 
 
 ### Descripción del proyecto:
