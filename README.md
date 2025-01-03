@@ -8,7 +8,7 @@ Sistema de Gestión de Votaciones y Propuestas de Reforma Legal a Nivel Internac
 - [Abdel Moghit Samini](https://github.com/Samini04)
 
 
-### Links archivos
+### Links
 
 - [Modelo Entidad-Relacion](MDs/Modelo_Entidad-Relacion.md)
 - [Modelo Relacional](MDs/Modelo-Relacional.md)
