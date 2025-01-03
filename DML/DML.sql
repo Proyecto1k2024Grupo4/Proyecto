@@ -94,6 +94,7 @@ INSERT INTO CIUDADANO(numPasaporte) VALUES
 ("234567I"),
 ("12345678J");
 
+
 INSERT INTO LEY(descripcion, fechaAplicacion, fechaModificacion, fechaImplementacion, idCodigoCivil) VALUES
 ("Ley de Salud", '2030/1/1','1999/1/1','1998/1/1',1),
 ("Ley de Salud", '2028/1/1','1999/1/3','1999/1/3',2),
@@ -104,8 +105,8 @@ INSERT INTO LEY(descripcion, fechaAplicacion, fechaModificacion, fechaImplementa
 ("Ley de Pensiones", '2026/1/1', NULL,'1998/1/1',7),
 ("Ley de Comida", '2040/1/1','1998/1/2','1998/1/1',8),
 ("Ley de Turismo", NULL, NULL,'1998/1/1',9),
-("Ley de Coches", NULL,'2024/5/2','2024/1/1',10);
-("Ley de Videojuegos", '2030/1/1','2026/1/1','1998/1/1',1),
+("Ley de Coches", NULL,'2024/5/2','2024/1/1',10),
+("Ley de Videojuegos", '2030/1/1','2026/1/1','1998/1/1',1);
 
 
 INSERT INTO PROPUESTA(titulo, descripcion, fechaExpiracion, estado, idCongreso, numPasaportePolitico, fechaProposicion, fechaAceptacion, fechaPublicacion) VALUES
@@ -120,7 +121,9 @@ INSERT INTO PROPUESTA(titulo, descripcion, fechaExpiracion, estado, idCongreso, 
 ("Reforma ley de Coches", "Cambiar la ley de coches",'2027/2/2', "VOTACION", 8, "2345678901234H", '2023/2/2', '2023/3/3', '2024/4/15'),
 ("Reforma ley de Justicia", "Cambiar la ley de justicia",'2027/2/2', "VOTACION", 9, "123456I", '2023/2/2', '2023/3/3', '2024/4/15'), 
 ("Reforma ley de Justicia", "Cambiar la ley de justicia",'2027/2/2', "VOTACION", 10, "23456789J", '2023/2/2', '2023/3/3', '2024/4/15'),
-("Reforma ley de Videojuegos", "Cambiar la ley de videojuegos",'2025/2/2', "TERMINADA", 1, "123456789A", '2023/2/2', '2024/2/3', '2024/12/15');
+("Reforma ley de Videojuegos", "Cambiar la ley de videojuegos",'2025/2/2', "TERMINADA", 1, "123456789A", '2023/2/2', '2024/2/3', '2024/12/15'),
+("Reforma ley de Videojuegos", "Cambiar la ley de videojuegos para mal",'2025/1/1', "TERMINADA", 1, "123456789A", '2022/2/2', '2024/1/3', '2024/12/15'),
+("Reforma ley de Videojuegos", "Cambiar la ley de videojuegos",'2025/1/1', "TERMINADA", 1, "123456789A", '2022/2/2', '2024/1/3', '2024/12/15');
 
 
 INSERT INTO VOTAR(numPasaporteCiudadano, idPropuesta, decision) VALUES
@@ -136,18 +139,31 @@ INSERT INTO VOTAR(numPasaporteCiudadano, idPropuesta, decision) VALUES
 ("23456E", 5, TRUE),
 ("123456789F", 6, TRUE),
 ("123G", 8, TRUE),
-("1234567890123H", 8, FALSE),
-("234567I", 9, TRUE),
+("1234567890123H", 9, FALSE),
+("234567I", 10, TRUE),
 ("12345678J", 11, FALSE),
 ("567891234A", 12, FALSE),
 ("678912345A", 12, FALSE),
 ("789123456A", 12, TRUE),
 ("891234567A", 12, TRUE),
 ("912345678A", 12, TRUE),
-("991234567A", 12, TRUE);
-
+("991234567A", 12, TRUE),
+("567891234A", 13, FALSE),
+("678912345A", 13, FALSE),
+("789123456A", 13, FALSE),
+("891234567A", 13, FALSE),
+("912345678A", 13, FALSE),
+("991234567A", 13, FALSE),
+("567891234A", 14, TRUE),
+("678912345A", 14, TRUE),
+("789123456A", 14, TRUE),
+("891234567A", 14, TRUE),
+("912345678A", 14, TRUE),
+("991234567A", 14, TRUE);
 
 INSERT INTO DESARROLLAR(idPropuesta, idLey) VALUES 
-(5, 5);
--- Solo se ha añadido un registro porque solo hay una propuesta terminada
+(5, 5),
+(12,11),
+(14,11);
+
 
