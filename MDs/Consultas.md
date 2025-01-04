@@ -39,7 +39,7 @@ join PROPUESTA pr on po.numPasaporte = pr.numPasaportePolitico
 join DESARROLLAR d on pr.id = d.idPropuesta;
 ``
 
-**5.Mostrar el nombre de los ciudadanos que no han votado la propuesta con id 1 (serán ejecutados).**
+**5.Mostrar el nombre de los ciudadanos que no han votado la propuesta con id 1.**
 
 ``
 select pe.nombre
@@ -64,24 +64,25 @@ select timestampdiff(year, fechaIniciacion, fechaRetirada)
 from POLITICO where numPasaporte = "34567891B";
 ``
 
-**8. Dime cuantos ciudadanos hay por politico en España**
+**8. Dime el nombre y la edad en años de las 2 personas con más edad**
 
 ``
-select count(c.numPasaporte) 
-from CIUDADANO c join PERSONA p on c.numPasaporte = p.numPasaporte
-join POLITICO po on po.numPasaporte = p.numPasaporte
-join PAIS pa on pa.id = p.paisNacimiento
-where pa.nombre = "España"; 
+select nombre, timestampdiff(year, fnac, curdate()) as anyos
+from PERSONA order by fnac limit 2;
 ``
 
-``
-``
-
-**9.**
-``
-``
-
-**10.**
+**9. Queremos saber cuantas leyes hay en el codigo civil de españa**
 
 ``
+select count(*) from LEY l join CODIGO_CIVIL c on l.idCodigoCivil = c.id
+join PAIS p on c.idPais = p.id
+where p.nombre = "España";
+``
+
+
+**10. Dime el nombre cuanto tiempo falta en días para que expiren las propuestas relacionadas con la comida**
+
+``
+select titulo, datediff(fechaExpiracion, curdate()) as diasRestantes
+from PROPUESTA where titulo like '%comida%';
 ``
