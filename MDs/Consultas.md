@@ -39,13 +39,13 @@ where pr.fechaExpiracion = "2023/2/2" and pr.numPasaportePolitico = "12345E";
 **4.Mostrar nombre de politicos que han propuesta al menos una propuesta la cual ha sido aceptada.**
 
 ``
-select pe.nombre
+select distinct pe.nombre
 from PERSONA pe join POLITICO po on pe.numPasaporte = po.numPasaporte
 join PROPUESTA pr on po.numPasaporte = pr.numPasaportePolitico
 join DESARROLLAR d on pr.id = d.idPropuesta;
 ``
 
-![resultado](image-3.png)
+![resultado](image-10.png)
 
 **5.Mostrar el nombre de los ciudadanos que no han votado la propuesta con id 1.**
 
