@@ -1,4 +1,4 @@
-# Proyecto: 
+# Proyecto: PROP-IN
 Sistema de Gestión de Votaciones y Propuestas de Reforma Legal a Nivel Internacional
 
 ### Participantes:
