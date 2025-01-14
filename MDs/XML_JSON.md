@@ -95,66 +95,64 @@ Se ha escogido este formato por que así podemos transmitir información de cual
 
 ```
 {
-  "Entidades": {
-    "PAIS": {
-      "id": 0,
-      "nombre": ""
-    },
-    "CONGRESO": {
-      "id": 0,
-      "idPais": 0
-    },
-    "PERSONA": {
-      "numPasaporte": "",
-      "nombre": "",
-      "primerApellido": "",
-      "segundoApellido": "",
-      "fnac": "",
-      "sexo": "",
-      "paisNacimiento": 0
-    },
-    "POLITICO": {
-      "numPasaporte": "",
-      "fechaIniciacion": "",
-      "fechaRetirada": "",
-      "idCongreso": 0
-    },
-    "CIUDADANO": {
-      "numPasaporte": ""
-    },
-    "PROPUESTA": {
-      "id": 0,
-      "titulo": "",
-      "descripcion": "",
-      "fechaExpiracion": "",
-      "estado": "",
-      "idCongreso": 0,
-      "numPasaportePolitico": "",
-      "fechaProposicion": "",
-      "fechaAceptacion": "",
-      "fechaPublicacion": ""
-    },
-    "VOTAR": {
-      "numPasaporteCiudadano": "",
-      "idPropuesta": 0,
-      "decision": false
-    },
-    "CODIGO_CIVIL": {
-      "id": 0,
-      "idPais": 0
-    },
-    "LEY": {
-      "id": 0,
-      "descripcion": "",
-      "fechaAplicacion": "",
-      "fechaModificacion": "",
-      "fechaImplementacion": "",
-      "idCodigoCivil": 0
-    },
-    "DESARROLLAR": {
-      "idPropuesta": 0,
-      "idLey": 0
-    }
+  "PAIS": {
+    "id": 0,
+    "nombre": ""
+  },
+  "CONGRESO": {
+    "id": 0,
+    "idPais": 0
+  },
+  "PERSONA": {
+    "numPasaporte": "",
+    "nombre": "",
+    "primerApellido": "",
+    "segundoApellido": "",
+    "fnac": "",
+    "sexo": "",
+    "paisNacimiento": 0
+  },
+  "POLITICO": {
+    "numPasaporte": "",
+    "fechaIniciacion": "",
+    "fechaRetirada": "",
+    "idCongreso": 0
+  },
+  "CIUDADANO": {
+    "numPasaporte": ""
+  },
+  "PROPUESTA": {
+    "id": 0,
+    "titulo": "",
+    "descripcion": "",
+    "fechaExpiracion": "",
+    "estado": "",
+    "idCongreso": 0,
+    "numPasaportePolitico": "",
+    "fechaProposicion": "",
+    "fechaAceptacion": "",
+    "fechaPublicacion": ""
+  },
+  "VOTAR": {
+    "numPasaporteCiudadano": "",
+    "idPropuesta": 0,
+    "decision": false
+  },
+  "CODIGO_CIVIL": {
+    "id": 0,
+    "idPais": 0
+  },
+  "LEY": {
+    "id": 0,
+    "descripcion": "",
+    "fechaAplicacion": "",
+    "fechaModificacion": "",
+    "fechaImplementacion": "",
+    "idCodigoCivil": 0
+  },
+  "DESARROLLAR": {
+    "idPropuesta": 0,
+    "idLey": 0
   }
 }
 ```
