@@ -1,11 +1,12 @@
 
 import java.io.*;
+import java.security.Permission;
 import java.util.*;
 
 /**
  * 
  */
-public class Ciudadano {
+public class Ciudadano extends Persona {
 
     /**
      * Default constructor
