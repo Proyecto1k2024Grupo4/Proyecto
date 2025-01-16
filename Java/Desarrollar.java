@@ -13,22 +13,41 @@ public class Desarrollar {
     public Desarrollar() {
     }
 
-    /**
-     * 
-     */
-    public void idPropuesta;
+    private int idPropuesta;
+    private int idLey;
 
-    /**
-     * 
-     */
-    public void idLey;
 
-    /**
-     * @param int idPropuesta 
-     * @param int idLey
-     */
-    public void desarrollar(void int idPropuesta, void int idLey) {
-        // TODO implement here
+    public void desarrollar( int idPropuesta,  int idLey) {
+
     }
 
+    public String toJson(){
+        StringBuilder jsonBuilder = new StringBuilder();
+
+        jsonBuilder.append("\"DESARROLLAR\": {")
+                .append("\n")
+                .append("\t")
+                .append("\"idpropuesta\": ").append(this.idPropuesta)
+                .append("\n")
+                .append("\t")
+                .append("\"idLey\": ").append(this.idLey)
+                .append("\n")
+                .append("}");
+
+        return String.valueOf(jsonBuilder);
+    }
+
+    public String toXml(){
+        StringBuilder xmlBuilder = new StringBuilder();
+
+        xmlBuilder.append("<Desarrollo>")
+                .append("\n")
+                .append("\t")
+                .append("<Desarrollo:idPropuesta>").append(this.idPropuesta).append("</Desarrollo:idPropuesta>\n")
+                .append("\t")
+                .append("<Desarrollo:idLey>").append(this.idLey).append("</Desarrollo:idLey>\n")
+                .append("</Desarrollo>");
+
+        return String.valueOf(xmlBuilder);
+    }
 }
