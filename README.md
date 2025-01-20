@@ -21,6 +21,8 @@ Sistema de Gestión de Votaciones y Propuestas de Reforma Legal a Nivel Internac
 - [Codigo Java](/Java/)
 - [Consultas](MDs/Consultas.md)
 - [XML & JSON](MDs/XML_JSON.md)
+- [Consultas 2](MDs/Consultas2.md)
+
 
 
 ### Descripción del proyecto:
