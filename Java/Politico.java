@@ -1,44 +1,15 @@
+public class Politico  extends Persona{
 
-import java.io.*;
-import java.util.*;
+    // Propiedades
+    public String numPasaporte;
+    public String fechaIniciacion;
+    public String fechaRetirada;
+    public int idCongreso;
 
-/**
- * 
- */
-public class Politico {
-
-    /**
-     * Default constructor
-     */
     public Politico() {
     }
 
-    /**
-     * 
-     */
-    public void numPasaporte;
+    public void proponer(String titulo, String descripcion) {
 
-    /**
-     * 
-     */
-    public void fechaIniciacion;
-
-    /**
-     * 
-     */
-    public void fechaRetirada;
-
-    /**
-     * 
-     */
-    public void idCongreso;
-
-    /**
-     * @param String titulo 
-     * @param String descripcion
-     */
-    public void proponer(void String titulo, void String descripcion) {
-        // TODO implement here
     }
-
 }
