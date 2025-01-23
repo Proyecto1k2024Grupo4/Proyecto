@@ -16,19 +16,19 @@ public class Desarrollar {
     /**
      * 
      */
-    public void idPropuesta;
+    //public void idPropuesta;
 
     /**
      * 
      */
-    public void idLey;
+    //public void idLey;
 
-    /**
-     * @param int idPropuesta 
-     * @param int idLey
-     */
-    public void desarrollar(void int idPropuesta, void int idLey) {
-        // TODO implement here
-    }
+//    /**
+//     * @param int idPropuesta
+//     * @param int idLey
+//     */
+//    public void desarrollar(void int idPropuesta, void int idLey) {
+//        // TODO implement here
+//    }
 
 }
