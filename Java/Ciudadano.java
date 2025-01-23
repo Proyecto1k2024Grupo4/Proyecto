@@ -1,21 +1,11 @@
+public class Ciudadano extends Persona {
 
-import java.io.*;
-import java.util.*;
 
-/**
- * 
- */
-public class Ciudadano {
+    public String numPasaporte;
 
-    /**
-     * Default constructor
-     */
+
     public Ciudadano() {
     }
 
-    /**
-     * 
-     */
-    public void numPasaporte;
 
 }

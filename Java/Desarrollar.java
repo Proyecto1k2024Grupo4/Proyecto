@@ -2,16 +2,7 @@
 import java.io.*;
 import java.util.*;
 
-/**
- * 
- */
 public class Desarrollar {
-
-    /**
-     * Default constructor
-     */
-    public Desarrollar() {
-    }
 
     private int idPropuesta;
     private int idLey;
@@ -20,6 +11,7 @@ public class Desarrollar {
     public void desarrollar( int idPropuesta,  int idLey) {
 
     }
+
 
     public String toJson(){
         StringBuilder jsonBuilder = new StringBuilder();
