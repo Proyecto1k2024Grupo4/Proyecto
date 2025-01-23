@@ -1,12 +1,12 @@
 public class Persona {
 
-    private String numPasaporte;
-    private String nombre;
-    private String primerApellido;
-    private String segundoApellido;
-    private String fnac;
-    private Sexo sexo;
-    private int paisNacimiento;
+    protected String numPasaporte;
+    protected String nombre;
+    protected String primerApellido;
+    protected String segundoApellido;
+    protected String fnac;
+    protected Sexo sexo;
+    protected int paisNacimiento;
 
     public Persona() {
 
