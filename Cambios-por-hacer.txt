@@ -1,0 +1,9 @@
+Links -> Tabla de contenidos
+Consultas no -> otro nombre
+Poner perdida expresiva en modelo relacional
+dml poner que hay un archivo .sql disponible 
+cambiar datos dml github
+agrupar links por proposito
+cambiar uml cardinalidades, poner agregación y composición
+poner atributos correctos en los .java
+poner toda la información en los xmls y json, hace falta poner la información que hay dentro de cada entidad
