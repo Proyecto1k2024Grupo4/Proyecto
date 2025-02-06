@@ -4,6 +4,7 @@
 
 Diego Fernando Valencia Correa
 Jonathan Villalba Moran
+Samini Abdel
 
 ## Definición de 5 consultas que utilicen subconsultas, tanto escalares, como fila y de tabla##
 
@@ -37,10 +38,11 @@ select id from propuesta p join votar v on p.id = v.idPropuesta where count(numP
 ### 5.
 
 ```
-select
+
 ```
 
 ## Definición de 2 consultas que utilicen CTE##
+
 
 
 ## Creación de una tabla a partir del resultado de una consulta compleja##

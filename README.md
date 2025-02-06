@@ -8,7 +8,7 @@ Sistema de Gestión de Votaciones y Propuestas de Reforma Legal a Nivel Internac
 - [Abdel Moghit Samini](https://github.com/Samini04)
 
 
-### Links
+### Tabla de contenidos
 
 - [Modelo Entidad-Relacion](MDs/Modelo_Entidad-Relacion.md)
 - [Modelo Relacional](MDs/Modelo-Relacional.md)
@@ -19,10 +19,10 @@ Sistema de Gestión de Votaciones y Propuestas de Reforma Legal a Nivel Internac
 - [Instrucciones DML](MDs/Instrucciones_DML.md)
 - [UML](MDs/UML.md)
 - [Codigo Java](/Java/)
-- [Consultas](MDs/Consultas.md)
+- [Consultas Sencillas](MDs/Consultas.md)
 - [XML & JSON](MDs/XML_JSON.md)
-- [Consultas 2](MDs/Consultas2.md)
-
+- [Consultas Agregadas](MDs/Consultas2.md)
+- [Subconsultas](MDs/Consultas3.md)
 
 
 ### Descripción del proyecto:
