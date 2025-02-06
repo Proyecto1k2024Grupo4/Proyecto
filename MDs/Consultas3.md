@@ -44,15 +44,76 @@ select id from propuesta p join votar v on p.id = v.idPropuesta where count(numP
 ## Definición de 2 consultas que utilicen CTE##
 
 
+### 1. Obten el número de políticos por país
+``` sql
+WITH PoliticosPorPais AS (
+    SELECT c.idPais, COUNT(p.numPasaporte) AS total_politicos
+    from POLITICO p
+    JOIN CONGRESO c ON p.idCongreso = c.id
+    GROUP BY c.idPais
+)
+SELECT pa.nombre, pp.total_politicos 
+from PoliticosPorPais pp
+join PAIS pa ON pp.idPais = pa.id;
 
-## Creación de una tabla a partir del resultado de una consulta compleja##
+```
+
+### 2. Obten la propuesta con más votos
+``` sql
+WITH VotosPorPropuesta AS (
+    SELECT idPropuesta, COUNT(*) AS total_votos
+    FROM VOTAR
+    GROUP BY idPropuesta
+)
+SELECT P.titulo, vp.total_votos
+FROM VotosPorPropuesta vp
+join PROPUESTA P ON vp.idPropuesta = P.id
+order by  vp.total_votos DESC
+LIMIT 1;
+```
+
+## Creación de una tabla a partir del resultado de una consulta compleja
+
+create table nombre_tabla as 
+select 
+
+## Definición de dos índices que mejoren el rendimiento de las consultas ya definida
+
+### Índice en la tabla PROPUESTA para optimizar búsquedas por estado y fecha
+
+``` sql
+CREATE INDEX idx_estado_fecha ON PROPUESTA(estado, fechaProposicion);
+```
+![alt text](image-19.png)
+
+### Índice en la tabla VOTAR para mejorar la búsqueda por idPropuesta
+
+``` sql
+CREATE INDEX idx_votacion_propuesta ON VOTAR(decision);
+```
+![alt text](image-17.png)
+
+## Planes de ejecución, antes y después de la creación de los índices, comprobando su uso
+
+### Consulta 1 para plan de ejecución
+``` sql
+EXPLAIN SELECT titulo FROM PROPUESTA WHERE estado = 'ACEPTACION' order by fechaProposicion;
+```
+
+### Plan de ejecución antes de la creación del índice:
+![alt text](image-13.png)
+
+### Plan de ejecución después de la creación del índice:
+![alt text](image-14.png)
 
 
-## Definición de dos índices que mejoren el rendimiento de las consultas ya definida##
+### Consulta 2 para plan de ejecución 
+``` sql
+EXPLAIN SELECT idPropuesta, COUNT(*) as totalVotosFavor FROM VOTAR WHERE decision = 1 GROUP BY idPropuesta;
+```
 
+### Plan de ejecución antes de la creación del índice:
+![alt text](image-15.png)
 
-## Planes de ejecución, antes y después de la creación de los índices, comprobando su uso##
-
-
-
- 
+### Plan de ejecución después de la creación del índice:
+![alt text](image-18.png)
