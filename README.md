@@ -8,6 +8,8 @@ Sistema de Gestión de Votaciones y Propuestas de Reforma Legal a Nivel Internac
 - [Abdel Moghit Samini](https://github.com/Samini04)
 
 
+<br>
+
 ### Tabla de contenidos
 
 #### Diseño de la base de datos
