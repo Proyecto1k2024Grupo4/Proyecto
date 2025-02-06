@@ -1,6 +1,8 @@
 ### Instrucciones DDL 
 
-```
+El documento .sql para la creación de tablas está en la carpeta DDL en la página principal del proyecto.
+
+``` sql
 CREATE DATABASE IF NOT EXISTS RPI;
 
 USE RPI;

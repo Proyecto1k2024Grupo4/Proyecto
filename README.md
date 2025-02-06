@@ -10,19 +10,32 @@ Sistema de Gestión de Votaciones y Propuestas de Reforma Legal a Nivel Internac
 
 ### Tabla de contenidos
 
+#### Diseño de la base de datos
+
 - [Modelo Entidad-Relacion](MDs/Modelo_Entidad-Relacion.md)
 - [Modelo Relacional](MDs/Modelo-Relacional.md)
 - [Diccionario de Datos](MDs/Diccionario_De_Datos.md)
 - [Restricciones de Borrado/Modificación de tablas](MDs/Restricciones_Borrado_Tablas.md)
+
+#### Desarrollo de la base de datos en SQL
+
 - [Instrucciones DDL](MDs/Instrucciones_DDL.md)
 - [Script para vaciar las tablas](MDs/Script_Vaciar_Tablas.md)
 - [Instrucciones DML](MDs/Instrucciones_DML.md)
+
+#### Consultas sobre la base de datos
+- [Consultas Agregadas](MDs/Consultas2.md)
+- [Consultas Sencillas](MDs/Consultas.md)
+- [Subconsultas](MDs/Consultas3.md)
+
+#### Implementación en Java
+
 - [UML](MDs/UML.md)
 - [Codigo Java](/Java/)
-- [Consultas Sencillas](MDs/Consultas.md)
+
+#### Modelos para la transmisión de datos
+
 - [XML & JSON](MDs/XML_JSON.md)
-- [Consultas Agregadas](MDs/Consultas2.md)
-- [Subconsultas](MDs/Consultas3.md)
 
 
 ### Descripción del proyecto:

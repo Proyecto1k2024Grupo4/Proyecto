@@ -1,6 +1,3 @@
-Poner perdida expresiva en modelo relacional
-dml poner que hay un archivo .sql disponible 
-cambiar datos dml github
 agrupar links por proposito
 cambiar uml cardinalidades, poner agregación y composición
 poner atributos correctos en los .java
