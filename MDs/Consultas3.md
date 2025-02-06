@@ -6,6 +6,8 @@ Diego Fernando Valencia Correa
 Jonathan Villalba Moran
 Samini Abdel
 
+<br><br>
+
 ## Definición de 5 consultas que utilicen subconsultas, tanto escalares, como fila y de tabla##
 
 ### 1. Obtén la persona mas mayor utilizando not exists
@@ -41,8 +43,13 @@ select id from propuesta p join votar v on p.id = v.idPropuesta where count(numP
 
 ```
 
+<br><br>
+<br><br>
+
+
 ## Definición de 2 consultas que utilicen CTE##
 
+<br><br>
 
 ### 1. Obten el número de políticos por país
 ``` sql
@@ -72,12 +79,21 @@ order by  vp.total_votos DESC
 LIMIT 1;
 ```
 
+<br><br>
+<br><br>
+
+
 ## Creación de una tabla a partir del resultado de una consulta compleja
 
 create table nombre_tabla as 
 select 
 
+<br><br>
+<br><br>
+
 ## Definición de dos índices que mejoren el rendimiento de las consultas ya definida
+
+<br><br>
 
 ### Índice en la tabla PROPUESTA para optimizar búsquedas por estado y fecha
 
@@ -93,7 +109,12 @@ CREATE INDEX idx_votacion_propuesta ON VOTAR(decision);
 ```
 ![alt text](image-17.png)
 
+<br><br>
+<br><br>
+
 ## Planes de ejecución, antes y después de la creación de los índices, comprobando su uso
+
+<br><br>
 
 ### Consulta 1 para plan de ejecución
 ``` sql

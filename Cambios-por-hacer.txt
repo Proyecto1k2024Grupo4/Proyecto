@@ -1,5 +1,3 @@
-Links -> Tabla de contenidos
-Consultas no -> otro nombre
 Poner perdida expresiva en modelo relacional
 dml poner que hay un archivo .sql disponible 
 cambiar datos dml github
