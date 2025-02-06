@@ -106,6 +106,7 @@ p.nombre, pa.nombre as Pais, count(*) over (partition by p.paisNacimiento) as Co
 from CIUDADANO c join PERSONA p on p.numPasaporte = c.numPasaporte
 join PAIS pa on pa.id = p.paisNacimiento;
 ```
+![alt text](image-26.png)
 
 <br><br>
 
