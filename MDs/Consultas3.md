@@ -2,9 +2,9 @@
 
 **Participantes:** 
 
-Diego Fernando Valencia Correa
-Jonathan Villalba Moran
-Samini Abdel
+-Diego Fernando Valencia Correa
+-Jonathan Villalba Moran
+-Samini Abdel
 
 <br><br>
 
