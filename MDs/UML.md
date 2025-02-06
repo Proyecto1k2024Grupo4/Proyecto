@@ -1,6 +1,6 @@
 ## UML del proyecto
 
-![imagen](/UML/UML.png)
+![alt text](image-20.png)
 
 - [Archivo UML](/UML/ProyectoUML.mdj)
 
