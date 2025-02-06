@@ -6,7 +6,7 @@
 - Jonathan Villalba Moran
 - Samini Abdel
 
-<br><br>
+<br>
 
 ## Definición de 5 consultas que utilicen subconsultas, tanto escalares, como fila y de tabla##
 
@@ -28,30 +28,41 @@ select id from LEY where fechaAplicacion = (select max(fechaAplicacion) from LEY
 
 ``` sql
 select p.numPasaporte, p.nombre from PERSONA p join POLITICO po on p.numPasaporte = po.numPasaporte where po.fechaIniciacion > any (select po2.fechaIniciacion from POLITICO po2 join PERSONA p2 on po2.numPasaporte = p2.numPasaporte where p2.paisNacimiento = p.paisNacimiento);
-
 ```
+![alt text](image-21.png)
 
-### 4. Selecciona las propuestas que hayan votado mínimo dos ciudadanos y que estos ciudadanos sean mayores de 23
+### 4. Listar propuestas donde todos sus votos son positivos:
 
 ``` sql
-select id from propuesta p join votar v on p.id = v.idPropuesta where count(numPasaporteCiudadano) > 1 and 
+select distinct v.idPropuesta
+from VOTAR v
+where v.idPropuesta in 
+(select v2.idPropuesta from VOTAR v2 group by v2.idPropuesta having count(*) = 
+(select count(*) from VOTAR v3 where decision = 1 group by v3.idPropuesta having v3.idPropuesta = v2.idPropuesta));
 ```
+![alt text](image-22.png)
 
-### 5.
+
+### 5. Obtener la/las propuesta con la fecha de proposición más antigua:
 
 ``` sql
-
+SELECT titulo, fechaProposicion 
+FROM PROPUESTA 
+WHERE fechaProposicion = (
+    SELECT MIN(fechaProposicion) FROM PROPUESTA
+);
 ```
+![alt text](image-23.png)
 
-<br><br>
 <br><br>
 
 
 ## Definición de 2 consultas que utilicen CTE##
 
-<br><br>
+<br>
 
 ### 1. Obten el número de políticos por país
+
 ``` sql
 WITH PoliticosPorPais AS (
     SELECT c.idPais, COUNT(p.numPasaporte) AS total_politicos
@@ -62,8 +73,8 @@ WITH PoliticosPorPais AS (
 SELECT pa.nombre, pp.total_politicos 
 from PoliticosPorPais pp
 join PAIS pa ON pp.idPais = pa.id;
-
 ```
+![alt text](image-24.png)
 
 ### 2. Obten la propuesta con más votos
 ``` sql
@@ -78,22 +89,29 @@ join PROPUESTA P ON vp.idPropuesta = P.id
 order by  vp.total_votos DESC
 LIMIT 1;
 ```
+![alt text](image-25.png)
 
-<br><br>
 <br><br>
 
 
 ## Creación de una tabla a partir del resultado de una consulta compleja
 
-create table nombre_tabla as 
-select 
 
-<br><br>
+### Crea una tabla a partir del resultado de obtener el orden de los ciudadanos por cada pais y el numero de ciudadanos de su mismo pais
+
+``` sql
+create table ORDEN_CIUDADANOS_COOCIUDADANOS as 
+select row_number() over (partition by p.paisNacimiento) as NumCiud, 
+p.nombre, pa.nombre as Pais, count(*) over (partition by p.paisNacimiento) as Conciudadanos
+from CIUDADANO c join PERSONA p on p.numPasaporte = c.numPasaporte
+join PAIS pa on pa.id = p.paisNacimiento;
+```
+
 <br><br>
 
 ## Definición de dos índices que mejoren el rendimiento de las consultas ya definida
 
-<br><br>
+<br>
 
 ### Índice en la tabla PROPUESTA para optimizar búsquedas por estado y fecha
 
@@ -110,11 +128,10 @@ CREATE INDEX idx_votacion_propuesta ON VOTAR(decision);
 ![alt text](image-17.png)
 
 <br><br>
-<br><br>
 
 ## Planes de ejecución, antes y después de la creación de los índices, comprobando su uso
 
-<br><br>
+<br>
 
 ### Consulta 1 para plan de ejecución
 ``` sql
