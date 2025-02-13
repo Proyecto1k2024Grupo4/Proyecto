@@ -12,6 +12,7 @@ public class CodigoCivil {
 
     private int id;
     private int idPais;
+    private ArrayList<Ley> leyes;
 
     public String toJson(){
         StringBuilder jsonBuilder = new StringBuilder();

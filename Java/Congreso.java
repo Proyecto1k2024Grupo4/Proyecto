@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Congreso {
 
 
@@ -6,6 +8,7 @@ public class Congreso {
 
     private int id;
     private int idPais;
+    private ArrayList<Politico> politicos;
 
 
     public Congreso(int id, int idPais){
