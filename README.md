@@ -43,6 +43,8 @@ Sistema de Gestión de Votaciones y Propuestas de Reforma Legal a Nivel Internac
 
 - [Diseño de la interfaz](MDs/Interfaz.md)
 
+<br>
+
 ### Descripción del proyecto:
 Somos una **organización mundial** conformada por varios países y queremos almacenar las votaciones de propuestas de reforma de ley de cada país.
 
