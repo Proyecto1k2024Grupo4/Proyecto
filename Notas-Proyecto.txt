@@ -1,3 +1,8 @@
 
 poner atributos correctos en los .java
 poner toda la información en los xmls y json, hace falta poner la información que hay dentro de cada entidad
+
+
+Color de la app principal
+#225aa3
+#4e549c
