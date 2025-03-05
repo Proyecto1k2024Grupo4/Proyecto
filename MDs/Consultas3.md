@@ -63,7 +63,7 @@ WHERE fechaProposicion = (
 <br><br>
 
 
-## Definición de 2 consultas que utilicen CTE##
+## Definición de 2 consultas que utilicen CTE
 
 <br>
 
