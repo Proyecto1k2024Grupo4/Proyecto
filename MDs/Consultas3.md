@@ -113,6 +113,7 @@ from CIUDADANO c join PERSONA p on p.numPasaporte = c.numPasaporte
 join PAIS pa on pa.id = p.paisNacimiento;
 ```
 ![alt text](image-26.png)
+![alt text](image-29.png)
 
 <br>
 
