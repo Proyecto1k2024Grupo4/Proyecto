@@ -1,5 +1,8 @@
 # Proyecto: PROP-IN
-Sistema de Gestión de Votaciones y Propuestas de Reforma Legal a Nivel Internacional
+Sistema de Gestión de Votaciones y Propuestas de Reforma Legal a Nivel Internacional.
+
+PROP-IN (Propuestas Internacionales) es un proyecto en el que se recogen las propuestas de reforma de ley de los distintos países con los que trabajamos. 
+Además se guardan las leyes y votaciones, que agilizamos mediante nuestra aplicación en la que se puede votar.
 
 ### Participantes:
 - [Diego Fernando Valencia Correa](https://github.com/DocD1306)

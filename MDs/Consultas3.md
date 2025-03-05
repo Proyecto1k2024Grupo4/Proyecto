@@ -8,6 +8,15 @@
 
 <br>
 
+**Indice**
+
+- Subconsultas escalares
+- Subconsultas con CTE
+- Creación de una tabla a partir de una consulta compleja 
+- Creación de índices y optimización de consultas
+
+<br>
+
 ## Definición de 5 consultas que utilicen subconsultas, tanto escalares, como fila y de tabla
 
 ### 1. Obtén la persona más mayor utilizando not exists
@@ -119,10 +128,10 @@ join PAIS pa on pa.id = p.paisNacimiento;
 EXPLAIN SELECT titulo FROM PROPUESTA WHERE estado = 'ACEPTACION' order by fechaProposicion;
 ```
 
-### Plan de ejecución antes de la creación del índice:
+**Plan de ejecución antes de la creación del índice:**
 ![alt text](image-13.png)
 
-### Índice en la tabla PROPUESTA para optimizar búsquedas por estado y fecha
+**Índice en la tabla PROPUESTA para optimizar búsquedas por estado y fecha**
 
 ``` sql
 CREATE INDEX idx_estado_fecha ON PROPUESTA(estado, fechaProposicion);
@@ -130,7 +139,7 @@ CREATE INDEX idx_estado_fecha ON PROPUESTA(estado, fechaProposicion);
 ![alt text](image-19.png)
 
 
-### Plan de ejecución después de la creación del índice:
+**Plan de ejecución después de la creación del índice:**
 ![alt text](image-14.png)
 
 
@@ -139,14 +148,14 @@ CREATE INDEX idx_estado_fecha ON PROPUESTA(estado, fechaProposicion);
 EXPLAIN SELECT idPropuesta, COUNT(*) as totalVotosFavor FROM VOTAR WHERE decision = 1 GROUP BY idPropuesta;
 ```
 
-### Plan de ejecución antes de la creación del índice:
+**Plan de ejecución antes de la creación del índice:**
 ![alt text](image-15.png)
 
-### Índice en la tabla VOTAR para mejorar la búsqueda por idPropuesta
+**Índice en la tabla VOTAR para mejorar la búsqueda por idPropuesta:**
 ``` sql
 CREATE INDEX idx_votacion_propuesta ON VOTAR(decision);
 ```
 ![alt text](image-17.png)
 
-### Plan de ejecución después de la creación del índice:
+**Plan de ejecución después de la creación del índice:**
 ![alt text](image-18.png)
