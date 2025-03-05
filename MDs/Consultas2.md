@@ -1,10 +1,10 @@
-# Consultas
+# Consultas Agregadas
 
 ### Participantes:
 - Diego Fernando Valencia Correa
 - Jonathan Villalba Moran
 
-### Consultas agregadas
+<br>
 
 **1. Obten el número de personas que han votado cada propuesta**
 

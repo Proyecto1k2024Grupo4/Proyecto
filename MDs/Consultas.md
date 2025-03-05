@@ -1,9 +1,10 @@
-# Consultas
+# Consultas Sencillas
 
 ### Participantes:
 - Diego Fernando Valencia Correa
 - Jonathan Villalba Moran
 
+<br>
 
 **1.Cuantas veces ha votado el ciudadano con pasaporte 567891234A**
 

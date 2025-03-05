@@ -7,7 +7,6 @@ Sistema de Gestión de Votaciones y Propuestas de Reforma Legal a Nivel Internac
 - [Jonathan Villalba Moran](https://github.com/JonathanWick21)
 - [Abdel Moghit Samini](https://github.com/Samini04)
 
-
 <br>
 
 ### Tabla de contenidos
@@ -26,8 +25,8 @@ Sistema de Gestión de Votaciones y Propuestas de Reforma Legal a Nivel Internac
 - [Instrucciones DML](MDs/Instrucciones_DML.md)
 
 #### Consultas sobre la base de datos
-- [Consultas Agregadas](MDs/Consultas2.md)
 - [Consultas Sencillas](MDs/Consultas.md)
+- [Consultas Agregadas](MDs/Consultas2.md)
 - [Subconsultas](MDs/Consultas3.md)
 
 #### Implementación en Java
