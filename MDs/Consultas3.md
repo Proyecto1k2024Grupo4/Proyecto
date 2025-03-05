@@ -43,13 +43,10 @@ select p.numPasaporte, p.nombre from PERSONA p join POLITICO po on p.numPasaport
 ### 4. Listar propuestas donde todos sus votos son positivos:
 
 ``` sql
-select distinct v.idPropuesta
-from VOTAR v
-where v.idPropuesta in 
-(select v2.idPropuesta from VOTAR v2 group by v2.idPropuesta having count(*) = 
-(select count(*) from VOTAR v3 where decision = 1 group by v3.idPropuesta having v3.idPropuesta = v2.idPropuesta));
+select v2.idPropuesta from VOTAR v2 group by v2.idPropuesta having count(*) = 
+(select count(*) from VOTAR v3 where decision = 1 group by v3.idPropuesta having v3.idPropuesta = v2.idPropuesta);
 ```
-![alt text](image-22.png)
+![alt text](image-28.png)
 
 
 ### 5. Obtener la/las propuesta con la fecha de proposición más antigua:
