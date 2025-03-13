@@ -8,23 +8,23 @@
 
 <br>
 
-**Página de Inicio de Sesión**
+#### Página de Inicio de Sesión
 ![alt text](image-30.png)
 
-**Página Principal**
+#### Página Principal
 ![alt text](image-31.png)
 
-**Página de Propuestas**
+#### Página de Propuestas
 ![alt text](image-32.png)
 
-**Página de Políticos**
+#### Página de Políticos
 ![alt text](image-33.png)
 
-**Página de Código Civil**
+#### Página de Código Civil
 ![alt text](image-34.png)
 
-**Página de Perfil de Ciudadano**
+#### Página de Perfil de Ciudadano
 ![alt text](image-37.png)
 
-**Página de Perfil de Político**
+#### Página de Perfil de Político
 ![alt text](image-38.png)
