@@ -41,7 +41,7 @@ Además se guardan las leyes y votaciones, que agilizamos mediante nuestra aplic
 
 - [XML & JSON](MDs/XML_JSON.md)
 
-### Diseño de la interfaz de la aplicación
+#### Diseño de la interfaz de la aplicación
 
 - [Diseño de la interfaz](MDs/Interfaz.md)
 
