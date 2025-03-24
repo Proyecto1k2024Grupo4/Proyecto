@@ -31,6 +31,7 @@ Además se guardan las leyes y votaciones, que agilizamos mediante nuestra aplic
 - [Consultas Sencillas](MDs/Consultas.md)
 - [Consultas Agregadas](MDs/Consultas2.md)
 - [Subconsultas](MDs/Consultas3.md)
+- [Eventos, Triggers, Procedimientos, Funciones y Cursores](MDs/Consultas4.md)
 
 #### Implementación en Java
 
