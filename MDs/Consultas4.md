@@ -11,14 +11,14 @@
 **1. Antes de insertar una propuesta, verifica que la fecha de expiración sea posterior a la fecha actual**
 
 ``` sql
-        CREATE EVENT actualizar_estado_propuestas
-        ON SCHEDULE EVERY 1 MONTH
-        DO
-        BEGIN
-            UPDATE PROPUESTA
-            SET estado = 'Expirada'
-            WHERE fechaExpiracion < NOW();
-        END;
+CREATE EVENT actualizar_estado_propuestas
+ON SCHEDULE EVERY 1 MONTH
+DO
+BEGIN
+     UPDATE PROPUESTA
+     SET estado = 'Expirada'
+     WHERE fechaExpiracion < NOW();
+END;
 ```
 **2. Este evento se ejecuta diariamente para marcar como inactivo a los políticos cuya fecha de retiro ha pasado**
 
