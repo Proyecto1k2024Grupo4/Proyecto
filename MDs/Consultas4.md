@@ -8,7 +8,7 @@
 
 #### Definición de 2 eventos que automaticen tareas con diferente periodicidad
 
-**Antes de insertar una propuesta, verifica que la fecha de expiración sea posterior a la fecha actual**
+**1. Antes de insertar una propuesta, verifica que la fecha de expiración sea posterior a la fecha actual**
 
 ``` sql
         CREATE EVENT actualizar_estado_propuestas
@@ -20,7 +20,7 @@
             WHERE fechaExpiracion < NOW();
         END;
 ```
-**Este evento se ejecuta diariamente para marcar como inactivo a los políticos cuya fecha de retiro ha pasado**
+**2. Este evento se ejecuta diariamente para marcar como inactivo a los políticos cuya fecha de retiro ha pasado**
 
 ``` sql
 CREATE EVENT revisar_politicos_retirados
@@ -35,7 +35,7 @@ END;
 ```
 #### Definición de 2 disparadores sobre operaciones asociadas al modelo de datos.
 
- **Antes de insertar una propuesta, verifica que la fecha de expiración sea posterior a la fecha actual**
+ **1. Antes de insertar una propuesta, verifica que la fecha de expiración sea posterior a la fecha actual**
 
  ``` sql
 CREATE TRIGGER verificar_fecha_propuesta
@@ -49,7 +49,7 @@ BEGIN
 END;
 ```
 
-**Cuando una propuesta es aceptada, se incrementa el contador de propuestas aprobadas en el Congreso**
+**2. Cuando una propuesta es aceptada, se incrementa el contador de propuestas aprobadas en el Congreso**
 
 ``` sql
 
