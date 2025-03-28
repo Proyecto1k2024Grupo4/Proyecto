@@ -9,3 +9,6 @@ Color de la app principal
 
 Contraseña base de datos amazon:
 Prop_in1234
+
+Conexión a la base de datos:
+prop-in.cnyfmuf4d21m.us-east-1.rds.amazonaws.com
