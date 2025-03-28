@@ -7,8 +7,23 @@ Color de la app principal
 #225aa3
 #4e549c
 
-Contraseña base de datos amazon:
+Usuario admin de la base de datos:
+admin
+
+Contraseña del admin de la base de datos amazon:
 Prop_in1234
 
 Conexión a la base de datos:
 prop-in.cnyfmuf4d21m.us-east-1.rds.amazonaws.com
+
+Usuario para solo lectura (usar este):
+usuarioLectura
+
+Contraseña:
+123
+
+Usuario admin (NO usar este):
+usuarioAdmin
+
+Contraseña:
+123
