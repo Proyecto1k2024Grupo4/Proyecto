@@ -1,6 +1,4 @@
-
-import java.io.*;
-import java.util.*;
+package model;
 
 
 public class Ley {
@@ -46,20 +44,20 @@ public class Ley {
 
     public String toXml(){
         StringBuilder xmlBuilder = new StringBuilder();
-        xmlBuilder.append("<Ley>\n")
+        xmlBuilder.append("<model.Ley>\n")
                 .append("\t")
-                .append("<Ley:id>").append(this.id).append("</Ley:id>\n")
+                .append("<model.Ley:id>").append(this.id).append("</model.Ley:id>\n")
                 .append("\t")
-                .append("<Ley:descripcion>").append(this.descripcion).append("</Ley:descripcion>\n")
+                .append("<model.Ley:descripcion>").append(this.descripcion).append("</model.Ley:descripcion>\n")
                 .append("\t")
-                .append("<Ley:fechaAplicacion>").append(this.fechaAplicacion).append("<Ley:fechaAplicacion\n")
+                .append("<model.Ley:fechaAplicacion>").append(this.fechaAplicacion).append("<model.Ley:fechaAplicacion\n")
                 .append("\t")
-                .append("<Ley:fechaModificacion").append(this.fechaModificacion).append("</Ley:fechaModificacion>\n")
+                .append("<model.Ley:fechaModificacion").append(this.fechaModificacion).append("</model.Ley:fechaModificacion>\n")
                 .append("\t")
-                .append("<Ley:fechaImplementacion").append(this.fechaImplementacion).append("</Ley:fechaImplementacion\n")
+                .append("<model.Ley:fechaImplementacion").append(this.fechaImplementacion).append("</model.Ley:fechaImplementacion\n")
                 .append("\t")
-                .append("Ley:idCodigoCivil").append(this.idCodigoCivil).append("</Ley:idCodigoCivil")
-                .append("</Ley");
+                .append("model.Ley:idCodigoCivil").append(this.idCodigoCivil).append("</model.Ley:idCodigoCivil")
+                .append("</model.Ley");
 
         return String.valueOf(xmlBuilder);
     }

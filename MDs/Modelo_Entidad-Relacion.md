@@ -2,7 +2,7 @@
 
 ![image](https://github.com/user-attachments/assets/286a4e48-9f22-4737-ba12-0a234fe314d5)
 
-En país hemos puesto como atributos derivados el número de ciudadanos y políticos ya que eso se conoce por la relación que existe entre ellos. Lo mismo pasa con los demás atributos derivados que aparecen, como por ejemplo: Codigo civil y número de leyes o Propuesta y votos.
+En país hemos puesto como atributos derivados el número de ciudadanos y políticos ya que eso se conoce por la relación que existe entre ellos. Lo mismo pasa con los demás atributos derivados que aparecen, como por ejemplo: Codigo civil y número de leyes o model.Propuesta y votos.
 
 Hemos creado una superclase PERSONA para almacenar los datos de POLITICO y CIUDADANO porque ambos comparten muchos atributos iguales. Es una relación total porque todas las personas que almacenamos en el sitema son obligatoriamente o un POLITICO o un CIUDADANO y además es una generalización disjunta porque un POLITICO no puede ser un CIUDADANO ni viceversa.
 

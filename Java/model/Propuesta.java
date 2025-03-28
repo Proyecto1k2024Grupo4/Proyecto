@@ -1,3 +1,5 @@
+package model;
+
 public class Propuesta {
 
     public int id;
@@ -18,18 +20,18 @@ public class Propuesta {
 
         StringBuilder xmlBuilder = new StringBuilder();
 
-        xmlBuilder.append("<Propuesta>\n")
-                .append("\t<Propuesta:id>").append(this.id).append("</Propuesta:id>\n")
-                .append("\t<Propuesta:titulo>").append(this.titulo).append("</Propuesta:titulo>\n")
-                .append("\t<Propuesta:descripcion>").append(this.descripcion).append("</Propuesta:descripcion>\n")
-                .append("\t<Propuesta:fechaExpiracion>").append(this.fechaExpiracion).append("</Propuesta:fechaExpiracion>\n")
-                .append("\t<Propuesta:estado>").append(this.estado).append("</Propuesta:estado>\n")
-                .append("\t<Propuesta:idCongreso>").append(this.idCongreso).append("</Propuesta:idCongreso>\n")
-                .append("\t<Propuesta:numPasaportePolitico>").append(this.numPasaportePolitico).append("</Propuesta:numPasaportePolitico>\n")
-                .append("\t<Propuesta:fechaProposicion>").append(this.fechaProposicion).append("</Propuesta:fechaProposicion>\n")
-                .append("\t<Propuesta:fechaAceptacion>").append(this.fechaAceptacion).append("</Propuesta:fechaAceptacion>\n")
-                .append("\t<Propuesta:fechaPublicacion>").append(this.fechaPublicacion).append("</Propuesta:fechaPublicacion>\n")
-                .append("</Propuesta>");
+        xmlBuilder.append("<model.Propuesta>\n")
+                .append("\t<model.Propuesta:id>").append(this.id).append("</model.Propuesta:id>\n")
+                .append("\t<model.Propuesta:titulo>").append(this.titulo).append("</model.Propuesta:titulo>\n")
+                .append("\t<model.Propuesta:descripcion>").append(this.descripcion).append("</model.Propuesta:descripcion>\n")
+                .append("\t<model.Propuesta:fechaExpiracion>").append(this.fechaExpiracion).append("</model.Propuesta:fechaExpiracion>\n")
+                .append("\t<model.Propuesta:estado>").append(this.estado).append("</model.Propuesta:estado>\n")
+                .append("\t<model.Propuesta:idCongreso>").append(this.idCongreso).append("</model.Propuesta:idCongreso>\n")
+                .append("\t<model.Propuesta:numPasaportePolitico>").append(this.numPasaportePolitico).append("</model.Propuesta:numPasaportePolitico>\n")
+                .append("\t<model.Propuesta:fechaProposicion>").append(this.fechaProposicion).append("</model.Propuesta:fechaProposicion>\n")
+                .append("\t<model.Propuesta:fechaAceptacion>").append(this.fechaAceptacion).append("</model.Propuesta:fechaAceptacion>\n")
+                .append("\t<model.Propuesta:fechaPublicacion>").append(this.fechaPublicacion).append("</model.Propuesta:fechaPublicacion>\n")
+                .append("</model.Propuesta>");
 
         return String.valueOf(xmlBuilder);
 

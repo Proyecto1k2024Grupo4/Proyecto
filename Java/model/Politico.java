@@ -1,3 +1,5 @@
+package model;
+
 public class Politico extends Persona{
 
     // Propiedades
@@ -15,17 +17,17 @@ public class Politico extends Persona{
     @Override
     public String toXml(){
         StringBuilder xmlBuilder = new StringBuilder();
-        xmlBuilder.append("<Persona>\n")
-                .append("\t<Persona:numPasaporte>").append(this.numPasaporte).append("</Persona:numPasaporte>\n")
-                .append("\t<Persona:fechaIniciacion>").append(this.fechaIniciacion).append("</Persona:fechaIniciacion>\n")
-                .append("\t<Persona:fechaRetirada>").append(this.fechaRetirada).append("</Persona:fechaRetirada>\n")
-                .append("\t<Persona:nombre>").append(this.nombre).append("</Persona:nombre>\n")
-                .append("\t<Persona:primerApellido>").append(this.primerApellido).append("</Persona:primerApellido>\n")
-                .append("\t<Persona:segundoApellido>").append(this.segundoApellido).append("</Persona:segundoApellido>\n")
-                .append("\t<Persona:fnac>").append(this.fnac).append("</Persona:fnac>\n")
-                .append("\t<Persona:sexo>").append(this.sexo).append("</Persona:sexo>\n")
-                .append("\t<Persona:paisNacimiento>").append(this.paisNacimiento).append("</Persona:paisNacimiento>\n")
-                .append("</Persona>");
+        xmlBuilder.append("<model.Persona>\n")
+                .append("\t<model.Persona:numPasaporte>").append(this.numPasaporte).append("</model.Persona:numPasaporte>\n")
+                .append("\t<model.Persona:fechaIniciacion>").append(this.fechaIniciacion).append("</model.Persona:fechaIniciacion>\n")
+                .append("\t<model.Persona:fechaRetirada>").append(this.fechaRetirada).append("</model.Persona:fechaRetirada>\n")
+                .append("\t<model.Persona:nombre>").append(this.nombre).append("</model.Persona:nombre>\n")
+                .append("\t<model.Persona:primerApellido>").append(this.primerApellido).append("</model.Persona:primerApellido>\n")
+                .append("\t<model.Persona:segundoApellido>").append(this.segundoApellido).append("</model.Persona:segundoApellido>\n")
+                .append("\t<model.Persona:fnac>").append(this.fnac).append("</model.Persona:fnac>\n")
+                .append("\t<model.Persona:sexo>").append(this.sexo).append("</model.Persona:sexo>\n")
+                .append("\t<model.Persona:paisNacimiento>").append(this.paisNacimiento).append("</model.Persona:paisNacimiento>\n")
+                .append("</model.Persona>");
 
         return String.valueOf(xmlBuilder);
     }

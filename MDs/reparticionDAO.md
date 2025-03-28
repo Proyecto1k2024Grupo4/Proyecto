@@ -1,18 +1,18 @@
 # Repartición de creación de clases DAO
 
 - Diego Fernando Valencia Correa ->
-    - Propuesta
-    - Votar
-    - Ley
+    - model.Propuesta
+    - model.Votar
+    - model.Ley
 
 - Jonathan Villalba Moran -> 
-    - Persona
-    - Politico
-    - Ciudadano
+    - model.Persona
+    - model.Politico
+    - model.Ciudadano
 
 - Samini Abdel -> 
-    - Pais
-    - Congreso
+    - model.Pais
+    - model.Congreso
     - Codigo_Civil
-    - Desarrollar
+    - model.Desarrollar
 

@@ -1,3 +1,4 @@
+package model;
 
 public class Votar {
 
@@ -15,11 +16,11 @@ public class Votar {
     }
     public String toXml() {
         StringBuilder xmlBuilder = new StringBuilder();
-        xmlBuilder.append("<Votar>\n")
+        xmlBuilder.append("<model.Votar>\n")
                 .append(" <numPasaporteCiudadano>").append(numPasaporteCiudadano).append("</numPasaporteCiudadano>\n")
                 .append(" <idPropuesta>").append(idPropuesta).append("</idPropuesta>\n")
                 .append(" <decision>").append(decision).append("</decision>\n")
-                .append("</Votar>");
+                .append("</model.Votar>");
         return xmlBuilder.toString();
     }
       public String toJson() {

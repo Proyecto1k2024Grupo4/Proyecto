@@ -1,5 +1,5 @@
+package model;
 
-import java.io.*;
 import java.util.*;
 
 public class CodigoCivil {
@@ -32,12 +32,12 @@ public class CodigoCivil {
     public String toXml(){
         StringBuilder xmlBuilder = new StringBuilder();
 
-        xmlBuilder.append("<CodigoCivil>")
+        xmlBuilder.append("<model.CodigoCivil>")
                 .append("\n")
-                .append("<CodigoCivil:id>").append(this.id).append("</CodigoCivil:id>\n")
+                .append("<model.CodigoCivil:id>").append(this.id).append("</model.CodigoCivil:id>\n")
                 .append("\t")
-                .append("<CodigoCivil:idPais>").append(this.idPais).append("</CodigoCivil:idPais>\n")
-                .append("</CodigoCivil");
+                .append("<model.CodigoCivil:idPais>").append(this.idPais).append("</model.CodigoCivil:idPais>\n")
+                .append("</model.CodigoCivil");
 
         return String.valueOf(xmlBuilder);
     }

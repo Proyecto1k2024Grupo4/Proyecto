@@ -1,3 +1,5 @@
+package model;
+
 public class Pais {
 
     public int id;
@@ -10,10 +12,10 @@ public class Pais {
 
         StringBuilder xmlBuilder = new StringBuilder();
 
-        xmlBuilder.append("<Pais>\n")
-                .append("\t<Pais:id>").append(this.id).append("</Pais:id>\n")
-                .append("\t<Pais:nombre>").append(this.nombre).append("</Pais:nombre\n")
-                .append("</Pais>");
+        xmlBuilder.append("<model.Pais>\n")
+                .append("\t<model.Pais:id>").append(this.id).append("</model.Pais:id>\n")
+                .append("\t<model.Pais:nombre>").append(this.nombre).append("</model.Pais:nombre\n")
+                .append("</model.Pais>");
 
         return String.valueOf(xmlBuilder);
 

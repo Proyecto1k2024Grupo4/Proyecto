@@ -8,54 +8,54 @@ Para nuestro proyecto hemos definido los siguientes formatos XML y JSON para rea
 <?xml version="1.0" encoding="UTF-8"?>
 <Entidades>
     <Paises>
-        <Pais>
-            <Pais:id></Pais:id>
-            <Pais:nombre></Pais:nombre>
-        </Pais>
+        <model.Pais>
+            <model.Pais:id></model.Pais:id>
+            <model.Pais:nombre></model.Pais:nombre>
+        </model.Pais>
     </Paises>
     <Congresos>
-        <Congreso>
-            <Congreso:id></Congreso:id>
-            <Congreso:idPais></Congreso:idPais>
-        </Congreso>
+        <model.Congreso>
+            <model.Congreso:id></model.Congreso:id>
+            <model.Congreso:idPais></model.Congreso:idPais>
+        </model.Congreso>
     </Congresos>
     <Personas>
-        <Persona>
-            <Persona:numPasaporte></Persona:numPasaporte>
-            <Persona:nombre></Persona:nombre>
-            <Persona:primerApellido></Persona:primerApellido>
-            <Persona:segundoApellido></Persona:segundoApellido>
-            <Persona:fnac></Persona:fnac>
-            <Persona:sexo></Persona:sexo>
-            <Persona:paisNacimiento></Persona:paisNacimiento>
-        </Persona>
+        <model.Persona>
+            <model.Persona:numPasaporte></model.Persona:numPasaporte>
+            <model.Persona:nombre></model.Persona:nombre>
+            <model.Persona:primerApellido></model.Persona:primerApellido>
+            <model.Persona:segundoApellido></model.Persona:segundoApellido>
+            <model.Persona:fnac></model.Persona:fnac>
+            <model.Persona:sexo></model.Persona:sexo>
+            <model.Persona:paisNacimiento></model.Persona:paisNacimiento>
+        </model.Persona>
     </Personas>
     <Politicos>
-        <Politico>
-            <Politico:numPasaporte></Politico:numPasaporte>
-            <Politico:fechaIniciacion></Politico:fechaIniciacion>
-            <Politico:fechaRetirada></Politico:fechaRetirada>
-            <Politico:idCongreso></Politico:idCongreso>
-        </Politico>
+        <model.Politico>
+            <model.Politico:numPasaporte></model.Politico:numPasaporte>
+            <model.Politico:fechaIniciacion></model.Politico:fechaIniciacion>
+            <model.Politico:fechaRetirada></model.Politico:fechaRetirada>
+            <model.Politico:idCongreso></model.Politico:idCongreso>
+        </model.Politico>
     </Politicos>
     <Ciudadanos>
-        <Ciudadano>
-            <Ciudadano:numPasaporte></Ciudadano:numPasaporte>
-        </Ciudadano>
+        <model.Ciudadano>
+            <model.Ciudadano:numPasaporte></model.Ciudadano:numPasaporte>
+        </model.Ciudadano>
     </Ciudadanos>
     <Propuestas>
-        <Propuesta>
-            <Propuesta:id></Propuesta:id>
-            <Propuesta:titulo></Propuesta:titulo>
-            <Propuesta:descripcion></Propuesta:descripcion>
-            <Propuesta:fechaExpiracion></Propuesta:fechaExpiracion>
-            <Propuesta:estado></Propuesta:estado>
-            <Propuesta:idCongreso></Propuesta:idCongreso>
-            <Propuesta:numPasaportePolitico></Propuesta:numPasaportePolitico>
-            <Propuesta:fechaProposicion></Propuesta:fechaProposicion>
-            <Propuesta:fechaAceptacion></Propuesta:fechaAceptacion>
-            <Propuesta:fechaPublicacion></Propuesta:fechaPublicacion>
-        </Propuesta>
+        <model.Propuesta>
+            <model.Propuesta:id></model.Propuesta:id>
+            <model.Propuesta:titulo></model.Propuesta:titulo>
+            <model.Propuesta:descripcion></model.Propuesta:descripcion>
+            <model.Propuesta:fechaExpiracion></model.Propuesta:fechaExpiracion>
+            <model.Propuesta:estado></model.Propuesta:estado>
+            <model.Propuesta:idCongreso></model.Propuesta:idCongreso>
+            <model.Propuesta:numPasaportePolitico></model.Propuesta:numPasaportePolitico>
+            <model.Propuesta:fechaProposicion></model.Propuesta:fechaProposicion>
+            <model.Propuesta:fechaAceptacion></model.Propuesta:fechaAceptacion>
+            <model.Propuesta:fechaPublicacion></model.Propuesta:fechaPublicacion>
+        </model.Propuesta>
     </Propuestas>
     <Votos>
         <Voto>
@@ -65,20 +65,20 @@ Para nuestro proyecto hemos definido los siguientes formatos XML y JSON para rea
         </Voto>
     </Votos>
     <CodigosCiviles>
-        <CodigoCivil>
-            <CodigoCivil:id></CodigoCivil:id>
-            <CodigoCivil:idPais></CodigoCivil:idPais>
-        </CodigoCivil>
+        <model.CodigoCivil>
+            <model.CodigoCivil:id></model.CodigoCivil:id>
+            <model.CodigoCivil:idPais></model.CodigoCivil:idPais>
+        </model.CodigoCivil>
     </CodigosCiviles>
     <Leyes>
-        <Ley>
-            <Ley:id></Ley:id>
-            <Ley:descripcion></Ley:descripcion>
-            <Ley:fechaAplicacion></Ley:fechaAplicacion>
-            <Ley:fechaModificacion></Ley:fechaModificacion>
-            <Ley:fechaImplementacion></Ley:fechaImplementacion>
-            <Ley:idCodigoCivil></Ley:idCodigoCivil>
-        </Ley>
+        <model.Ley>
+            <model.Ley:id></model.Ley:id>
+            <model.Ley:descripcion></model.Ley:descripcion>
+            <model.Ley:fechaAplicacion></model.Ley:fechaAplicacion>
+            <model.Ley:fechaModificacion></model.Ley:fechaModificacion>
+            <model.Ley:fechaImplementacion></model.Ley:fechaImplementacion>
+            <model.Ley:idCodigoCivil></model.Ley:idCodigoCivil>
+        </model.Ley>
     </Leyes>
     <Desarrollos>
         <Desarrollo>

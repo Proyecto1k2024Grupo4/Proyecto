@@ -65,7 +65,7 @@
 											"top": 47,
 											"width": 159,
 											"height": 13,
-											"text": "Pais"
+											"text": "model.Pais"
 										},
 										{
 											"_type": "LabelView",
@@ -289,7 +289,7 @@
 											"top": 47,
 											"width": 135,
 											"height": 13,
-											"text": "CodigoCivil"
+											"text": "model.CodigoCivil"
 										},
 										{
 											"_type": "LabelView",
@@ -513,7 +513,7 @@
 											"top": 319,
 											"width": 255,
 											"height": 13,
-											"text": "Persona"
+											"text": "model.Persona"
 										},
 										{
 											"_type": "LabelView",
@@ -827,7 +827,7 @@
 											"top": 215,
 											"width": 242.744140625,
 											"height": 13,
-											"text": "Congreso"
+											"text": "model.Congreso"
 										},
 										{
 											"_type": "LabelView",
@@ -1089,7 +1089,7 @@
 											"top": 15,
 											"width": 199,
 											"height": 13,
-											"text": "Ley"
+											"text": "model.Ley"
 										},
 										{
 											"_type": "LabelView",
@@ -1385,7 +1385,7 @@
 											"top": 319,
 											"width": 247,
 											"height": 13,
-											"text": "Desarrollar"
+											"text": "model.Desarrollar"
 										},
 										{
 											"_type": "LabelView",
@@ -1629,7 +1629,7 @@
 											"top": 711,
 											"width": 143.72705078125,
 											"height": 13,
-											"text": "Ciudadano"
+											"text": "model.Ciudadano"
 										},
 										{
 											"_type": "LabelView",
@@ -1834,7 +1834,7 @@
 											"top": 463,
 											"width": 244.87060546875,
 											"height": 13,
-											"text": "Politico"
+											"text": "model.Politico"
 										},
 										{
 											"_type": "LabelView",
@@ -2110,7 +2110,7 @@
 											"top": 647,
 											"width": 199,
 											"height": 13,
-											"text": "Propuesta"
+											"text": "model.Propuesta"
 										},
 										{
 											"_type": "LabelView",
@@ -2478,7 +2478,7 @@
 											"top": 695,
 											"width": 429.90478515625,
 											"height": 13,
-											"text": "Votar"
+											"text": "model.Votar"
 										},
 										{
 											"_type": "LabelView",
@@ -6001,7 +6001,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Pais",
+					"name": "model.Pais",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -6058,7 +6058,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "CodigoCivil",
+					"name": "model.CodigoCivil",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -6115,7 +6115,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Persona",
+					"name": "model.Persona",
 					"ownedElements": [
 						{
 							"_type": "UMLGeneralization",
@@ -6217,7 +6217,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Congreso",
+					"name": "model.Congreso",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -6330,7 +6330,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Ley",
+					"name": "model.Ley",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -6423,7 +6423,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Desarrollar",
+					"name": "model.Desarrollar",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -6510,7 +6510,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Ciudadano",
+					"name": "model.Ciudadano",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -6558,7 +6558,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Politico",
+					"name": "model.Politico",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -6690,7 +6690,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Propuesta",
+					"name": "model.Propuesta",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -6819,7 +6819,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Votar",
+					"name": "model.Votar",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",

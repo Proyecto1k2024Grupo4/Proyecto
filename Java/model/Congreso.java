@@ -1,3 +1,5 @@
+package model;
+
 import java.util.ArrayList;
 
 public class Congreso {
@@ -23,10 +25,10 @@ public class Congreso {
 
     public String toXml(){
         StringBuilder xmlBuilder = new StringBuilder();
-        xmlBuilder.append("<Congreso>\n")
+        xmlBuilder.append("<model.Congreso>\n")
                 .append(" <id>").append(id).append("</id>\n")
                 .append(" <idPais>").append(idPais).append("<idPais>\n")
-                .append("<Congreso>");
+                .append("<model.Congreso>");
 
         return xmlBuilder.toString();
     }

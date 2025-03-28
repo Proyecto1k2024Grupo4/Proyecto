@@ -108,7 +108,7 @@ LIMIT 1;
 ``` sql
 create table ORDEN_CIUDADANOS_COOCIUDADANOS as 
 select row_number() over (partition by p.paisNacimiento) as NumCiud, 
-p.nombre, pa.nombre as Pais, count(*) over (partition by p.paisNacimiento) as Conciudadanos
+p.nombre, pa.nombre as model.Pais, count(*) over (partition by p.paisNacimiento) as Conciudadanos
 from CIUDADANO c join PERSONA p on p.numPasaporte = c.numPasaporte
 join PAIS pa on pa.id = p.paisNacimiento;
 ```

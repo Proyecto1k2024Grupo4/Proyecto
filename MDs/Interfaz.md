@@ -23,7 +23,7 @@
 #### Página de Código Civil
 ![alt text](image-34.png)
 
-#### Página de Perfil de Ciudadano
+#### Página de Perfil de model.Ciudadano
 ![alt text](image-37.png)
 
 #### Página de Perfil de Político
