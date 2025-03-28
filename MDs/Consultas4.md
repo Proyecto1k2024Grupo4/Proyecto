@@ -121,7 +121,9 @@ delimiter ;
 **1. Procedimiento que inserta una persona y un político al mismo tiempo**
 ``` sql
 delimiter //
-create or replace procedure insertPersonaPolitico(in _numPasaporte varchar(16), in _nombre varchar(32), in _primerApellido varchar(32), in _segundoApellido varchar(32), in _fnac date, in _sexo char(1), in _paisNacimiento int unsigned, in _fechaIniciacion date, in _idCongreso int unsigned)
+create or replace procedure insertPersonaPolitico(in _numPasaporte varchar(16), in _nombre varchar(32), 
+    in _primerApellido varchar(32), in _segundoApellido varchar(32), in _fnac date, in _sexo char(1), 
+        in _paisNacimiento int unsigned, in _fechaIniciacion date, in _idCongreso int unsigned)
 begin
     declare exit handler for sqlexception
     begin
@@ -150,7 +152,9 @@ delimiter ;
 **2. Procedimiento que inserta una persona y un ciudadano al mismo tiempo**
 ``` sql
 delimiter //
-create or replace procedure insertPersonaCiudadano(in _numPasaporte varchar(16), in _nombre varchar(32), in _primerApellido varchar(32), in _segundoApellido varchar(32), in _fnac date, in _sexo char(1), in _paisNacimiento int unsigned)
+create or replace procedure insertPersonaCiudadano(in _numPasaporte varchar(16), 
+    in _nombre varchar(32), in _primerApellido varchar(32), in _segundoApellido varchar(32), 
+        in _fnac date, in _sexo char(1), in _paisNacimiento int unsigned)
 begin
 
     declare exit handler for sqlexception
@@ -218,9 +222,13 @@ begin
             set votosEnContra = (select count(*) from VOTAR where decision = 0 and idPropuesta = rowPropuesta.id);
             set totalVotos = (select count(*) from VOTAR where idPropuesta = rowPropuesta.id);
 
-            insert into PROPUESTA_VOTAR(id, titulo, descripcion, fechaExpiracion, estado, idCongreso, numPasaportePolitico, fechaProposicion, fechaAceptacion, fechaPublicacion, votosAFavor, votosEnContra, totalVotos)
+            insert into PROPUESTA_VOTAR(id, titulo, descripcion, fechaExpiracion, 
+                estado, idCongreso, numPasaportePolitico, fechaProposicion, 
+                    fechaAceptacion, fechaPublicacion, votosAFavor, votosEnContra, totalVotos)
                 values 
-                    (rowPropuesta.id, rowPropuesta.titulo, rowPropuesta.descripcion, rowPropuesta.fechaExpiracion, rowPropuesta.estado, rowPropuesta.idCongreso, rowPropuesta.numPasaportePolitico, rowPropuesta.fechaProposicion, rowPropuesta.fechaAceptacion, rowPropuesta.fechaPublicacion, votosAFavor, votosEnContra, totalVotos);
+                    (rowPropuesta.id, rowPropuesta.titulo, rowPropuesta.descripcion, rowPropuesta.fechaExpiracion, rowPropuesta.estado, 
+                        rowPropuesta.idCongreso, rowPropuesta.numPasaportePolitico, rowPropuesta.fechaProposicion, rowPropuesta.fechaAceptacion, 
+                            rowPropuesta.fechaPublicacion, votosAFavor, votosEnContra, totalVotos);
             
         end if;
 
@@ -241,7 +249,8 @@ delimiter ;
 **2. Procedimiento en el que se introduce datos sobre una ley, en caso de que la ley exista se hace un update de los campos que pueden ser alterados, si no existe, se crea.**
 ``` sql
 delimiter //
-create or replace procedure upsertLey(in _id int unsigned, in _descripcion varchar(2000), in _fechaAplicacion date, in _fechaModificacion date, in _fechaImplementacion date, in _idCodigoCivil int unsigned)
+create or replace procedure upsertLey(in _id int unsigned, in _descripcion varchar(2000), in _fechaAplicacion date, 
+    in _fechaModificacion date, in _fechaImplementacion date, in _idCodigoCivil int unsigned)
 begin
 
     declare fin int default 1;
