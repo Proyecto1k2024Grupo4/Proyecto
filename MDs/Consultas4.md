@@ -29,7 +29,7 @@ delimiter ;
 
 **2. Evento que se ejectua a final de cada mes que crea una tabla en la que guardamos los votos de las propuestas**
 
-``` sql
+```` sql
 delimiter //
 create or replace event crearPropuestaConVotos
 on schedule every 1 month starts timestamp(last_day(current_date), '23:59:59')
@@ -58,7 +58,7 @@ begin
 end;
 //
 delimiter ;
-```
+````
 ![alt text](image-40.png)
 
 <br>
