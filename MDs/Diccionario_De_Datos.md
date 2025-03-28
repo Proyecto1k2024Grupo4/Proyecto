@@ -61,7 +61,7 @@
 |--------------|--------------|--------------|
 | numPasaporteCiudadano | VARCHAR(16) | Clave primaria y foránea que apunta a CIUDADANO.numPasaporte e indica qué ciudadano vota  |
 | idPropuesta | INT | Clave primaria y foránea que apunta a PROPUESTA.id e indica la propuesta a la que se vota |
-| decision | BOOLEAN | Indica si el voto fué a favor o en contra |
+| decision | BOOLEAN | Indica si el voto fué a favor (1) o en contra (0) |
 
 
 **CODIGO_CIVIL**
