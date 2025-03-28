@@ -25,6 +25,7 @@ end;
 //
 delimiter ;
 ```
+![alt text](image-39.png)
 
 **2. Evento que se ejectua a final de cada mes que crea una tabla en la que guardamos los votos a favor de las propuestas**
 
@@ -58,84 +59,128 @@ end;
 //
 delimiter ;
 ```
+![alt text](image-40.png)
+
+<br>
+
+**Comprobación de que ambos eventos están activos**
+![alt text](image-41.png)
 
 <br>
 
 ## Definición de 2 disparadores sobre operaciones asociadas al modelo de datos.
 
- **1. Cada vez que se actualize la tabla `PROPUESTA` se verificará que las fechas tienen un orden cronológico coherente**
+**1. Cada vez que se inserte un nuevo país se creará automaticamente un congreso para este**
 
  ``` sql
 delimiter //
-create or replace trigger verificar_fechas_propuesta
-after update on PROPUESTA
+create or replace trigger crearCongreso
+after insert on PAIS
 for each row
 begin
-    if new.fechaExpiracion < new.fechaPublicacion then
-        signal sqlstate '45000'
-            set message_text = 'Error: La fecha de expiración debe ser posterior a la de publicación';
-    if new.fechaPublicacion < new.fechaAceptacion then
-        signal sqlstate '45001'
-            set message_text = 'Error: La fecha de publicación debe ser posterior a la de aceptación';
-    if new.fechaAceptacion < new.fechaProposicion then
-        signal sqlstate '45002'
-            set message_text = 'Error: La fecha de aceptación debe ser posterior a la proposición.';
-    end if;
+   
+    insert into CONGRESO values(new.id, new.id);
+
 end;
 //
 delimiter ;
 ```
+![alt text](image-45.png)
 
-**2. Cuando una propuesta es aceptada, se incrementa el contador de propuestas aprobadas en el congreso**
+ **2. Cada vez que se inserte un nuevo país se creará automaticamente un código civil para este**
 
-``` sql
+ ``` sql
 delimiter //
-CREATE TRIGGER actualizar_propuestas_aprobadas
-AFTER UPDATE ON PROPUESTA
-FOR EACH ROW
-BEGIN
-    IF OLD.estado != 'Aceptada' AND NEW.estado = 'Aceptada' THEN
-        UPDATE CONGRESO c
-        JOIN PROPUESTA p ON c.id = p.idCongreso
-        SET c.propAprobadas = c.propAprobadas + 1
-        WHERE p.id = NEW.id;
-    END IF;
-END;
+create or replace trigger crearCodigoCivil
+after insert on PAIS
+for each row 
+    follows crearCongreso
+begin
+
+    insert into CODIGO_CIVIL values(new.id, new.id);
+
+end;
 //
 delimiter ;
 ```
+![alt text](image-46.png)
+
+
+<br>
+
+**Funcionamiento de los trigger**
+
+![alt text](image-47.png)
+![alt text](image-48.png)
+
 
 <br>
 
 ## Definición de 2 procedimientos almacenados que realicen más de una operación dentro de una transacción, haciendo una gestión adecuada de los errores, ya sea mediante señales o excepciones, y sus consiguientes manejadores.
 
-**1. Procedimiento que inserta una persona y que acepta un valor para comprobar si es político o ciudadano e insertarlo también en su respectiva tabla.**
-
+**1. Procedimiento que inserta una persona y un político al mismo tiempo**
 ``` sql
 delimiter //
-create or replace procedure insertPersona(in numPasaporte varchar(16), in _nombre varchar(32), in _primerApellido varchar(32), in _segundoApellido varchar(32), in _fnac date, in _sexo char(1), in _paisNacimiento int unsigned, in _ciudadanoPolitico int)
+create or replace procedure insertPersonaPolitico(in _numPasaporte varchar(16), in _nombre varchar(32), in _primerApellido varchar(32), in _segundoApellido varchar(32), in _fnac date, in _sexo char(1), in _paisNacimiento int unsigned, in _fechaIniciacion date, in _idCongreso int unsigned)
 begin
+    declare exit handler for sqlexception
+    begin
+        get diagnostics condition 1
+            @mensaje = message_text;
+        select @mensaje;
+        rollback;
+    end;
+
+    start transaction;
+    
+        insert into PERSONA values (_numPasaporte, _nombre, _primerApellido, _segundoApellido, _fnac, _sexo, _paisNacimiento);
+
+        insert into POLITICO(numPasaporte, fechaIniciacion, idCongreso) values (_numPasaporte, _fechaIniciacion, _idCongreso);
+
+    commit;
 
 end;
 //
 delimiter ;
-
 ```
+![alt text](image-53.png)
+![alt text](image-50.png)
 
+
+**2. Procedimiento que inserta una persona y un ciudadano al mismo tiempo**
 ``` sql
 delimiter //
-create or replace procedure upsertLey()
+create or replace procedure insertPersonaCiudadano(in _numPasaporte varchar(16), in _nombre varchar(32), in _primerApellido varchar(32), in _segundoApellido varchar(32), in _fnac date, in _sexo char(1), in _paisNacimiento int unsigned)
 begin
+
+    declare exit handler for sqlexception
+    begin
+        get diagnostics condition 1
+            @mensaje = message_text;
+        select @mensaje;
+        rollback;
+    end;
+
+    start transaction;
+    
+        insert into PERSONA values (_numPasaporte, _nombre, _primerApellido, _segundoApellido, _fnac, _sexo, _paisNacimiento);
+
+        insert into CIUDADANO(numPasaporte) values (_numPasaporte);
+    
+    commit;
 
 end;
 //
 delimiter ;
-
 ```
+
+![alt text](image-54.png)
+![alt text](image-55.png)
+
 
 <br>
 
-## Definición de 2 procedimientos almacenados que utilicen cursores que recorran cierta cantidad de datos, realizando operaciones sobre una o más tablas, haciendo una gestión adecuada de los errores, ya sea mediante señales o excepciones, y sus consiguientes manejadores
+## Definición de 2 procedimientos almacenados que utilicen cursores que recorran cierta cantidad de datos, realizando operaciones sobre una o más tablas, haciendo una gestión adecuada de los errores, ya sea mediante señales o excepciones, y sus consiguientes manejadores.
 
 
 **1. Procedimiento utilizado por el evento crearPropuestaConVotos que inserta los datos de `PROPUESTA` en la tabla `PROPUESTA_VOTAR` añadiendo campos para contabilizar los votos a favor, en contra y el total.** 
@@ -144,15 +189,18 @@ delimiter //
 create or replace procedure desnormalizarPropuestaVotar()
 begin
     declare fin int default 1;
-    declare votosFavor int unsigned;
+    declare votosAFavor int unsigned;
     declare votosEnContra int unsigned;
     declare totalVotos int unsigned;
-    declare rowPropuesta row type PROPUESTA;
+    declare rowPropuesta row type of PROPUESTA;
     declare curPropuesta cursor for select * from PROPUESTA;
     declare continue handler for not found set fin = 0;
 
     declare exit handler for sqlexception
     begin
+        get diagnostics condition 1
+            @mensaje = message_text;
+        select @mensaje;
         rollback;
     end;
 
@@ -186,39 +234,64 @@ delimiter ;
 
 ```
 
+![alt text](image-57.png)
+![alt text](image-58.png)
 
-**2.**
+
+**2. Procedimiento en el que se introduce datos sobre una ley, en caso de que la ley exista se hace un update de los campos que pueden ser alterados, si no existe, se crea.**
 ``` sql
 delimiter //
-create or replace procedure upsertLey(_id INT UNSIGNED, _descripcion VARCHAR(2000), _fechaAplicacion DATE, _fechaModificacion DATE, _fechaImplementacion DATE, _idCodigoCivil INT UNSIGNED)
+create or replace procedure upsertLey(in _id int unsigned, in _descripcion varchar(2000), in _fechaAplicacion date, in _fechaModificacion date, in _fechaImplementacion date, in _idCodigoCivil int unsigned)
 begin
 
     declare fin int default 1;
-    declare rowPropuesta row type PROPUESTA;
-    declare curPropuesta for select * from PROPUESTA;
-    declare continue handler for not found set fin = 1;
+    declare updateHecho int default 0;
+    declare rowLey row type of LEY;
+    declare curLey cursor for select * from LEY;
+    declare continue handler for not found set fin = 0;
 
     declare exit handler for sqlexception
     begin
-        rollaback;
+        get diagnostics condition 1
+            @mensaje = message_text;
+        select @mensaje;
+        rollback;
     end;
 
-    star transaction;
+    start transaction;
     
-    open curPropuesta;
+    open curLey;
     
     while fin = 1 do
-        fecth curPropuesta into rowPropuesta;
+        fetch curLey into rowLey;
 
-        if fin = 1 do
+        if fin = 1 then
 
-            if _id = rowPropuesta.id do
+            if _id = rowLey.id then
                 update LEY
-                    set
-            
+                    set descripcion = _descripcion, fechaAplicacion = _fechaAplicacion, fechaModificacion = _fechaModificacion 
+                        where id = _id;
+                    set updateHecho = 1;
+            end if;
+
+        end if;
+
+    end while;
+
+    if updateHecho = 0 then
+        insert into LEY(descripcion, fechaAplicacion, fechaModificacion, fechaImplementacion, idCodigoCivil)
+            values
+                (_descripcion, _fechaAplicacion, _fechaModificacion, _fechaImplementacion, _idCodigoCivil);
+    end if;
+
+    commit;
 
 end;
 //
 delimiter ;
-
 ```
+
+![alt text](image-62.png)
+![alt text](image-60.png)
+![alt text](image-63.png)
+
