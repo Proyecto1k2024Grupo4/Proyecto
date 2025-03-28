@@ -26,4 +26,4 @@ Usuario admin (NO usar este):
 usuarioAdmin
 
 Contraseña:
-123
+Prop_in1234
