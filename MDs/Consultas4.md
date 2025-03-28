@@ -27,7 +27,7 @@ delimiter ;
 ```
 ![alt text](image-39.png)
 
-**2. Evento que se ejectua a final de cada mes que crea una tabla en la que guardamos los votos a favor de las propuestas**
+**2. Evento que se ejectua a final de cada mes que crea una tabla en la que guardamos los votos de las propuestas**
 
 ``` sql
 delimiter //
