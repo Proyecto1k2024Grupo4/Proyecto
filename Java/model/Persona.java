@@ -44,5 +44,59 @@ public class Persona {
         return String.valueOf(jsonBuilder);
     }
 
+    public String getNumPasaporte() {
+        return numPasaporte;
+    }
 
+    public void setNumPasaporte(String numPasaporte) {
+        this.numPasaporte = numPasaporte;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getPrimerApellido() {
+        return primerApellido;
+    }
+
+    public void setPrimerApellido(String primerApellido) {
+        this.primerApellido = primerApellido;
+    }
+
+    public String getSegundoApellido() {
+        return segundoApellido;
+    }
+
+    public void setSegundoApellido(String segundoApellido) {
+        this.segundoApellido = segundoApellido;
+    }
+
+    public String getFnac() {
+        return fnac;
+    }
+
+    public void setFnac(String fnac) {
+        this.fnac = fnac;
+    }
+
+    public Sexo getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(Sexo sexo) {
+        this.sexo = sexo;
+    }
+
+    public int getPaisNacimiento() {
+        return paisNacimiento;
+    }
+
+    public void setPaisNacimiento(int paisNacimiento) {
+        this.paisNacimiento = paisNacimiento;
+    }
 }
