@@ -21,6 +21,8 @@ public class PropuestaDAO {
     private static final String INSERT_QUERY = "insert into PROPUESTA(titulo, descripcion, fechaExpiracion, estado, idCongreso, numPasaportePolitico, fechaProposicion, fechaAceptacion, fechaPublicacion) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String SELECT_ALL_QUERY = "select * from PROPUESTA";
     private static final String SELECT_BY_ID_QUERY = "select * from PROPUESTA where id = ?";
+    private static final String UPDATE_BY_ID_QUERY = "update PROPUESTA set ? = ? where id = ?";
+    private static final String DELETE_BY_ID_QUERY = "delete * from PROPUESTA where id = ?";
 
     // Constructor privado
     private PropuestaDAO(){
@@ -64,7 +66,11 @@ public class PropuestaDAO {
         return propuestas;
     }
 
-    private Propuesta resultSetToPropuesta(ResultSet resultSet) throws  SQLException{
+    public Propuesta getPropuestaById(int id) throws SQLException{
+        Persona persona
+    }
+
+    private Propuesta resultSetToPropuesta(ResultSet resultSet) throws SQLException{
         return new Propuesta(
             resultSet.getInt("id"),
             resultSet.getString("titulo"),
