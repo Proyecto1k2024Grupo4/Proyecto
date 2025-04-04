@@ -7,7 +7,7 @@ public class CodigoCivil {
     /**
      * Default constructor
      */
-    public CodigoCivil() {
+    public CodigoCivil(int id) {
     }
 
     private int id;
@@ -42,4 +42,15 @@ public class CodigoCivil {
         return String.valueOf(xmlBuilder);
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public int getIdPais() {
+        return idPais;
+    }
+
+    public ArrayList<Ley> getLeyes() {
+        return leyes;
+    }
 }
