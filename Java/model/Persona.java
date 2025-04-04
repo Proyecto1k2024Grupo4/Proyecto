@@ -10,8 +10,14 @@ public class Persona {
     protected Sexo sexo;
     protected int paisNacimiento;
 
-    public Persona() {
-
+    public Persona(String numPasaporte, String nombre, String primerApellido, String segundoApellido, String fnac, Sexo sexo, int paisNacimiento) {
+        this.numPasaporte = numPasaporte;
+        this.nombre = nombre;
+        this.primerApellido = primerApellido;
+        this.segundoApellido = segundoApellido;
+        this.fnac = fnac;
+        this.sexo = sexo;
+        this.paisNacimiento = paisNacimiento;
     }
 
     public String toXml(){

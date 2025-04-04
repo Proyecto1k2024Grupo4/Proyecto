@@ -8,7 +8,12 @@ public class Politico extends Persona{
     public String fechaRetirada;
     public int idCongreso;
 
-    public Politico() {
+    public Politico(String numPasaporte, String nombre, String primerApellido, String segundoApellido, String fnac, Sexo sexo, int paisNacimiento, String fechaIniciacion, String fechaRetirada, int idCongreso) {
+        super(numPasaporte, nombre, primerApellido, segundoApellido, fnac, sexo, paisNacimiento);
+        this.numPasaporte = numPasaporte;
+        this.fechaIniciacion = fechaIniciacion;
+        this.fechaRetirada = fechaRetirada;
+        this.idCongreso = idCongreso;
     }
 
     public void proponer(String titulo, String descripcion) {
@@ -48,5 +53,29 @@ public class Politico extends Persona{
                 .append("}");
 
         return String.valueOf(jsonBuilder);
+    }
+
+    public String getFechaIniciacion() {
+        return fechaIniciacion;
+    }
+
+    public void setFechaIniciacion(String fechaIniciacion) {
+        this.fechaIniciacion = fechaIniciacion;
+    }
+
+    public String getFechaRetirada() {
+        return fechaRetirada;
+    }
+
+    public void setFechaRetirada(String fechaRetirada) {
+        this.fechaRetirada = fechaRetirada;
+    }
+
+    public int getIdCongreso() {
+        return idCongreso;
+    }
+
+    public void setIdCongreso(int idCongreso) {
+        this.idCongreso = idCongreso;
     }
 }

@@ -1,5 +1,6 @@
-package db;
+package controller;
 
+import db.DBConnection;
 import model.Persona;
 import model.Sexo;
 
@@ -16,22 +17,6 @@ public class PersonaDAO {
     private static PersonaDAO instance;
     //Conexion
     private Connection connection;
-
-    private static final String CREATE_TABLA_PERSONA = """
-            CREATE TABLE IF NOT EXISTS PERSONA (
-            numPasaporte VARCHAR(16),
-                nombre VARCHAR(32) NOT NULL,
-                primerApellido VARCHAR(32),
-                segundoApellido VARCHAR(32),
-                fnac DATE NOT NULL,
-                sexo ENUM ('H', 'M'),
-                paisNacimiento INT UNSIGNED NOT NULL,
-                CONSTRAINT PK_PERSONA PRIMARY KEY (numPasaporte),
-                CONSTRAINT FK_PERSONA_PAIS FOREIGN KEY (paisNacimiento) REFERENCES PAIS(id)
-                    ON DELETE NO ACTION
-                    ON UPDATE NO ACTION
-             );
-            """;
 
     //Consultas SQL predefinidas
     private static final String INSERT_QUERY = "INSERT INTO PERSONA (numPasaporte, nombre, primerApellido, segundoApellido, fnac, sexo, paisNacimiento)" +
