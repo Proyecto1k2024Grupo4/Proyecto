@@ -6,7 +6,6 @@ Además se guardan las leyes y votaciones, que agilizamos mediante nuestra aplic
 
 ### Participantes:
 - [Diego Fernando Valencia Correa](https://github.com/DocD1306)
-- [Pablo Bernabeu Robles](https://github.com/bernabeu17)
 - [Jonathan Villalba Moran](https://github.com/JonathanWick21)
 - [Abdel Moghit Samini](https://github.com/Samini04)
 
