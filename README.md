@@ -1,4 +1,7 @@
 # Proyecto: PROP-IN
+
+![alt text](PROP-IN-LOGO.png)
+
 Sistema de Gestión de Votaciones y Propuestas de Reforma Legal a Nivel Internacional.
 
 PROP-IN (Propuestas Internacionales) es un proyecto en el que se recogen las propuestas de reforma de ley de los distintos países con los que trabajamos. 
