@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Congreso {
 
 
-    public Congreso() {
+    public Congreso(int id) {
     }
 
     private int id;
@@ -44,4 +44,15 @@ public class Congreso {
 
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public int getIdPais() {
+        return idPais;
+    }
+
+    public ArrayList<Politico> getPoliticos() {
+        return politicos;
+    }
 }

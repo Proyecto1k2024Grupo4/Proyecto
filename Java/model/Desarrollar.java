@@ -6,8 +6,9 @@ public class Desarrollar {
     private int idLey;
 
 
-    public void desarrollar( int idPropuesta,  int idLey) {
-
+    public Desarrollar( int idPropuesta,  int idLey) {
+        this.idPropuesta = idPropuesta;
+        this.idLey = idLey;
     }
 
 
@@ -39,5 +40,21 @@ public class Desarrollar {
                 .append("</Desarrollo>");
 
         return String.valueOf(xmlBuilder);
+    }
+
+    public int getIdPropuesta() {
+        return idPropuesta;
+    }
+
+    public void setIdPropuesta(int idPropuesta) {
+        this.idPropuesta = idPropuesta;
+    }
+
+    public int getIdLey() {
+        return idLey;
+    }
+
+    public void setIdLey(int idLey) {
+        this.idLey = idLey;
     }
 }
