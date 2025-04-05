@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * Clase PropuestaDAo que se encarga de la comunicacion con la base de datos cuya funcion es de
- * busqueda, insercion, elmiminacion, y actualizacion de propuestas de la tabla PROPUESTA
+ * busqueda, insercion y actualizacion de propuestas de la tabla PROPUESTA
  * @author Diego Fernando Valencia Correa 1ºK
  * @version 05-04-2025
  */
@@ -29,7 +29,6 @@ public class PropuestaDAO {
     private static final String SELECT_BY_ID_QUERY = "select * from PROPUESTA where id = ?";
     private static final String UPDATE_BY_PROPUESTA_QUERY = "update PROPUESTA set titulo = ?, descripcion = ?, fechaExpiracion = ?, estado = ?, " +
             "numPasaportePolitico = ?, fechaProposicion = ?, fechaAceptacion = ?, fechaPublicacion = ? where id = ?";
-    private static final String DELETE_BY_ID_QUERY = "delete * from PROPUESTA where id = ?";
 
     // Constructor privado
     private PropuestaDAO(){
@@ -45,18 +44,6 @@ public class PropuestaDAO {
             instance = new PropuestaDAO();
         }
         return instance;
-    }
-
-    /**
-     * Metodo que elimina una propuesta
-     * @param id
-     * @throws SQLException
-     */
-    public void deletePropuestaById(int id) throws SQLException{
-        try (PreparedStatement statement = connection.prepareStatement(DELETE_BY_ID_QUERY)){
-            statement.setInt(1, id);
-            statement.executeQuery();
-        }
     }
 
     /**

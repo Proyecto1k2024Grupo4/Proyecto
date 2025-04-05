@@ -2,14 +2,12 @@ package model;
 
 public class Votar {
 
-    private int numPasaporteCiudadano;
-
+    // Propiedades
+    private String numPasaporteCiudadano;
     private int idPropuesta;
-
     private boolean decision;
 
-
-    public Votar(int numPasaporteCiudadano, int idPropuesta, boolean decision) {
+    public Votar(String numPasaporteCiudadano, int idPropuesta, boolean decision) {
         this.numPasaporteCiudadano = numPasaporteCiudadano;
         this.idPropuesta = idPropuesta;
         this.decision = decision;
@@ -31,6 +29,18 @@ public class Votar {
                 .append(" \"decision\": ").append(decision).append("\n")
                 .append("}");
         return jsonBuilder.toString();
+    }
+
+    public String getNumPasaporteCiudadano() {
+        return numPasaporteCiudadano;
+    }
+
+    public int getIdPropuesta() {
+        return idPropuesta;
+    }
+
+    public boolean getDecision() {
+        return decision;
     }
 
 }
