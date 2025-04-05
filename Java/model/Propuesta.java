@@ -1,19 +1,49 @@
 package model;
 
+import java.sql.Date;
+
 public class Propuesta {
 
-    public int id;
-    public String titulo;
-    public String descripcion;
-    public String fechaExpiracion;
-    public EstadoPropuesta estado;
-    public String idCongreso;
-    public String numPasaportePolitico;
-    public String fechaProposicion;
-    public String fechaAceptacion;
-    public String fechaPublicacion;
+    private int id;
+    private String titulo;
+    private String descripcion;
+    private Date fechaExpiracion;
+    private EstadoPropuesta estado;
+    private int idCongreso;
+    private String numPasaportePolitico;
+    private Date fechaProposicion;
+    private Date fechaAceptacion;
+    private Date fechaPublicacion;
 
     public Propuesta() {
+    }
+
+    public Propuesta(String titulo, String descripcion, Date fechaExpiracion, EstadoPropuesta estado, int idCongreso,
+                     String numPasaportePolitico, Date fechaProposicion, Date fechaAceptacion, Date fechaPublicacion) {
+        setTitulo(titulo);
+        setDescripcion(descripcion);
+        setFechaExpiracion(fechaExpiracion);
+        setEstado(estado);
+        setIdCongreso(idCongreso);
+        setNumPasaportePolitico(numPasaportePolitico);
+        setFechaProposicion(fechaProposicion);
+        setFechaAceptacion(fechaAceptacion);
+        setFechaPublicacion(fechaPublicacion);
+    }
+
+
+    public Propuesta(int id, String titulo, String descripcion, Date fechaExpiracion, EstadoPropuesta estado, int idCongreso,
+                     String numPasaportePolitico, Date fechaProposicion, Date fechaAceptacion, Date fechaPublicacion) {
+        this.id = id;
+        setTitulo(titulo);
+        setDescripcion(descripcion);
+        setFechaExpiracion(fechaExpiracion);
+        setEstado(estado);
+        setIdCongreso(idCongreso);
+        setNumPasaportePolitico(numPasaportePolitico);
+        setFechaProposicion(fechaProposicion);
+        setFechaAceptacion(fechaAceptacion);
+        setFechaPublicacion(fechaPublicacion);
     }
 
     public String toXML(){
@@ -58,4 +88,79 @@ public class Propuesta {
 
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Date getFechaExpiracion() {
+        return fechaExpiracion;
+    }
+
+    public void setFechaExpiracion(Date fechaExpiracion) {
+        this.fechaExpiracion = fechaExpiracion;
+    }
+
+    public EstadoPropuesta getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadoPropuesta estado) {
+        this.estado = estado;
+    }
+
+    public int getIdCongreso() {
+        return idCongreso;
+    }
+
+    public void setIdCongreso(int idCongreso) {
+        this.idCongreso = idCongreso;
+    }
+
+    public String getNumPasaportePolitico() {
+        return numPasaportePolitico;
+    }
+
+    public void setNumPasaportePolitico(String numPasaportePolitico) {
+        this.numPasaportePolitico = numPasaportePolitico;
+    }
+
+    public Date getFechaProposicion() {
+        return fechaProposicion;
+    }
+
+    public void setFechaProposicion(Date fechaProposicion) {
+        this.fechaProposicion = fechaProposicion;
+    }
+
+    public Date getFechaAceptacion() {
+        return fechaAceptacion;
+    }
+
+    public void setFechaAceptacion(Date fechaAceptacion) {
+        this.fechaAceptacion = fechaAceptacion;
+    }
+
+    public Date getFechaPublicacion() {
+        return fechaPublicacion;
+    }
+
+    public void setFechaPublicacion(Date fechaPublicacion) {
+        this.fechaPublicacion = fechaPublicacion;
+    }
 }

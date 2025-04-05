@@ -1,7 +1,18 @@
 package model;
 
 
+import java.util.Date;
+
 public class Ley {
+
+    // Propiedades
+    private int id;
+    private String descripcion;
+    private java.sql.Date fechaAplicacion;
+    private java.sql.Date fechaModificacion;
+    private java.sql.Date fechaImplementacion;
+    private int idCodigoCivil;
+
 
     /**
      * Default constructor
@@ -9,13 +20,39 @@ public class Ley {
     public Ley() {
     }
 
+    /**
+     * Constructor sin ID
+     * @param descripcion
+     * @param fechaAplicacion
+     * @param fechaModificacion
+     * @param fechaImplementacion
+     * @param idCodigoCivil
+     */
+    public Ley(String descripcion, java.sql.Date fechaAplicacion, java.sql.Date fechaModificacion, java.sql.Date fechaImplementacion, int idCodigoCivil) {
+        setDescripcion(descripcion);
+        setFechaAplicacion(fechaAplicacion);
+        setFechaModificacion(fechaModificacion);
+        setFechaImplementacion(fechaImplementacion);
+        setIdCodigoCivil(idCodigoCivil);
+    }
 
-    private int id;
-    private String descripcion;
-    private String fechaAplicacion;
-    private String fechaModificacion;
-    private String fechaImplementacion;
-    private int idCodigoCivil;
+    /**
+     * Constructor con todos los parametros
+     * @param id
+     * @param descripcion
+     * @param fechaAplicacion
+     * @param fechaModificacion
+     * @param fechaImplementacion
+     * @param idCodigoCivil
+     */
+    public Ley(int id, String descripcion, java.sql.Date fechaAplicacion, java.sql.Date fechaModificacion, java.sql.Date fechaImplementacion, int idCodigoCivil) {
+        this.id = id;
+        setDescripcion(descripcion);
+        setFechaAplicacion(fechaAplicacion);
+        setFechaModificacion(fechaModificacion);
+        setFechaImplementacion(fechaImplementacion);
+        setIdCodigoCivil(idCodigoCivil);
+    }
 
     public String toJson(){
         StringBuilder jsonBuilder = new StringBuilder();
@@ -62,4 +99,47 @@ public class Ley {
         return String.valueOf(xmlBuilder);
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public java.sql.Date getFechaAplicacion() {
+        return fechaAplicacion;
+    }
+
+    public void setFechaAplicacion(java.sql.Date fechaAplicacion) {
+        this.fechaAplicacion = fechaAplicacion;
+    }
+
+    public java.sql.Date getFechaModificacion() {
+        return fechaModificacion;
+    }
+
+    public void setFechaModificacion(java.sql.Date fechaModificacion) {
+        this.fechaModificacion = fechaModificacion;
+    }
+
+    public java.sql.Date getFechaImplementacion() {
+        return fechaImplementacion;
+    }
+
+    public void setFechaImplementacion(java.sql.Date fechaImplementacion) {
+        this.fechaImplementacion = fechaImplementacion;
+    }
+
+    public int getIdCodigoCivil() {
+        return idCodigoCivil;
+    }
+
+    public void setIdCodigoCivil(int idCodigoCivil) {
+        this.idCodigoCivil = idCodigoCivil;
+    }
 }
