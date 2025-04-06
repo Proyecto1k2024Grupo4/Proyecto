@@ -14,6 +14,9 @@ public class Pais {
         this.nombre = nombre;
     }
 
+    public Pais(String nombre, int numCiudadanos, int numPoliticos) {
+    }
+
     public String toXml(){
 
         StringBuilder xmlBuilder = new StringBuilder();

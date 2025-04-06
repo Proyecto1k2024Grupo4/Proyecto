@@ -18,6 +18,9 @@ public class Congreso {
         this.idPais = idPais;
     }
 
+    public Congreso(int id, int numPoliticos, int propAprobadas) {
+    }
+
     public void aceptarPropuesta(int idPropuesta) {
 
     }

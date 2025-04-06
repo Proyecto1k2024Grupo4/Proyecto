@@ -7,7 +7,7 @@ public class CodigoCivil {
     /**
      * Default constructor
      */
-    public CodigoCivil(int id) {
+    public CodigoCivil(int i, int id, String fecha) {
     }
 
     private int id;
