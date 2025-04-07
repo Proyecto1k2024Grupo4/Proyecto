@@ -29,8 +29,8 @@ public class Congreso {
      * Constructor con parámetros adicionales, aún no implementado.
      *
      * @param id             Identificador del congreso.
-     * @param numPoliticos   Número de políticos (no utilizado aún).
-     * @param propAprobadas  Cantidad de propuestas aprobadas (no utilizado aún).
+     * @param numPoliticos   Número de políticos.
+     * @param propAprobadas  Cantidad de propuestas aprobadas.
      */
     public Congreso(int id, int numPoliticos, int propAprobadas) {
     }
