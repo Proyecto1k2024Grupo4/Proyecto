@@ -1,5 +1,11 @@
 package model;
 
+/**
+ * Clase Politico que extiende de persona y guarda información de los politicos
+ *
+ * @author Jonathan Villalba Moran
+ * @Version 7-4-2025
+ */
 public class Politico extends Persona{
 
     // Propiedades
@@ -8,6 +14,19 @@ public class Politico extends Persona{
     public String fechaRetirada;
     public int idCongreso;
 
+    /**
+     * Constructor de Politico
+     * @param numPasaporte El numero de pasaporte del ciudadano que se usa como clave primaria
+     * @param nombre Nombre de la persona
+     * @param primerApellido Primer apellido de la persona
+     * @param segundoApellido Segundo apellido de la persona
+     * @param fnac La fecha de nacimiento de la persona
+     * @param sexo El sexo de la persona
+     * @param paisNacimiento El pais de nacimiento de la persona
+     * @param fechaIniciacion La fecha en la que se convirtió en politico
+     * @param fechaRetirada La fecha en la que se retiro de su puesto
+     * @param idCongreso El id del congreso al que pertenece
+     */
     public Politico(String numPasaporte, String nombre, String primerApellido, String segundoApellido, String fnac, Sexo sexo, int paisNacimiento, String fechaIniciacion, String fechaRetirada, int idCongreso) {
         super(numPasaporte, nombre, primerApellido, segundoApellido, fnac, sexo, paisNacimiento);
         this.numPasaporte = numPasaporte;
@@ -16,9 +35,19 @@ public class Politico extends Persona{
         this.idCongreso = idCongreso;
     }
 
+    /**
+     * Metodo para crear una nueva propuesta
+     * @param titulo
+     * @param descripcion
+     */
     public void proponer(String titulo, String descripcion) {
 
     }
+
+    /**
+     * Metodo para transformar a XML
+     * @return XML del objeto actual
+     */
     @Override
     public String toXml(){
         StringBuilder xmlBuilder = new StringBuilder();
@@ -37,6 +66,10 @@ public class Politico extends Persona{
         return String.valueOf(xmlBuilder);
     }
 
+    /**
+     * Metodo para transformar a Json
+     * @return el objeto actual en formato Json
+     */
     @Override
     public String toJson(){
         StringBuilder jsonBuilder = new StringBuilder();
@@ -55,26 +88,50 @@ public class Politico extends Persona{
         return String.valueOf(jsonBuilder);
     }
 
+    /**
+     * Metodo que devuelve la fecha de iniciación
+     * @return la fecha de iniciación
+     */
     public String getFechaIniciacion() {
         return fechaIniciacion;
     }
 
+    /**
+     * Metodo que establece la fecha de iniciación
+     * @param fechaIniciacion
+     */
     public void setFechaIniciacion(String fechaIniciacion) {
         this.fechaIniciacion = fechaIniciacion;
     }
 
+    /**
+     * Metodo que devuelve la fecha de retirada
+     * @return la fecha de iniciación
+     */
     public String getFechaRetirada() {
         return fechaRetirada;
     }
 
+    /**
+     * Metodo que establece la fecha de retirada
+     * @param fechaRetirada
+     */
     public void setFechaRetirada(String fechaRetirada) {
         this.fechaRetirada = fechaRetirada;
     }
 
+    /**
+     * Metodo que devuelve el id del congreso al que pertenece
+     * @return el id del congreso
+     */
     public int getIdCongreso() {
         return idCongreso;
     }
 
+    /**
+     * Establece el id del congreso al que pertenece
+     * @param idCongreso
+     */
     public void setIdCongreso(int idCongreso) {
         this.idCongreso = idCongreso;
     }
