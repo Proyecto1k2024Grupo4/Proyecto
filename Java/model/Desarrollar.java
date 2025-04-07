@@ -1,18 +1,37 @@
 package model;
 
+/**
+ * Representa la relación entre una propuesta y una ley que se desarrolla a partir de ella.
+ */
 public class Desarrollar {
 
+    /**
+     * Identificador de la propuesta.
+     */
     private int idPropuesta;
+
+    /**
+     * Identificador de la ley asociada.
+     */
     private int idLey;
 
-
-    public Desarrollar( int idPropuesta,  int idLey) {
+    /**
+     * Constructor que inicializa los campos con los valores proporcionados.
+     *
+     * @param idPropuesta Identificador de la propuesta.
+     * @param idLey       Identificador de la ley.
+     */
+    public Desarrollar(int idPropuesta, int idLey) {
         this.idPropuesta = idPropuesta;
         this.idLey = idLey;
     }
 
-
-    public String toJson(){
+    /**
+     * Convierte el objeto en una representación JSON.
+     *
+     * @return Cadena con el formato JSON del objeto.
+     */
+    public String toJson() {
         StringBuilder jsonBuilder = new StringBuilder();
 
         jsonBuilder.append("\"DESARROLLAR\": {")
@@ -28,7 +47,12 @@ public class Desarrollar {
         return String.valueOf(jsonBuilder);
     }
 
-    public String toXml(){
+    /**
+     * Convierte el objeto en una representación XML.
+     *
+     * @return Cadena con el formato XML del objeto.
+     */
+    public String toXml() {
         StringBuilder xmlBuilder = new StringBuilder();
 
         xmlBuilder.append("<Desarrollo>")
@@ -42,18 +66,38 @@ public class Desarrollar {
         return String.valueOf(xmlBuilder);
     }
 
+    /**
+     * Obtiene el identificador de la propuesta.
+     *
+     * @return ID de la propuesta.
+     */
     public int getIdPropuesta() {
         return idPropuesta;
     }
 
+    /**
+     * Establece el identificador de la propuesta.
+     *
+     * @param idPropuesta Nuevo ID de la propuesta.
+     */
     public void setIdPropuesta(int idPropuesta) {
         this.idPropuesta = idPropuesta;
     }
 
+    /**
+     * Obtiene el identificador de la ley.
+     *
+     * @return ID de la ley.
+     */
     public int getIdLey() {
         return idLey;
     }
 
+    /**
+     * Establece el identificador de la ley.
+     *
+     * @param idLey Nuevo ID de la ley.
+     */
     public void setIdLey(int idLey) {
         this.idLey = idLey;
     }
