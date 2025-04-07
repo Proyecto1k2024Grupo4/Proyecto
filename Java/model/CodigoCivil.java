@@ -12,7 +12,9 @@ public class CodigoCivil {
      */
     public CodigoCivil(int i, int id, String fecha) {
     }
-
+ /**
+     * Las Variables.
+     */
     private int id;
     private int idPais;
     private ArrayList<Ley> leyes;
