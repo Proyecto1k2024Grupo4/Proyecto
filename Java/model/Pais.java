@@ -33,8 +33,8 @@ public class Pais {
      * Constructor con parámetros adicionales, actualmente no implementado.
      *
      * @param nombre         Nombre del país.
-     * @param numCiudadanos  Número de ciudadanos (no utilizado).
-     * @param numPoliticos   Número de políticos (no utilizado).
+     * @param numCiudadanos  Número de ciudadanos.
+     * @param numPoliticos   Número de políticos.
      */
     public Pais(String nombre, int numCiudadanos, int numPoliticos) {
     }
