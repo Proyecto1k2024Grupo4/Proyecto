@@ -1,18 +1,12 @@
 package model;
 
-/**
- * Representa la relación entre una propuesta y una ley que se desarrolla a partir de ella.
- */
 public class Desarrollar {
 
     /**
-     * Identificador de la propuesta.
+     * Las Variables
      */
     private int idPropuesta;
 
-    /**
-     * Identificador de la ley asociada.
-     */
     private int idLey;
 
     /**
