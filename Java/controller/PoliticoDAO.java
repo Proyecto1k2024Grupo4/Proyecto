@@ -2,10 +2,14 @@ package controller;
 
 import db.DBConnection;
 import model.Politico;
+import model.Sexo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PoliticoDAO {
 
@@ -48,5 +52,66 @@ public class PoliticoDAO {
             statement.setInt(10, politico.getIdCongreso());
             statement.executeUpdate();
         }
+    }
+
+    public List<Politico> getAllPoliticos() throws SQLException {
+        List<Politico> politicos = new ArrayList<>();
+        try (PreparedStatement statement = connection.prepareStatement(SELECT_ALL_QUERY)){
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next())
+                politicos.add(resultSetToPolitico(resultSet));
+        }
+        return politicos;
+    }
+
+    public Politico getPoliticoByNumPasaporte (String numPasaporte) throws SQLException {
+        Politico politico = null;
+        try (PreparedStatement statement = connection.prepareStatement(SELECT_BY_PASAPORTE_QUERY)){
+            statement.setString(1, numPasaporte);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next())
+                politico = resultSetToPolitico(resultSet);
+            return politico;
+        }
+    }
+
+    public void updatePolitico (String fecha, String pasaporte) throws SQLException {
+        try (PreparedStatement statement = connection.prepareStatement(UPDATE_FECHA_QUERY)){
+            statement.setString(1, fecha);
+            statement.setString(2, pasaporte);
+            statement.executeUpdate();
+        }
+    }
+
+    public void deletePersonaByNumPasaporte(String numPasaporte) throws SQLException {
+        try (PreparedStatement statement = connection.prepareStatement(DELETE_QUERY)){
+            statement.setString(1, numPasaporte);
+            statement.executeUpdate();
+        }
+    }
+
+    private Politico resultSetToPolitico(ResultSet resultSet) throws SQLException {
+        return new Politico(
+                resultSet.getString("numPasaporte"),
+                resultSet.getString("nombre"),
+                resultSet.getString("primerApellido"),
+                resultSet.getString("segundoApellido"),
+                resultSet.getString("fnac"),
+                Sexo.valueOf(resultSet.getString("sexo")),
+                resultSet.getInt("paisNacimiento"),
+                resultSet.getString("fechaIniciacion"),
+                resultSet.getString("fechaRetirada"),
+                resultSet.getInt("idCongreso")
+        );
+    }
+
+    public int totalPoliticos () throws SQLException {
+        int total = 0;
+        try (PreparedStatement statement = connection.prepareStatement(TOTAL_POLITICOS_QUERY)) {
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next())
+                total = resultSet.getInt(1);
+        }
+        return total;
     }
 }
