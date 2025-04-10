@@ -4,9 +4,6 @@ package model;
  */
 public class Desarrollar {
 
-    /**
-     * Las Variables
-     */
     private int idPropuesta;
 
     private int idLey;
