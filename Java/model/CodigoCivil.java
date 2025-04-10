@@ -14,7 +14,7 @@ public class CodigoCivil {
      * @param id  Identificador del código civil.
      * @param fecha Fecha de creación.
      */
-    public CodigoCivil(int i, int id, String fecha) {
+    public CodigoCivil(int id, String fecha) {
     }
 
     private int id;
@@ -73,6 +73,11 @@ public class CodigoCivil {
     public int getIdPais() {
         return idPais;
     }
+      /**
+     * Obtiene lista de Leyes.
+     *
+     * @return La lista de leyes.
+     */
 
     public ArrayList<Ley> getLeyes() {
         return leyes;
