@@ -2,6 +2,8 @@ package model;
 
 /**
  * Clase de Persona con información de la persona
+ * @author Jonathan Villalba Morán
+ * @version 10/04/2025
  */
 public class Persona {
 
