@@ -1,6 +1,5 @@
-package controller;
+package db;
 
-import db.DBConnection;
 import model.Votar;
 
 import java.sql.Connection;
