@@ -1,6 +1,5 @@
-package controller;
+package db;
 
-import db.DBConnection;
 import model.CodigoCivil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -72,7 +71,7 @@ public class CodigoCivilDAO {
      */
     private CodigoCivil resultSetToCodigoCivil(ResultSet resultSet) throws SQLException {
         return new CodigoCivil(
-                resultSet.getInt("id")
-        );
+                id, resultSet.getInt("id"),
+                fecha);
     }
 }

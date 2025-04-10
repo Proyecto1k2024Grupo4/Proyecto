@@ -18,12 +18,18 @@ public class Ley {
 
 
     /**
-     * Constructor de Ley con todos los parámetros menos el ID
-     * @param descripcion Descripción de la ley
-     * @param fechaAplicacion Fecha de apliación de la ley
-     * @param fechaModificacion Fecha de modificación de la ley
-     * @param fechaImplementacion Fecha de implementación de la ley
-     * @param idCodigoCivil Id del código civil de la ley
+     * Default constructor
+     */
+    public Ley() {
+    }
+
+    /**
+     * Constructor sin ID
+     * @param descripcion
+     * @param fechaAplicacion
+     * @param fechaModificacion
+     * @param fechaImplementacion
+     * @param idCodigoCivil
      */
     public Ley(String descripcion, java.sql.Date fechaAplicacion, java.sql.Date fechaModificacion, java.sql.Date fechaImplementacion, int idCodigoCivil) {
         setDescripcion(descripcion);
