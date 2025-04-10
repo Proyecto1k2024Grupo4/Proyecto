@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Clase PersonaDAO que se encarga de la comunicacion con la base de datos cuya funcion es de busqueda, insercion y actualizacion de las personas en la tabla personas
+ * Clase PersonaDAO que se encarga de la comunicacion con la base de datos cuya funcion es de busqueda, insercion y actualizacion de las personas en la tabla PERSONAS
  * @author Jonathan Villaba Morán
  * @version 7/4/25
  */
@@ -54,7 +54,7 @@ public class PersonaDAO {
 
     /**
      * Inserta una persona en la base de datos
-     * @param persona objeto de persona
+     * @param persona objeto de Persona
      * @throws SQLException
      */
     public void insertarPersona(Persona persona) throws SQLException {
@@ -90,7 +90,7 @@ public class PersonaDAO {
     /**
      * Recupera la persona con el numero de pasaporte que se indique
      * @param numPasaporte
-     * @return Objeto de persona o null
+     * @return Objeto de Ciudadano o null
      * @throws SQLException
      */
     public Persona getPersonaByNumPasaporte (String numPasaporte) throws SQLException {
@@ -137,7 +137,7 @@ public class PersonaDAO {
     }
 
     /**
-     * Convierte un objeto persona en Resultset
+     * Convierte un objeto Persona en Resultset
      * @param resultSet
      * @return objeto Persona con los datos del Resultset
      * @throws SQLException
