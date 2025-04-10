@@ -54,6 +54,9 @@ public class Ley {
         setIdCodigoCivil(idCodigoCivil);
     }
 
+    public Ley(int id, String descripcion, String fImpl, String fAplica, String fMod) {
+    }
+
     public String toJson(){
         StringBuilder jsonBuilder = new StringBuilder();
         jsonBuilder.append("\"LEY\": {\n")
