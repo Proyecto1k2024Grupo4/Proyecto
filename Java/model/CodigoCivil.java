@@ -2,18 +2,30 @@ package model;
 
 import java.util.*;
 
+/**
+ * Representa un Código Civil con su identificador, el del país al que pertenece y las leyes asociadas.
+ * Permite convertir a formatos JSON y XML.
+ */
 public class CodigoCivil {
 
     /**
-     * Default constructor
+     * Constructor de la clase CodigoCivil.
+     *
+     * @param id  Identificador del código civil.
+     * @param fecha Fecha de creación.
      */
-    public CodigoCivil(int id) {
+    public CodigoCivil(int id, String fecha) {
     }
 
     private int id;
     private int idPais;
     private ArrayList<Ley> leyes;
 
+    /**
+     * Convierte el objeto CodigoCivil en una representación JSON.
+     *
+     * @return Cadena en formato JSON que representa el objeto.
+     */
     public String toJson(){
         StringBuilder jsonBuilder = new StringBuilder();
 
@@ -28,7 +40,11 @@ public class CodigoCivil {
                 .append("}");
         return String.valueOf(jsonBuilder);
     }
-
+ /**
+     * Convierte el objeto CodigoCivil en una representación XML.
+     *
+     * @return Cadena en formato XML que representa el objeto.
+     */
     public String toXml(){
         StringBuilder xmlBuilder = new StringBuilder();
 
@@ -41,14 +57,27 @@ public class CodigoCivil {
 
         return String.valueOf(xmlBuilder);
     }
-
+  /**
+     * Obtiene el identificador del código civil.
+     *
+     * @return El ID del código civil.
+     */
     public int getId() {
         return id;
     }
-
+    /**
+     * Obtiene el identificador del país.
+     *
+     * @return El ID del país.
+     */
     public int getIdPais() {
         return idPais;
     }
+      /**
+     * Obtiene lista de Leyes.
+     *
+     * @return La lista de leyes.
+     */
 
     public ArrayList<Ley> getLeyes() {
         return leyes;
