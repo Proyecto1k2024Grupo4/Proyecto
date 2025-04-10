@@ -2,6 +2,10 @@ package model;
 
 import java.util.*;
 
+/**
+ * Representa un Código Civil con su identificador, el del país al que pertenece y las leyes asociadas.
+ * Permite convertir a formatos JSON y XML.
+ */
 public class CodigoCivil {
 
     /**
