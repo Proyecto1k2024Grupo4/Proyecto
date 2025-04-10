@@ -4,7 +4,7 @@ package model;
  * Clase Politico que extiende de persona y guarda información de los politicos
  *
  * @author Jonathan Villalba Moran
- * @Version 7-4-2025
+ * @version 7-4-2025
  */
 public class Politico extends Persona{
 
