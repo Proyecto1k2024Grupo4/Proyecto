@@ -1,7 +1,10 @@
 package model;
 
 import java.util.ArrayList;
-
+/**
+ * Representa un Congreso con su ID, el ID del país y la lista de políticos.
+ * Permite aceptar, publicar propuestas y convertir a formatos JSON y XML.
+ */
 public class Congreso {
 
 
