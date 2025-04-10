@@ -1,11 +1,10 @@
 package model;
 
-
+/**
+ * Representa un país con su ID y nombre, y permite convertirlo a formatos JSON y XML.
+ */
 public class Pais {
 
-    /**
-     * Las Variables
-     */
     public int id;
     public String nombre;
 
