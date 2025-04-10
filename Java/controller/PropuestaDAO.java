@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Clase PropuestaDAo que se encarga de la comunicacion con la base de datos cuya funcion es de
+ * Clase PropuestaDAO que se encarga de la comunicacion con la base de datos cuya funcion es de
  * busqueda, insercion y actualizacion de propuestas de la tabla PROPUESTA
  * @author Diego Fernando Valencia Correa 1ºK
  * @version 05-04-2025
