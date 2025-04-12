@@ -120,7 +120,7 @@ public class PoliticoDAO {
      * @param numPasaporte
      * @throws SQLException
      */
-    public void deletePersonaByNumPasaporte(String numPasaporte) throws SQLException {
+    public void deletePoliticoByNumPasaporte(String numPasaporte) throws SQLException {
         try (PreparedStatement statement = connection.prepareStatement(DELETE_QUERY)){
             statement.setString(1, numPasaporte);
             statement.executeUpdate();
