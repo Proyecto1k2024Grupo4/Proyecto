@@ -5,6 +5,8 @@ package model;
 public class Desarrollar {
 
     private int idPropuesta;
+    private int idPais;
+    private int idCodigoCivil;
 
     private int idLey;
 
@@ -13,8 +15,9 @@ public class Desarrollar {
      *
      * @param idPropuesta Identificador de la propuesta.
      * @param idLey       Identificador de la ley.
+     * @param anio
      */
-    public Desarrollar(int idPropuesta, int idLey) {
+    public Desarrollar(int idPropuesta, int idLey, int anio) {
         this.idPropuesta = idPropuesta;
         this.idLey = idLey;
     }
@@ -93,5 +96,21 @@ public class Desarrollar {
      */
     public void setIdLey(int idLey) {
         this.idLey = idLey;
+    }
+
+    public int getIdPais() {
+        return idPais;
+    }
+
+    public void setIdPais(int idPais) {
+        this.idPais = idPais;
+    }
+
+    public int getIdCodigoCivil() {
+        return idCodigoCivil;
+    }
+
+    public void setIdCodigoCivil(int idCodigoCivil) {
+        this.idCodigoCivil = idCodigoCivil;
     }
 }

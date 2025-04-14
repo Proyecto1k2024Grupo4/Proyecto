@@ -1,67 +1,40 @@
 package controller;
 
-import db.PaisDAO;
 import model.Pais;
-import view.VistaPais;
-
-import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ControllerPais {
-    private PaisDAO paisDAO;
-    private VistaPais vista;
+    private List<Pais> paises = new ArrayList<>();
 
-    public ControllerPais() {
-        paisDAO = PaisDAO.getInstance();
-        vista = new VistaPais();
+    public void agregarPais(Pais pais) {
+        paises.add(pais);
     }
 
-    public void mostrarTodos() {
-        try {
-            List<Pais> lista = paisDAO.getAllPaises();
-            vista.mostrarPaises(lista);
-        } catch (SQLException e) {
-            e.printStackTrace();
+    public List<Pais> obtenerPaises() {
+        return paises;
+    }
+
+    public Pais buscarPaisPorId(int id) {
+        for (Pais p : paises) {
+            if (p.getId() == id) {
+                return p;
+            }
         }
+        return null;
     }
 
-    public void crearPais() {
-        try {
-            Pais p = vista.crearPais();
-            paisDAO.insertPais(p);
-            vista.mostrarMensaje("País creado correctamente.");
-        } catch (SQLException e) {
-            e.printStackTrace();
+    public boolean actualizarPais(Pais paisActualizado) {
+        for (int i = 0; i < paises.size(); i++) {
+            if (paises.get(i).getId() == paisActualizado.getId()) {
+                paises.set(i, paisActualizado);
+                return true;
+            }
         }
+        return false;
     }
 
-    public void actualizarPais() {
-//        try {
-//            Pais p = vista.obtenerDatosActualizados();
-//            paisDAO.update(p);
-//            vista.mostrarMensaje("País actualizado.");
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+    public boolean eliminarPais(int id) {
+        return paises.removeIf(p -> p.getId() == id);
     }
-
-    public void eliminarPais() {
-//        try {
-//            String nombre = vista.obtenerNombrePais();
-//            paisDAO.delete(nombre);
-//            vista.mostrarMensaje("País eliminado.");
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-    }
-
-    public void buscarPorNombre() {
-//        try {
-//            String nombre = vista.obtenerNombrePais();
-//            Pais p = paisDAO.getBy(nombre);
-//            vista.mostrarPais(p);
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-   }
 }

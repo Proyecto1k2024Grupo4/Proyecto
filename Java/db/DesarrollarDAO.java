@@ -1,6 +1,5 @@
 package db;
 
-import db.DBConnection;
 import model.Desarrollar;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -77,7 +76,7 @@ public class DesarrollarDAO {
     private Desarrollar resultSetToDesarrollar(ResultSet resultSet) throws SQLException {
         return new Desarrollar(
                 resultSet.getInt("idPropuesta"),
-                resultSet.getInt("idLey")
-        );
+                resultSet.getInt("idLey"),
+                resultSet.getInt("anio"));
     }
 }

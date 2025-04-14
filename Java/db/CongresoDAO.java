@@ -1,6 +1,5 @@
 package db;
 
-import db.DBConnection;
 import model.Congreso;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -71,7 +70,7 @@ public class CongresoDAO {
      */
     private Congreso resultSetToCongreso(ResultSet resultSet) throws SQLException {
         return new Congreso(
-                resultSet.getInt("id")
-        );
+                resultSet.getInt("id"),
+                resultSet.getString("nombre"));
     }
 }

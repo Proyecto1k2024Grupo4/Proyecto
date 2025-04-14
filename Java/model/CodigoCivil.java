@@ -18,8 +18,12 @@ public class CodigoCivil {
     }
 
     private int id;
+    String fecha;
     private int idPais;
     private ArrayList<Ley> leyes;
+
+    public CodigoCivil(int id, int idPais, String fecha) {
+    }
 
     /**
      * Convierte el objeto CodigoCivil en una representación JSON.
@@ -81,5 +85,13 @@ public class CodigoCivil {
 
     public ArrayList<Ley> getLeyes() {
         return leyes;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 }

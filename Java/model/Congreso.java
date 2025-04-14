@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Congreso {
 
 
-    public Congreso(int id) {
+    public Congreso(int id, String nombre) {
     }
 
   /**
