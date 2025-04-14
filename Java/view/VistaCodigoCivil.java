@@ -1,6 +1,8 @@
 package view;
 
 import model.CodigoCivil;
+
+import java.sql.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -30,10 +32,11 @@ public class VistaCodigoCivil {
         System.out.print("ID: ");
         int id = scanner.nextInt();
         scanner.nextLine();
-        System.out.print("Nombre: ");
-        String nombre = scanner.nextLine();
+        System.out.print("Fecha (formato yyyy-mm-dd): ");
+        String fechaTexto = scanner.nextLine();
+        Date fecha = Date.valueOf(fechaTexto);
 
-        return new CodigoCivil(id, nombre);
+        return new CodigoCivil(id, fecha);
     }
 
     /**
@@ -43,12 +46,13 @@ public class VistaCodigoCivil {
     public CodigoCivil obtenerDatosActualizados() {
         System.out.println("Introduce datos actualizados del código civil:");
         System.out.print("ID: ");
-        int id = scanner.nextInt();
+       int id = scanner.nextInt();
         scanner.nextLine();
-        System.out.print("Nombre nuevo: ");
-        String nombre = scanner.nextLine();
+        System.out.print("Fecha (formato yyyy-mm-dd): ");
+        String fechaTexto = scanner.nextLine();
+        Date fecha = Date.valueOf(fechaTexto);
 
-        return new CodigoCivil(id, nombre);
+        return new CodigoCivil(id, fecha);
     }
 
     /**

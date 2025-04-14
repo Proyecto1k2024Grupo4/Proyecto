@@ -112,7 +112,7 @@ public class CodigoCivilDAO {
      * @throws SQLException Si ocurre un error al procesar el ResultSet
      */
     private CodigoCivil resultSetToCodigoCivil(ResultSet rs) throws SQLException {
-        int id = rs.getInt("id");
+        Date id = rs.getInt("id");
         int idPais = rs.getInt("idPais");
         String fecha = rs.getString("fechaModificacion");
         return new CodigoCivil(id, idPais, fecha);

@@ -8,7 +8,6 @@ public class Desarrollar {
     private int idPropuesta;
     private int idPais;
     private int idCodigoCivil;
-
     private int idLey;
 
     /**
@@ -16,9 +15,8 @@ public class Desarrollar {
      *
      * @param idPropuesta Identificador de la propuesta.
      * @param idLey       Identificador de la ley.
-     * @param anio
      */
-    public Desarrollar(int idPropuesta, int idLey, int anio) {
+    public Desarrollar(int idPropuesta, int idLey ) {
         this.idPropuesta = idPropuesta;
         this.idLey = idLey;
     }

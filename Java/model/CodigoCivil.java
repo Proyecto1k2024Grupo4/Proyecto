@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Date;
 import java.util.*;
 
 /**
@@ -9,22 +10,22 @@ import java.util.*;
  */
 public class CodigoCivil {
 
-    /**
-     * Constructor de la clase CodigoCivil.
-     *
-     * @param id  Identificador del código civil.
-     * @param fecha Fecha de creación.
-     */
-    public CodigoCivil(int id, String fecha) {
-    }
-
     private int id;
-    String fecha;
+    private Date fecha;
     private int idPais;
     private ArrayList<Ley> leyes;
 
-    public CodigoCivil(int id, int idPais, String fecha) {
+    /**
+     * Constructor de la clase CodigoCivil.
+     *
+     * @param idPais  Identificador del Pais.
+     * @param fecha Fecha de creación.
+     */
+    public CodigoCivil(int idPais, Date fecha) {
+        this.idPais = idPais;
+        this.fecha = fecha;
     }
+
 
     /**
      * Convierte el objeto CodigoCivil en una representación JSON.
@@ -88,11 +89,11 @@ public class CodigoCivil {
         return leyes;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
