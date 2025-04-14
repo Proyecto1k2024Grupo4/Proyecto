@@ -94,4 +94,14 @@ public class CodigoCivil {
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
+
+    @Override
+    public String toString() {
+        return "CodigoCivil{" +
+                "id=" + id +
+                ", fecha='" + fecha + '\'' +
+                ", idPais=" + idPais +
+                ", leyes=" + leyes +
+                '}';
+    }
 }

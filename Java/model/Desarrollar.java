@@ -113,4 +113,14 @@ public class Desarrollar {
     public void setIdCodigoCivil(int idCodigoCivil) {
         this.idCodigoCivil = idCodigoCivil;
     }
+
+    @Override
+    public String toString() {
+        return "Desarrollar{" +
+                "idPropuesta=" + idPropuesta +
+                ", idPais=" + idPais +
+                ", idCodigoCivil=" + idCodigoCivil +
+                ", idLey=" + idLey +
+                '}';
+    }
 }

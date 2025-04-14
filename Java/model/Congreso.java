@@ -103,4 +103,13 @@ public class Congreso {
     public ArrayList<Politico> getPoliticos() {
         return politicos;
     }
+
+    @Override
+    public String toString() {
+        return "Congreso{" +
+                "id=" + id +
+                ", idPais=" + idPais +
+                ", politicos=" + politicos +
+                '}';
+    }
 }
