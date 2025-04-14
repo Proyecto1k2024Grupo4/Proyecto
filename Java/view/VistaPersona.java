@@ -1,5 +1,6 @@
 package view;
 
+import model.Ciudadano;
 import model.Persona;
 import model.Politico;
 import model.Sexo;
@@ -100,6 +101,29 @@ public class VistaPersona {
             }
         }
         return fecha;
+    }
+
+    public void mostrarCiudadanos(List<Ciudadano> ciudadanos) {
+        System.out.println("Lista de ciudadanos");
+        for (Ciudadano ciudadano: ciudadanos)
+            System.out.println(ciudadano);
+    }
+
+    public Ciudadano crearCiudadano (){
+        String pasaporte = obtenerPasaporte();
+        System.out.println("Introduce el nombre");
+        String nombre = scan.next();
+        System.out.println("Introduce el primer apellido");
+        String apellido1 = scan.next();
+        System.out.println("Introduce el segundo apellido");
+        String apellido2 = scan.next();
+        System.out.println("Introduce la fecha de nacimiento");
+        Date fecha = obtenerFecha();
+        System.out.println("Introduce el sexo(H,M)");
+        Sexo sexo = Sexo.valueOf(scan.next());
+        System.out.println("Introduce el pais (codigo)");
+        int pais = scan.nextInt();
+        return new Ciudadano(pasaporte, nombre, apellido1, apellido2, fecha, sexo, pais);
     }
 
 }

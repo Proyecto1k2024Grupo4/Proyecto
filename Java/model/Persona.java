@@ -190,6 +190,10 @@ public class Persona {
         this.paisNacimiento = paisNacimiento;
     }
 
+    /**
+     * Metodo to String
+     * @return String con la información de la persona
+     */
     @Override
     public String toString() {
         return "Persona{" +

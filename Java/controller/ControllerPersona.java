@@ -7,6 +7,12 @@ import view.VistaPersona;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Controlador para la gestión de personas, actua de intermediario entre vistaPersona y PersonaDAO
+ * @author Jonathan Villaba Moran 1ºK
+ * @version 14/04/2025
+ */
+
 public class ControllerPersona {
     private PersonaDAO personaDAO;
     private VistaPersona vistaPersona;
@@ -16,6 +22,10 @@ public class ControllerPersona {
         vistaPersona = new VistaPersona();
     }
 
+
+    /**
+     * Muestra todas personas las registradas
+     */
     public void mostrarTodasLasPersonas() {
         try {
             List<Persona> personas = personaDAO.getAllPersonas();
@@ -25,6 +35,10 @@ public class ControllerPersona {
         }
     }
 
+
+    /**
+     * Muestra a la persona con el numero de pasaporte indicado
+     */
     public void mostarPersonaPasaporte() {
         try {
             String pasaporte = vistaPersona.obtenerPasaporte();
@@ -35,6 +49,9 @@ public class ControllerPersona {
         }
     }
 
+    /**
+     * Metodo para crear una persona
+     */
     public void crearPersona() {
         try {
             Persona persona = vistaPersona.crearPersona();
@@ -44,6 +61,9 @@ public class ControllerPersona {
         }
     }
 
+    /**
+     * Metodo para actualizar a una persona con nuevos datos
+     */
     public void actualizarPersona() {
         try {
             String pasaporte = vistaPersona.obtenerPasaporte();
@@ -54,6 +74,9 @@ public class ControllerPersona {
         }
     }
 
+    /**
+     * Metodo que elimina una persona de la base de datos con el pasaporte que se le indica
+     */
     public void eliminarPersona() {
         try {
             String pasaporte = vistaPersona.obtenerPasaporte();
