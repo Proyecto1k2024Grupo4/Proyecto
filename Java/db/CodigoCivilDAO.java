@@ -5,6 +5,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 /**
+ *  @author ABDELMOGHIT SAMINI 1KDAM
  * Clase CodigoCivilDAO que proporciona acceso a la base de datos
  * para la entidad CodigoCivil utilizando el patrón Singleton.
  */

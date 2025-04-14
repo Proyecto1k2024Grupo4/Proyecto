@@ -1,6 +1,7 @@
 package model;
 
 /**
+ * @author ABDELMOGHIT SAMINI 1KDAM
  * Representa un país con su ID y nombre, y permite convertirlo a formatos JSON y XML.
  */
 public class Pais {

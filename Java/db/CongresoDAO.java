@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ *  @author ABDELMOGHIT SAMINI 1KDAM
  * Clase CongresoDAO que proporciona acceso a la base de datos para la entidad Congreso.
  */
 public class CongresoDAO {

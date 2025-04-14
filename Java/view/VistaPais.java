@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
+ * @author ABDELMOGHIT SAMINI 1KDAM
  * Clase VistaPais que gestiona la interacción con el usuario
  * para operaciones relacionadas con la entidad País.
  */

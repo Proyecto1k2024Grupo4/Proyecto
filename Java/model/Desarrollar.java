@@ -1,5 +1,6 @@
 package model;
 /**
+ * @author ABDELMOGHIT SAMINI 1KDAM
  * Representa la relación entre una propuesta y una ley, con métodos para convertir el objeto a JSON y XML.
  */
 public class Desarrollar {
