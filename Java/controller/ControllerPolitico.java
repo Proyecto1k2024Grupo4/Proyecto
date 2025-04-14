@@ -2,18 +2,20 @@ package controller;
 
 import db.PoliticoDAO;
 import model.Politico;
+import view.VistaPersona;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
 public class ControllerPolitico {
     private PoliticoDAO politicoDAO;
     //Aqui quiza con la VistaPersona basta
-    private VistaPolitico vistaPolitico;
+    private VistaPersona vistaPolitico;
 
     public ControllerPolitico() {
         politicoDAO = PoliticoDAO.getInstance();
-        vistaPolitico = new VistaPolitico();
+        vistaPolitico = new VistaPersona();
     }
 
     public void mostrarTodosLosPoliticos(){
@@ -46,7 +48,7 @@ public class ControllerPolitico {
 
     public void acutalizarPolitico() {
         try {
-            String fecha = vistaPolitico.obtenerFecha();
+            Date fecha = vistaPolitico.obtenerFecha();
             String pasaporte = vistaPolitico.obtenerPasaporte();
             politicoDAO.updatePolitico(fecha, pasaporte);
         } catch (SQLException e) {

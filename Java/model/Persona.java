@@ -1,5 +1,7 @@
 package model;
 
+import java.sql.Date;
+
 /**
  * Clase de Persona con información de la persona
  * @author Jonathan Villalba Morán
@@ -11,7 +13,7 @@ public class Persona {
     protected String nombre;
     protected String primerApellido;
     protected String segundoApellido;
-    protected String fnac;
+    protected Date fnac;
     protected Sexo sexo;
     protected int paisNacimiento;
 
@@ -25,7 +27,7 @@ public class Persona {
      * @param sexo El sexo del ciudadano
      * @param paisNacimiento El pais de nacimiento del ciudadano
      */
-    public Persona(String numPasaporte, String nombre, String primerApellido, String segundoApellido, String fnac, Sexo sexo, int paisNacimiento) {
+    public Persona(String numPasaporte, String nombre, String primerApellido, String segundoApellido, Date fnac, Sexo sexo, int paisNacimiento) {
         this.numPasaporte = numPasaporte;
         this.nombre = nombre;
         this.primerApellido = primerApellido;
@@ -85,8 +87,11 @@ public class Persona {
      * Metodo que establece el número de pasaporte del ciudadano.
      * @param numPasaporte número de pasaporte a asignar
      */
-    public void setNumPasaporte(String numPasaporte) {
-        this.numPasaporte = numPasaporte;
+    public void setNumPasaporte(String numPasaporte) throws IllegalArgumentException{
+        if (!(numPasaporte.length() > 16))
+            this.numPasaporte = numPasaporte;
+        else
+            throw new IllegalArgumentException("Error: el formato del pasaporte es incorrecto");
     }
 
     /**
@@ -141,7 +146,7 @@ public class Persona {
      * Metodo que devuelve la fecha de nacimiento del ciudadano.
      * @return fecha de nacimiento del ciudadano
      */
-    public String getFnac() {
+    public Date getFnac() {
         return fnac;
     }
 
@@ -149,7 +154,7 @@ public class Persona {
      * Metodo que establece la fecha de nacimiento del ciudadano.
      * @param fnac fecha de nacimiento a asignar
      */
-    public void setFnac(String fnac) {
+    public void setFnac(Date fnac) {
         this.fnac = fnac;
     }
 
@@ -185,4 +190,16 @@ public class Persona {
         this.paisNacimiento = paisNacimiento;
     }
 
+    @Override
+    public String toString() {
+        return "Persona{" +
+                "numPasaporte='" + numPasaporte + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", primerApellido='" + primerApellido + '\'' +
+                ", segundoApellido='" + segundoApellido + '\'' +
+                ", fnac=" + fnac +
+                ", sexo=" + sexo +
+                ", paisNacimiento=" + paisNacimiento +
+                '}';
+    }
 }

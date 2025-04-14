@@ -2,6 +2,7 @@ package controller;
 
 import db.PersonaDAO;
 import model.Persona;
+import view.VistaPersona;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -46,7 +47,7 @@ public class ControllerPersona {
     public void actualizarPersona() {
         try {
             String pasaporte = vistaPersona.obtenerPasaporte();
-            Persona persona = vistaPersona.obtenerDatosAcutalizados();
+            Persona persona = vistaPersona.crearPersona();
             personaDAO.updatePersona(persona, pasaporte);
         } catch (SQLException e) {
             e.printStackTrace();
