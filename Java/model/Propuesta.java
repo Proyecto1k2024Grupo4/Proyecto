@@ -142,8 +142,12 @@ public class Propuesta {
      * Metodo que establece el título de la propuesta
      * @param titulo Título de la propuesta
      */
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setTitulo(String titulo) throws IllegalArgumentException{
+        if (!(titulo.length() > 100)){
+            this.titulo = titulo;
+        } else {
+            throw new IllegalArgumentException("Error: El título no debe tener más de 100 carácteres.");
+        }
     }
 
     /**
@@ -158,8 +162,12 @@ public class Propuesta {
      * Metodo que establece la descripción de la propuesta
      * @param descripcion Descripcion de la propuesta
      */
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setDescripcion(String descripcion) throws IllegalArgumentException{
+        if (!(descripcion.length() > 2000)){
+            this.descripcion = descripcion;
+        } else {
+            throw new IllegalArgumentException("Error: la descripción no puede tener más de 2000 caracteres.");
+        }
     }
 
     /**
@@ -222,8 +230,12 @@ public class Propuesta {
      * Metodo que establece el número de pasaporte político del proponente
      * @param numPasaportePolitico Número de pasaporte político
      */
-    public void setNumPasaportePolitico(String numPasaportePolitico) {
-        this.numPasaportePolitico = numPasaportePolitico;
+    public void setNumPasaportePolitico(String numPasaportePolitico) throws IllegalArgumentException{
+        if (!(numPasaportePolitico.length() > 16)){
+            this.numPasaportePolitico = numPasaportePolitico;
+        } else {
+            throw new IllegalArgumentException("Error: el pasaporte del político no puede tener más de 16 caracteres.");
+        }
     }
 
     /**
@@ -272,5 +284,21 @@ public class Propuesta {
      */
     public void setFechaPublicacion(Date fechaPublicacion) {
         this.fechaPublicacion = fechaPublicacion;
+    }
+
+    @Override
+    public String toString() {
+        return "Propuesta{" +
+                "id=" + id +
+                ", titulo='" + titulo + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", fechaExpiracion=" + fechaExpiracion +
+                ", estado=" + estado +
+                ", idCongreso=" + idCongreso +
+                ", numPasaportePolitico='" + numPasaportePolitico + '\'' +
+                ", fechaProposicion=" + fechaProposicion +
+                ", fechaAceptacion=" + fechaAceptacion +
+                ", fechaPublicacion=" + fechaPublicacion +
+                '}';
     }
 }

@@ -197,4 +197,17 @@ public class Ley {
     public void setIdCodigoCivil(int idCodigoCivil) {
         this.idCodigoCivil = idCodigoCivil;
     }
+
+    @Override
+    public String toString() {
+        return "Ley{" +
+                "id=" + id +
+                ", descripcion='" + descripcion + '\'' +
+                ", fechaAplicacion=" + fechaAplicacion +
+                ", fechaModificacion=" + fechaModificacion +
+                ", fechaImplementacion=" + fechaImplementacion +
+                ", idCodigoCivil=" + idCodigoCivil +
+                '}';
+    }
+
 }

@@ -26,6 +26,7 @@ public class PropuestaDAO {
     private static final String INSERT_QUERY = "insert into PROPUESTA(titulo, descripcion, fechaExpiracion, estado, idCongreso, numPasaportePolitico, fechaProposicion, fechaAceptacion, fechaPublicacion) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String SELECT_ALL_QUERY = "select * from PROPUESTA";
     private static final String SELECT_BY_ID_QUERY = "select * from PROPUESTA where id = ?";
+    private static final String SELECT_BY_ID_CONGRESO_QUERY = "select * from PROPUESTA where idCongreso = ?";
     private static final String UPDATE_BY_PROPUESTA_QUERY = "update PROPUESTA set titulo = ?, descripcion = ?, fechaExpiracion = ?, estado = ?, " +
             "numPasaportePolitico = ?, fechaProposicion = ?, fechaAceptacion = ?, fechaPublicacion = ? where id = ?";
 
@@ -112,6 +113,24 @@ public class PropuestaDAO {
         Propuesta propuesta = null;
         try(PreparedStatement statement = connection.prepareStatement(SELECT_BY_ID_QUERY)){
             statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()){
+                propuesta = resultSetToPropuesta(resultSet);
+            }
+        }
+        return propuesta;
+    }
+
+    /**
+     * Metodo que devuelve propuestas identificadas por un id de congreso proporcionado
+     * @param idCongreso Id del congreso al cual pertenecen las propuestas que se desean recuperar
+     * @return Propuestas con el id del congreso proporcionado
+     * @throws SQLException Excepcion SQL
+     */
+    public Propuesta getPropuestaByIdCongreso(int idCongreso) throws SQLException{
+        Propuesta propuesta = null;
+        try(PreparedStatement statement = connection.prepareStatement(SELECT_BY_ID_CONGRESO_QUERY)){
+            statement.setInt(1, idCongreso);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()){
                 propuesta = resultSetToPropuesta(resultSet);
