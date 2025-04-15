@@ -25,8 +25,9 @@ public class VistaPropuesta {
     }
 
     /**
-     * Metodo que muestra por pantalla todas las propuestas.
-     * @param propuestas
+     * Metodo que muestra por pantalla todas las propuestas que se le pasen mediante
+     * un List como parámetro.
+     * @param propuestas Lista de propuestas a mostrar
      */
     public void mostrarPropuestas(List<Propuesta> propuestas){
         System.out.println("Lista de propuestas:");
@@ -35,7 +36,7 @@ public class VistaPropuesta {
 
     /**
      * Metodo que muestra por pantalla una propuesta.
-     * @param propuesta
+     * @param propuesta Propuesta que se desea mostrar
      */
     public void mostrarPropuesta(Propuesta propuesta){
         System.out.println(propuesta);
@@ -68,13 +69,14 @@ public class VistaPropuesta {
      * Metodo que pide los datos necesarios y crea una propuesta
      * @return Propuesta creada por el usuario
      */
-    public Propuesta crearPropuesta(){
+    public Propuesta crearPropuesta(boolean conId){
 
         boolean propuestaCorrecta = false;
         Propuesta propuesta = null;
 
         System.out.println("\n---Creación de propuesta---");
 
+        int id = 0;
         String titulo;
         String descripcion;
         Date fechaExpiracion;
@@ -89,6 +91,11 @@ public class VistaPropuesta {
             try {
                 boolean estadoCorrecto = false;
                 propuestaCorrecta = true;
+
+                if(conId){
+                    System.out.print("Introduce un id: ");
+                    id = pedirId();
+                }
 
                 System.out.print("Introduce un título: ");
                 titulo = scanner.nextLine();
@@ -116,9 +123,15 @@ public class VistaPropuesta {
                 fechaProposicion = introducirFecha();
                 fechaAceptacion = introducirFecha();
                 fechaPublicacion = introducirFecha();
-                
-                propuesta = new Propuesta(titulo, descripcion, fechaExpiracion, estadoPropuesta, 
-                        idCongreso, numPasaportePolitico, fechaProposicion, fechaAceptacion, fechaPublicacion);
+
+                if (conId){
+                    propuesta = new Propuesta(id, titulo, descripcion, fechaExpiracion, estadoPropuesta,
+                            idCongreso, numPasaportePolitico, fechaProposicion, fechaAceptacion, fechaPublicacion);
+                } else {
+                    propuesta = new Propuesta(titulo, descripcion, fechaExpiracion, estadoPropuesta,
+                            idCongreso, numPasaportePolitico, fechaProposicion, fechaAceptacion, fechaPublicacion);
+                }
+
 
             } catch (Exception e){
                 propuestaCorrecta = false;

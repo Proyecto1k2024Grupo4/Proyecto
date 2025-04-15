@@ -19,7 +19,7 @@ public class Votar {
      * @param decision Boolean que indica el voto de la propuesta: true->a favor, false-> en contra
      */
     public Votar(String numPasaporteCiudadano, int idPropuesta, boolean decision) {
-        this.numPasaporteCiudadano = numPasaporteCiudadano;
+        setNumPasaporteCiudadano(numPasaporteCiudadano);
         this.idPropuesta = idPropuesta;
         this.decision = decision;
     }
@@ -74,6 +74,14 @@ public class Votar {
      */
     public boolean getDecision() {
         return decision;
+    }
+
+    public void setNumPasaporteCiudadano(String numPasaporteCiudadano) throws IllegalArgumentException {
+        if (numPasaporteCiudadano.length() > 16){
+            this.numPasaporteCiudadano = numPasaporteCiudadano;
+        } else {
+            throw new IllegalArgumentException("Error, el número de pasaporte del ciudadano no puede tener más de 16 caracteres");
+        }
     }
 
 }
