@@ -72,12 +72,37 @@ public class DesarrollarDAO {
      * Convierte un ResultSet en un objeto Desarrollar.
      * @param resultSet El ResultSet que contiene los datos de un desarrollo
      * @return Objeto Desarrollar con los datos obtenidos del ResultSet
-     * @throws SQLException Si ocurre un error al procesar el ResultSetl
+     * @throws SQLException Si ocurre un error al procesar el ResultSet
      */
     private Desarrollar resultSetToDesarrollar(ResultSet resultSet) throws SQLException {
-        return new Desarrollar(
-                resultSet.getInt("idPropuesta"),
-                resultSet.getInt("idLey"),
-                resultSet.getInt("anio"));
+        Desarrollar desarrollar = new Desarrollar();
+        desarrollar.setIdPropuesta(resultSet.getInt("idPropuesta"));
+        desarrollar.setIdLey(resultSet.getInt("idLey"));
+        desarrollar.setAnio(resultSet.getInt("anio"));
+        return desarrollar;
+    }
+
+    // Método para eliminar desarrollo
+    public void deleteDesarrollar(int idPropuesta, int idLey) throws SQLException {
+        String DELETE_QUERY = "DELETE FROM DESARROLLAR WHERE idPropuesta = ? AND idLey = ?";
+        try (PreparedStatement statement = connection.prepareStatement(DELETE_QUERY)) {
+            statement.setInt(1, idPropuesta);
+            statement.setInt(2, idLey);
+            statement.executeUpdate();
+        }
+    }
+
+    // Método para obtener desarrollos por idPropuesta
+    public List<Desarrollar> getDesarrollosByPais(int idPropuesta) throws SQLException {
+        String SELECT_BY_PROPOSAL_QUERY = "SELECT * FROM DESARROLLAR WHERE idPropuesta = ?";
+        List<Desarrollar> desarrollos = new ArrayList<>();
+        try (PreparedStatement statement = connection.prepareStatement(SELECT_BY_PROPOSAL_QUERY)) {
+            statement.setInt(1, idPropuesta);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                desarrollos.add(resultSetToDesarrollar(resultSet));
+            }
+        }
+        return desarrollos;
     }
 }

@@ -8,15 +8,13 @@ public class Desarrollar {
     private int idPropuesta;
     private int idPais;
     private int idCodigoCivil;
+    private int anio;
     private int idLey;
 
     /**
      * Constructor que inicializa los campos con los valores proporcionados.
-     *
-     * @param idPropuesta Identificador de la propuesta.
-     * @param idLey       Identificador de la ley.
      */
-    public Desarrollar(int idPropuesta, int idLey ) {
+    public Desarrollar() {
         this.idPropuesta = idPropuesta;
         this.idLey = idLey;
     }
@@ -121,5 +119,13 @@ public class Desarrollar {
                 ", idCodigoCivil=" + idCodigoCivil +
                 ", idLey=" + idLey +
                 '}';
+    }
+
+    public void setAnio(int anio) {
+        this.anio = anio;
+    }
+
+    public int getAnio() {
+        return anio;
     }
 }
