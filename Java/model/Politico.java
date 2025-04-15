@@ -1,19 +1,55 @@
 package model;
 
+import java.sql.Date;
+
+/**
+ * Clase Politico que extiende de persona y guarda información de los politicos
+ *
+ * @author Jonathan Villalba Moran
+ * @version 7-4-2025
+ */
 public class Politico extends Persona{
 
     // Propiedades
     public String numPasaporte;
-    public String fechaIniciacion;
-    public String fechaRetirada;
+    public Date fechaIniciacion;
+    public Date fechaRetirada;
     public int idCongreso;
 
-    public Politico() {
+    /**
+     * Constructor de Politico
+     * @param numPasaporte El numero de pasaporte del ciudadano que se usa como clave primaria
+     * @param nombre Nombre de la persona
+     * @param primerApellido Primer apellido de la persona
+     * @param segundoApellido Segundo apellido de la persona
+     * @param fnac La fecha de nacimiento de la persona
+     * @param sexo El sexo de la persona
+     * @param paisNacimiento El pais de nacimiento de la persona
+     * @param fechaIniciacion La fecha en la que se convirtió en politico
+     * @param fechaRetirada La fecha en la que se retiro de su puesto
+     * @param idCongreso El id del congreso al que pertenece
+     */
+    public Politico(String numPasaporte, String nombre, String primerApellido, String segundoApellido, Date fnac, Sexo sexo, int paisNacimiento, Date fechaIniciacion, Date fechaRetirada, int idCongreso) {
+        super(numPasaporte, nombre, primerApellido, segundoApellido, fnac, sexo, paisNacimiento);
+        this.numPasaporte = numPasaporte;
+        this.fechaIniciacion = fechaIniciacion;
+        this.fechaRetirada = fechaRetirada;
+        this.idCongreso = idCongreso;
     }
 
+    /**
+     * Metodo para crear una nueva propuesta
+     * @param titulo
+     * @param descripcion
+     */
     public void proponer(String titulo, String descripcion) {
 
     }
+
+    /**
+     * Metodo para transformar a XML
+     * @return XML del objeto actual
+     */
     @Override
     public String toXml(){
         StringBuilder xmlBuilder = new StringBuilder();
@@ -32,6 +68,10 @@ public class Politico extends Persona{
         return String.valueOf(xmlBuilder);
     }
 
+    /**
+     * Metodo para transformar a Json
+     * @return el objeto actual en formato Json
+     */
     @Override
     public String toJson(){
         StringBuilder jsonBuilder = new StringBuilder();
@@ -48,5 +88,70 @@ public class Politico extends Persona{
                 .append("}");
 
         return String.valueOf(jsonBuilder);
+    }
+
+    /**
+     * Metodo que devuelve la fecha de iniciación
+     * @return la fecha de iniciación
+     */
+    public Date getFechaIniciacion() {
+        return fechaIniciacion;
+    }
+
+    /**
+     * Metodo que establece la fecha de iniciación
+     * @param fechaIniciacion
+     */
+    public void setFechaIniciacion(Date fechaIniciacion) {
+        this.fechaIniciacion = fechaIniciacion;
+    }
+
+    /**
+     * Metodo que devuelve la fecha de retirada
+     * @return la fecha de iniciación
+     */
+    public Date getFechaRetirada() {
+        return fechaRetirada;
+    }
+
+    /**
+     * Metodo que establece la fecha de retirada
+     * @param fechaRetirada
+     */
+    public void setFechaRetirada(Date fechaRetirada) {
+        this.fechaRetirada = fechaRetirada;
+    }
+
+    /**
+     * Metodo que devuelve el id del congreso al que pertenece
+     * @return el id del congreso
+     */
+    public int getIdCongreso() {
+        return idCongreso;
+    }
+
+    /**
+     * Establece el id del congreso al que pertenece
+     * @param idCongreso
+     */
+    public void setIdCongreso(int idCongreso) {
+        this.idCongreso = idCongreso;
+    }
+
+    @Override
+    public String toString() {
+        return "Politico{" +
+                "numPasaporte='" + numPasaporte + '\'' +
+                ", fechaIniciacion=" + fechaIniciacion +
+                ", fechaRetirada=" + fechaRetirada +
+                ", idCongreso=" + idCongreso +
+                ", numPasaporte='" + numPasaporte + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", primerApellido='" + primerApellido + '\'' +
+                ", segundoApellido='" + segundoApellido + '\'' +
+                ", fnac=" + fnac +
+                ", sexo=" + sexo +
+                ", paisNacimiento=" + paisNacimiento +
+                '}';
     }
 }

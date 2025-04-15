@@ -1,4 +1,7 @@
 # Proyecto: PROP-IN
+
+### ![alt text](PROP-IN-LOGO.png)
+
 Sistema de Gestión de Votaciones y Propuestas de Reforma Legal a Nivel Internacional.
 
 PROP-IN (Propuestas Internacionales) es un proyecto en el que se recogen las propuestas de reforma de ley de los distintos países con los que trabajamos. 
@@ -6,7 +9,6 @@ Además se guardan las leyes y votaciones, que agilizamos mediante nuestra aplic
 
 ### Participantes:
 - [Diego Fernando Valencia Correa](https://github.com/DocD1306)
-- [Pablo Bernabeu Robles](https://github.com/bernabeu17)
 - [Jonathan Villalba Moran](https://github.com/JonathanWick21)
 - [Abdel Moghit Samini](https://github.com/Samini04)
 
@@ -39,7 +41,7 @@ Además se guardan las leyes y votaciones, que agilizamos mediante nuestra aplic
 - [UML](MDs/UML.md)
 - [Codigo Java](/Java/)
 - [Repartición de tareas MVC / DAO](MDs/reparticionDAO.md)
-
+- [Documentación JavaDoc](https://proyecto1k2024grupo4.github.io/Proyecto/)
 
 #### Modelos para la transmisión de datos
 
