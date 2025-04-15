@@ -1,6 +1,8 @@
 package model;
 
 
+import java.sql.Date;
+
 /**
  * Clase Ley que sirve para almacenar la información de las leyes
  * @author Diego Fernando Valencia Correa 1ºK
@@ -11,17 +13,10 @@ public class Ley {
     // Propiedades
     private int id;
     private String descripcion;
-    private java.sql.Date fechaAplicacion;
-    private java.sql.Date fechaModificacion;
-    private java.sql.Date fechaImplementacion;
+    private Date fechaAplicacion;
+    private Date fechaModificacion;
+    private Date fechaImplementacion;
     private int idCodigoCivil;
-
-
-    /**
-     * Default constructor
-     */
-    public Ley() {
-    }
 
     /**
      * Constructor sin ID
@@ -31,7 +26,7 @@ public class Ley {
      * @param fechaImplementacion
      * @param idCodigoCivil
      */
-    public Ley(String descripcion, java.sql.Date fechaAplicacion, java.sql.Date fechaModificacion, java.sql.Date fechaImplementacion, int idCodigoCivil) {
+    public Ley(String descripcion, Date fechaAplicacion, Date fechaModificacion, Date fechaImplementacion, int idCodigoCivil) {
         setDescripcion(descripcion);
         setFechaAplicacion(fechaAplicacion);
         setFechaModificacion(fechaModificacion);
@@ -48,7 +43,7 @@ public class Ley {
      * @param fechaImplementacion Fecha de implementación de la ley
      * @param idCodigoCivil Id del código civil de la ley
      */
-    public Ley(int id, String descripcion, java.sql.Date fechaAplicacion, java.sql.Date fechaModificacion, java.sql.Date fechaImplementacion, int idCodigoCivil) {
+    public Ley(int id, String descripcion, Date fechaAplicacion, Date fechaModificacion, Date fechaImplementacion, int idCodigoCivil) {
         this.id = id;
         setDescripcion(descripcion);
         setFechaAplicacion(fechaAplicacion);
@@ -130,15 +125,19 @@ public class Ley {
      * Metodo que establece la descripción de la ley
      * @param descripcion Descripción de la ley
      */
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setDescripcion(String descripcion) throws IllegalArgumentException{
+        if (!(descripcion.length() > 2000)){
+            this.descripcion = descripcion;
+        } else {
+            throw new IllegalArgumentException("Error, la descripción de la ley no puede tener más de 2000 caracteres");
+        }
     }
 
     /**
      * Metodo que devuelve la fecha de aplicación de la ley
      * @return Fecha de aplicación
      */
-    public java.sql.Date getFechaAplicacion() {
+    public Date getFechaAplicacion() {
         return fechaAplicacion;
     }
 
@@ -146,7 +145,7 @@ public class Ley {
      * Metodo que establece la fecha de aplicación de la ley
      * @param fechaAplicacion Fecha de aplicación
      */
-    public void setFechaAplicacion(java.sql.Date fechaAplicacion) {
+    public void setFechaAplicacion(Date fechaAplicacion) {
         this.fechaAplicacion = fechaAplicacion;
     }
 
@@ -154,7 +153,7 @@ public class Ley {
      * Metodo que devuelve la fecha de modificación de la ley
      * @return Fecha de modificación
      */
-    public java.sql.Date getFechaModificacion() {
+    public Date getFechaModificacion() {
         return fechaModificacion;
     }
 
@@ -162,7 +161,7 @@ public class Ley {
      * Metodo que establece la fecha de modificación de la ley
      * @param fechaModificacion Fecha de modificación
      */
-    public void setFechaModificacion(java.sql.Date fechaModificacion) {
+    public void setFechaModificacion(Date fechaModificacion) {
         this.fechaModificacion = fechaModificacion;
     }
 
@@ -170,7 +169,7 @@ public class Ley {
      * Metodo que devuelve la fecha de implementación de la ley
      * @return Fecha de implementación de la ley
      */
-    public java.sql.Date getFechaImplementacion() {
+    public Date getFechaImplementacion() {
         return fechaImplementacion;
     }
 
@@ -178,7 +177,7 @@ public class Ley {
      * Metodo que establece la fecha de implementación de la ley
      * @param fechaImplementacion Fecha de implementación de la ley
      */
-    public void setFechaImplementacion(java.sql.Date fechaImplementacion) {
+    public void setFechaImplementacion(Date fechaImplementacion) {
         this.fechaImplementacion = fechaImplementacion;
     }
 
@@ -197,4 +196,17 @@ public class Ley {
     public void setIdCodigoCivil(int idCodigoCivil) {
         this.idCodigoCivil = idCodigoCivil;
     }
+
+    @Override
+    public String toString() {
+        return "Ley{" +
+                "id=" + id +
+                ", descripcion='" + descripcion + '\'' +
+                ", fechaAplicacion=" + fechaAplicacion +
+                ", fechaModificacion=" + fechaModificacion +
+                ", fechaImplementacion=" + fechaImplementacion +
+                ", idCodigoCivil=" + idCodigoCivil +
+                '}';
+    }
+
 }
