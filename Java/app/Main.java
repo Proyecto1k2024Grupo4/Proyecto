@@ -1,9 +1,6 @@
 package app;
 
-import controller.ControllerLey;
-import controller.ControllerPersona;
-import controller.ControllerPolitico;
-import controller.ControllerPropuesta;
+import controller.*;
 
 import java.util.Scanner;
 
@@ -123,19 +120,26 @@ public class Main {
                 case 4 -> {
                     opcion = 0;
                     mostrarMenuPaises();
+                    ControllerPais controllerPais = new ControllerPais();
                     while (opcionMenuPaises(opcion)){
                         opcion = introducirOpcion();
                         if (opcionMenuPaises(opcion)) System.out.print("Por favor, introduce una opcion entre 1 y 5: ");
                     }
                     switch (opcion){
                         case 1 -> {
-
+                            controllerPais.mostrarTodosLosPaises();
                         }
                         case 2 -> {
-
+                            controllerPais.buscarPaisPorId();
                         }
                         case 3 -> {
-
+                            controllerPais.crearPais();
+                        }
+                        case 4 -> {
+                            controllerPais.actualizarPais();
+                        }
+                        case 5 -> {
+                            controllerPais.eliminarPais();
                         }
                     }
                 }
@@ -229,11 +233,11 @@ public class Main {
      */
     public static void mostrarMenuPaises(){
         System.out.println("--- Menu de Paises ---");
-        System.out.println("1. Mostrar todas las propuestas");
-        System.out.println("2. Mostrar propuestas por id");
-        System.out.println("3. Mostrar propuestas por id de congreso");
-        System.out.println("4. Insertar propuesta");
-        System.out.println("5. Actualizar propuesta");
+        System.out.println("1. Mostrar todos los paises");
+        System.out.println("2. Buscar pais por id");
+        System.out.println("3. Crear pais");
+        System.out.println("4. Actualizar pais");
+        System.out.println("5. Eliminar pais");
     }
 
     public static int introducirOpcion() {
