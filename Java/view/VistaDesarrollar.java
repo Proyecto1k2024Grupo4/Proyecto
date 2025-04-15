@@ -7,7 +7,7 @@ import java.util.Scanner;
  * Esta clase es responsable de interactuar con el usuario en relación a las Leyes,
  * solicitando información sobre propuestas y leyes, y mostrando mensajes al usuario.
  */
-public class VistaDesrollar {
+public class VistaDesarrollar {
     private Scanner scanner = new Scanner(System.in);
 
     /**
