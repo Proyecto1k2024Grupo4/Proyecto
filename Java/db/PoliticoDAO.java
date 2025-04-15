@@ -3,10 +3,7 @@ package db;
 import model.Politico;
 import model.Sexo;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,11 +56,11 @@ public class PoliticoDAO {
             statement.setString(2, politico.getNombre());
             statement.setString(3, politico.getPrimerApellido());
             statement.setString(4, politico.getSegundoApellido());
-            statement.setString(5, politico.getFnac());
+            statement.setDate(5, politico.getFnac());
             statement.setString(6, String.valueOf(politico.getSexo()));
             statement.setString(7, String.valueOf(politico.getPaisNacimiento()));
-            statement.setString(8, politico.getFechaIniciacion());
-            statement.setString(9, politico.getFechaRetirada());
+            statement.setDate(8, politico.getFechaIniciacion());
+            statement.setDate(9, politico.getFechaRetirada());
             statement.setInt(10, politico.getIdCongreso());
             statement.executeUpdate();
         }
@@ -107,9 +104,9 @@ public class PoliticoDAO {
      * @param pasaporte para saber en que politico hacer el update
      * @throws SQLException
      */
-    public void updatePolitico (String fecha, String pasaporte) throws SQLException {
+    public void updatePolitico (Date fecha, String pasaporte) throws SQLException {
         try (PreparedStatement statement = connection.prepareStatement(UPDATE_FECHA_QUERY)){
-            statement.setString(1, fecha);
+            statement.setDate(1, fecha);
             statement.setString(2, pasaporte);
             statement.executeUpdate();
         }
@@ -120,7 +117,7 @@ public class PoliticoDAO {
      * @param numPasaporte
      * @throws SQLException
      */
-    public void deletePersonaByNumPasaporte(String numPasaporte) throws SQLException {
+    public void deletePoliticoByNumPasaporte(String numPasaporte) throws SQLException {
         try (PreparedStatement statement = connection.prepareStatement(DELETE_QUERY)){
             statement.setString(1, numPasaporte);
             statement.executeUpdate();
@@ -139,11 +136,11 @@ public class PoliticoDAO {
                 resultSet.getString("nombre"),
                 resultSet.getString("primerApellido"),
                 resultSet.getString("segundoApellido"),
-                resultSet.getString("fnac"),
+                resultSet.getDate("fnac"),
                 Sexo.valueOf(resultSet.getString("sexo")),
                 resultSet.getInt("paisNacimiento"),
-                resultSet.getString("fechaIniciacion"),
-                resultSet.getString("fechaRetirada"),
+                resultSet.getDate("fechaIniciacion"),
+                resultSet.getDate("fechaRetirada"),
                 resultSet.getInt("idCongreso")
         );
     }

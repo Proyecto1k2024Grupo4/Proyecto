@@ -16,10 +16,10 @@ public class ControllerPais {
         vista = new VistaPais();
     }
 
-    public void mostrarTodos() {
+    public void mostrarTodosLosPaises() {
         try {
-            List<Pais> lista = paisDAO.getAllPaises();
-            vista.mostrarPaises(lista);
+            List<Pais> paises = paisDAO.getAllPaises();
+            vista.mostrarPaises(paises);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -27,8 +27,8 @@ public class ControllerPais {
 
     public void crearPais() {
         try {
-            Pais p = vista.crearPais();
-            paisDAO.insertPais(p);
+            Pais pais = vista.crearPais();
+            paisDAO.insertPais(pais);
             vista.mostrarMensaje("País creado correctamente.");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -36,32 +36,32 @@ public class ControllerPais {
     }
 
     public void actualizarPais() {
-//        try {
-//            Pais p = vista.obtenerDatosActualizados();
-//            paisDAO.update(p);
-//            vista.mostrarMensaje("País actualizado.");
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            Pais pais = vista.obtenerDatosActualizados();
+            paisDAO.updatePais(pais);
+            vista.mostrarMensaje("País actualizado correctamente.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void eliminarPais() {
-//        try {
-//            String nombre = vista.obtenerNombrePais();
-//            paisDAO.delete(nombre);
-//            vista.mostrarMensaje("País eliminado.");
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            int id = vista.obtenerIdPais();
+            paisDAO.deletePais(id);
+            vista.mostrarMensaje("País eliminado correctamente.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void buscarPorNombre() {
-//        try {
-//            String nombre = vista.obtenerNombrePais();
-//            Pais p = paisDAO.getBy(nombre);
-//            vista.mostrarPais(p);
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-   }
+    public void buscarPaisPorId() {
+        try {
+            int id = vista.obtenerIdPais();
+            Pais pais = paisDAO.getPaisById(id);
+            vista.mostrarPais(pais);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

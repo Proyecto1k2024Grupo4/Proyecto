@@ -16,10 +16,10 @@ public class ControllerCongreso {
         vista = new VistaCongreso();
     }
 
-    public void mostrarTodos() {
+    public void mostrarTodosLosCongresos() {
         try {
-            List<Congreso> lista = congresoDAO.getAllCongresos();
-            vista.mostrarCongresos(lista);
+            List<Congreso> congresos = congresoDAO.getAllCongresos();
+            vista.mostrarCongresos(congresos);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -27,41 +27,41 @@ public class ControllerCongreso {
 
     public void crearCongreso() {
         try {
-            Congreso c = vista.crearCongreso();
-            congresoDAO.insertCongreso(c);
-            vista.mostrarMensaje("Congreso creado.");
+            Congreso congreso = vista.crearCongreso();
+            congresoDAO.insertCongreso(congreso);
+            vista.mostrarMensaje("Congreso creado correctamente.");
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
     public void actualizarCongreso() {
-//        try {
-//            Congreso c = vista.obtenerDatosActualizados();
-//            congresoDAO.update(c);
-//            vista.mostrarMensaje("Congreso actualizado.");
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            Congreso congreso = vista.obtenerDatosActualizados();
+            congresoDAO.updateCongreso(congreso);
+            vista.mostrarMensaje("Congreso actualizado correctamente.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void eliminarCongreso() {
-//        try {
-//            int id = vista.obtenerId();
-//            congresoDAO.delete(id);
-//            vista.mostrarMensaje("Congreso eliminado.");
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            int id = vista.obtenerIdCongreso();
+            congresoDAO.deleteCongreso(id);
+            vista.mostrarMensaje("Congreso eliminado correctamente.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void buscarPorId() {
-//        try {
-//            int id = vista.obtenerId();
-//            Congreso c = congresoDAO.getById(id);
-//            vista.mostrarCongreso(c);
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+    public void buscarCongresoPorId() {
+        try {
+            int id = vista.obtenerIdCongreso();
+            Congreso congreso = congresoDAO.getCongresoById(id);
+            vista.mostrarCongreso(congreso);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

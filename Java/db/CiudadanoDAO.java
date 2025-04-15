@@ -101,7 +101,7 @@ public class CiudadanoDAO {
                 resultSet.getString("nombre"),
                 resultSet.getString("primerApellido"),
                 resultSet.getString("segundoApellido"),
-                resultSet.getString("fnac"),
+                resultSet.getDate("fnac"),
                 Sexo.valueOf(resultSet.getString("sexo")),
                 resultSet.getInt("paisNacimiento")
         );
