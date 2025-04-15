@@ -18,26 +18,26 @@ public class Main {
         int opcion = 0;
 
         // Condicionales para los menús
-        boolean menuPrincipal = opcion < 1 && opcion > 5;
-        boolean menuPropuestas = opcion < 1 && opcion > 5;
+
         boolean menuPersonas = false;
         boolean menuLeyes = false;
         boolean menuPaises = false;
 
         do {
+            opcion = 0;
             mostrarMenu();
-            while (menuPrincipal){
+            while (opcionMenuPrincipal(opcion)){
                 opcion = introducirOpcion();
-                if (menuPrincipal) System.out.print("Por favor, introduce una opcion entre 1 y 5: ");
+                if (opcionMenuPrincipal(opcion)) System.out.print("Por favor, introduce una opcion entre 1 y 5: ");
             }
             switch (opcion) {
                 case 1 -> {
                     opcion = 0;
                     mostrarMenuPropuestas();
                     ControllerPropuesta controllerPropuesta = new ControllerPropuesta();
-                    while (menuPropuestas){
+                    while (opcionMenuPropuestas(opcion)){
                         opcion = introducirOpcion();
-                        if (menuPropuestas) System.out.print("Por favor, introduce una opcion entre 1 y 5: ");
+                        if (opcionMenuPropuestas(opcion)) System.out.print("Por favor, introduce una opcion entre 1 y 5: ");
                     }
                     switch (opcion){
                         case 1 -> {
@@ -62,9 +62,9 @@ public class Main {
                     mostrarMenuPersonas();
                     ControllerPersona controllerPersona = new ControllerPersona();
                     ControllerPolitico controllerPolitico = new ControllerPolitico();
-                    while (menuPersonas){
+                    while (opcionMenuPersonas(opcion)){
                         opcion = introducirOpcion();
-                        if (menuPersonas) System.out.print("Por favor, introduce una opcion entre 1 y 5: ");
+                        if (opcionMenuPersonas(opcion)) System.out.print("Por favor, introduce una opcion entre 1 y 5: ");
                     }
                     switch (opcion){
                         case 1 -> {
@@ -158,6 +158,26 @@ public class Main {
         System.out.println("4. Paises");
         System.out.println("5. Salir");
         System.out.print("Por favor, seleccione la opcione que desee consultar (1-5): ");
+    }
+
+    public static boolean opcionMenuPrincipal(int opcion){
+        return opcion < 1 || opcion > 5;
+    }
+
+    public static boolean opcionMenuPropuestas(int opcion){
+        return opcion < 1 || opcion > 5;
+    }
+
+    public static boolean opcionMenuPersonas(int opcion){
+        return opcion < 1 || opcion > 6;
+    }
+
+    public static boolean opcionMenuLeyes(int opcion){
+        return opcion < 1 || opcion > 5;
+    }
+
+    public static boolean opcionMenuPaises(int opcion){
+        return opcion < 1 || opcion > 5;
     }
 
     /**
