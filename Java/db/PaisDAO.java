@@ -1,37 +1,24 @@
 package db;
 
-import db.DBConnection;
 import model.Pais;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *   @author ABDELMOGHIT SAMINI 1KDAM
- * Clase PaisDAO que proporciona acceso a la base de datos para la entidad Pais.
- */
 public class PaisDAO {
     private static PaisDAO instance;
     private Connection connection;
 
-    private static final String INSERT_QUERY = "INSERT INTO PAIS (nombre, numCiudadanos, numPoliticos) VALUES (?, ?, ?)";
+    private static final String INSERT_QUERY = "INSERT INTO PAIS (nombre) VALUES (?)";
     private static final String SELECT_ALL_QUERY = "SELECT * FROM PAIS";
-    private static final String SELECT_BY_ID_QUERY = "SELECT * FROM PAIS WHERE nombre = ?";
+    private static final String SELECT_BY_ID_QUERY = "SELECT * FROM PAIS WHERE id = ?";
+    private static final String UPDATE_QUERY = "UPDATE PAIS SET nombre = ? WHERE id = ?";
+    private static final String DELETE_QUERY = "DELETE FROM PAIS WHERE id = ?";
 
-    /**
-     * Constructor privado para implementar el patrón Singleton.
-     */
     private PaisDAO() {
         this.connection = DBConnection.getConnection();
     }
 
-    /**
-     * Obtiene la instancia única de PaisDAO.
-     * @return instancia de PaisDAO
-     */
     public static PaisDAO getInstance() {
         if (instance == null) {
             instance = new PaisDAO();
@@ -39,11 +26,6 @@ public class PaisDAO {
         return instance;
     }
 
-    /**
-     * Inserta un nuevo país en la base de datos.
-     * @param pais El objeto Pais que se va a insertar
-     * @throws SQLException Si ocurre un error al ejecutar la consulta SQL
-     */
     public void insertPais(Pais pais) throws SQLException {
         try (PreparedStatement statement = connection.prepareStatement(INSERT_QUERY)) {
             statement.setString(1, pais.getNombre());
@@ -51,11 +33,6 @@ public class PaisDAO {
         }
     }
 
-    /**
-     * Recupera todos los países de la base de datos.
-     * @return Lista de objetos Pais
-     * @throws SQLException Si ocurre un error al ejecutar la consulta SQL
-     */
     public List<Pais> getAllPaises() throws SQLException {
         List<Pais> paises = new ArrayList<>();
         try (PreparedStatement statement = connection.prepareStatement(SELECT_ALL_QUERY)) {
@@ -67,14 +44,35 @@ public class PaisDAO {
         return paises;
     }
 
-    /**
-     * Convierte un ResultSet en un objeto Pais.
-     * @param resultSet El ResultSet que contiene los datos de un país
-     * @return Objeto Pais con los datos obtenidos del ResultSet
-     * @throws SQLException Si ocurre un error al procesar el ResultSet
-     */
+    public Pais getPaisById(int id) throws SQLException {
+        try (PreparedStatement statement = connection.prepareStatement(SELECT_BY_ID_QUERY)) {
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                return resultSetToPais(resultSet);
+            }
+        }
+        return null;
+    }
+
+    public void updatePais(Pais pais) throws SQLException {
+        try (PreparedStatement statement = connection.prepareStatement(UPDATE_QUERY)) {
+            statement.setString(1, pais.getNombre());
+            statement.setInt(2, pais.getId());
+            statement.executeUpdate();
+        }
+    }
+
+    public void deletePaisById(int id) throws SQLException {
+        try (PreparedStatement statement = connection.prepareStatement(DELETE_QUERY)) {
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        }
+    }
+
     private Pais resultSetToPais(ResultSet resultSet) throws SQLException {
         return new Pais(
+                resultSet.getInt("id"),
                 resultSet.getString("nombre")
         );
     }
