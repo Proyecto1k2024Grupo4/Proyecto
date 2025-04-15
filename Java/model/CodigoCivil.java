@@ -1,25 +1,45 @@
 package model;
 
+import java.sql.Date;
 import java.util.*;
 
 /**
+ * @author ABDELMOGHIT SAMINI 1KDAM
  * Representa un Código Civil con su identificador, el del país al que pertenece y las leyes asociadas.
  * Permite convertir a formatos JSON y XML.
  */
 public class CodigoCivil {
 
+    private int id;
+    private Date fecha;
+    private int idPais;
+    private ArrayList<Ley> leyes;
+
     /**
      * Constructor de la clase CodigoCivil.
      *
-     * @param id  Identificador del código civil.
+     * @param idPais  Identificador del Pais.
      * @param fecha Fecha de creación.
      */
-    public CodigoCivil(int id, String fecha) {
+    public CodigoCivil(int idPais, Date fecha) {
+        this.idPais = idPais;
+        this.fecha = fecha;
     }
 
-    private int id;
-    private int idPais;
-    private ArrayList<Ley> leyes;
+    /**
+     * Constructor de la clase CodigoCivil.
+     * @param id Identificador del código civil.
+     * @param idPais  Identificador del Pais.
+     * @param fecha Fecha de creación.
+     */
+    public CodigoCivil(int id, int idPais, Date fecha) {
+        this.id = id;
+        this.idPais = idPais;
+        this.fecha = fecha;
+    }
+
+
+
 
     /**
      * Convierte el objeto CodigoCivil en una representación JSON.
@@ -81,5 +101,23 @@ public class CodigoCivil {
 
     public ArrayList<Ley> getLeyes() {
         return leyes;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    @Override
+    public String toString() {
+        return "CodigoCivil{" +
+                "id=" + id +
+                ", fecha='" + fecha + '\'' +
+                ", idPais=" + idPais +
+                ", leyes=" + leyes +
+                '}';
     }
 }

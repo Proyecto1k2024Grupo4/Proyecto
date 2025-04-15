@@ -1,50 +1,47 @@
 package view;
 
-import model.Ley;
-
+import model.Desarrollar;
+import java.util.List;
 import java.util.Scanner;
+
 /**
- * Esta clase es responsable de interactuar con el usuario en relación a las Leyes,
- * solicitando información sobre propuestas y leyes, y mostrando mensajes al usuario.
+ * @author ABDELMOGHIT SAMINI 1KDAM
+ * Clase VistaDesarrollar que gestiona la interacción con el usuario
+ * para la relación Desarrollar entre País y Código Civil.
  */
 public class VistaDesarrollar {
     private Scanner scanner = new Scanner(System.in);
 
     /**
-     * Solicita al usuario ingresar el ID de una Propuesta.
-     *
-     * @return El ID de la propuesta ingresada por el usuario.
+     * Muestra una lista de relaciones Desarrollar por consola.
+     * @param desarrollos Lista de objetos Desarrollar a mostrar.
      */
-    public int obtenerIdPropuesta() {
-        System.out.println("Introduce el ID de la Propuesta:");
-        return scanner.nextInt();
+    public void mostrarDesarrollos(List<Desarrollar> desarrollos) {
+        for (Desarrollar d : desarrollos) {
+            System.out.println(d);
+        }
     }
+
     /**
-     * Permite al usuario crear una nueva Ley a partir de una propuesta, solicitando
-     * la información necesaria para la creación de la ley.
-     *
-     * @return Un objeto {@link Ley} con los datos ingresados por el usuario.
+     * Solicita al usuario los datos para crear una nueva relación Desarrollar.
+     * @return Objeto Desarrollar con los datos introducidos.
      */
-    public Ley crearLeyDesdePropuesta() {
-        System.out.println("Introduce el ID de la nueva Ley:");
-        int id = scanner.nextInt();
+    public Desarrollar crearDesarrollo() {
+        System.out.println("Introduce datos de la relación Desarrollar:");
+        System.out.print("ID País: ");
+        int idPais = scanner.nextInt();
+        System.out.print("ID Código Civil: ");
+        int idCodigo = scanner.nextInt();
         scanner.nextLine();
-        System.out.println("Introduce la descripción:");
-        String descripcion = scanner.nextLine();
-        System.out.println("Introduce la fecha de implementación:");
-        String fImpl = scanner.nextLine();
-        System.out.println("Introduce la fecha de aplicación:");
-        String fAplica = scanner.nextLine();
-        System.out.println("Introduce la fecha de modificación:");
-        String fMod = scanner.nextLine();
+        System.out.print("Año de desarrollo: ");
+        int anio = scanner.nextInt();
 
-        return new Ley(id, descripcion, fImpl, fAplica, fMod);
+        return new Desarrollar(idPais, idCodigo, anio);
     }
 
     /**
-     * Muestra un mensaje al usuario en consola.
-     *
-     * @param mensaje El mensaje que se desea mostrar al usuario.
+     * Muestra un mensaje por consola.
+     * @param mensaje Mensaje a mostrar.
      */
     public void mostrarMensaje(String mensaje) {
         System.out.println(mensaje);
