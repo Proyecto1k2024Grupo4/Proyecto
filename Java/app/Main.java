@@ -13,28 +13,39 @@ public class Main {
 
         int opcion = 0;
 
+        // Condicionales para los menús
+        boolean menuPrincipal = opcion < 1 && opcion > 5;
+        boolean menuPropuestas = opcion < 1 && opcion > 5;
+
         do {
             mostrarMenu();
-            while (opcion < 1 && opcion > 5){
+            while (menuPrincipal){
                 opcion = introducirOpcion();
-                if (opcion < 1 && opcion > 5){
-                    System.out.print("Por favor, introduce una opcion entre 1 y 5: ");
-                }
+                if (menuPrincipal) System.out.print("Por favor, introduce una opcion entre 1 y 5: ");
             }
             switch (opcion) {
                 case 1 -> {
-                    System.out.println("");
+                    opcion = 0;
+                    mostrarMenuPropuestas();
+                    while (menuPropuestas){
+                        opcion = introducirOpcion();
+                        if (menuPropuestas) System.out.print("Por favor, introduce una opcion entre 1 y 5: ");
+                    }
                 }
                 case 2 -> {
+                    opcion = 0;
                     System.out.println("Persona creada correctamente.");
                 }
                 case 3 -> {
+                    opcion = 0;
                     System.out.println("Persona actualizada correctamente.");
                 }
                 case 4 -> {
+                    opcion = 0;
                     System.out.println("Persona eliminada correctamente.");
                 }
                 case 5 -> {
+                    opcion = 0;
                     System.out.println("Saliendo...");
                 }
             }
@@ -44,7 +55,7 @@ public class Main {
     }
 
     /**
-     * Metod que muestra el menu de opciones principal
+     * Metodo que muestra el menu de opciones principal
      */
     public static void mostrarMenu() {
         System.out.println("\n--- Menú ---");
@@ -54,6 +65,39 @@ public class Main {
         System.out.println("4. Paises");
         System.out.println("5. Salir");
         System.out.print("Por favor, seleccione la opcione que desee consultar (1-5): ");
+    }
+
+    /**
+     * Metodo que muestra el menu de opciones principal
+     */
+    public static void mostrarMenuPropuestas(){
+        System.out.println("--- Menu de Propuestas ---");
+        System.out.println("1. Propuestas");
+        System.out.println("2. Personas");
+        System.out.println("3. Leyes");
+        System.out.println("4. Paises");
+        System.out.println("5. Salir");
+    }
+
+    /**
+     * Metodo que muestra el menu de opciones principal
+     */
+    public static void mostrarMenuPersonas(){
+
+    }
+
+    /**
+     * Metodo que muestra el menu de opciones principal
+     */
+    public static void mostrarMenuLeyes(){
+
+    }
+
+    /**
+     * Metodo que muestra el menu de opciones principal
+     */
+    public static void mostrarMenuPaises(){
+
     }
 
     public static int introducirOpcion() {
