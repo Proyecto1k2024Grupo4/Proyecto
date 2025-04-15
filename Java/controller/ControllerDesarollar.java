@@ -8,7 +8,7 @@ import java.util.List;
  * @author ABDELMOGHIT SAMINI 1KDAM
  * Controlador para gestionar una lista de objetos Desarrollar.
  */
-public class ContollerDesarollar  {
+public class ControllerDesarollar {
     private List<Desarrollar> desarrollos = new ArrayList<>();
 
     /**

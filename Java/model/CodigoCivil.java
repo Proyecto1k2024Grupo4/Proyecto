@@ -26,6 +26,20 @@ public class CodigoCivil {
         this.fecha = fecha;
     }
 
+    /**
+     * Constructor de la clase CodigoCivil.
+     * @param id Identificador del código civil.
+     * @param idPais  Identificador del Pais.
+     * @param fecha Fecha de creación.
+     */
+    public CodigoCivil(int id, int idPais, Date fecha) {
+        this.id = id;
+        this.idPais = idPais;
+        this.fecha = fecha;
+    }
+
+
+
 
     /**
      * Convierte el objeto CodigoCivil en una representación JSON.
