@@ -44,7 +44,7 @@
           <description value="" />
           <database-type value="MYSQL" />
           <config-type value="BASIC" />
-          <database-version value="9999.0" />
+          <database-version value="11.4" />
           <driver-source value="BUNDLED" />
           <driver-library value="" />
           <driver value="" />
@@ -59,7 +59,7 @@
           <token-type value="" />
           <token-config-file value="" />
           <token-profile value="" />
-          <session-user value="" />
+          <session-user value="usuarioLectura@213.0.87.200" />
         </database>
         <properties>
           <auto-commit value="false" />

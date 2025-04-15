@@ -1,6 +1,5 @@
 package db;
 
-import db.DBConnection;
 import model.Congreso;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ *  @author ABDELMOGHIT SAMINI 1KDAM
  * Clase CongresoDAO que proporciona acceso a la base de datos para la entidad Congreso.
  */
 public class CongresoDAO {
@@ -71,7 +71,7 @@ public class CongresoDAO {
      */
     private Congreso resultSetToCongreso(ResultSet resultSet) throws SQLException {
         return new Congreso(
-                resultSet.getInt("id")
-        );
+                resultSet.getInt("id"),
+                resultSet.getString("nombre"));
     }
 }

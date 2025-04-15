@@ -1,17 +1,19 @@
 package model;
 
+import java.sql.Date;
+
 /**
  * Clase Politico que extiende de persona y guarda información de los politicos
  *
  * @author Jonathan Villalba Moran
- * @Version 7-4-2025
+ * @version 7-4-2025
  */
 public class Politico extends Persona{
 
     // Propiedades
     public String numPasaporte;
-    public String fechaIniciacion;
-    public String fechaRetirada;
+    public Date fechaIniciacion;
+    public Date fechaRetirada;
     public int idCongreso;
 
     /**
@@ -27,7 +29,7 @@ public class Politico extends Persona{
      * @param fechaRetirada La fecha en la que se retiro de su puesto
      * @param idCongreso El id del congreso al que pertenece
      */
-    public Politico(String numPasaporte, String nombre, String primerApellido, String segundoApellido, String fnac, Sexo sexo, int paisNacimiento, String fechaIniciacion, String fechaRetirada, int idCongreso) {
+    public Politico(String numPasaporte, String nombre, String primerApellido, String segundoApellido, Date fnac, Sexo sexo, int paisNacimiento, Date fechaIniciacion, Date fechaRetirada, int idCongreso) {
         super(numPasaporte, nombre, primerApellido, segundoApellido, fnac, sexo, paisNacimiento);
         this.numPasaporte = numPasaporte;
         this.fechaIniciacion = fechaIniciacion;
@@ -92,7 +94,7 @@ public class Politico extends Persona{
      * Metodo que devuelve la fecha de iniciación
      * @return la fecha de iniciación
      */
-    public String getFechaIniciacion() {
+    public Date getFechaIniciacion() {
         return fechaIniciacion;
     }
 
@@ -100,7 +102,7 @@ public class Politico extends Persona{
      * Metodo que establece la fecha de iniciación
      * @param fechaIniciacion
      */
-    public void setFechaIniciacion(String fechaIniciacion) {
+    public void setFechaIniciacion(Date fechaIniciacion) {
         this.fechaIniciacion = fechaIniciacion;
     }
 
@@ -108,7 +110,7 @@ public class Politico extends Persona{
      * Metodo que devuelve la fecha de retirada
      * @return la fecha de iniciación
      */
-    public String getFechaRetirada() {
+    public Date getFechaRetirada() {
         return fechaRetirada;
     }
 
@@ -116,7 +118,7 @@ public class Politico extends Persona{
      * Metodo que establece la fecha de retirada
      * @param fechaRetirada
      */
-    public void setFechaRetirada(String fechaRetirada) {
+    public void setFechaRetirada(Date fechaRetirada) {
         this.fechaRetirada = fechaRetirada;
     }
 
@@ -134,5 +136,22 @@ public class Politico extends Persona{
      */
     public void setIdCongreso(int idCongreso) {
         this.idCongreso = idCongreso;
+    }
+
+    @Override
+    public String toString() {
+        return "Politico{" +
+                "numPasaporte='" + numPasaporte + '\'' +
+                ", fechaIniciacion=" + fechaIniciacion +
+                ", fechaRetirada=" + fechaRetirada +
+                ", idCongreso=" + idCongreso +
+                ", numPasaporte='" + numPasaporte + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", primerApellido='" + primerApellido + '\'' +
+                ", segundoApellido='" + segundoApellido + '\'' +
+                ", fnac=" + fnac +
+                ", sexo=" + sexo +
+                ", paisNacimiento=" + paisNacimiento +
+                '}';
     }
 }

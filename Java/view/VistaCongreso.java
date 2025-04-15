@@ -1,88 +1,78 @@
 package view;
 
 import model.Congreso;
-
 import java.util.List;
 import java.util.Scanner;
+
 /**
- * Esta clase es responsable de interactuar con el usuario en relación a los Congresos,
- * mostrando información, creando nuevos congresos y obteniendo datos desde el usuario.
+ *  @author ABDELMOGHIT SAMINI 1KDAM
+ * Clase VistaCongreso que gestiona la interacción con el usuario para los objetos Congreso.
  */
 public class VistaCongreso {
-    private Scanner scanner;
-    /**
-     * Constructor de la clase VistaCongreso, inicializa el escáner para recibir datos del usuario.
-     */
-    public VistaCongreso() {
-        scanner = new Scanner(System.in);
-    }
-    /**
-     * Permite al usuario crear un nuevo Congreso pidiendo la información necesaria.
-     *
-     * @return Un objeto {@link Congreso} con los datos ingresados por el usuario.
-     */
-    public Congreso crearCongreso() {
-        System.out.println("Introduce el ID del Congreso:");
-        int id = scanner.nextInt();
-        System.out.println("Introduce el número de políticos:");
-        int numPoliticos =scanner.nextInt();
-        System.out.println("Introduce el número de propuestas aprobadas:");
-        int propAprobadas =scanner.nextInt();
+    private Scanner scanner = new Scanner(System.in);
 
-        return new Congreso(id, numPoliticos, propAprobadas);
-    }
     /**
-     * Muestra una lista de Congresos.
-     *
-     * @param lista Una lista de objetos {@link Congreso} que serán mostrados en consola.
+     * Muestra una lista de objetos Congreso por consola.
+     * @param congresos Lista de congresos a mostrar.
      */
-    public void mostrarCongresos(List<Congreso> lista) {
-        System.out.println("Lista de Congresos:");
-        for (Congreso c : lista) {
+    public void mostrarCongresos(List<Congreso> congresos) {
+        for (Congreso c : congresos) {
             System.out.println(c);
         }
     }
+
     /**
-     * Solicita al usuario ingresar el ID de un Congreso.
-     *
-     * @return El ID del Congreso ingresado por el usuario.
+     * Solicita al usuario los datos para crear un nuevo objeto Congreso.
+     * @return Objeto Congreso con los datos introducidos.
      */
-    public int obtenerId() {
-        System.out.println("Introduce el ID del Congreso:");
-        return scanner.nextInt();
+    public Congreso crearCongreso() {
+        System.out.println("Introduce datos del congreso:");
+        System.out.print("ID: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+        System.out.print("Nombre: ");
+        String nombre = scanner.nextLine();
+
+        return new Congreso(id, nombre);
     }
+
     /**
-     * Permite al usuario ingresar los datos actualizados para un Congreso.
-     *
-     * @return Un objeto {@link Congreso} con los datos actualizados.
+     * Solicita al usuario los datos actualizados de un objeto Congreso.
+     * @return Objeto Congreso con los datos actualizados.
      */
     public Congreso obtenerDatosActualizados() {
-        System.out.println("Introduce el ID del Congreso:");
+        System.out.println("Introduce datos actualizados del congreso:");
+        System.out.print("ID: ");
         int id = scanner.nextInt();
-        System.out.println("Introduce nuevo número de políticos:");
-        int politicos =scanner.nextInt();
-        System.out.println("Introduce nuevo número de propuestas aprobadas:");
-        int aprobadas = scanner.nextInt();
+        scanner.nextLine();
+        System.out.print("Nombre nuevo: ");
+        String nombre = scanner.nextLine();
 
-        return new Congreso(id, politicos, aprobadas);
+        return new Congreso(id, nombre);
     }
+
     /**
-     * Muestra un solo Congreso en consola.
-     *
-     * @param c El objeto {@link Congreso} que se va a mostrar.
+     * Solicita al usuario el ID de un congreso.
+     * @return ID introducido por el usuario.
      */
-    public void mostrarCongreso(Congreso c) {
-        if (c != null)
-            System.out.println(c);
-        else
-            System.out.println("Congreso no encontrado.");
+    public int obtenerIdCongreso() {
+        System.out.print("Introduce el ID del congreso: ");
+        return scanner.nextInt();
     }
+
     /**
-     * Muestra un mensaje en consola.
-     *
-     * @param msg El mensaje que se desea mostrar al usuario.
+     * Muestra un objeto Congreso por consola.
+     * @param congreso Congreso que se desea mostrar.
      */
-    public void mostrarMensaje(String msg) {
-        System.out.println(msg);
+    public void mostrarCongreso(Congreso congreso) {
+        System.out.println("Congreso encontrado: " + congreso);
+    }
+
+    /**
+     * Muestra un mensaje por consola.
+     * @param mensaje Mensaje que se desea mostrar.
+     */
+    public void mostrarMensaje(String mensaje) {
+        System.out.println(mensaje);
     }
 }

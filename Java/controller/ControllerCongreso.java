@@ -1,67 +1,67 @@
 package controller;
 
-import db.CongresoDAO;
 import model.Congreso;
-import view.VistaCongreso;
-
-import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *  @author ABDELMOGHIT SAMINI 1KDAM
+ * Controlador para gestionar una lista de congresos.
+ */
 public class ControllerCongreso {
-    private CongresoDAO congresoDAO;
-    private VistaCongreso vista;
+    private List<Congreso> congresos = new ArrayList<>();
 
-    public ControllerCongreso() {
-        congresoDAO = CongresoDAO.getInstance();
-        vista = new VistaCongreso();
+    /**
+     * Agrega un congreso a la lista.
+     * @param congreso Congreso a agregar.
+     */
+    public void agregarCongreso(Congreso congreso) {
+        congresos.add(congreso);
     }
 
-    public void mostrarTodos() {
-        try {
-            List<Congreso> lista = congresoDAO.getAllCongresos();
-            vista.mostrarCongresos(lista);
-        } catch (SQLException e) {
-            e.printStackTrace();
+    /**
+     * Obtiene la lista completa de congresos.
+     * @return Lista de congresos.
+     */
+    public List<Congreso> obtenerCongresos() {
+        return congresos;
+    }
+
+    /**
+     * Busca un congreso por su ID.
+     * @param id ID del congreso.
+     * @return Congreso si se encuentra, o null si no existe.
+     */
+    public Congreso buscarCongresoPorId(int id) {
+        for (Congreso c : congresos) {
+            if (c.getId() == id) {
+                return c;
+            }
         }
+        return null;
     }
 
-    public void crearCongreso() {
-        try {
-            Congreso c = vista.crearCongreso();
-            congresoDAO.insertCongreso(c);
-            vista.mostrarMensaje("Congreso creado.");
-        } catch (SQLException e) {
-            e.printStackTrace();
+    /**
+     * Actualiza un congreso existente.
+     * @param congresoActualizado Objeto congreso actualizado.
+     * @return true si se actualizó, false si no se encontró.
+     */
+    public boolean actualizarCongreso(Congreso congresoActualizado) {
+        for (int i = 0; i < congresos.size(); i++) {
+            if (congresos.get(i).getId() == congresoActualizado.getId()) {
+                congresos.set(i, congresoActualizado);
+                return true;
+            }
         }
+        return false;
     }
 
-    public void actualizarCongreso() {
-//        try {
-//            Congreso c = vista.obtenerDatosActualizados();
-//            congresoDAO.update(c);
-//            vista.mostrarMensaje("Congreso actualizado.");
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-    }
-
-    public void eliminarCongreso() {
-//        try {
-//            int id = vista.obtenerId();
-//            congresoDAO.delete(id);
-//            vista.mostrarMensaje("Congreso eliminado.");
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-    }
-
-    public void buscarPorId() {
-//        try {
-//            int id = vista.obtenerId();
-//            Congreso c = congresoDAO.getById(id);
-//            vista.mostrarCongreso(c);
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+    /**
+     * Elimina un congreso por su ID.
+     * @param id ID del congreso a eliminar.
+     * @return true si se eliminó, false si no se encontró.
+     */
+    public boolean eliminarCongreso(int id) {
+        return congresos.removeIf(c -> c.getId() == id);
     }
 }
