@@ -62,7 +62,7 @@ public class PersonaDAO {
             statement.setString(2, persona.getNombre());
             statement.setString(3, persona.getPrimerApellido());
             statement.setString(4, persona.getSegundoApellido());
-            statement.setString(5, persona.getFnac());
+            statement.setDate(5, persona.getFnac());
             statement.setString(6, String.valueOf(persona.getSexo()));
             statement.setString(7, String.valueOf(persona.getPaisNacimiento()));
             statement.executeUpdate();
@@ -115,7 +115,7 @@ public class PersonaDAO {
             statement.setString(1, persona.getNombre());
             statement.setString(2, persona.getPrimerApellido());
             statement.setString(3, persona.getSegundoApellido());
-            statement.setString(4, persona.getFnac());
+            statement.setDate(4, persona.getFnac());
             statement.setString(5, String.valueOf(persona.getSexo()));
             statement.setString(6, String.valueOf(persona.getPaisNacimiento()));
             statement.setString(7, pasaporte);
@@ -147,7 +147,7 @@ public class PersonaDAO {
                 resultSet.getString("nombre"),
                 resultSet.getString("primerApellido"),
                 resultSet.getString("segundoApellido"),
-                resultSet.getString("fnac"),
+                resultSet.getDate("fnac"),
                 Sexo.valueOf(resultSet.getString("sexo")),
                 resultSet.getInt("paisNacimiento")
         );
