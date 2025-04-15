@@ -153,7 +153,7 @@ public class PropuestaDAO {
             resultSet.getDate("fechaExpiracion"),
             EstadoPropuesta.valueOf(resultSet.getString("estado")),
             resultSet.getInt("idCongreso"),
-            resultSet.getString(" numPasaportePolitico"),
+            resultSet.getString("numPasaportePolitico"),
             resultSet.getDate("fechaProposicion"),
             resultSet.getDate("fechaExpiracion"),
             resultSet.getDate("fechaAceptacion")

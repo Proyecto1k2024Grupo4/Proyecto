@@ -34,6 +34,7 @@ public class ControllerPropuesta {
             vistaPropuesta.mostrarPropuestas(propuestas);
         } catch (Exception e){
             System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -48,6 +49,8 @@ public class ControllerPropuesta {
             vistaPropuesta.mostrarPropuesta(propuesta);
         } catch (Exception e){
             System.out.println(e.getMessage());
+            e.printStackTrace();
+
         }
     }
 
@@ -62,6 +65,8 @@ public class ControllerPropuesta {
             vistaPropuesta.mostrarPropuesta(propuesta);
         } catch (Exception e){
             System.out.println(e.getMessage());
+            e.printStackTrace();
+
         }
     }
 
@@ -75,6 +80,8 @@ public class ControllerPropuesta {
             propuestaDAO.insertPropuesta(propuesta);
         } catch (Exception e){
             System.out.println(e.getMessage());
+            e.printStackTrace();
+
         }
     }
 
@@ -88,6 +95,8 @@ public class ControllerPropuesta {
             propuestaDAO.updatePropuestaByPropuesta(propuesta);
         } catch (Exception e){
             System.out.println(e.getMessage());
+            e.printStackTrace();
+
         }
     }
 
