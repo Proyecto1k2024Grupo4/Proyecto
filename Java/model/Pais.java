@@ -1,6 +1,7 @@
 package model;
 
 /**
+ * @author ABDELMOGHIT SAMINI 1KDAM
  * Representa un país con su ID y nombre, y permite convertirlo a formatos JSON y XML.
  */
 public class Pais {
@@ -106,5 +107,13 @@ public class Pais {
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    @Override
+    public String toString() {
+        return "Pais{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                '}';
     }
 }

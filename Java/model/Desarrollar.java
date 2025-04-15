@@ -1,11 +1,13 @@
 package model;
 /**
+ * @author ABDELMOGHIT SAMINI 1KDAM
  * Representa la relación entre una propuesta y una ley, con métodos para convertir el objeto a JSON y XML.
  */
 public class Desarrollar {
 
     private int idPropuesta;
-
+    private int idPais;
+    private int idCodigoCivil;
     private int idLey;
 
     /**
@@ -14,7 +16,7 @@ public class Desarrollar {
      * @param idPropuesta Identificador de la propuesta.
      * @param idLey       Identificador de la ley.
      */
-    public Desarrollar(int idPropuesta, int idLey) {
+    public Desarrollar(int idPropuesta, int idLey ) {
         this.idPropuesta = idPropuesta;
         this.idLey = idLey;
     }
@@ -93,5 +95,31 @@ public class Desarrollar {
      */
     public void setIdLey(int idLey) {
         this.idLey = idLey;
+    }
+
+    public int getIdPais() {
+        return idPais;
+    }
+
+    public void setIdPais(int idPais) {
+        this.idPais = idPais;
+    }
+
+    public int getIdCodigoCivil() {
+        return idCodigoCivil;
+    }
+
+    public void setIdCodigoCivil(int idCodigoCivil) {
+        this.idCodigoCivil = idCodigoCivil;
+    }
+
+    @Override
+    public String toString() {
+        return "Desarrollar{" +
+                "idPropuesta=" + idPropuesta +
+                ", idPais=" + idPais +
+                ", idCodigoCivil=" + idCodigoCivil +
+                ", idLey=" + idLey +
+                '}';
     }
 }

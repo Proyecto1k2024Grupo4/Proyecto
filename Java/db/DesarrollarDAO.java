@@ -1,6 +1,5 @@
 package db;
 
-import db.DBConnection;
 import model.Desarrollar;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ *  @author ABDELMOGHIT SAMINI 1KDAM
  * Clase DesarrollarDAO que proporciona acceso a la base de datos para la entidad Desarrollar.
  */
 public class DesarrollarDAO {
@@ -77,7 +77,7 @@ public class DesarrollarDAO {
     private Desarrollar resultSetToDesarrollar(ResultSet resultSet) throws SQLException {
         return new Desarrollar(
                 resultSet.getInt("idPropuesta"),
-                resultSet.getInt("idLey")
-        );
+                resultSet.getInt("idLey"),
+                resultSet.getInt("anio"));
     }
 }
