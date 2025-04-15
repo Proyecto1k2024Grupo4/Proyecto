@@ -7,6 +7,10 @@ import view.VistaPais;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ *  @author ABDELMOGHIT SAMINI 1KDAM
+ * Controlador para gestionar una lista de países.
+ */
 public class ControllerPais {
     private PaisDAO paisDAO;
     private VistaPais vista;
