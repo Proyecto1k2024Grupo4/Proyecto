@@ -4,6 +4,7 @@ import model.EstadoPropuesta;
 import model.Propuesta;
 
 import java.sql.Date;
+import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
@@ -53,8 +54,9 @@ public class VistaPropuesta {
         while (!correcto){
             try {
                 correcto = true;
-                System.out.println("Introduce el id: ");
+                System.out.print("Introduce el id: ");
                 id = scanner.nextInt();
+                scanner.nextLine();
             } catch (Exception e){
                 correcto = false;
                 System.out.println("Error, por favor introduce un número entero.");
@@ -74,8 +76,6 @@ public class VistaPropuesta {
         boolean propuestaCorrecta = false;
         Propuesta propuesta = null;
 
-        System.out.println("\n---Creación de propuesta---");
-
         int id = 0;
         String titulo;
         String descripcion;
@@ -93,14 +93,13 @@ public class VistaPropuesta {
                 propuestaCorrecta = true;
 
                 if(conId){
-                    System.out.print("Introduce un id: ");
                     id = pedirId();
                 }
 
                 System.out.print("Introduce un título: ");
                 titulo = scanner.nextLine();
 
-                System.out.print("Introduce un título: ");
+                System.out.print("Introduce una descripción: ");
                 descripcion = scanner.nextLine();
 
                 System.out.print("Introduce una fecha de expiración (formato: 'año-mes-dia'): ");
@@ -110,18 +109,31 @@ public class VistaPropuesta {
                     try {
                         System.out.print("Introduce un estado (ACEPTACION, PUBLICACION, VOTACION, TERMINADA): ");
                         estadoCorrecto = true;
-                        estadoPropuesta = EstadoPropuesta.valueOf(scanner.nextLine().toUpperCase());
+                        System.out.printf("antes scanner");
+                        String estadoString = scanner.nextLine().toUpperCase();
+                        System.out.println("despues scanner");
+                        estadoPropuesta = EstadoPropuesta.valueOf(estadoString);
+                        System.out.println("despues creacion");
                     } catch (Exception e) {
                         System.out.println("Error: el estado de la propuesta solo puede tener uno de estos valores:\n" +
                                 "(ACEPTACION, PUBLICACION, VOTACION, TERMINADA)");
                         estadoCorrecto = false;
-                        scanner.next();
                     }
                 }
-                idCongreso = scanner.nextInt();
+
+                System.out.print("Del congreso -> ");
+                idCongreso = pedirId();
+
+                System.out.print("Introduce el numero del pasaporte del político: ");
                 numPasaportePolitico = scanner.nextLine();
+
+                System.out.print("Introduce una fecha de proposicion (formato: 'año-mes-dia'): ");
                 fechaProposicion = introducirFecha();
+
+                System.out.print("Introduce una fecha de aceptación (formato: 'año-mes-dia'): ");
                 fechaAceptacion = introducirFecha();
+
+                System.out.print("Introduce una fecha de publicacion (formato: 'año-mes-dia'): ");
                 fechaPublicacion = introducirFecha();
 
                 if (conId){
@@ -136,7 +148,6 @@ public class VistaPropuesta {
             } catch (Exception e){
                 propuestaCorrecta = false;
                 System.out.println(e.getMessage());
-                scanner.next();
             }
 
         }
@@ -156,9 +167,9 @@ public class VistaPropuesta {
                 correcto = true;
                 fecha = Date.valueOf(LocalDate.parse(scanner.nextLine()));
             } catch (Exception e){
+                System.out.println(e.getMessage());
                 System.out.println("Fecha incorrecta, por favor introduce la fecha con este formato (año-mes-dia) (Ejemplo: 1999-01-01): ");
                 correcto = false;
-                scanner.next();
             }
         }
         return fecha;

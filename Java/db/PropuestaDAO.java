@@ -82,7 +82,7 @@ public class PropuestaDAO {
             statement.setDate(7, propuesta.getFechaProposicion());
             statement.setDate(8, propuesta.getFechaAceptacion());
             statement.setDate(9, propuesta.getFechaPublicacion());
-            statement.executeQuery();
+            statement.executeUpdate();
         }
     }
 
