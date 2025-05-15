@@ -7,8 +7,8 @@ import java.sql.SQLException;
 public class DBConnection {
     // URL de conexión a la base de datos MySQL
     private static final String URL = "jdbc:mysql://prop-in.cnyfmuf4d21m.us-east-1.rds.amazonaws.com/propin";
-    private static final String USERNAME = "usuarioLectura";
-    private static final String PASSWORD = "123";
+    private static final String USERNAME = "usuarioAdmin";
+    private static final String PASSWORD = "Prop_in1234";
 
     private static Connection connection;
 
