@@ -62,7 +62,7 @@ public class PropuestaDAO {
             statement.setDate(7, propuesta.getFechaAceptacion());
             statement.setDate(8, propuesta.getFechaPublicacion());
             statement.setInt(9, propuesta.getId());
-            statement.executeQuery();
+            statement.executeUpdate();
         }
     }
 
@@ -76,7 +76,7 @@ public class PropuestaDAO {
             statement.setString(1, propuesta.getTitulo());
             statement.setString(2, propuesta.getDescripcion());
             statement.setDate(3, propuesta.getFechaExpiracion());
-            statement.setString(4, propuesta.getDescripcion());
+            statement.setString(4, String.valueOf(propuesta.getEstado()));
             statement.setInt(5, propuesta.getIdCongreso());
             statement.setString(6, propuesta.getNumPasaportePolitico());
             statement.setDate(7, propuesta.getFechaProposicion());

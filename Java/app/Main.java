@@ -16,7 +16,6 @@ public class Main {
         int opcion = 0;
 
         do {
-            opcion = 0;
             mostrarMenu();
             while (opcionMenuPrincipal(opcion)){
                 opcion = introducirOpcion();
@@ -47,7 +46,10 @@ public class Main {
                         case 5 -> {
                             controllerPropuesta.actualizarPropuesta();
                         }
+                        case 6 -> {
+                        }
                     }
+                    opcion = 0;
                 }
                 case 2 -> {
                     opcion = 0;
@@ -89,7 +91,10 @@ public class Main {
                         case 10 -> {
                             controllerPolitico.eliminarPolitico();
                         }
+                        case 11 -> {
+                        }
                     }
+                    opcion = 0;
                 }
                 case 3 -> {
                     opcion = 0;
@@ -115,7 +120,10 @@ public class Main {
                         case 5 -> {
                             controllerLey.borrarLey();
                         }
+                        case 6 -> {
+                        }
                     }
+                    opcion = 0;
                 }
                 case 4 -> {
                     opcion = 0;
@@ -141,10 +149,12 @@ public class Main {
                         case 5 -> {
                             controllerPais.eliminarPais();
                         }
+                        case 6 -> {
+                        }
                     }
+                    opcion = 0;
                 }
                 case 5 -> {
-                    opcion = 0;
                     System.out.println("Saliendo...");
                 }
             }
@@ -171,19 +181,19 @@ public class Main {
     }
 
     public static boolean opcionMenuPropuestas(int opcion){
-        return opcion < 1 || opcion > 5;
+        return opcion < 1 || opcion > 6;
     }
 
     public static boolean opcionMenuPersonas(int opcion){
-        return opcion < 1 || opcion > 10;
+        return opcion < 1 || opcion > 11;
     }
 
     public static boolean opcionMenuLeyes(int opcion){
-        return opcion < 1 || opcion > 5;
+        return opcion < 1 || opcion > 6;
     }
 
     public static boolean opcionMenuPaises(int opcion){
-        return opcion < 1 || opcion > 5;
+        return opcion < 1 || opcion > 6;
     }
 
     /**
@@ -196,6 +206,8 @@ public class Main {
         System.out.println("3. Mostrar propuestas por id de congreso");
         System.out.println("4. Insertar propuesta");
         System.out.println("5. Actualizar propuesta");
+        System.out.println("6. Volver atrás");
+        System.out.print("Por favor, seleccione la opcione que desee consultar (1-6): ");
     }
 
     /**
@@ -213,7 +225,8 @@ public class Main {
         System.out.println("8. Crear politico");
         System.out.println("9. Actualizar politico");
         System.out.println("10. Eliminar político");
-
+        System.out.println("11. Volver atrás");
+        System.out.print("Por favor, seleccione la opcione que desee consultar (1-11): ");
     }
 
     /**
@@ -226,6 +239,8 @@ public class Main {
         System.out.println("3. Mostrar ley por id");
         System.out.println("4. Actualizar Ley");
         System.out.println("5. Borrar Ley");
+        System.out.println("6. Volver atrás");
+        System.out.print("Por favor, seleccione la opcione que desee consultar (1-6): ");
     }
 
     /**
@@ -238,6 +253,8 @@ public class Main {
         System.out.println("3. Crear pais");
         System.out.println("4. Actualizar pais");
         System.out.println("5. Eliminar pais");
+        System.out.println("6. Volver atrás");
+        System.out.print("Por favor, seleccione la opcione que desee consultar (1-6): ");
     }
 
     public static int introducirOpcion() {

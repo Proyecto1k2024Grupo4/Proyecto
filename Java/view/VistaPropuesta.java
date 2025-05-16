@@ -79,18 +79,19 @@ public class VistaPropuesta {
         int id = 0;
         String titulo;
         String descripcion;
-        Date fechaExpiracion;
+        Date fechaExpiracion = null;
         EstadoPropuesta estadoPropuesta = null;
         int idCongreso;
         String numPasaportePolitico;
         Date fechaProposicion;
-        Date fechaAceptacion;
-        Date fechaPublicacion;
+        Date fechaAceptacion = null;
+        Date fechaPublicacion = null;
 
         while (!propuestaCorrecta) {
             try {
                 boolean estadoCorrecto = false;
                 propuestaCorrecta = true;
+                String atributoSinValor;
 
                 if(conId){
                     id = pedirId();
@@ -102,8 +103,11 @@ public class VistaPropuesta {
                 System.out.print("Introduce una descripción: ");
                 descripcion = scanner.nextLine();
 
-                System.out.print("Introduce una fecha de expiración (formato: 'año-mes-dia'): ");
-                fechaExpiracion = introducirFecha();
+                System.out.print("Introduce una fecha de expiración (formato: 'año-mes-dia')\n(si no desea que haya fecha de expiración introduzca 'null'): ");
+                atributoSinValor = scanner.nextLine();
+                if(!atributoSinValor.equals("null")) {
+                    fechaExpiracion = introducirFecha(atributoSinValor);
+                }
 
                 while (!estadoCorrecto){
                     try {
@@ -127,11 +131,17 @@ public class VistaPropuesta {
                 System.out.print("Introduce una fecha de proposicion (formato: 'año-mes-dia'): ");
                 fechaProposicion = introducirFecha();
 
-                System.out.print("Introduce una fecha de aceptación (formato: 'año-mes-dia'): ");
-                fechaAceptacion = introducirFecha();
+                System.out.print("Introduce una fecha de aceptación (formato: 'año-mes-dia')\n(si no desea que haya fecha de expiración introduzca 'null'): ");
+                atributoSinValor = scanner.nextLine();
+                if(!atributoSinValor.equals("null")) {
+                    fechaAceptacion = introducirFecha(atributoSinValor);
+                }
 
-                System.out.print("Introduce una fecha de publicacion (formato: 'año-mes-dia'): ");
-                fechaPublicacion = introducirFecha();
+                System.out.print("Introduce una fecha de publicacion (formato: 'año-mes-dia')\n(si no desea que haya fecha de expiración introduzca 'null'): ");
+                atributoSinValor = scanner.nextLine();
+                if(!atributoSinValor.equals("null")){
+                    fechaPublicacion = introducirFecha(atributoSinValor);
+                }
 
                 if (conId){
                     propuesta = new Propuesta(id, titulo, descripcion, fechaExpiracion, estadoPropuesta,
@@ -150,6 +160,32 @@ public class VistaPropuesta {
         }
 
         return propuesta;
+    }
+
+    /**
+     * Metodo que recibe un String como parametro y si es correcto lo convierte en Date. Si no es correcto el formato, lo pide hasta que sea correcto.
+     * @return Date Fecha formato SQL
+     */
+    private Date introducirFecha(String fechaIntroducidaAntes){
+        boolean correcto = false;
+        Date fecha = null;
+        boolean primeraVez = true;
+        while(!correcto){
+            try {
+                correcto = true;
+                if(primeraVez){
+                    fecha = Date.valueOf(LocalDate.parse(fechaIntroducidaAntes));
+                    primeraVez = false;
+                } else {
+                    fecha = Date.valueOf(LocalDate.parse(scanner.nextLine()));
+                }
+            } catch (Exception e){
+                System.out.println(e.getMessage());
+                System.out.println("Fecha incorrecta, por favor introduce la fecha con este formato (año-mes-dia) (Ejemplo: 1999-01-01): ");
+                correcto = false;
+            }
+        }
+        return fecha;
     }
 
     /**

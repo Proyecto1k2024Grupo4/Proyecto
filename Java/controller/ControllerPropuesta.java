@@ -33,6 +33,7 @@ public class ControllerPropuesta {
             List<Propuesta> propuestas = propuestaDAO.getAllPropuesta();
             vistaPropuesta.mostrarPropuestas(propuestas);
         } catch (Exception e){
+            System.out.println("Ha ocurrido un error:");
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
@@ -48,9 +49,9 @@ public class ControllerPropuesta {
             Propuesta propuesta = propuestaDAO.getPropuestaById(id);
             vistaPropuesta.mostrarPropuesta(propuesta);
         } catch (Exception e){
+            System.out.println("Ha ocurrido un error:");
             System.out.println(e.getMessage());
             e.printStackTrace();
-
         }
     }
 
@@ -64,9 +65,9 @@ public class ControllerPropuesta {
             Propuesta propuesta = propuestaDAO.getPropuestaByIdCongreso(id);
             vistaPropuesta.mostrarPropuesta(propuesta);
         } catch (Exception e){
+            System.out.println("Ha ocurrido un error:");
             System.out.println(e.getMessage());
             e.printStackTrace();
-
         }
     }
 
@@ -79,9 +80,9 @@ public class ControllerPropuesta {
             Propuesta propuesta = vistaPropuesta.crearPropuesta(false);
             propuestaDAO.insertPropuesta(propuesta);
         } catch (Exception e){
+            System.out.println("Ha ocurrido un error:");
             System.out.println(e.getMessage());
             e.printStackTrace();
-
         }
     }
 
@@ -94,9 +95,9 @@ public class ControllerPropuesta {
             Propuesta propuesta = vistaPropuesta.crearPropuesta(true);
             propuestaDAO.updatePropuestaByPropuesta(propuesta);
         } catch (Exception e){
+            System.out.println("Ha ocurrido un error:");
             System.out.println(e.getMessage());
             e.printStackTrace();
-
         }
     }
 
