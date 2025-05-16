@@ -109,11 +109,8 @@ public class VistaPropuesta {
                     try {
                         System.out.print("Introduce un estado (ACEPTACION, PUBLICACION, VOTACION, TERMINADA): ");
                         estadoCorrecto = true;
-                        System.out.printf("antes scanner");
                         String estadoString = scanner.nextLine().toUpperCase();
-                        System.out.println("despues scanner");
                         estadoPropuesta = EstadoPropuesta.valueOf(estadoString);
-                        System.out.println("despues creacion");
                     } catch (Exception e) {
                         System.out.println("Error: el estado de la propuesta solo puede tener uno de estos valores:\n" +
                                 "(ACEPTACION, PUBLICACION, VOTACION, TERMINADA)");

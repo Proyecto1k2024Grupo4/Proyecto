@@ -76,7 +76,7 @@ public class ControllerPropuesta {
     public void insertarPropuesta(){
         try {
             System.out.println("--- Insertar Propuesta ---");
-            Propuesta propuesta = vistaPropuesta.crearPropuesta(true);
+            Propuesta propuesta = vistaPropuesta.crearPropuesta(false);
             propuestaDAO.insertPropuesta(propuesta);
         } catch (Exception e){
             System.out.println(e.getMessage());
@@ -91,7 +91,7 @@ public class ControllerPropuesta {
     public void actualizarPropuesta(){
         try {
             System.out.println("--- Actualizar Propuesta ---");
-            Propuesta propuesta = vistaPropuesta.crearPropuesta(false);
+            Propuesta propuesta = vistaPropuesta.crearPropuesta(true);
             propuestaDAO.updatePropuestaByPropuesta(propuesta);
         } catch (Exception e){
             System.out.println(e.getMessage());
