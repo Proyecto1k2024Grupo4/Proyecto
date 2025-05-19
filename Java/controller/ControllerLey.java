@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * Clase ControllerLey que maneja la clase LeyDAO y muestra la información mediante la vista de Ley
- * @autor Diego Fernando Valencia Correa 1ºK
+ * @autor AbdelMoghit Samini 1ºK
  * @version 14-04-2025
  */
 public class ControllerLey {
@@ -17,71 +17,81 @@ public class ControllerLey {
     private VistaLey vistaLey;
 
     /**
-     * Constructor que obtiene la instancia de LeyDAO e inicializa la VistaLey
+        Construye un ControllerLey inicializando la instancia de DAO y la vista.
      */
-    public ControllerLey(){
-        this.leyDAO = LeyDAO.getInstance();
+    public ControllerLey() {
+        leyDAO = LeyDAO.getInstance();
         vistaLey = new VistaLey();
     }
-
     /**
-     * Metodo que muestra todas las leyes de la base de datos
+        Obtiene todas las leyes de la base de datos y las muestra al usuario.
      */
-    public void mostrarTodasLasLeyes(){
+    public void mostrarTodasLasLeyes() {
         try {
             List<Ley> leyes = leyDAO.getAllLey();
             vistaLey.mostrarLeyes(leyes);
-        } catch (Exception e){
-            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error al listar leyes: " + e.getMessage());
         }
     }
-
     /**
-     * Metodo que inserta una ley en la base de datos
+        Solicita un ID al usuario y muestra la ley correspondiente si existe.
      */
-    public void insertarLey(){
+    public void mostrarLeyPorId() {
+        try {
+            int id = vistaLey.pedirId("Introduce el id de la ley: ");
+            Ley ley = leyDAO.getByIdLey(id);
+            vistaLey.mostrarLey(ley);
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+    /**
+        Solicita al usuario el ID de un código civil y lista las leyes asociadas.
+     */
+    public void mostrarLeyesPorCodigoCivil() {
+        try {
+            int idCc = vistaLey.pedirId("Introduce el id del Código Civil: ");
+            List<Ley> leyes = leyDAO.getByCodigoCivil(idCc);
+            vistaLey.mostrarLeyes(leyes);
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+    /**
+        Crea una nueva ley solicitando datos al usuario y la persiste en la base de datos.
+     */
+    public void insertarLey() {
         try {
             Ley ley = vistaLey.crearLey(false);
             leyDAO.insertLey(ley);
-        } catch (Exception e){
-            System.out.println(e.getMessage());
+            vistaLey.mostrarMensaje("Ley insertada correctamente");
+        } catch (Exception e) {
+            System.out.println("Error al insertar: " + e.getMessage());
         }
     }
-
     /**
-     * Metodo que muestra una ley con el Id que el usuario introduzca
+         Actualiza una ley existente solicitando datos al usuario (incluye ID) y persiste cambios.
      */
-    public void mostrarLeyPorId(){
-        try {
-            int id = vistaLey.pedirId();
-            Ley ley = leyDAO.getByIdLey(id);
-            vistaLey.mostrarLey(ley);
-        } catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-    }
-
-    /**
-     * Metodo que pide los datos de una ley al usuario y
-     */
-    public void actualizarLey(){
+    public void actualizarLey() {
         try {
             Ley ley = vistaLey.crearLey(true);
             leyDAO.updateLeyById(ley);
-        } catch (Exception e){
-            System.out.println(e.getMessage());
+            vistaLey.mostrarMensaje("Ley actualizada correctamente");
+        } catch (Exception e) {
+            System.out.println("Error al actualizar: " + e.getMessage());
         }
     }
-
     /**
-     * Metodo que pide un Id y borra la ley con ese Id de la base de datos
+         Elimina una ley según el ID que el usuario proporcione.
      */
-    public void borrarLey(){
+    public void borrarLey() {
         try {
             int id = vistaLey.pedirId();
             leyDAO.deleteLeyById(id);
-        } catch (Exception e){
-            System.out.println(e.getMessage());
+            vistaLey.mostrarMensaje("Ley eliminada correctamente");
+        } catch (Exception e) {
+            System.out.println("Error al borrar: " + e.getMessage());
         }
     }
 
