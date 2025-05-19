@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Clase LeyDAO que se encarga de la comunicacion con la base de datos cuya funcion es de
  * busqueda, insercion, elmiminacion, y actualizacion de leyes de la tabla LEY
- * @author Diego Fernando Valencia Correa 1ºK
+ * @author Abdel Moghit Samini 1ºK
  * @version 05-04-2025
  */
 public class LeyDAO {
