@@ -5,11 +5,14 @@ import model.Desarrollar;
 import view.VistaDesarrollar;
 
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
+
 /**
- * La clase ControllerDesarrollar es el controlador que maneja la lógica de negocio
- * relacionada con las operaciones CRUD sobre la entidad 'Desarrollar'. Esta clase
- * conecta la vista (VistaDesarrollar) y la capa de acceso a datos (DesarrollarDAO).
+ *  * @author ABDELMOGHIT SAMINI 1KDAM
+ * Controlador encargado de gestionar las relaciones entre propuestas y leyes mediante la entidad 'Desarrollar'.
+ * Se encarga de coordinar las operaciones CRUD: creación, eliminación y búsqueda de relaciones, interactuando con la capa de datos (DesarrollarDAO) y
+ * mostrando resultados al usuario a través de la vista (VistaDesarrollar).
  */
 public class ControllerDesarrollar {
     private DesarrollarDAO desarrollarDAO;
@@ -19,49 +22,48 @@ public class ControllerDesarrollar {
         desarrollarDAO = DesarrollarDAO.getInstance();
         vista = new VistaDesarrollar();
     }
-    /**
-     * Método que maneja la creación de una relación 'Desarrollar' en la base de datos.
-     * Recibe los datos introducidos por el usuario a través de la vista y los pasa al DAO
-     * para ser insertados en la base de datos.
-     */
+   /**
+    * Solicita datos al usuario para crear una nueva relación Desarrollar,
+    * la persiste en la base de datos e informa del resultado.
+*/
     public void crearRelacionDesarrollar() {
         try {
             vista.crearRelacion();
-            Desarrollar desarrollar = vista.getRelacionCreada();
-            desarrollarDAO.insertDesarrollar(desarrollar);
+            Desarrollar rel = vista.getRelacionCreada();
+            desarrollarDAO.insertDesarrollar(rel);
             vista.mostrarMensaje("Relación 'Desarrollar' creada correctamente.");
         } catch (SQLException e) {
-            e.printStackTrace();
+            vista.mostrarMensaje("Error al crear relación: " + e.getMessage());
         }
     }
     /**
-     * Método que maneja la eliminación de una relación 'Desarrollar' de la base de datos.
-     * Solicita al usuario los datos necesarios y los pasa al DAO para eliminar la relación.
+         * Solicita al usuario los identificadores necesarios para eliminar
+         * una relación Desarrollar y la elimina de la base de datos.
      */
     public void eliminarRelacionDesarrollar() {
         try {
             vista.pedirDatosEliminar();
-            int idPropuesta = vista.getIdPropuesta();
-            int idLey = vista.getIdLey();
-            desarrollarDAO.deleteDesarrollar(idPropuesta, idLey);
+            int idP = vista.getIdPropuesta();
+            int idL = vista.getIdLey();
+            desarrollarDAO.deleteDesarrollar(idP, idL);
             vista.mostrarMensaje("Relación 'Desarrollar' eliminada correctamente.");
         } catch (SQLException e) {
-            e.printStackTrace();
+            vista.mostrarMensaje("Error al eliminar relación: " + e.getMessage());
         }
     }
     /**
-     * Método que permite buscar relaciones 'Desarrollar' por el ID de la propuesta.
-     * Solicita al usuario el ID de la propuesta, realiza la búsqueda en el DAO y muestra
-     * los resultados en la vista.
+         * Permite al usuario buscar todas las relaciones Desarrollar asociadas
+         * a una propuesta concreta e imprime el resultado.
      */
-    public void buscarRelacionesPorPais() {
+
+    public void buscarRelacionesPorPropuesta() {
         try {
             vista.pedirIdPropuestaBuscar();
-            int idPropuesta = vista.getIdPropuesta();
-            List<Desarrollar> relaciones = desarrollarDAO.getDesarrollosByPais(idPropuesta);
-            vista.mostrarDesarrollos(relaciones);
+            int idP = vista.getIdPropuesta();
+            List<Desarrollar> lista = desarrollarDAO.getDesarrollosByPropuesta(idP);
+            vista.mostrarDesarrollos(lista);
         } catch (SQLException e) {
-            e.printStackTrace();
+            vista.mostrarMensaje("Error al buscar relaciones: " + e.getMessage());
         }
     }
 }
