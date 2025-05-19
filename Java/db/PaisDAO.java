@@ -1,6 +1,5 @@
 package db;
 
-import db.DBConnection;
 import model.Pais;
 import java.sql.*;
 import java.util.ArrayList;
