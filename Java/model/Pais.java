@@ -50,7 +50,7 @@ public class Pais {
 
         xmlBuilder.append("<model.Pais>\n")
                 .append("\t<model.Pais:id>").append(this.id).append("</model.Pais:id>\n")
-                .append("\t<model.Pais:nombre>").append(this.nombre).append("</model.Pais:nombre\n")
+                .append("\t<model.Pais:nombre>").append(this.nombre).append("</model.Pais:nombre>\n")
                 .append("</model.Pais>");
 
         return String.valueOf(xmlBuilder);
