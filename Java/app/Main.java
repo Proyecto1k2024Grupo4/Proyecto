@@ -11,6 +11,14 @@ import java.util.Scanner;
  * @version 14-04-2025
  */
 public class Main {
+
+    public static final int OPCION_MAX_PROPUESTAS = 11;
+    public static final int OPCION_MAX_MENU = 5;
+    public static final int OPCION_MAX_PERSONAS = 11;
+    public static final int OPCION_MAX_LEYES = 6;
+    public static final int OPCION_MAX_PAISES = 6;
+
+
     public static void main(String[] args) {
 
         int opcion = 0;
@@ -26,9 +34,10 @@ public class Main {
                     opcion = 0;
                     mostrarMenuPropuestas();
                     ControllerPropuesta controllerPropuesta = new ControllerPropuesta();
+                    ControllerVotar controllerVotar = new ControllerVotar();
                     while (opcionMenuPropuestas(opcion)){
                         opcion = introducirOpcion();
-                        if (opcionMenuPropuestas(opcion)) System.out.print("Por favor, introduce una opcion entre 1 y 5: ");
+                        if (opcionMenuPropuestas(opcion)) System.out.print("Por favor, introduce una opcion entre 1 y " + OPCION_MAX_PROPUESTAS + ": ");
                     }
                     switch (opcion){
                         case 1 -> {
@@ -47,6 +56,21 @@ public class Main {
                             controllerPropuesta.actualizarPropuesta();
                         }
                         case 6 -> {
+                            controllerVotar.insertarVoto();
+                        }
+                        case 7 -> {
+                            controllerVotar.mostrarTodosLosVotos();
+                        }
+                        case 8 -> {
+                            controllerVotar.mostrarVotosPorNumeroPasaporte();
+                        }
+                        case 9 -> {
+                            controllerVotar.mostrarVotosPorIdPropuesta();
+                        }
+                        case 10 -> {
+                            controllerVotar.mostrarVotosPorNumeroPasaporteEIdPropuesta();
+                        }
+                        case 11 -> {
                         }
                     }
                     opcion = 0;
@@ -177,23 +201,23 @@ public class Main {
     }
 
     public static boolean opcionMenuPrincipal(int opcion){
-        return opcion < 1 || opcion > 5;
+        return opcion < 1 || opcion > OPCION_MAX_MENU;
     }
 
     public static boolean opcionMenuPropuestas(int opcion){
-        return opcion < 1 || opcion > 6;
+        return opcion < 1 || opcion > OPCION_MAX_PROPUESTAS;
     }
 
     public static boolean opcionMenuPersonas(int opcion){
-        return opcion < 1 || opcion > 11;
+        return opcion < 1 || opcion > OPCION_MAX_PERSONAS;
     }
 
     public static boolean opcionMenuLeyes(int opcion){
-        return opcion < 1 || opcion > 6;
+        return opcion < 1 || opcion > OPCION_MAX_LEYES;
     }
 
     public static boolean opcionMenuPaises(int opcion){
-        return opcion < 1 || opcion > 6;
+        return opcion < 1 || opcion > OPCION_MAX_PAISES;
     }
 
     /**
@@ -206,7 +230,12 @@ public class Main {
         System.out.println("3. Mostrar propuestas por id de congreso");
         System.out.println("4. Insertar propuesta");
         System.out.println("5. Actualizar propuesta");
-        System.out.println("6. Volver atrás");
+        System.out.println("6. Insertar un voto");
+        System.out.println("7. Mostrar todos los votos");
+        System.out.println("8. Mostrar votos por número de pasaporte");
+        System.out.println("9. Mostrar votos por id de propuesta");
+        System.out.println("10. Mostra votos por número de pasaporte e id de propuesta");
+        System.out.println("11. Volver atrás");
         System.out.print("Por favor, seleccione la opcione que desee consultar (1-6): ");
     }
 
