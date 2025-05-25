@@ -236,7 +236,7 @@ public class Main {
         System.out.println("9. Mostrar votos por id de propuesta");
         System.out.println("10. Mostra votos por número de pasaporte e id de propuesta");
         System.out.println("11. Volver atrás");
-        System.out.print("Por favor, seleccione la opcione que desee consultar (1-6): ");
+        System.out.print("Por favor, seleccione la opcione que desee consultar (1-"+OPCION_MAX_PROPUESTAS+"): ");
     }
 
     /**

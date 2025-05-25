@@ -1,6 +1,7 @@
 # Proyecto: PROP-IN
 
-### ![alt text](PROP-IN-LOGO.png)
+
+<img src="PROP-IN-LOGO.png" alt="img" width="300"/>
 
 Sistema de Gestión de Votaciones y Propuestas de Reforma Legal a Nivel Internacional.
 
