@@ -270,7 +270,6 @@ public class Main {
             } catch (Exception e) {
                 System.out.print("Por favor, introduce un número: ");
                 correcto = false;
-                scanner.next();
             }
         }
 
