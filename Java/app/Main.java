@@ -19,7 +19,6 @@ public class Main {
     public static final int OPCION_MAX_PAISES = 6;
 
 
-
     public static void main(String[] args) {
 
         int opcion = 0;
