@@ -1,7 +1,6 @@
 package app;
 
 import controller.*;
-
 import java.util.Scanner;
 
 /**
