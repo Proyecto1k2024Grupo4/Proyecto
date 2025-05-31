@@ -1,5 +1,7 @@
 package app;
 
+import controller.ControllerPersona;
+
 import java.util.Scanner;
 
 /**
@@ -16,6 +18,7 @@ public class Main {
         // Condicionales para los menús
         boolean menuPrincipal = opcion < 1 && opcion > 5;
         boolean menuPropuestas = opcion < 1 && opcion > 5;
+        boolean menuPersonas = opcion < 1 && opcion > 14;
 
         do {
             mostrarMenu();
@@ -34,7 +37,27 @@ public class Main {
                 }
                 case 2 -> {
                     opcion = 0;
-                    System.out.println("Persona creada correctamente.");
+                    mostrarMenuPersonas();
+                    while (menuPersonas){
+                        opcion = introducirOpcion();
+                        if (menuPersonas)
+                            System.out.println("Por favor, introduce una opcion entre 1 y 14: ");
+                    } switch (opcion) {
+                        case 1 -> System.out.println("");
+                        case 2 -> System.out.println("");
+                        case 3 -> System.out.println("");
+                        case 4 -> System.out.println("");
+                        case 5 -> System.out.println("");
+                        case 6 -> System.out.println("");
+                        case 7 -> System.out.println("");
+                        case 8 -> System.out.println("");
+                        case 9 -> System.out.println("");
+                        case 10 -> System.out.println("");
+                        case 11 -> System.out.println("");
+                        case 12 -> System.out.println("");
+                        case 13 -> System.out.println("");
+                        case 14 -> System.out.println("");
+                    }
                 }
                 case 3 -> {
                     opcion = 0;
@@ -83,7 +106,25 @@ public class Main {
      * Metodo que muestra el menu de opciones principal
      */
     public static void mostrarMenuPersonas(){
-
+        System.out.println("""
+                --- Menus de Personas ---
+                1. Mostrar todas las personas
+                2. Mostrar persona por su pasaporte
+                3. Crear persona
+                4. Modificar persona
+                5. Eliminar persona
+                --- Politico ---
+                6. Mostrar todos los politicos
+                7. Mostrar politico por su pasaporte
+                8. Crear politico
+                9. Retirar un politico
+                10. Eliminar politico
+                --- Ciudadano ---
+                11. Mostrar todos los ciudadanos
+                12. Mostrar ciudadano por su pasaporte
+                13. Crear ciudadano
+                14. Eliminar ciudadano
+                """);
     }
 
     /**
