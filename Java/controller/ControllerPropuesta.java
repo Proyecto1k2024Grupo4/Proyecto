@@ -62,8 +62,24 @@ public class ControllerPropuesta {
         try {
             System.out.println("--- Mostrar Propuesta por ID de Congreso ---");
             int id = vistaPropuesta.pedirId();
-            Propuesta propuesta = propuestaDAO.getPropuestaByIdCongreso(id);
-            vistaPropuesta.mostrarPropuesta(propuesta);
+            List<Propuesta> propuestas = propuestaDAO.getPropuestaByIdCongreso(id);
+            vistaPropuesta.mostrarPropuestas(propuestas);
+        } catch (Exception e){
+            System.out.println("Ha ocurrido un error:");
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Metodo que muestra todas las propuestas con el nombre del pais que pide
+     */
+    public void mostrarPropuestaPorNombrePais(){
+        try{
+            System.out.println("--- Mostrar Propuestas por Nombre de Pais ---");
+            String nombre = vistaPropuesta.pedirNombre();
+            List<Propuesta> propuestas = propuestaDAO.getPropuestasByNombrePais(nombre);
+            vistaPropuesta.mostrarPropuestas(propuestas);
         } catch (Exception e){
             System.out.println("Ha ocurrido un error:");
             System.out.println(e.getMessage());

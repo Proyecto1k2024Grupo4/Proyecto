@@ -60,12 +60,11 @@ public class VistaLey {
                 leyCorrecta = true;
 
                 if(conId){
-                    System.out.print("Introduce un id: ");
                     id = pedirId();
                 }
 
                 System.out.print("Introduce una descripción: ");
-                descripcion = scanner.nextLine();
+                descripcion = pedirDescripcion();
 
                 System.out.print("Introduce la fecha de aplicación: ");
                 fechaAplicacion = introducirFecha();
@@ -76,7 +75,7 @@ public class VistaLey {
                 System.out.print("Introduce la fecha de implementación: ");
                 fechaImplementacion = introducirFecha();
 
-                System.out.print("Introduce el id del código civil: ");
+                System.out.print("Del código civil - ");
                 idCodigoCivil = pedirId();
 
                 if(conId){
@@ -97,6 +96,25 @@ public class VistaLey {
     }
 
     /**
+     * Metodo que pide una descripcion que cumpla con el limite de caracteres de la base de datos
+     * @return String con una descripcion
+     */
+    private String pedirDescripcion(){
+        boolean correcto = false;
+        String descripcion = "";
+
+        while (descripcion.isEmpty() || descripcion.length() > 2000){
+            descripcion = scanner.nextLine();
+            if (descripcion.isEmpty() || descripcion.length() > 2000){
+                System.out.println("La descripción no puede estár vacia o tener más de 2000 caracteres.");
+            }
+        }
+
+        return descripcion;
+
+    }
+
+    /**
      * Metodo que pide un id de una ley de manera correcta
      * @return int con el id
      */
@@ -107,8 +125,9 @@ public class VistaLey {
         while (!correcto){
             try {
                 correcto = true;
-                System.out.println("Introduce el id: ");
+                System.out.print("Introduce el id: ");
                 id = scanner.nextInt();
+                scanner.nextLine();
             } catch (Exception e){
                 correcto = false;
                 System.out.println("Error, por favor introduce un número entero.");
@@ -128,12 +147,11 @@ public class VistaLey {
         Date fecha = null;
         while(!correcto){
             try {
+                String fechaString = scanner.nextLine();
+                fecha = Date.valueOf(LocalDate.parse(fechaString));
                 correcto = true;
-                fecha = Date.valueOf(LocalDate.parse(scanner.nextLine()));
             } catch (Exception e){
                 System.out.println("Fecha incorrecta, por favor introduce la fecha con este formato (año-mes-dia) (Ejemplo: 1999-01-01): ");
-                correcto = false;
-                scanner.next();
             }
         }
         return fecha;

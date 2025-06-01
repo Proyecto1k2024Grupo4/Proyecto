@@ -59,7 +59,7 @@ public class LeyDAO {
             statement.setDate(3, ley.getFechaModificacion());
             statement.setDate(4, ley.getFechaImplementacion());
             statement.setInt(5, ley.getId());
-            statement.executeQuery();
+            statement.executeUpdate();
         }
     }
 
@@ -71,7 +71,7 @@ public class LeyDAO {
     public void deleteLeyById(int id) throws SQLException{
         try (PreparedStatement statement = connection.prepareStatement(DELETE_BY_ID_QUERY)) {
             statement.setInt(1, id);
-            statement.executeQuery();
+            statement.executeUpdate();
         }
     }
 
@@ -87,7 +87,7 @@ public class LeyDAO {
             statement.setDate(3, ley.getFechaModificacion());
             statement.setDate(4, ley.getFechaImplementacion());
             statement.setInt(5, ley.getIdCodigoCivil());
-            statement.executeQuery();
+            statement.executeUpdate();
         }
     }
 

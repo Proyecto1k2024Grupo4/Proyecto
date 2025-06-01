@@ -12,7 +12,7 @@ import java.util.Scanner;
  */
 public class Main {
 
-    public static final int OPCION_MAX_PROPUESTAS = 11;
+    public static final int OPCION_MAX_PROPUESTAS = 12;
     public static final int OPCION_MAX_MENU = 5;
     public static final int OPCION_MAX_PERSONAS = 11;
     public static final int OPCION_MAX_LEYES = 6;
@@ -50,27 +50,30 @@ public class Main {
                             controllerPropuesta.mostrarPropuestaPorIdCongreso();
                         }
                         case 4 -> {
-                            controllerPropuesta.insertarPropuesta();
+                            controllerPropuesta.mostrarPropuestaPorNombrePais();
                         }
                         case 5 -> {
-                            controllerPropuesta.actualizarPropuesta();
+                            controllerPropuesta.insertarPropuesta();
                         }
                         case 6 -> {
-                            controllerVotar.insertarVoto();
+                            controllerPropuesta.actualizarPropuesta();
                         }
                         case 7 -> {
-                            controllerVotar.mostrarTodosLosVotos();
+                            controllerVotar.insertarVoto();
                         }
                         case 8 -> {
-                            controllerVotar.mostrarVotosPorNumeroPasaporte();
+                            controllerVotar.mostrarTodosLosVotos();
                         }
                         case 9 -> {
-                            controllerVotar.mostrarVotosPorIdPropuesta();
+                            controllerVotar.mostrarVotosPorNumeroPasaporte();
                         }
                         case 10 -> {
-                            controllerVotar.mostrarVotosPorNumeroPasaporteEIdPropuesta();
+                            controllerVotar.mostrarVotosPorIdPropuesta();
                         }
                         case 11 -> {
+                            controllerVotar.mostrarVotosPorNumeroPasaporteEIdPropuesta();
+                        }
+                        case 12 -> {
                         }
                     }
                     opcion = 0;
@@ -228,14 +231,15 @@ public class Main {
         System.out.println("1. Mostrar todas las propuestas");
         System.out.println("2. Mostrar propuestas por id");
         System.out.println("3. Mostrar propuestas por id de congreso");
-        System.out.println("4. Insertar propuesta");
-        System.out.println("5. Actualizar propuesta");
-        System.out.println("6. Insertar un voto");
-        System.out.println("7. Mostrar todos los votos");
-        System.out.println("8. Mostrar votos por número de pasaporte");
-        System.out.println("9. Mostrar votos por id de propuesta");
-        System.out.println("10. Mostra votos por número de pasaporte e id de propuesta");
-        System.out.println("11. Volver atrás");
+        System.out.println("4. Mostrar propuestas por nombre de país");
+        System.out.println("5. Insertar propuesta");
+        System.out.println("6. Actualizar propuesta");
+        System.out.println("7. Insertar un voto");
+        System.out.println("8. Mostrar todos los votos");
+        System.out.println("9. Mostrar votos por número de pasaporte");
+        System.out.println("10. Mostrar votos por id de propuesta");
+        System.out.println("11. Muestra voto por número de pasaporte e id de propuesta");
+        System.out.println("12. Volver atrás");
         System.out.print("Por favor, seleccione la opcione que desee consultar (1-"+OPCION_MAX_PROPUESTAS+"): ");
     }
 
