@@ -1,7 +1,6 @@
-package com.iesochoa.ejemplodbjavafx.db;
+package db;
 
-
-import com.iesochoa.ejemplodbjavafx.model.Congreso;
+import model.Congreso;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
