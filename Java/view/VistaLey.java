@@ -2,12 +2,13 @@ package view;
 
 import model.Ley;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
 /**
- * Clase de vista para la gestión de Leyes
- * @autor Abdel Moghit Samini 1ºK
+ * Clase
+ * @author Diego Fernando Valencia Correa 1ºK
  * @version 14-04-2025
  */
 public class VistaLey {
@@ -17,7 +18,7 @@ public class VistaLey {
     /**
      * Constructor sin parámetros que crea una instancia de Scanner
      */
-    public VistaLey() {
+    public VistaLey(){
         scanner = new Scanner(System.in);
     }
 
@@ -33,95 +34,130 @@ public class VistaLey {
         }
     }
 
-    public void mostrarLey(Ley ley) {
+    /**
+     * Metodo que muestra por pantalla una ley.
+     * @param ley
+     */
+    public void mostrarLey(Ley ley){
         System.out.println(ley != null ? ley : "No existe una ley con ese ID.");
     }
 
-    public Ley crearLey(boolean conId) {
+    /**
+     * Metodo que pide los datos al usuario y crea una ley
+     * @return Ley con los datos proporcionados
+     */
+    public Ley crearLey(boolean conId){
+
         Ley ley = null;
-        while (ley == null) {
+        boolean leyCorrecta = false;
+
+        int id = 0;
+        String descripcion;
+        Date fechaAplicacion;
+        Date fechaModificacion;
+        Date fechaImplementacion;
+        int idCodigoCivil;
+
+        while(!leyCorrecta){
             try {
-                int id;
-                if (conId) {
-                    id = pedirId("Introduce el id de la ley: ");
-                } else {
-                    id = 0;
+                leyCorrecta = true;
+
+                if(conId){
+                    id = pedirId();
                 }
 
-                System.out.print("Descripción: ");
-                String desc = scanner.nextLine().trim();
+                System.out.print("Introduce una descripción: ");
+                descripcion = pedirDescripcion();
 
-                Date app = leerFecha("Fecha de aplicación", false);
-                Date mod = leerFecha("Fecha de modificación", false);
-                Date imp = leerFecha("Fecha de implementación", true);
+                System.out.print("Introduce la fecha de aplicación: ");
+                fechaAplicacion = introducirFecha();
 
-                int idCc = pedirId("Id del Código Civil asociado: ");
+                System.out.print("Introduce la fecha de modificación: ");
+                fechaModificacion = introducirFecha();
 
-                if (conId) {
-                    // Construye con ID
-                    ley = new Ley(id, desc, app, mod, imp, idCc);
+                System.out.print("Introduce la fecha de implementación: ");
+                fechaImplementacion = introducirFecha();
+
+                System.out.print("Del código civil - ");
+                idCodigoCivil = pedirId();
+
+                if(conId){
+                    ley = new Ley(id, descripcion, fechaAplicacion, fechaModificacion, fechaImplementacion, idCodigoCivil);
                 } else {
-                    // Construye sin ID
-                    ley = new Ley(desc, app, mod, imp, idCc);
+                    ley = new Ley(descripcion, fechaAplicacion, fechaModificacion, fechaImplementacion, idCodigoCivil);
                 }
-            } catch (Exception e) {
-                System.out.println("Error: " + e.getMessage());
-                System.out.println("Intenta de nuevo.\n");
+
+            } catch (Exception e){
+                leyCorrecta = false;
+                System.out.println(e.getMessage());
             }
         }
+
         return ley;
+
     }
 
-    private Date leerFecha(String msg, boolean oblig) {
-        Date date = null;
-        boolean valido = false;
-        while (!valido) {
-            // Construyo el mensaje según
-            String mensaje;
-            if (oblig) {
-                mensaje = msg + " (AAAA-MM-DD) [obligatorio]: ";
-            } else {
-                mensaje = msg + " (AAAA-MM-DD) [ENTER para omitir]: ";
-            }
-            System.out.print(mensaje);
+    /**
+     * Metodo que pide una descripcion que cumpla con el limite de caracteres de la base de datos
+     * @return String con una descripcion
+     */
+    private String pedirDescripcion(){
+        boolean correcto = false;
+        String descripcion = "";
 
-            String line = scanner.nextLine().trim();
-            // Si no es obligatorio y no escribe nada, aceptamos null
-            if (line.isEmpty() && !oblig) {
-                date = null;
-                valido = true;
-            } else {
-                try {
-                    date = Date.valueOf(line);
-                    valido = true;
-                } catch (IllegalArgumentException ex) {
-                    System.out.println("Formato inválido, p.ej. 1999-01-01.");
-                }
+        while (descripcion.isEmpty() || descripcion.length() > 2000){
+            descripcion = scanner.nextLine();
+            if (descripcion.isEmpty() || descripcion.length() > 2000){
+                System.out.println("La descripción no puede estár vacia o tener más de 2000 caracteres.");
             }
         }
-        return date;
+
+        return descripcion;
+
     }
 
+    /**
+     * Metodo que pide un id de una ley de manera correcta
+     * @return int con el id
+     */
+    public int pedirId(){
+        boolean correcto = false;
+        int id = 0;
 
-    public int pedirId() { return pedirId("Introduce el id: "); }
-    public int pedirId(String msg) {
-        boolean valido = false;
-        int valor = 0;
-        while (!valido) {
-            System.out.print(msg);
-            String line = scanner.nextLine().trim();
+        while (!correcto){
             try {
-                valor = Integer.parseInt(line);
-                valido = true;
-            } catch (NumberFormatException e) {
-                System.out.println("Debe ser un número entero.");
+                correcto = true;
+                System.out.print("Introduce el id: ");
+                id = scanner.nextInt();
+                scanner.nextLine();
+            } catch (Exception e){
+                correcto = false;
+                System.out.println("Error, por favor introduce un número entero.");
+                scanner.next();
             }
         }
-        return valor;
+
+        return id;
+    }
+
+    /**
+     * Metodo que pide un String y lo convierte en Date. Si no es correcto el formato, lo pide hasta que sea correcto.
+     * @return Date Fecha formato SQL
+     */
+    private Date introducirFecha(){
+        boolean correcto = false;
+        Date fecha = null;
+        while(!correcto){
+            try {
+                String fechaString = scanner.nextLine();
+                fecha = Date.valueOf(LocalDate.parse(fechaString));
+                correcto = true;
+            } catch (Exception e){
+                System.out.println("Fecha incorrecta, por favor introduce la fecha con este formato (año-mes-dia) (Ejemplo: 1999-01-01): ");
+            }
+        }
+        return fecha;
     }
 
 
-    public void mostrarMensaje(String msg) {
-        System.out.println(msg);
-    }
 }

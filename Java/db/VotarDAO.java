@@ -128,7 +128,7 @@ public class VotarDAO {
             statement.setString(1, votar.getNumPasaporteCiudadano());
             statement.setInt(2, votar.getIdPropuesta());
             statement.setBoolean(3, votar.getDecision());
-            statement.executeQuery();
+            statement.executeUpdate();
         }
     }
 

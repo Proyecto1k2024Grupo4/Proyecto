@@ -44,13 +44,14 @@ public class VistaVotar {
      */
     public String pedirNumPasaporteCiudadano(){
         boolean correcto = false;
-        String numPasaporte = null;
+        String numPasaporte = "";
 
         while (!correcto){
 
             try{
                 correcto = true;
-                while (numPasaporte.length() > 16){
+                while (numPasaporte.isEmpty() || numPasaporte.length() > 16){
+                    numPasaporte = "";
                     System.out.print("\nIntroduce el número de pasaporte del ciudadano: ");
                     numPasaporte = scanner.nextLine();
                     if (numPasaporte.length() > 16){
@@ -61,7 +62,6 @@ public class VistaVotar {
             } catch (Exception e){
                 correcto = false;
                 System.out.println(e.getMessage());
-                scanner.next();
             }
 
         }
@@ -80,8 +80,9 @@ public class VistaVotar {
         while (!correcto){
             try {
                 correcto = true;
-                System.out.println("Introduce el id: ");
+                System.out.print("Introduce el id: ");
                 id = scanner.nextInt();
+                scanner.nextLine();
             } catch (Exception e){
                 correcto = false;
                 System.out.println("Error, por favor introduce un número entero.");
@@ -101,11 +102,16 @@ public class VistaVotar {
 
         boolean correcto = false;
         boolean resultado = false;
+        String decision = "";
 
         while (!correcto){
             try {
                 correcto = true;
-                resultado = Boolean.getBoolean(scanner.nextLine());
+                while (!decision.equals("true") && !decision.equals("false")){
+                    System.out.print("Introduce una decisión (true/false): ");
+                    decision = scanner.nextLine();
+                }
+                resultado = Boolean.parseBoolean(decision);
             } catch (Exception e){
                 correcto = false;
                 System.out.println("Decisión inválida, por favor introduce true o false: ");
@@ -136,13 +142,11 @@ public class VistaVotar {
 
             try {
                 votoCorrecto = true;
-                System.out.print("Introduce un numero de pasaporte: ");
-                numPasaporteCiudadano = scanner.nextLine();
+                numPasaporteCiudadano = pedirNumPasaporteCiudadano();
 
-                System.out.print("Introduce el id de la propuesta: ");
+                System.out.print("De la propuesta - ");
                 idPropuesta = pedirId();
 
-                System.out.print("Introduce tu decisión (true/false): ");
                 decision = pedirDecision();
 
                 voto = new Votar(numPasaporteCiudadano, idPropuesta, decision);

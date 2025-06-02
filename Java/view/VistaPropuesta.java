@@ -68,6 +68,36 @@ public class VistaPropuesta {
     }
 
     /**
+     * Metodo que pide un String como nombre de pais que debe cumplir con el limite de caracteres
+     * de la base de datos
+     * @return String con el nombre del pais
+     */
+    public String pedirNombre(){
+        boolean correcto = false;
+        String nombre = "";
+
+        while (!correcto){
+            try{
+                correcto = true;
+                while (nombre.isEmpty() || nombre.length() > 64){
+                    nombre = "";
+                    System.out.print("Introduce el nombre del país: ");
+                    nombre = scanner.nextLine();
+                    if (nombre.isEmpty() || nombre.length() > 64){
+                        System.out.println("El nombre debe tener entre 1 y 64 caracteres.");
+                    }
+                }
+            } catch (Exception e){
+                correcto = false;
+                System.out.println(e.getMessage());
+            }
+        }
+
+        return nombre;
+    }
+
+
+    /**
      * Metodo que pide los datos necesarios y crea una propuesta
      * @return Propuesta creada por el usuario
      */

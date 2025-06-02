@@ -27,6 +27,7 @@ public class PropuestaDAO {
     private static final String SELECT_ALL_QUERY = "select * from PROPUESTA";
     private static final String SELECT_BY_ID_QUERY = "select * from PROPUESTA where id = ?";
     private static final String SELECT_BY_ID_CONGRESO_QUERY = "select * from PROPUESTA where idCongreso = ?";
+    private static final String SELECT_BY_NAME_PAIS = "select pr.* from PAIS p join CODIGO_CIVIL c on p.id = c.idPais join PROPUESTA pr on c.id = pr.idCongreso where p.nombre = ?";
     private static final String UPDATE_BY_PROPUESTA_QUERY = "update PROPUESTA set titulo = ?, descripcion = ?, fechaExpiracion = ?, estado = ?, " +
             "numPasaportePolitico = ?, fechaProposicion = ?, fechaAceptacion = ?, fechaPublicacion = ? where id = ?";
 
@@ -104,6 +105,25 @@ public class PropuestaDAO {
     }
 
     /**
+     * Metodo que recibe devuelve todas las propuestas que contengan el nombre del pais
+     * proporcionado como parametro
+     * @param nombre String con el nombre del pais
+     * @return List con todas las propuestas del pais
+     * @throws SQLException Excepcion SQL
+     */
+    public List<Propuesta> getPropuestasByNombrePais(String nombre) throws SQLException{
+        List<Propuesta> propuestas = new ArrayList<>();
+        try(PreparedStatement statement = connection.prepareStatement(SELECT_BY_NAME_PAIS)){
+            statement.setString(1, nombre);
+            ResultSet resultsSet = statement.executeQuery();
+            while(resultsSet.next()){
+                propuestas.add(resultSetToPropuesta(resultsSet));
+            }
+        }
+        return propuestas;
+    }
+
+    /**
      * Metodo que devuelve una propuesta identificada por un id proporcionado
      * @param id Id de la propuesta que se desea recuperar
      * @return Propuesta con el id proporcionado
@@ -127,16 +147,16 @@ public class PropuestaDAO {
      * @return Propuestas con el id del congreso proporcionado
      * @throws SQLException Excepcion SQL
      */
-    public Propuesta getPropuestaByIdCongreso(int idCongreso) throws SQLException{
-        Propuesta propuesta = null;
+    public List<Propuesta> getPropuestaByIdCongreso(int idCongreso) throws SQLException{
+        List<Propuesta> propuestas = new ArrayList<>();
         try(PreparedStatement statement = connection.prepareStatement(SELECT_BY_ID_CONGRESO_QUERY)){
             statement.setInt(1, idCongreso);
             ResultSet resultSet = statement.executeQuery();
-            if (resultSet.next()){
-                propuesta = resultSetToPropuesta(resultSet);
+            while (resultSet.next()){
+                propuestas.add(resultSetToPropuesta(resultSet));
             }
         }
-        return propuesta;
+        return propuestas;
     }
 
     /**
