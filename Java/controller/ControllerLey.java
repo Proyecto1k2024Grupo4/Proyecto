@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * Clase ControllerLey que maneja la clase LeyDAO y muestra la información mediante la vista de Ley
- * @autor Diego Fernando Valencia Correa 1ºK
+ * @author Diego Fernando Valencia Correa 1ºK
  * @version 14-04-2025
  */
 public class ControllerLey {

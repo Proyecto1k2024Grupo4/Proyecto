@@ -7,7 +7,7 @@ import java.util.Scanner;
 /**
  * Clase Main que se ejecuta al inicio del programa y desde la que se muestra el menu con las
  * opciones
- * @autor Diego Fernando Valencia Correa 1ºK
+ * @author Diego Fernando Valencia Correa 1ºK
  * @version 14-04-2025
  */
 public class Main {
