@@ -1,43 +1,49 @@
 package model;
 
 public class Desarrollar {
-
     private int idPropuesta;
     private int idLey;
 
+    // Constructor vacío
+    public Desarrollar() {}
 
-    public void desarrollar( int idPropuesta,  int idLey) {
-
+    public Desarrollar(int idPropuesta, int idLey) {
+        this.idPropuesta = idPropuesta;
+        this.idLey = idLey;
     }
 
-
-    public String toJson(){
-        StringBuilder jsonBuilder = new StringBuilder();
-
-        jsonBuilder.append("\"DESARROLLAR\": {")
-                .append("\n")
-                .append("\t")
-                .append("\"idpropuesta\": ").append(this.idPropuesta)
-                .append("\n")
-                .append("\t")
-                .append("\"idLey\": ").append(this.idLey)
-                .append("\n")
-                .append("}");
-
-        return String.valueOf(jsonBuilder);
+    public int getIdPropuesta() {
+        return idPropuesta;
     }
 
-    public String toXml(){
-        StringBuilder xmlBuilder = new StringBuilder();
+    public void setIdPropuesta(int idPropuesta) {
+        this.idPropuesta = idPropuesta;
+    }
 
-        xmlBuilder.append("<Desarrollo>")
-                .append("\n")
-                .append("\t")
-                .append("<Desarrollo:idPropuesta>").append(this.idPropuesta).append("</Desarrollo:idPropuesta>\n")
-                .append("\t")
-                .append("<Desarrollo:idLey>").append(this.idLey).append("</Desarrollo:idLey>\n")
-                .append("</Desarrollo>");
+    public int getIdLey() {
+        return idLey;
+    }
 
-        return String.valueOf(xmlBuilder);
+    public void setIdLey(int idLey) {
+        this.idLey = idLey;
+    }
+
+    public String toJson() {
+        return String.format("{ \"idPropuesta\": %d, \"idLey\": %d }", idPropuesta, idLey);
+    }
+
+    public String toXml() {
+        return String.format(
+                "<Desarrollar>" +
+                        "<idPropuesta>%d</idPropuesta>" +
+                        "<idLey>%d</idLey>" +
+                        "</Desarrollar>",
+                idPropuesta, idLey
+        );
+    }
+
+    @Override
+    public String toString() {
+        return "Desarrollar{idPropuesta=" + idPropuesta + ", idLey=" + idLey + '}';
     }
 }
