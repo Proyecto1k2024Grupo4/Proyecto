@@ -5,6 +5,7 @@ import model.Congreso;
 import view.VistaCongreso;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
