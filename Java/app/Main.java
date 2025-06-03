@@ -13,7 +13,7 @@ public class Main {
 
     public static final int OPCION_MAX_PROPUESTAS = 12;
     public static final int OPCION_MAX_MENU = 5;
-    public static final int OPCION_MAX_PERSONAS = 11;
+    public static final int OPCION_MAX_PERSONAS = 14;
     public static final int OPCION_MAX_LEYES = 6;
     public static final int OPCION_MAX_PAISES = 6;
 
@@ -78,24 +78,14 @@ public class Main {
                     opcion = 0;
                 }
                 case 2 -> {
-                    opcion = 0;
-                    mostrarMenuPersonas();
-                    ControllerPersona controllerPersona = new ControllerPersona();
-                    ControllerPolitico controllerPolitico = new ControllerPolitico();
-                    while (opcionMenuPersonas(opcion)){
-                        opcion = introducirOpcion();
-                        if (opcionMenuPersonas(opcion)) System.out.print("Por favor, introduce una opcion entre 1 y 5: ");
-                    }
-                }
-                case 2 -> {
                     ControllerPersona controllerPersona = new ControllerPersona();
                     ControllerPolitico controllerPolitico = new ControllerPolitico();
                     ControllerCiudadano controllerCiudadano = new ControllerCiudadano();
                     opcion = 0;
                     mostrarMenuPersonas();
-                    while (menuPersonas){
+                    while (opcionMenuPersonas(opcion)){
                         opcion = introducirOpcion();
-                        if (menuPersonas)
+                        if (opcionMenuPersonas(opcion))
                             System.out.println("Por favor, introduce una opcion entre 1 y 14: ");
                     } switch (opcion) {
                         case 1 -> controllerPersona.mostrarTodasLasPersonas();
@@ -112,6 +102,7 @@ public class Main {
                         case 12 -> controllerCiudadano.mostrarCiudadanoPasaporte();
                         case 13 -> controllerCiudadano.crearCiudadano();
                         case 14 -> controllerCiudadano.eliminarCiudadano();
+                        case 15 ->{}
                     }
                 }
                 case 3 -> {
@@ -256,6 +247,8 @@ public class Main {
                 12. Mostrar ciudadano por su pasaporte
                 13. Crear ciudadano
                 14. Eliminar ciudadano
+                
+                15. Volver atrás
                 """);
     }
 
