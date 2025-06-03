@@ -1,6 +1,8 @@
 package app;
 
+import controller.ControllerCiudadano;
 import controller.ControllerPersona;
+import controller.ControllerPolitico;
 
 import java.util.Scanner;
 
@@ -36,6 +38,9 @@ public class Main {
                     }
                 }
                 case 2 -> {
+                    ControllerPersona controllerPersona = new ControllerPersona();
+                    ControllerPolitico controllerPolitico = new ControllerPolitico();
+                    ControllerCiudadano controllerCiudadano = new ControllerCiudadano();
                     opcion = 0;
                     mostrarMenuPersonas();
                     while (menuPersonas){
@@ -43,20 +48,20 @@ public class Main {
                         if (menuPersonas)
                             System.out.println("Por favor, introduce una opcion entre 1 y 14: ");
                     } switch (opcion) {
-                        case 1 -> System.out.println("");
-                        case 2 -> System.out.println("");
-                        case 3 -> System.out.println("");
-                        case 4 -> System.out.println("");
-                        case 5 -> System.out.println("");
-                        case 6 -> System.out.println("");
-                        case 7 -> System.out.println("");
-                        case 8 -> System.out.println("");
-                        case 9 -> System.out.println("");
-                        case 10 -> System.out.println("");
-                        case 11 -> System.out.println("");
-                        case 12 -> System.out.println("");
-                        case 13 -> System.out.println("");
-                        case 14 -> System.out.println("");
+                        case 1 -> controllerPersona.mostrarTodasLasPersonas();
+                        case 2 -> controllerPersona.mostarPersonaPasaporte();
+                        case 3 -> controllerPersona.crearPersona();
+                        case 4 -> controllerPersona.actualizarPersona();
+                        case 5 -> controllerPersona.eliminarPersona();
+                        case 6 -> controllerPolitico.mostrarTodosLosPoliticos();
+                        case 7 -> controllerPolitico.mostrarPoliticoPasaporte();
+                        case 8 -> controllerPolitico.crearPolitco();
+                        case 9 -> controllerPolitico.acutalizarPolitico();
+                        case 10 -> controllerPolitico.eliminarPolitico();
+                        case 11 -> controllerCiudadano.mostrarTodosLosCiudadanos();
+                        case 12 -> controllerCiudadano.mostrarCiudadanoPasaporte();
+                        case 13 -> controllerCiudadano.crearCiudadano();
+                        case 14 -> controllerCiudadano.eliminarCiudadano();
                     }
                 }
                 case 3 -> {
