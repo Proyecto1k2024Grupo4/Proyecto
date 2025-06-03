@@ -27,6 +27,7 @@ public class PropuestaDAO {
     private static final String SELECT_ALL_QUERY = "select * from PROPUESTA";
     private static final String SELECT_BY_ID_QUERY = "select * from PROPUESTA where id = ?";
     private static final String SELECT_BY_ID_CONGRESO_QUERY = "select * from PROPUESTA where idCongreso = ?";
+    private static final String SELECT_BY_NAME_PAIS = "select pr.* from PAIS p join CODIGO_CIVIL c on p.id = c.idPais join PROPUESTA pr on c.id = pr.idCongreso where p.nombre = ?";
     private static final String UPDATE_BY_PROPUESTA_QUERY = "update PROPUESTA set titulo = ?, descripcion = ?, fechaExpiracion = ?, estado = ?, " +
             "numPasaportePolitico = ?, fechaProposicion = ?, fechaAceptacion = ?, fechaPublicacion = ? where id = ?";
 
@@ -62,7 +63,7 @@ public class PropuestaDAO {
             statement.setDate(7, propuesta.getFechaAceptacion());
             statement.setDate(8, propuesta.getFechaPublicacion());
             statement.setInt(9, propuesta.getId());
-            statement.executeQuery();
+            statement.executeUpdate();
         }
     }
 
@@ -76,13 +77,13 @@ public class PropuestaDAO {
             statement.setString(1, propuesta.getTitulo());
             statement.setString(2, propuesta.getDescripcion());
             statement.setDate(3, propuesta.getFechaExpiracion());
-            statement.setString(4, propuesta.getDescripcion());
+            statement.setString(4, String.valueOf(propuesta.getEstado()));
             statement.setInt(5, propuesta.getIdCongreso());
             statement.setString(6, propuesta.getNumPasaportePolitico());
             statement.setDate(7, propuesta.getFechaProposicion());
             statement.setDate(8, propuesta.getFechaAceptacion());
             statement.setDate(9, propuesta.getFechaPublicacion());
-            statement.executeQuery();
+            statement.executeUpdate();
         }
     }
 
@@ -98,6 +99,25 @@ public class PropuestaDAO {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()){
                 propuestas.add(resultSetToPropuesta(resultSet));
+            }
+        }
+        return propuestas;
+    }
+
+    /**
+     * Metodo que recibe devuelve todas las propuestas que contengan el nombre del pais
+     * proporcionado como parametro
+     * @param nombre String con el nombre del pais
+     * @return List con todas las propuestas del pais
+     * @throws SQLException Excepcion SQL
+     */
+    public List<Propuesta> getPropuestasByNombrePais(String nombre) throws SQLException{
+        List<Propuesta> propuestas = new ArrayList<>();
+        try(PreparedStatement statement = connection.prepareStatement(SELECT_BY_NAME_PAIS)){
+            statement.setString(1, nombre);
+            ResultSet resultsSet = statement.executeQuery();
+            while(resultsSet.next()){
+                propuestas.add(resultSetToPropuesta(resultsSet));
             }
         }
         return propuestas;
@@ -127,16 +147,16 @@ public class PropuestaDAO {
      * @return Propuestas con el id del congreso proporcionado
      * @throws SQLException Excepcion SQL
      */
-    public Propuesta getPropuestaByIdCongreso(int idCongreso) throws SQLException{
-        Propuesta propuesta = null;
+    public List<Propuesta> getPropuestaByIdCongreso(int idCongreso) throws SQLException{
+        List<Propuesta> propuestas = new ArrayList<>();
         try(PreparedStatement statement = connection.prepareStatement(SELECT_BY_ID_CONGRESO_QUERY)){
             statement.setInt(1, idCongreso);
             ResultSet resultSet = statement.executeQuery();
-            if (resultSet.next()){
-                propuesta = resultSetToPropuesta(resultSet);
+            while (resultSet.next()){
+                propuestas.add(resultSetToPropuesta(resultSet));
             }
         }
-        return propuesta;
+        return propuestas;
     }
 
     /**
@@ -153,7 +173,7 @@ public class PropuestaDAO {
             resultSet.getDate("fechaExpiracion"),
             EstadoPropuesta.valueOf(resultSet.getString("estado")),
             resultSet.getInt("idCongreso"),
-            resultSet.getString(" numPasaportePolitico"),
+            resultSet.getString("numPasaportePolitico"),
             resultSet.getDate("fechaProposicion"),
             resultSet.getDate("fechaExpiracion"),
             resultSet.getDate("fechaAceptacion")

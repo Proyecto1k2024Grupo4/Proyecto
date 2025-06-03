@@ -1,52 +1,71 @@
 package view;
 
-import model.Ley;
+import model.Desarrollar;
 
+import java.util.List;
 import java.util.Scanner;
 /**
- * Esta clase es responsable de interactuar con el usuario en relación a las Leyes,
- * solicitando información sobre propuestas y leyes, y mostrando mensajes al usuario.
+ * Clase VistaDesarrollar que maneja la interacción con el usuario para gestionar
+ * las relaciones 'Desarrollar'. Esta clase permite crear, eliminar y buscar relaciones,
+ * así como mostrar mensajes y resultados al usuario.
  */
 public class VistaDesarrollar {
-//    private Scanner scanner = new Scanner(System.in);
-//
-//    /**
-//     * Solicita al usuario ingresar el ID de una Propuesta.
-//     *
-//     * @return El ID de la propuesta ingresada por el usuario.
-//     */
-//    public int obtenerIdPropuesta() {
-//        System.out.println("Introduce el ID de la Propuesta:");
-//        return scanner.nextInt();
-//    }
-//    /**
-//     * Permite al usuario crear una nueva Ley a partir de una propuesta, solicitando
-//     * la información necesaria para la creación de la ley.
-//     *
-//     * @return Un objeto {@link Ley} con los datos ingresados por el usuario.
-//     */
-//    public Ley crearLeyDesdePropuesta() {
-//        System.out.println("Introduce el ID de la nueva Ley:");
-//        int id = scanner.nextInt();
-//        scanner.nextLine();
-//        System.out.println("Introduce la descripción:");
-//        String descripcion = scanner.nextLine();
-//        System.out.println("Introduce la fecha de implementación:");
-//        String fImpl = scanner.nextLine();
-//        System.out.println("Introduce la fecha de aplicación:");
-//        String fAplica = scanner.nextLine();
-//        System.out.println("Introduce la fecha de modificación:");
-//        String fMod = scanner.nextLine();
-//
-//        return new Ley(id, descripcion, fImpl, fAplica, fMod);
-//    }
-//
-//    /**
-//     * Muestra un mensaje al usuario en consola.
-//     *
-//     * @param mensaje El mensaje que se desea mostrar al usuario.
-//     */
-//    public void mostrarMensaje(String mensaje) {
-//        System.out.println(mensaje);
-//    }
+    private Scanner scanner = new Scanner(System.in);
+    private Desarrollar desarrollar;
+
+    private int idPropuesta;
+    private int idLey;
+    /**
+     * Método que solicita al usuario los datos necesarios para crear una relación
+     * 'Desarrollar' y almacena estos datos en el objeto 'Desarrollar'.
+     */
+    public void crearRelacion() {
+        System.out.println("Introduce datos de la relación Desarrollar:");
+        System.out.print("ID Propuesta: ");
+        idPropuesta = scanner.nextInt();
+        System.out.print("ID Ley: ");
+        idLey = scanner.nextInt();
+        scanner.nextLine();
+
+        // Creamos el objeto correctamente con los valores
+        desarrollar = new Desarrollar(idPropuesta, idLey);
+    }
+
+    public Desarrollar getRelacionCreada() {
+        return desarrollar;
+    }
+
+    public void pedirDatosEliminar() {
+        System.out.print("Introduce el ID de la Propuesta a eliminar: ");
+        idPropuesta = scanner.nextInt();
+        System.out.print("Introduce el ID de la Ley a eliminar: ");
+        idLey = scanner.nextInt();
+        scanner.nextLine();
+    }
+
+    public int getIdPropuesta() {
+        return idPropuesta;
+    }
+
+    public int getIdLey() {
+        return idLey;
+    }
+
+    public void pedirIdPropuestaBuscar() {
+        System.out.print("Introduce el ID de la Propuesta para buscar desarrollos: ");
+        idPropuesta = scanner.nextInt();
+        scanner.nextLine();
+    }
+
+    public void mostrarDesarrollos(List<Desarrollar> desarrollos) {
+        if (desarrollos.isEmpty()) {
+            System.out.println("No hay desarrollos para esa propuesta.");
+        } else {
+            desarrollos.forEach(System.out::println);
+        }
+    }
+
+    public void mostrarMensaje(String mensaje) {
+        System.out.println(mensaje);
+    }
 }
