@@ -78,16 +78,17 @@ public class Main {
                     opcion = 0;
                 }
                 case 2 -> {
+                    mostrarMenuPersonas();
                     ControllerPersona controllerPersona = new ControllerPersona();
                     ControllerPolitico controllerPolitico = new ControllerPolitico();
                     ControllerCiudadano controllerCiudadano = new ControllerCiudadano();
                     opcion = 0;
-                    mostrarMenuPersonas();
                     while (opcionMenuPersonas(opcion)){
                         opcion = introducirOpcion();
                         if (opcionMenuPersonas(opcion))
                             System.out.println("Por favor, introduce una opcion entre 1 y 14: ");
-                    } switch (opcion) {
+                    }
+                    switch (opcion) {
                         case 1 -> controllerPersona.mostrarTodasLasPersonas();
                         case 2 -> controllerPersona.mostarPersonaPasaporte();
                         case 3 -> controllerPersona.crearPersona();
@@ -104,6 +105,7 @@ public class Main {
                         case 14 -> controllerCiudadano.eliminarCiudadano();
                         case 15 ->{}
                     }
+                    opcion = 0;
                 }
                 case 3 -> {
                     opcion = 0;
