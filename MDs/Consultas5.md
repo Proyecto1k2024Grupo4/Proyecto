@@ -50,7 +50,7 @@ CREATE OR REPLACE PROCEDURE insertar_politico (IN numPasaporte_ VARCHAR(64), IN 
     IN idCongreso_ INT UNSIGNED)
 BEGIN
     INSERT INTO PERSONA VALUES(numPasaporte_, nombre_, primerApellido_, segundoApellido_, fnac_, sexo_, paisNacimiento_);
-    INSERT INTO POLITICO VALUES(numPasaporte_, fechaIniciacion, fechaRetirada, idCongreso);
+    INSERT INTO POLITICO VALUES(numPasaporte_, fechaIniciacion_, fechaRetirada_, idCongreso_);
 END;
 //
 DELIMITER ;
