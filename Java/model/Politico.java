@@ -11,7 +11,6 @@ import java.sql.Date;
 public class Politico extends Persona{
 
     // Propiedades
-    public String numPasaporte;
     public Date fechaIniciacion;
     public Date fechaRetirada;
     public int idCongreso;
@@ -31,7 +30,6 @@ public class Politico extends Persona{
      */
     public Politico(String numPasaporte, String nombre, String primerApellido, String segundoApellido, Date fnac, Sexo sexo, int paisNacimiento, Date fechaIniciacion, Date fechaRetirada, int idCongreso) {
         super(numPasaporte, nombre, primerApellido, segundoApellido, fnac, sexo, paisNacimiento);
-        this.numPasaporte = numPasaporte;
         this.fechaIniciacion = fechaIniciacion;
         this.fechaRetirada = fechaRetirada;
         this.idCongreso = idCongreso;

@@ -94,7 +94,6 @@ public class VistaPersona {
         System.out.println("Introduce el segundo apellido");
         String apellido2 = scan.nextLine();
         System.out.println("Introduce la fecha de nacimiento");
-        String atributo = scan.nextLine();
         Date fecha = obtenerFecha();
         System.out.println("Introduce el sexo(H,M)");
         Sexo sexo = Sexo.valueOf(scan.nextLine());
