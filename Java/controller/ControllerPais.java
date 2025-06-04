@@ -16,7 +16,7 @@ public class ControllerPais {
     private VistaPais vista;
 
     public ControllerPais() {
-        paisDAO = PaisDAO.getInstance();
+        this.paisDAO = PaisDAO.getInstance();
         vista = new VistaPais();
     }
 

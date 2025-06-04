@@ -118,6 +118,8 @@ public class Main {
                         case 5 -> {
                             controllerLey.borrarLey();
                         }
+                        case 6 -> controllerLey.mostrarLeyesPorCodigoCivil();
+                        case 7 -> controllerLey.mostrarLeyesPorPais();
                     }
                 }
                 case 4 -> {
@@ -175,7 +177,7 @@ public class Main {
     }
 
     public static boolean opcionMenuLeyes(int opcion){
-        return opcion < 1 || opcion > 5;
+        return opcion < 1 || opcion > 7;
     }
 
     public static boolean opcionMenuPaises(int opcion){
@@ -222,6 +224,8 @@ public class Main {
         System.out.println("3. Mostrar ley por id");
         System.out.println("4. Actualizar Ley");
         System.out.println("5. Borrar Ley");
+        System.out.println("6. Mostrar Ley por Código Civil");
+        System.out.println("7. Mostrar Ley por País");
     }
 
     /**
