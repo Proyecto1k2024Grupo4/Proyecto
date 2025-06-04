@@ -1,35 +1,40 @@
 package db;
 
 import model.CodigoCivil;
+import model.Pais;
+
 import java.sql.*;
 import java.util.ArrayList;
+
 import java.util.List;
 /**
-    * @author ABDELMOGHIT SAMINI 1KDAM
-    * Proporciona métodos para realizar operaciones CRUD sobre la tabla
-    * CODIGO_CIVIL en la base de datos, incluyendo inserción, consulta,
-    * actualización y eliminación de registros.
+ *  @author ABDELMOGHIT SAMINI 1KDAM
+ * Clase CodigoCivilDAO que proporciona acceso a la base de datos
+ * para la entidad CodigoCivil utilizando el patrón Singleton.
  */
 public class CodigoCivilDAO {
     private static CodigoCivilDAO instance;
     private Connection connection;
 
-    // Sentencia SQ
-    private static final String INSERT_QUERY = "INSERT INTO CODIGO_CIVIL (idPais, fechaModificacion) VALUES (?, ?)";
+    private static final String INSERT_QUERY = "INSERT INTO CODIGO_CIVIL (id, idPais, fechaModificacion) VALUES (?, ?, ?)";
     private static final String SELECT_ALL_QUERY = "SELECT * FROM CODIGO_CIVIL";
     private static final String SELECT_BY_ID_QUERY = "SELECT * FROM CODIGO_CIVIL WHERE id = ?";
     private static final String UPDATE_QUERY = "UPDATE CODIGO_CIVIL SET idPais = ?, fechaModificacion = ? WHERE id = ?";
     private static final String DELETE_QUERY = "DELETE FROM CODIGO_CIVIL WHERE id = ?";
-
+    private static final String SELECT_BY_ID_PAIS = """
+           SELECT CODIGO_CIVIL.id, idPais, nombre FROM CODIGO_CIVIL
+           LEFT JOIN PAIS ON CODIGO_CIVIL.idPais = PAIS.id WHERE idPais = ?
+            """;
     /**
-     Constructor privado que establece la conexión a la base de datos.
+     * Constructor privado para implementar el patrón Singleton.
      */
     private CodigoCivilDAO() {
         this.connection = DBConnection.getConnection();
     }
+
     /**
-     Devuelve la instancia única de {@code CodigoCivilDAO}.
-     @return instancia singleton de este DAO
+     * Obtiene la instancia única de CodigoCivilDAO.
+     * @return instancia de CodigoCivilDAO
      */
     public static CodigoCivilDAO getInstance() {
         if (instance == null) {
@@ -37,26 +42,24 @@ public class CodigoCivilDAO {
         }
         return instance;
     }
+
     /**
-     Inserta un nuevo CódigoCivil en la base de datos.
-     @param codigoCivil objeto con los datos a persistir
-     @throws SQLException si ocurre un error en la operación SQL
+     * Inserta un nuevo registro de Código Civil en la base de datos.
+     * @param codigoCivil Objeto CodigoCivil a insertar
+     * @throws SQLException Si ocurre un error al ejecutar la consulta SQL
      */
     public void insertCodigoCivil(CodigoCivil codigoCivil) throws SQLException {
-        try (PreparedStatement statement = connection.prepareStatement(INSERT_QUERY, Statement.RETURN_GENERATED_KEYS)) {
-            statement.setInt(1, codigoCivil.getIdPais());
-            statement.setDate(2, codigoCivil.getFecha());
+        try (PreparedStatement statement = connection.prepareStatement(INSERT_QUERY)) {
+            statement.setInt(1, codigoCivil.getId());
+            statement.setInt(2, codigoCivil.getIdPais());
+            statement.setDate(3, codigoCivil.getFecha());
             statement.executeUpdate();
-            ResultSet rs = statement.getGeneratedKeys();
-            if (rs.next()) {
-                codigoCivil.setId(rs.getInt(1));
-            }
         }
     }
     /**
-     Recupera todos los códigos civiles de la base de datos.
-     @return lista de objetos {@code CodigoCivil}
-     @throws SQLException si ocurre un error en la consulta
+     * Recupera todos los registros de Código Civil de la base de datos.
+     * @return Lista de objetos CodigoCivil
+     * @throws SQLException Si ocurre un error al ejecutar la consulta SQL
      */
     public List<CodigoCivil> getAllCodigosCiviles() throws SQLException {
         List<CodigoCivil> codigos = new ArrayList<>();
@@ -69,10 +72,10 @@ public class CodigoCivilDAO {
         return codigos;
     }
     /**
-     Obtiene un código civil por su ID.
-     @param id identificador del código civil
-     @return objeto {@code CodigoCivil} o {@code null} si no existe
-     @throws SQLException si ocurre un error en la consulta
+     * Recupera un registro de Código Civil por su ID.
+     * @param id Identificador del Código Civil
+     * @return Objeto CodigoCivil si se encuentra, null en caso contrario
+     * @throws SQLException Si ocurre un error al ejecutar la consulta SQL
      */
     public CodigoCivil getCodigoCivilById(int id) throws SQLException {
         try (PreparedStatement statement = connection.prepareStatement(SELECT_BY_ID_QUERY)) {
@@ -85,9 +88,9 @@ public class CodigoCivilDAO {
         }
     }
     /**
-     Actualiza un código civil existente.
-     @param codigo objeto con los datos actualizados (incluye ID)
-     @throws SQLException si ocurre un error en la actualización
+     * Actualiza un registro de Código Civil existente en la base de datos.
+     * @param codigo Objeto CodigoCivil con los datos actualizados
+     * @throws SQLException Si ocurre un error al ejecutar la consulta SQL
      */
     public void updateCodigoCivil(CodigoCivil codigo) throws SQLException {
         try (PreparedStatement statement = connection.prepareStatement(UPDATE_QUERY)) {
@@ -98,9 +101,9 @@ public class CodigoCivilDAO {
         }
     }
     /**
-         Elimina un código civil por su ID.
-         @param id identificador del código civil a eliminar
-         @throws SQLException si ocurre un error en la eliminación
+     * Elimina un registro de Código Civil por su ID.
+     * @param id Identificador del Código Civil a eliminar
+     * @throws SQLException Si ocurre un error al ejecutar la consulta SQL
      */
     public void deleteCodigoCivil(int id) throws SQLException {
         try (PreparedStatement statement = connection.prepareStatement(DELETE_QUERY)) {
@@ -108,16 +111,29 @@ public class CodigoCivilDAO {
             statement.executeUpdate();
         }
     }
+    public CodigoCivil getCodigoCivilByPais(int idPais) throws SQLException {
+        try (PreparedStatement statement = connection.prepareStatement(SELECT_BY_ID_PAIS)) {
+            statement.setInt(1, idPais);
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()){
+                int id  = rs.getInt("id");
+                return new CodigoCivil(id,idPais);
+            }
+            return null;
+        }
+    }
     /**
-         Convierte la fila actual de un ResultSet en un objeto {@code CodigoCivil}.
-         @param rs ResultSet posicionado en una fila válida
-         @return objeto construido con los datos de la fila
-         @throws SQLException si no se puede leer algún campo
+     * Convierte un ResultSet en un objeto CodigoCivil.
+     * @param rs El ResultSet que contiene los datos de un Código Civil
+     * @return Objeto CodigoCivil con los datos obtenidos del ResultSet
+     * @throws SQLException Si ocurre un error al procesar el ResultSet
      */
     private CodigoCivil resultSetToCodigoCivil(ResultSet rs) throws SQLException {
         int id = rs.getInt("id");
         int idPais = rs.getInt("idPais");
-        Date fecha = rs.getDate("fechaModificacion");
-        return new CodigoCivil(id, idPais, fecha);
+        //Date fecha = rs.getDate("fechaModificacion");
+        return new CodigoCivil(id, idPais);
     }
+
+
 }
