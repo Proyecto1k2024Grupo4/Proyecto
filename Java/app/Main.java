@@ -136,9 +136,7 @@ public class Main {
                         case 2 -> {
 
                         }
-                        case 3 -> {
-
-                        }
+                        case 3 -> {}
                     }
                 }
                 case 5 -> {
@@ -236,8 +234,7 @@ public class Main {
         System.out.println("1. Mostrar todas las propuestas");
         System.out.println("2. Mostrar propuestas por id");
         System.out.println("3. Mostrar propuestas por id de congreso");
-        System.out.println("4. Insertar propuesta");
-        System.out.println("5. Actualizar propuesta");
+        System.out.println("3. Crear pais");
     }
 
     public static int introducirOpcion() {
