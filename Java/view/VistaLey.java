@@ -1,50 +1,58 @@
 package view;
 
 import model.Ley;
+
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
 /**
- * Clase
- * @autor Diego Fernando Valencia Correa 1ºK
- * @version 14-04-2025
+ * Vista en consola para gestionar:
+ *  - Mostrar todas las leyes
+ *  - Mostrar una ley por ID
+ *  - Crear / Actualizar
+ *  - Mostrar leyes filtradas por Código Civil o por País
  */
 public class VistaLey {
 
-    Scanner scanner;
+    private final Scanner scanner;
 
-    /**
-     * Constructor sin parámetros que crea una instancia de Scanner
-     */
-    public VistaLey(){
-        scanner = new Scanner(System.in);
+    public VistaLey() {
+        this.scanner = new Scanner(System.in);
     }
 
     /**
-     * Metodo que muestra por pantalla todas las leyes.
-     * @param leyes
+     * Muestra todas las leyes.
      */
-    public void mostrarLeyes(List<Ley> leyes){
-        System.out.println("Lista de leyes:");
-        leyes.forEach(System.out::println);
+    public void mostrarTodasLasLeyes(List<Ley> lista) {
+        if (lista == null || lista.isEmpty()) {
+            System.out.println("No hay leyes registradas.");
+            return;
+        }
+        System.out.println("--- Todas las leyes ---");
+        for (Ley ley : lista) {
+            System.out.println(ley);
+        }
     }
 
     /**
-     * Metodo que muestra por pantalla una ley.
-     * @param ley
+     * Muestra por pantalla una sola ley (o mensaje si es null).
      */
-    public void mostrarLey(Ley ley){
-        System.out.println(ley);
+    public void mostrarLey(Ley ley) {
+        if (ley == null) {
+            System.out.println("No existe una ley con ese ID.");
+        } else {
+            System.out.println(ley);
+        }
     }
 
     /**
-     * Metodo que pide los datos al usuario y crea una ley
-     * @return Ley con los datos proporcionados
+     * Pide al usuario los datos para crear o actualizar una ley.
+     * @param conId si es true, pedirá también el ID (para actualizar).
+     * Si es falso, no pedirá el ID (para insertar).
      */
-    public Ley crearLey(boolean conId){
-
+    public Ley crearLey(boolean conId) {
         Ley ley = null;
         boolean leyCorrecta = false;
 
@@ -55,64 +63,59 @@ public class VistaLey {
         Date fechaImplementacion;
         int idCodigoCivil;
 
-        while(!leyCorrecta){
+        while (!leyCorrecta) {
             try {
                 leyCorrecta = true;
 
-                if(conId){
-                    System.out.print("Introduce un id: ");
+                if (conId) {
                     id = pedirId();
                 }
 
                 System.out.print("Introduce una descripción: ");
-                descripcion = scanner.nextLine();
+                descripcion = pedirDescripcion();
 
-                System.out.print("Introduce la fecha de aplicación: ");
+                System.out.print("Introduce la fecha de aplicación (yyyy-MM-dd): ");
                 fechaAplicacion = introducirFecha();
 
-                System.out.print("Introduce la fecha de modificación: ");
+                System.out.print("Introduce la fecha de modificación (yyyy-MM-dd): ");
                 fechaModificacion = introducirFecha();
 
-                System.out.print("Introduce la fecha de implementación: ");
+                System.out.print("Introduce la fecha de implementación (yyyy-MM-dd): ");
                 fechaImplementacion = introducirFecha();
 
-                System.out.print("Introduce el id del código civil: ");
+                System.out.print("ID de Código Civil: ");
                 idCodigoCivil = pedirId();
 
-                if(conId){
+                if (conId) {
                     ley = new Ley(id, descripcion, fechaAplicacion, fechaModificacion, fechaImplementacion, idCodigoCivil);
                 } else {
                     ley = new Ley(descripcion, fechaAplicacion, fechaModificacion, fechaImplementacion, idCodigoCivil);
                 }
 
-            } catch (Exception e){
+            } catch (Exception e) {
                 leyCorrecta = false;
-                System.out.println(e.getMessage());
-                scanner.next();
+                System.out.println("ERROR: " + e.getMessage());
             }
         }
 
         return ley;
-
     }
 
     /**
-     * Metodo que pide un id de una ley de manera correcta
-     * @return int con el id
+     * Pide al usuario un ID entero válido.
+     * @return el entero introducido.
      */
-    public int pedirId(){
+    public int pedirId() {
+        int id = -1;
         boolean correcto = false;
-        int id = 0;
 
-        while (!correcto){
+        while (!correcto) {
             try {
+                System.out.print("Introduce el ID: ");
+                id = Integer.parseInt(scanner.nextLine());
                 correcto = true;
-                System.out.println("Introduce el id: ");
-                id = scanner.nextInt();
-            } catch (Exception e){
-                correcto = false;
-                System.out.println("Error, por favor introduce un número entero.");
-                scanner.next();
+            } catch (NumberFormatException ex) {
+                System.out.println("ID inválido. Debe ser un número entero.");
             }
         }
 
@@ -120,24 +123,116 @@ public class VistaLey {
     }
 
     /**
-     * Metodo que pide un String y lo convierte en Date. Si no es correcto el formato, lo pide hasta que sea correcto.
-     * @return Date Fecha formato SQL
+     * Pide y valida una descripción .
      */
-    private Date introducirFecha(){
-        boolean correcto = false;
+    private String pedirDescripcion() {
+        String descripcion;
+        do {
+            descripcion = scanner.nextLine().trim();
+            if (descripcion.isEmpty() || descripcion.length() > 2000) {
+                System.out.println("La descripción no puede estar vacía ni exceder 2000 caracteres.");
+            }
+        } while (descripcion.isEmpty() || descripcion.length() > 2000);
+        return descripcion;
+    }
+
+    /**
+     * Pide un String y lo convierte en java.sql.Date.
+     * Si el formato no es yyyy-MM-dd, lo vuelve a pedir.
+     */
+    private Date introducirFecha() {
         Date fecha = null;
-        while(!correcto){
+        boolean correcto = false;
+
+        while (!correcto) {
             try {
+                String fechaString = scanner.nextLine().trim();
+                fecha = Date.valueOf(LocalDate.parse(fechaString));
                 correcto = true;
-                fecha = Date.valueOf(LocalDate.parse(scanner.nextLine()));
-            } catch (Exception e){
-                System.out.println("Fecha incorrecta, por favor introduce la fecha con este formato (año-mes-dia) (Ejemplo: 1999-01-01): ");
-                correcto = false;
-                scanner.next();
+            } catch (Exception e) {
+                System.out.print("Fecha incorrecta. Formato válido: aaaa-MM-dd (Ejemplo: 1999-01-01): ");
             }
         }
+
         return fecha;
     }
 
+    /**
+     * Pide al usuario un ID de Código Civil .
+     * @return ID válido
+     */
+    public int pedirIdCodigoCivil() {
+        int id;
+        boolean valido;
+        do {
+            System.out.print("Introduce el ID del Código Civil: ");
+            String linea = scanner.nextLine().trim();
+            try {
+                id = Integer.parseInt(linea);
+                valido = true;
+            } catch (NumberFormatException e) {
+                System.out.println("ID inválido. Debe ser un número entero.");
+                valido = false;
+                id = -1;
+            }
+        } while (!valido);
+        return id;
+    }
 
+    /**
+     * Pide al usuario un ID de País .
+     * @return ID válido
+     */
+    public int pedirIdPais() {
+        int id;
+        boolean valido;
+        do {
+            System.out.print("Introduce el ID del País: ");
+            String linea = scanner.nextLine().trim();
+            try {
+                id = Integer.parseInt(linea);
+                valido = true;
+            } catch (NumberFormatException e) {
+                System.out.println("ID inválido. Debe ser un número entero.");
+                valido = false;
+                id = -1;
+            }
+        } while (!valido);
+        return id;
+    }
+
+    /**
+     * Muestra la lista de leyes dependiendo de qué filtro se usó:
+     *
+     * @param lista       Lista de objetos Ley.
+     * @param textoFiltro “Código Civil” o “País”.
+     * @param valorFiltro El ID utilizado para filtrar.
+     */
+    public void mostrarLeyes(List<Ley> lista, String textoFiltro, int valorFiltro) {
+        if (lista == null || lista.isEmpty()) {
+            System.out.printf("No se encontraron leyes para %s = %d.%n", textoFiltro, valorFiltro);
+            return;
+        }
+
+        System.out.printf("--- Leyes filtradas por %s = %d --- %n", textoFiltro, valorFiltro);
+
+        if ("Código Civil".equals(textoFiltro)) {
+            // Mostrar el objeto completo (incluye idCodigoCivil y pais si está relleno)
+            for (Ley ley : lista) {
+                System.out.println(ley);
+            }
+        } else {
+            // Filtrado por País
+            for (Ley ley : lista) {
+                if (ley.getPais() != null) {
+                    System.out.printf("Ley ID: %d, País: %d-%s%n",
+                            ley.getId(),
+                            ley.getPais().getId(),
+                            ley.getPais().getNombre());
+                } else {
+                    System.out.printf("Ley ID: %d, País: desconocido%n", ley.getId());
+                }
+            }
+        }
+    }
 }
