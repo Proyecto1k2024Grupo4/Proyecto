@@ -1,139 +1,84 @@
-package db;
+package controller;
 
+import db.CodigoCivilDAO;
 import model.CodigoCivil;
-import model.Pais;
+import view.VistaCodigoCivil;
 
-import java.sql.*;
-import java.util.ArrayList;
-
+import java.sql.SQLException;
 import java.util.List;
+
 /**
- *  @author ABDELMOGHIT SAMINI 1KDAM
- * Clase CodigoCivilDAO que proporciona acceso a la base de datos
- * para la entidad CodigoCivil utilizando el patrón Singleton.
+ * @author ABDELMOGHIT SAMINI 1KDAM
+ * Controlador para gestionar las operaciones relacionadas con Código Civil.
  */
-public class CodigoCivilDAO {
-    private static CodigoCivilDAO instance;
-    private Connection connection;
 
-    private static final String INSERT_QUERY = "INSERT INTO CODIGO_CIVIL (id, idPais, fechaModificacion) VALUES (?, ?, ?)";
-    private static final String SELECT_ALL_QUERY = "SELECT * FROM CODIGO_CIVIL";
-    private static final String SELECT_BY_ID_QUERY = "SELECT * FROM CODIGO_CIVIL WHERE id = ?";
-    private static final String UPDATE_QUERY = "UPDATE CODIGO_CIVIL SET idPais = ?, fechaModificacion = ? WHERE id = ?";
-    private static final String DELETE_QUERY = "DELETE FROM CODIGO_CIVIL WHERE id = ?";
-    private static final String SELECT_BY_ID_PAIS = """
-           SELECT CODIGO_CIVIL.id, idPais, nombre FROM CODIGO_CIVIL
-           LEFT JOIN PAIS ON CODIGO_CIVIL.idPais = PAIS.id WHERE idPais = ?
-            """;
+public class ControllerCodigoCivil {
+    private CodigoCivilDAO codigoDAO;
+    private VistaCodigoCivil vista;
     /**
-     * Constructor privado para implementar el patrón Singleton.
+     * Constructor que inicializa el DAO y la vista.
      */
-    private CodigoCivilDAO() {
-        this.connection = DBConnection.getConnection();
+    public ControllerCodigoCivil() {
+        codigoDAO = CodigoCivilDAO.getInstance();
+        vista = new VistaCodigoCivil();
     }
-
     /**
-     * Obtiene la instancia única de CodigoCivilDAO.
-     * @return instancia de CodigoCivilDAO
+     * Muestra todos los códigos civiles obtenidos desde la base de datos.
      */
-    public static CodigoCivilDAO getInstance() {
-        if (instance == null) {
-            instance = new CodigoCivilDAO();
-        }
-        return instance;
-    }
-
-    /**
-     * Inserta un nuevo registro de Código Civil en la base de datos.
-     * @param codigoCivil Objeto CodigoCivil a insertar
-     * @throws SQLException Si ocurre un error al ejecutar la consulta SQL
-     */
-    public void insertCodigoCivil(CodigoCivil codigoCivil) throws SQLException {
-        try (PreparedStatement statement = connection.prepareStatement(INSERT_QUERY)) {
-            statement.setInt(1, codigoCivil.getId());
-            statement.setInt(2, codigoCivil.getIdPais());
-            statement.setDate(3, codigoCivil.getFecha());
-            statement.executeUpdate();
+    public void mostrarTodosLosCodigos() {
+        try {
+            List<CodigoCivil> codigos = codigoDAO.getAllCodigosCiviles();
+            vista.mostrarCodigos(codigos);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
     /**
-     * Recupera todos los registros de Código Civil de la base de datos.
-     * @return Lista de objetos CodigoCivil
-     * @throws SQLException Si ocurre un error al ejecutar la consulta SQL
+     * Crea un nuevo código civil a partir de los datos ingresados en la vista.
      */
-    public List<CodigoCivil> getAllCodigosCiviles() throws SQLException {
-        List<CodigoCivil> codigos = new ArrayList<>();
-        try (PreparedStatement statement = connection.prepareStatement(SELECT_ALL_QUERY)) {
-            ResultSet rs = statement.executeQuery();
-            while (rs.next()) {
-                codigos.add(resultSetToCodigoCivil(rs));
-            }
-        }
-        return codigos;
-    }
-    /**
-     * Recupera un registro de Código Civil por su ID.
-     * @param id Identificador del Código Civil
-     * @return Objeto CodigoCivil si se encuentra, null en caso contrario
-     * @throws SQLException Si ocurre un error al ejecutar la consulta SQL
-     */
-    public CodigoCivil getCodigoCivilById(int id) throws SQLException {
-        try (PreparedStatement statement = connection.prepareStatement(SELECT_BY_ID_QUERY)) {
-            statement.setInt(1, id);
-            ResultSet rs = statement.executeQuery();
-            if (rs.next()) {
-                return resultSetToCodigoCivil(rs);
-            }
-            return null;
+    public void crearCodigoCivil() {
+        try {
+            CodigoCivil codigo = vista.crearCodigo();
+            codigoDAO.insertCodigoCivil(codigo);
+            vista.mostrarMensaje("Código Civil creado correctamente.");
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
     /**
-     * Actualiza un registro de Código Civil existente en la base de datos.
-     * @param codigo Objeto CodigoCivil con los datos actualizados
-     * @throws SQLException Si ocurre un error al ejecutar la consulta SQL
+     * Actualiza un código civil con los datos proporcionados por la vista.
      */
-    public void updateCodigoCivil(CodigoCivil codigo) throws SQLException {
-        try (PreparedStatement statement = connection.prepareStatement(UPDATE_QUERY)) {
-            statement.setInt(1, codigo.getIdPais());
-            statement.setDate(2, codigo.getFecha());
-            statement.setInt(3, codigo.getId());
-            statement.executeUpdate();
+    public void actualizarCodigoCivil() {
+        try {
+            CodigoCivil codigo = vista.obtenerDatosActualizados();
+            codigoDAO.updateCodigoCivil(codigo);
+            vista.mostrarMensaje("Código Civil actualizado correctamente.");
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
     /**
-     * Elimina un registro de Código Civil por su ID.
-     * @param id Identificador del Código Civil a eliminar
-     * @throws SQLException Si ocurre un error al ejecutar la consulta SQL
+     * Elimina un código civil según el ID proporcionado por la vista.
      */
-    public void deleteCodigoCivil(int id) throws SQLException {
-        try (PreparedStatement statement = connection.prepareStatement(DELETE_QUERY)) {
-            statement.setInt(1, id);
-            statement.executeUpdate();
-        }
-    }
-    public CodigoCivil getCodigoCivilByPais(int idPais) throws SQLException {
-        try (PreparedStatement statement = connection.prepareStatement(SELECT_BY_ID_PAIS)) {
-            statement.setInt(1, idPais);
-            ResultSet rs = statement.executeQuery();
-            if (rs.next()){
-                int id  = rs.getInt("id");
-                return new CodigoCivil(id,idPais);
-            }
-            return null;
+    public void eliminarCodigoCivil() {
+        try {
+            int id = vista.obtenerIdCodigo();
+            codigoDAO.deleteCodigoCivil(id);
+            vista.mostrarMensaje("Código Civil eliminado correctamente.");
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
     /**
-     * Convierte un ResultSet en un objeto CodigoCivil.
-     * @param rs El ResultSet que contiene los datos de un Código Civil
-     * @return Objeto CodigoCivil con los datos obtenidos del ResultSet
-     * @throws SQLException Si ocurre un error al procesar el ResultSet
+     * Busca un código civil por su ID y lo muestra en la vista.
      */
-    private CodigoCivil resultSetToCodigoCivil(ResultSet rs) throws SQLException {
-        int id = rs.getInt("id");
-        int idPais = rs.getInt("idPais");
-        //Date fecha = rs.getDate("fechaModificacion");
-        return new CodigoCivil(id, idPais);
+    public void buscarCodigoPorId() {
+        try {
+            int id = vista.obtenerIdCodigo();
+            CodigoCivil codigo = codigoDAO.getCodigoCivilById(id);
+            vista.mostrarCodigo(codigo);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
-
-
 }
