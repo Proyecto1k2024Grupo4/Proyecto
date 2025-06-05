@@ -26,7 +26,7 @@ public class PoliticoDAO {
     private static final String INSERT_QUERY = "CALL insertar_politico(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String SELECT_ALL_QUERY = "SELECT P.*, PO.* FROM PERSONA P JOIN POLITICO PO ON P.numPasaporte = PO.numPasaporte";
     private static final String SELECT_BY_PASAPORTE_QUERY = "SELECT P.*, PO.* FROM PERSONA P JOIN POLITICO PO ON P.numPasaporte = PO.numPasaporte WHERE P.numPasaporte = ?";
-    private static final String UPDATE_FECHA_QUERY = "UPDATE POLITICO SET fechaRetirada = ? WHERE numPasaporte = ?";
+    private static final String UPDATE_QUERY = "CALL actualizar_politico(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String DELETE_QUERY = "DELETE FROM POLITICO WHERE numPasaporte = ?";
     private static final String TOTAL_POLITICOS_QUERY = "SELECT COUNT(*) FROM POLITICO";
 
@@ -100,15 +100,22 @@ public class PoliticoDAO {
     }
 
     /**
-     * Actualiza los datos de un politico para ponerle su fecha de retirada buscandolo por su numero de pasaporte
-     * @param fecha String con el nuevo valor de la fecha que queremos actualizar
-     * @param pasaporte para saber en que politico hacer el update
+     * Actualiza los datos de un politico
+     * @param politico objeto de politico con los datos que necesito
      * @throws SQLException
      */
-    public void updatePolitico (Date fecha, String pasaporte) throws SQLException {
-        try (PreparedStatement statement = connection.prepareStatement(UPDATE_FECHA_QUERY)){
-            statement.setDate(1, fecha);
-            statement.setString(2, pasaporte);
+    public void updatePolitico(Politico politico) throws SQLException {
+        try (PreparedStatement statement = connection.prepareStatement(UPDATE_QUERY)) {
+            statement.setString(1, politico.getNumPasaporte());
+            statement.setString(2, politico.getNombre());
+            statement.setString(3,politico.getPrimerApellido());
+            statement.setString(4, politico.getSegundoApellido());
+            statement.setDate(5, politico.getFnac());
+            statement.setString(6, String.valueOf(politico.getSexo()));
+            statement.setString(7, String.valueOf(politico.getPaisNacimiento()));
+            statement.setDate(8, politico.getFechaIniciacion());
+            statement.setDate(9, politico.getFechaRetirada());
+            statement.setInt(10, politico.getIdCongreso());
             statement.executeUpdate();
         }
     }

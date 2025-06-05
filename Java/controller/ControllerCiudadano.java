@@ -59,6 +59,15 @@ public class ControllerCiudadano {
         }
     }
 
+    public void actualizarCiudadano(){
+        try {
+            Ciudadano ciudadano = (Ciudadano) vistaCiudadano.crearPersona();
+            ciudadanoDAO.actualizarCiudadano(ciudadano);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * Metodo que elimina un ciudadano de la base de datos con el pasaporte que se le indica
      */

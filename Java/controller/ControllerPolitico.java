@@ -67,13 +67,9 @@ public class ControllerPolitico {
      */
     public void acutalizarPolitico() {
         try {
-            Scanner scan = new Scanner(System.in);
-            System.out.println("Introduce la fecha de retirada");
-            String atributo = scan.nextLine();
-            Date fecha = vistaPolitico.obtenerFecha();
-            String pasaporte = vistaPolitico.obtenerPasaporte();
-            politicoDAO.updatePolitico(fecha, pasaporte);
-        } catch (SQLException e) {
+            Politico politico = vistaPolitico.crearPolitico();
+            politicoDAO.updatePolitico(politico);
+        } catch (SQLException e){
             e.printStackTrace();
         }
     }

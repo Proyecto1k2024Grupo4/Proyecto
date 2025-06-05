@@ -91,19 +91,16 @@ public class Main {
                     switch (opcion) {
                         case 1 -> controllerPersona.mostrarTodasLasPersonas();
                         case 2 -> controllerPersona.mostarPersonaPasaporte();
-                        case 3 -> controllerPersona.crearPersona();
-                        case 4 -> controllerPersona.actualizarPersona();
-                        case 5 -> controllerPersona.eliminarPersona();
-                        case 6 -> controllerPolitico.mostrarTodosLosPoliticos();
-                        case 7 -> controllerPolitico.mostrarPoliticoPasaporte();
-                        case 8 -> controllerPolitico.crearPolitco();
-                        case 9 -> controllerPolitico.acutalizarPolitico();
-                        case 10 -> controllerPolitico.eliminarPolitico();
-                        case 11 -> controllerCiudadano.mostrarTodosLosCiudadanos();
-                        case 12 -> controllerCiudadano.mostrarCiudadanoPasaporte();
-                        case 13 -> controllerCiudadano.crearCiudadano();
-                        case 14 -> controllerCiudadano.eliminarCiudadano();
-                        case 15 ->{}
+                        case 3 -> controllerPersona.eliminarPersona();
+                        case 4 -> controllerPolitico.mostrarTodosLosPoliticos();
+                        case 5 -> controllerPolitico.mostrarPoliticoPasaporte();
+                        case 6 -> controllerPolitico.crearPolitco();
+                        case 7 -> controllerPolitico.acutalizarPolitico();
+                        case 8 -> controllerCiudadano.mostrarTodosLosCiudadanos();
+                        case 9 -> controllerCiudadano.mostrarCiudadanoPasaporte();
+                        case 10 -> controllerCiudadano.crearCiudadano();
+                        case 11 -> controllerCiudadano.actualizarCiudadano();
+                        case 12 ->{}
                     }
                     opcion = 0;
                 }
@@ -235,22 +232,19 @@ public class Main {
                 --- Menus de Personas ---
                 1. Mostrar todas las personas
                 2. Mostrar persona por su pasaporte
-                3. Crear persona
-                4. Modificar persona
-                5. Eliminar persona
+                3. Eliminar persona
                 --- Politico ---
-                6. Mostrar todos los politicos
-                7. Mostrar politico por su pasaporte
-                8. Crear politico
-                9. Retirar un politico
-                10. Eliminar politico
+                4. Mostrar todos los politicos
+                5. Mostrar politico por número de pasaporte
+                6. Crear politico
+                7. Actualizar politico
                 --- Ciudadano ---
-                11. Mostrar todos los ciudadanos
-                12. Mostrar ciudadano por su pasaporte
-                13. Crear ciudadano
-                14. Eliminar ciudadano
+                8. Mostrar todos los ciudadanos
+                9. Buscar ciudadano por número de pasaporte
+                10. Crear ciudadano
+                11. Actualizar ciudadano
                 
-                15. Volver atrás
+                12. Volver atrás
                 """);
     }
 
