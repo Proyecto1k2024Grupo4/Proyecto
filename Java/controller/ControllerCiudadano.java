@@ -52,7 +52,7 @@ public class ControllerCiudadano {
      */
     public void crearCiudadano(){
         try {
-            Ciudadano ciudadano = (Ciudadano) vistaCiudadano.crearPersona();
+            Ciudadano ciudadano = new Ciudadano(vistaCiudadano.crearPersona());
             ciudadanoDAO.insertarCiudadano(ciudadano);
         } catch (SQLException e) {
              e.printStackTrace();
@@ -61,7 +61,8 @@ public class ControllerCiudadano {
 
     public void actualizarCiudadano(){
         try {
-            Ciudadano ciudadano = (Ciudadano) vistaCiudadano.crearPersona();
+
+            Ciudadano ciudadano = new Ciudadano(vistaCiudadano.crearPersona());
             ciudadanoDAO.actualizarCiudadano(ciudadano);
         } catch (SQLException e) {
             e.printStackTrace();

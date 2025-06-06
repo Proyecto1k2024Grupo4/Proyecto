@@ -1,6 +1,7 @@
 package db;
 
 import model.Ciudadano;
+import model.Persona;
 import model.Sexo;
 
 import java.sql.Connection;
@@ -25,8 +26,8 @@ public class CiudadanoDAO {
     //Consultas SQL
     private static final String INSERT_QUERY = "CALL insertar_ciudadano (?, ?, ?, ?, ?, ?, ?)";
     private static final String SELECT_ALL_QUERY = "SELECT P.* FROM PERSONA P JOIN CIUDADANO C ON P.numPasaporte = C.numPasaporte";
-    private static final String SELECT_BY_PASAPORTE_QUERY = "SELECT * FROM CIUDADANO WHERE numPasaporte = ?";
-    private static final String UPDATE_QUERY = "CALL actualizar_ciudadano (?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String SELECT_BY_PASAPORTE_QUERY = "SELECT P.* FROM PERSONA P JOIN CIUDADANO C ON P.numPasaporte = C.numPasaporte WHERE C.numPasaporte = ?";
+    private static final String UPDATE_QUERY = "CALL actualizar_ciudadano (?, ?, ?, ?, ?, ?, ?)";
     private static final String DELETE_QUERY = "DELETE FROM CIUDADANO WHERE numPasaporte = ?";
     private static final String TOTAL_CIUDADANOS_QUERY = "SELECT COUNT(*) FROM CIUDADANO";
 
@@ -103,7 +104,7 @@ public class CiudadanoDAO {
      * @throws SQLException
      */
     private Ciudadano resultSetToCiudadano(ResultSet resultSet) throws SQLException {
-        return new Ciudadano(
+        Persona persona = new Persona(
                 resultSet.getString("numPasaporte"),
                 resultSet.getString("nombre"),
                 resultSet.getString("primerApellido"),
@@ -112,6 +113,7 @@ public class CiudadanoDAO {
                 Sexo.valueOf(resultSet.getString("sexo")),
                 resultSet.getInt("paisNacimiento")
         );
+        return new Ciudadano(persona);
     }
 
     public void actualizarCiudadano(Ciudadano ciudadano) throws SQLException {
