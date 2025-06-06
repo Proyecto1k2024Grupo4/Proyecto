@@ -26,7 +26,7 @@ public class PoliticoDAO {
     private static final String INSERT_QUERY = "CALL insertar_politico(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String SELECT_ALL_QUERY = "SELECT P.*, PO.* FROM PERSONA P JOIN POLITICO PO ON P.numPasaporte = PO.numPasaporte";
     private static final String SELECT_BY_PASAPORTE_QUERY = "SELECT P.*, PO.* FROM PERSONA P JOIN POLITICO PO ON P.numPasaporte = PO.numPasaporte WHERE P.numPasaporte = ?";
-    private static final String UPDATE_QUERY = "CALL actualizar_politico(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String UPDATE_QUERY = "CALL actualizar_politico(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String DELETE_QUERY = "DELETE FROM POLITICO WHERE numPasaporte = ?";
     private static final String TOTAL_POLITICOS_QUERY = "SELECT COUNT(*) FROM POLITICO";
 

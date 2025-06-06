@@ -90,17 +90,18 @@ public class Main {
                     }
                     switch (opcion) {
                         case 1 -> controllerPersona.mostrarTodasLasPersonas();
-                        case 2 -> controllerPersona.mostarPersonaPasaporte();
-                        case 3 -> controllerPersona.eliminarPersona();
-                        case 4 -> controllerPolitico.mostrarTodosLosPoliticos();
-                        case 5 -> controllerPolitico.mostrarPoliticoPasaporte();
-                        case 6 -> controllerPolitico.crearPolitco();
-                        case 7 -> controllerPolitico.acutalizarPolitico();
-                        case 8 -> controllerCiudadano.mostrarTodosLosCiudadanos();
-                        case 9 -> controllerCiudadano.mostrarCiudadanoPasaporte();
-                        case 10 -> controllerCiudadano.crearCiudadano();
-                        case 11 -> controllerCiudadano.actualizarCiudadano();
-                        case 12 ->{}
+                        case 2 -> controllerPersona.mostrarPersonaPais();
+                        case 3 -> controllerPersona.mostarPersonaPasaporte();
+                        case 4 -> controllerPersona.eliminarPersona();
+                        case 5 -> controllerPolitico.mostrarTodosLosPoliticos();
+                        case 6 -> controllerPolitico.mostrarPoliticoPasaporte();
+                        case 7 -> controllerPolitico.crearPolitco();
+                        case 8 -> controllerPolitico.acutalizarPolitico();
+                        case 9 -> controllerCiudadano.mostrarTodosLosCiudadanos();
+                        case 10 -> controllerCiudadano.mostrarCiudadanoPasaporte();
+                        case 11 -> controllerCiudadano.crearCiudadano();
+                        case 12 -> controllerCiudadano.actualizarCiudadano();
+                        case 13 ->{}
                     }
                     opcion = 0;
                 }
@@ -228,24 +229,26 @@ public class Main {
      * Metodo que muestra el menu de opciones principal
      */
     public static void mostrarMenuPersonas(){
-        System.out.println("""
+        System.out.print("""
                 --- Menus de Personas ---
                 1. Mostrar todas las personas
-                2. Mostrar persona por su pasaporte
-                3. Eliminar persona
+                2. Mostrar todas las personas de un Pais
+                3. Mostrar persona por su pasaporte
+                4. Eliminar persona
                 --- Politico ---
-                4. Mostrar todos los politicos
-                5. Mostrar politico por número de pasaporte
-                6. Crear politico
-                7. Actualizar politico
+                5. Mostrar todos los politicos
+                6. Mostrar politico por número de pasaporte
+                7. Crear politico
+                8. Actualizar politico
                 --- Ciudadano ---
-                8. Mostrar todos los ciudadanos
-                9. Buscar ciudadano por número de pasaporte
-                10. Crear ciudadano
-                11. Actualizar ciudadano
+                9. Mostrar todos los ciudadanos
+                10. Buscar ciudadano por número de pasaporte
+                11. Crear ciudadano
+                12. Actualizar ciudadano
                 
-                12. Volver atrás
-                """);
+                13. Volver atrás
+                
+                Selecciona una opción:\s""");
     }
 
     /**

@@ -108,6 +108,19 @@ public class VistaPersona {
         return new Politico(pasaporte, nombre, apellido1, apellido2, fecha, sexo, pais, fechaInicio, fechaRetirada, congreso);
     }
 
+    public int pedirPais(){
+        boolean esCorrecto = false;
+        int pais;
+        do {
+            System.out.println("Introduce el codigo del pais:");
+            pais = scan.nextInt();
+            if (pais < 0 || pais > 20)
+                System.out.println("No existe este pais en nuestra base de datos");
+            else esCorrecto = true;
+        }while (!esCorrecto);
+        return pais;
+    }
+
 
     /**
      * Metodo que muestra por pantalla los politicos de una lista
