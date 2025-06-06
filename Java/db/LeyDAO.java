@@ -1,17 +1,25 @@
 package db;
 
 import model.Ley;
-import java.sql.*;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * DAO para la tabla LEY, usando exactamente las mismas consultas SQL que en JavaFX.
+ * Clase LeyDAO que se encarga de la comunicacion con la base de datos cuya funcion es de
+ * busqueda, insercion, elmiminacion, y actualizacion de leyes de la tabla LEY
+ * @author Diego Fernando Valencia Correa 1ºK
+ * @version 05-04-2025
  */
 public class LeyDAO {
 
+    // Instancias estaticas
     private static LeyDAO instance;
-    private final Connection connection;
+    private Connection connection;
 
     // SENTENCIAS SQL
     private static final String INSERT_QUERY = "insert into LEY(descripcion, fechaAplicacion, fechaModificacion, fechaImplementacion, idCodigoCivil) values ( ?, ?, ?, ?, ?)";
@@ -20,55 +28,25 @@ public class LeyDAO {
     private static final String UPDATE_BY_LEY_QUERY = "update LEY set descripcion = ?, fechaAplicacion = ?, fechaModificacion = ?, fechaImplementacion = ? where id = ?";
     private static final String DELETE_BY_ID_QUERY = "delete from LEY where id = ?";
 
-    private static final String SELECT_CON_CODCIVIL_Y_PAIS = """
-        SELECT 
-          LEY.id                  AS idLey,
-          LEY.descripcion         AS descripcion,
-          LEY.fechaAplicacion     AS fechaAplicacion,
-          LEY.fechaModificacion   AS fechaModificacion,
-          LEY.fechaImplementacion AS fechaImplementacion,
-          LEY.idCodigoCivil       AS idCodigoCivil,
-          PAIS.id                 AS idPais,
-          PAIS.nombre             AS nombrePais
-        FROM 
-          LEY
-          LEFT JOIN CODIGO_CIVIL ON LEY.idCodigoCivil = CODIGO_CIVIL.id
-          LEFT JOIN PAIS       ON PAIS.id = CODIGO_CIVIL.idPais
-        """;
 
-    // Variante filtrada por País
-    private static final String SELECT_CON_CODCIVIL_Y_PAIS_By_Pais = """
-        SELECT 
-          LEY.id AS idLey,
-          LEY.descripcion AS descripcion,
-          LEY.fechaAplicacion AS fechaAplicacion,
-          LEY.fechaModificacion AS fechaModificacion,
-          LEY.fechaImplementacion AS fechaImplementacion,
-          LEY.idCodigoCivil AS idCodigoCivil,
-          PAIS.id  AS idPais,
-          PAIS.nombre AS nombrePais
-        FROM 
-          LEY
-          LEFT JOIN CODIGO_CIVIL ON LEY.idCodigoCivil = CODIGO_CIVIL.id
-          LEFT JOIN PAIS ON PAIS.id = CODIGO_CIVIL.idPais
-        WHERE
-          CODIGO_CIVIL.idPais = ?
-        """;
-
-    // Variante filtrada por Código Civil
-    private static final String SELECT_CON_CODCIVIL_Y_PAIS_By_CodCivil = SELECT_CON_CODCIVIL_Y_PAIS +
-            " WHERE CODIGO_CIVIL.id = ?";
-
-    private LeyDAO() {
+    /**
+     * Constructor privado que no recibe parametro y que obtiene la conexion con la base de datos
+     */
+    private LeyDAO(){
         this.connection = DBConnection.getConnection();
     }
 
-    public static LeyDAO getInstance() {
+    /**
+     * Metodo estatico para obtener la unica instancia de LeyDAO
+     * @return instancia de LeyDAO
+     */
+    public static LeyDAO getInstance(){
         if (instance == null) {
             instance = new LeyDAO();
         }
         return instance;
     }
+
     /**
      * Metodo que acutaliza una ley recibiendo una instancia de ley. Este metodo actualiza la ley con ese mismo id.
      * @param ley Ley que queremos actualizar
@@ -150,55 +128,19 @@ public class LeyDAO {
     }
 
     /**
-     * Devuelve todas las leyes cuyo CODIGO_CIVIL.id = idCodigoCivil,
-     * rellenando también el atributo 'pais' dentro de cada Ley.
-     */
-    public List<Ley> getLeyesPorCodigoCivil(int idCodigoCivil) throws SQLException {
-        List<Ley> lista = new ArrayList<>();
-        try (PreparedStatement ps = connection.prepareStatement(SELECT_CON_CODCIVIL_Y_PAIS_By_CodCivil)) {
-            ps.setInt(1, idCodigoCivil);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                lista.add(resultSetToLey(rs));
-            }
-        }
-        return lista;
-    }
-
-    /**
-     * Devuelve todas las leyes cuyo CODIGO_CIVIL.idPais = idPais,
-     * rellenando también el atributo 'pais' dentro de cada Ley.
-     */
-    public List<Ley> getLeyesPorPais(int idPais) throws SQLException {
-        List<Ley> lista = new ArrayList<>();
-        try (PreparedStatement ps = connection.prepareStatement(SELECT_CON_CODCIVIL_Y_PAIS_By_Pais)) {
-            ps.setInt(1, idPais);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                lista.add(resultSetToLey(rs));
-            }
-        }
-        return lista;
-    }
-
-    /**
      * Metodo que transforma un ResultSet en una Ley
-     * @param rs ResultSet que queremos tranformar
+     * @param resultSet ResultSet que queremos tranformar
      * @return Ley que hemos obtenido del ResultSet
      * @throws SQLException Excepcion SQL
      */
-    private Ley resultSetToLey(ResultSet rs) throws SQLException {
+    private Ley resultSetToLey(ResultSet resultSet) throws  SQLException{
         return new Ley(
-                rs.getInt("idLey"),
-                rs.getString("descripcion"),
-                rs.getDate("fechaAplicacion"),
-                rs.getDate("fechaModificacion"),
-                rs.getDate("fechaImplementacion"),
-                rs.getInt("idCodigoCivil"),
-                rs.getInt("idPais"),
-                rs.getString("nombrePais")
+                resultSet.getInt("id"),
+                resultSet.getString("descripcion"),
+                resultSet.getDate("fechaAplicacion"),
+                resultSet.getDate("fechaModificacion"),
+                resultSet.getDate("fechaImplementacion"),
+                resultSet.getInt("idCodigoCivil")
         );
     }
-
-
 }

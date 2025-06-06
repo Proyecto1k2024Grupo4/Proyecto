@@ -146,12 +146,7 @@ public class Main {
                         case 5 -> {
                             controllerLey.borrarLey();
                         }
-                        case 6 -> {
-                            controllerLey.mostrarLeyesPorCodigoCivil();
-                        }
-                        case 7 -> {
-                            controllerLey.mostrarLeyesPorPais();
-                        }
+                        case 6 -> {}
                     }
                     opcion = 0;
                 }

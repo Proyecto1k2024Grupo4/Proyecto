@@ -86,29 +86,4 @@ public class ControllerLey {
         }
     }
 
-    /**
-     * Pide al usuario el ID de Código Civil y muestra todas las leyes de ese código, junto al país.
-     */
-    public void mostrarLeyesPorCodigoCivil() {
-        int idCc = vistaLey.pedirIdCodigoCivil();
-        try {
-            List<Ley> lista = leyDAO.getLeyesPorCodigoCivil(idCc);
-            vistaLey.mostrarLeyes(lista, "Código Civil", idCc);
-        } catch (SQLException e) {
-            System.out.println("ERROR al obtener leyes por Código Civil: " + e.getMessage());
-        }
-    }
-
-    /**
-     * Pide al usuario el ID de País y muestra todas las leyes de ese país (a través de Código Civil).
-     */
-    public void mostrarLeyesPorPais() {
-        int idPais = vistaLey.pedirIdPais();
-        try {
-            List<Ley> lista = leyDAO.getLeyesPorPais(idPais);
-            vistaLey.mostrarLeyes(lista, "País", idPais);
-        } catch (SQLException e) {
-            System.out.println("ERROR al obtener leyes por País: " + e.getMessage());
-        }
-    }
 }
