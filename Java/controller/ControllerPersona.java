@@ -61,6 +61,15 @@ public class ControllerPersona {
         }
     }
 
+    public void mostrarPersonaPais(){
+        try {
+            List<Persona> personas = personaDAO.getAllPersonasPais(vistaPersona.pedirPais());
+            vistaPersona.mostrarPersonas(personas);
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * Metodo para actualizar a una persona con nuevos datos
      */
