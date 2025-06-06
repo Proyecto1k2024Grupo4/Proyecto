@@ -17,9 +17,6 @@ public class Ley {
     private Date fechaModificacion;
     private Date fechaImplementacion;
     private int idCodigoCivil;
-    //private int idPais;
-    //private String nombrePais;
-    Pais pais;
 
     /**
      * Constructor sin ID
@@ -54,34 +51,6 @@ public class Ley {
         setFechaImplementacion(fechaImplementacion);
         setIdCodigoCivil(idCodigoCivil);
     }
-    /**
-     * Constructor completo de Ley, incluyendo país.
-     * @param id                  Identificador de la ley
-     * @param descripcion         Descripción de la ley
-     * @param fechaAplicacion     Fecha de aplicación
-     * @param fechaModificacion   Fecha de modificación
-     * @param fechaImplementacion Fecha de implementación
-     * @param idCodigoCivil       Id del código civil
-     * @param idPais              Id del país asociado
-     * @param nombrePais          Nombre del país asociado
-     */
-    public Ley(int id,
-               String descripcion,
-               Date fechaAplicacion,
-               Date fechaModificacion,
-               Date fechaImplementacion,
-               int idCodigoCivil,
-               int idPais,
-               String nombrePais) {
-        this.id = id;
-        setDescripcion(descripcion);
-        setFechaAplicacion(fechaAplicacion);
-        setFechaModificacion(fechaModificacion);
-        setFechaImplementacion(fechaImplementacion);
-        setIdCodigoCivil(idCodigoCivil);
-        this.pais = new Pais(idPais,nombrePais);
-    }
-
 
     /**
      * Metodo que tranforma la información de una ley en formato JSON
@@ -136,29 +105,6 @@ public class Ley {
         return String.valueOf(xmlBuilder);
     }
 
-    /**
-     * Establece el identificador único de la ley.
-     * @param id identificador generado por la base de datos
-     */
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    /**
-     * Obtiene el identificador del país asociado a esta ley.
-     * @return identificador del país (proviene del código civil)
-     */
-    public Pais getPais() {
-        return pais ;
-    }
-
-    /**
-     * Establece el identificador del país asociado a esta ley.
-     * @param pais identificador del país (proviene del código civil)
-     */
-    public void setPais(Pais pais) {
-        this.pais = pais;
-    }
     /**
      * Metodo que devuelve el id de la ley
      * @return Id de la ley
@@ -260,7 +206,7 @@ public class Ley {
                 ", fechaModificacion=" + fechaModificacion +
                 ", fechaImplementacion=" + fechaImplementacion +
                 ", idCodigoCivil=" + idCodigoCivil +
-                ", pais=" + pais +
                 '}';
     }
+
 }

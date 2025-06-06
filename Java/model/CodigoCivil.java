@@ -1,4 +1,5 @@
 package model;
+
 import java.sql.Date;
 import java.util.*;
 
@@ -40,6 +41,7 @@ public class CodigoCivil {
         this.id = id;
         this.idPais = idPais;
         this.fecha = fecha;
+        this.leyes = new ArrayList<>();
     }
 
 
@@ -64,24 +66,22 @@ public class CodigoCivil {
                 .append("}");
         return String.valueOf(jsonBuilder);
     }
-    /**
+ /**
      * Convierte el objeto CodigoCivil en una representación XML.
      *
      * @return Cadena en formato XML que representa el objeto.
      */
-    public String toXml(){
-        StringBuilder xmlBuilder = new StringBuilder();
-
-        xmlBuilder.append("<model.CodigoCivil>")
-                .append("\n")
-                .append("<model.CodigoCivil:id>").append(this.id).append("</model.CodigoCivil:id>\n")
-                .append("\t")
-                .append("<model.CodigoCivil:idPais>").append(this.idPais).append("</model.CodigoCivil:idPais>\n")
-                .append("</model.CodigoCivil");
-
-        return String.valueOf(xmlBuilder);
-    }
-    /**
+ public String toXml() {
+     StringBuilder xmlBuilder = new StringBuilder();
+     xmlBuilder.append("<model.CodigoCivil>")
+             .append("\n")
+             .append("<id>").append(this.id).append("</id>\n")
+             .append("<idPais>").append(this.idPais).append("</idPais>\n")
+             .append("<fecha>").append(this.fecha).append("</fecha>\n")
+             .append("</model.CodigoCivil>");
+     return xmlBuilder.toString();
+ }
+  /**
      * Obtiene el identificador del código civil.
      *
      * @return El ID del código civil.
@@ -123,17 +123,5 @@ public class CodigoCivil {
                 ", idPais=" + idPais +
                 ", leyes=" + leyes +
                 '}';
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setIdPais(int idPais) {
-        this.idPais = idPais;
-    }
-
-    public void setLeyes(ArrayList<Ley> leyes) {
-        this.leyes = leyes;
     }
 }

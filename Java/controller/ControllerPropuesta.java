@@ -33,6 +33,7 @@ public class ControllerPropuesta {
             List<Propuesta> propuestas = propuestaDAO.getAllPropuesta();
             vistaPropuesta.mostrarPropuestas(propuestas);
         } catch (Exception e){
+            System.out.println("Ha ocurrido un error:");
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
@@ -48,9 +49,9 @@ public class ControllerPropuesta {
             Propuesta propuesta = propuestaDAO.getPropuestaById(id);
             vistaPropuesta.mostrarPropuesta(propuesta);
         } catch (Exception e){
+            System.out.println("Ha ocurrido un error:");
             System.out.println(e.getMessage());
             e.printStackTrace();
-
         }
     }
 
@@ -61,12 +62,28 @@ public class ControllerPropuesta {
         try {
             System.out.println("--- Mostrar Propuesta por ID de Congreso ---");
             int id = vistaPropuesta.pedirId();
-            Propuesta propuesta = propuestaDAO.getPropuestaByIdCongreso(id);
-            vistaPropuesta.mostrarPropuesta(propuesta);
+            List<Propuesta> propuestas = propuestaDAO.getPropuestaByIdCongreso(id);
+            vistaPropuesta.mostrarPropuestas(propuestas);
         } catch (Exception e){
+            System.out.println("Ha ocurrido un error:");
             System.out.println(e.getMessage());
             e.printStackTrace();
+        }
+    }
 
+    /**
+     * Metodo que muestra todas las propuestas con el nombre del pais que pide
+     */
+    public void mostrarPropuestaPorNombrePais(){
+        try{
+            System.out.println("--- Mostrar Propuestas por Nombre de Pais ---");
+            String nombre = vistaPropuesta.pedirNombre();
+            List<Propuesta> propuestas = propuestaDAO.getPropuestasByNombrePais(nombre);
+            vistaPropuesta.mostrarPropuestas(propuestas);
+        } catch (Exception e){
+            System.out.println("Ha ocurrido un error:");
+            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -76,12 +93,12 @@ public class ControllerPropuesta {
     public void insertarPropuesta(){
         try {
             System.out.println("--- Insertar Propuesta ---");
-            Propuesta propuesta = vistaPropuesta.crearPropuesta(true);
+            Propuesta propuesta = vistaPropuesta.crearPropuesta(false);
             propuestaDAO.insertPropuesta(propuesta);
         } catch (Exception e){
+            System.out.println("Ha ocurrido un error:");
             System.out.println(e.getMessage());
             e.printStackTrace();
-
         }
     }
 
@@ -91,12 +108,12 @@ public class ControllerPropuesta {
     public void actualizarPropuesta(){
         try {
             System.out.println("--- Actualizar Propuesta ---");
-            Propuesta propuesta = vistaPropuesta.crearPropuesta(false);
+            Propuesta propuesta = vistaPropuesta.crearPropuesta(true);
             propuestaDAO.updatePropuestaByPropuesta(propuesta);
         } catch (Exception e){
+            System.out.println("Ha ocurrido un error:");
             System.out.println(e.getMessage());
             e.printStackTrace();
-
         }
     }
 

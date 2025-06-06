@@ -8,84 +8,81 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- * Controlador para manejar la visualización en consola de:
+ * Clase ControllerLey que maneja la clase LeyDAO y muestra la información mediante la vista de Ley
+ * @author Diego Fernando Valencia Correa 1ºK
+ * @version 14-04-2025
  */
 public class ControllerLey {
 
-    private final LeyDAO leyDAO;
-    private final VistaLey vistaLey;
+    private LeyDAO leyDAO;
+    private VistaLey vistaLey;
 
     /**
      * Constructor que obtiene la instancia de LeyDAO e inicializa la VistaLey
      */
-    public ControllerLey() {
+    public ControllerLey(){
         this.leyDAO = LeyDAO.getInstance();
-        this.vistaLey = new VistaLey();
+        vistaLey = new VistaLey();
     }
 
     /**
-     * Obtiene todas las leyes de la base de datos (incluyendo país)
-     * y las muestra al usuario.
+        Obtiene todas las leyes de la base de datos y las muestra al usuario.
      */
-    public void mostrarTodasLasLeyes() {
+    public void mostrarTodasLasLeyes(){
         try {
             List<Ley> leyes = leyDAO.getAllLey();
-            // Llamamos a la vista genérica para listar todas
-            vistaLey.mostrarTodasLasLeyes(leyes);
-        } catch (SQLException e) {
-            System.out.println("ERROR al obtener todas las leyes: " + e.getMessage());
+            vistaLey.mostrarLeyes(leyes);
+        } catch (Exception e){
+            System.out.println(e.getMessage());
         }
     }
 
     /**
-     * Método que inserta una ley en la base de datos.
+     * Metodo que inserta una ley en la base de datos
      */
-    public void insertarLey() {
+    public void insertarLey(){
         try {
             Ley ley = vistaLey.crearLey(false);
             leyDAO.insertLey(ley);
-            System.out.println("Ley insertada correctamente.");
-        } catch (Exception e) {
-            System.out.println("ERROR al insertar ley: " + e.getMessage());
+        } catch (Exception e){
+            System.out.println(e.getMessage());
         }
     }
 
     /**
-     * Método que muestra una ley con el ID que el usuario introduzca.
+     * Metodo que muestra una ley con el Id que el usuario introduzca
      */
-    public void mostrarLeyPorId() {
+    public void mostrarLeyPorId(){
         try {
             int id = vistaLey.pedirId();
             Ley ley = leyDAO.getByIdLey(id);
             vistaLey.mostrarLey(ley);
-        } catch (Exception e) {
-            System.out.println("ERROR al buscar ley por ID: " + e.getMessage());
+        } catch (Exception e){
+            System.out.println(e.getMessage());
         }
     }
 
     /**
-     * Método que pide los datos de una ley al usuario y la actualiza en la BD.
+     * Metodo que pide los datos de una ley al usuario y
      */
-    public void actualizarLey() {
+    public void actualizarLey(){
         try {
             Ley ley = vistaLey.crearLey(true);
             leyDAO.updateLeyById(ley);
-            System.out.println("Ley actualizada correctamente.");
-        } catch (Exception e) {
-            System.out.println("ERROR al actualizar ley: " + e.getMessage());
+        } catch (Exception e){
+            System.out.println(e.getMessage());
         }
     }
 
     /**
-     * Método que pide un ID y borra la ley con ese ID de la base de datos.
+     * Metodo que pide un Id y borra la ley con ese Id de la base de datos
      */
-    public void borrarLey() {
+    public void borrarLey(){
         try {
             int id = vistaLey.pedirId();
             leyDAO.deleteLeyById(id);
-            System.out.println("Ley eliminada correctamente.");
-        } catch (Exception e) {
-            System.out.println("ERROR al borrar ley: " + e.getMessage());
+        } catch (Exception e){
+            System.out.println(e.getMessage());
         }
     }
 
