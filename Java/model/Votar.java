@@ -76,12 +76,31 @@ public class Votar {
         return decision;
     }
 
+    /**
+     * Metodo que establece el numero de pasaporte del ciudadano que vota. Si el numero de pasaporte tiene mas de 16
+     * caracteres lanza una excepcion.
+     * @param numPasaporteCiudadano Numero de pasaporte del ciudadano
+     * @throws IllegalArgumentException Excepcion lanzada en caso de numero de pasaporte incorrecto
+     */
     public void setNumPasaporteCiudadano(String numPasaporteCiudadano) throws IllegalArgumentException {
-        if (numPasaporteCiudadano.length() > 16){
+        if (numPasaporteCiudadano.length() < 16){
             this.numPasaporteCiudadano = numPasaporteCiudadano;
         } else {
             throw new IllegalArgumentException("Error, el número de pasaporte del ciudadano no puede tener más de 16 caracteres");
         }
     }
 
+    /**
+     * Metodo toString que muestra la informacion de un voto (numero de pasaporte del ciudadano, id de la propuesta y
+     * decision del voto)
+     * @return String con la informacion del voto
+     */
+    @Override
+    public String toString() {
+        return "Votar{" +
+                "numPasaporteCiudadano='" + numPasaporteCiudadano + '\'' +
+                ", idPropuesta=" + idPropuesta +
+                ", decision=" + decision +
+                '}';
+    }
 }

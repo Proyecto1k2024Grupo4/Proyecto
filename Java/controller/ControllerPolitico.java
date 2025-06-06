@@ -7,6 +7,8 @@ import view.VistaPersona;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Scanner;
+
 /**
  * Controlador para la gestión de politicos, actua de intermediario entre vistaPersona y PoliticoDAO
  * @author Jonathan Villaba Moran 1ºK
@@ -65,10 +67,9 @@ public class ControllerPolitico {
      */
     public void acutalizarPolitico() {
         try {
-            Date fecha = vistaPolitico.obtenerFecha();
-            String pasaporte = vistaPolitico.obtenerPasaporte();
-            politicoDAO.updatePolitico(fecha, pasaporte);
-        } catch (SQLException e) {
+            Politico politico = vistaPolitico.crearPolitico();
+            politicoDAO.updatePolitico(politico);
+        } catch (SQLException e){
             e.printStackTrace();
         }
     }

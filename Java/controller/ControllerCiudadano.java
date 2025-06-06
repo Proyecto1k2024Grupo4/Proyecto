@@ -8,6 +8,11 @@ import view.VistaPersona;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Controlador para la gestión de ciudadanos. Actua de intermediario entre VistaPersona y CiudadanoDAO
+ * @author Jonathan Villalba Moran
+ * @version 14-04-2025
+ */
 public class ControllerCiudadano {
     private CiudadanoDAO ciudadanoDAO;
     private VistaPersona vistaCiudadano;
@@ -51,6 +56,15 @@ public class ControllerCiudadano {
             ciudadanoDAO.insertarCiudadano(ciudadano);
         } catch (SQLException e) {
              e.printStackTrace();
+        }
+    }
+
+    public void actualizarCiudadano(){
+        try {
+            Ciudadano ciudadano = (Ciudadano) vistaCiudadano.crearPersona();
+            ciudadanoDAO.actualizarCiudadano(ciudadano);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 

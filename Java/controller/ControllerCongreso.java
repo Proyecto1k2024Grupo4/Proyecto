@@ -5,63 +5,76 @@ import model.Congreso;
 import view.VistaCongreso;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *  @author ABDELMOGHIT SAMINI 1KDAM
+ * Controlador para gestionar una lista de congresos.
+ */
 public class ControllerCongreso {
-    private CongresoDAO congresoDAO;
+    private List<Congreso> congresos;
     private VistaCongreso vista;
 
     public ControllerCongreso() {
-        congresoDAO = CongresoDAO.getInstance();
+        congresos = new ArrayList<>();
         vista = new VistaCongreso();
     }
 
     public void mostrarTodosLosCongresos() {
-        try {
-            List<Congreso> congresos = congresoDAO.getAllCongresos();
-            vista.mostrarCongresos(congresos);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        vista.mostrarCongresos(congresos);
     }
 
     public void crearCongreso() {
-        try {
-            Congreso congreso = vista.crearCongreso();
-            congresoDAO.insertCongreso(congreso);
-            vista.mostrarMensaje("Congreso creado correctamente.");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void actualizarCongreso() {
-        try {
-            Congreso congreso = vista.obtenerDatosActualizados();
-            congresoDAO.updateCongreso(congreso);
-            vista.mostrarMensaje("Congreso actualizado correctamente.");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        Congreso nuevoCongreso = vista.crearCongreso();
+        congresos.add(nuevoCongreso);
+        vista.mostrarMensaje("Congreso creado correctamente.");
     }
 
     public void eliminarCongreso() {
-        try {
-            int id = vista.obtenerIdCongreso();
-            congresoDAO.deleteCongreso(id);
+        int id = vista.obtenerIdCongreso();
+        boolean eliminado = false;
+        List<Congreso> copia = new ArrayList<>(congresos);
+        for (Congreso c : copia) {
+            if (c.getId() == id) {
+                congresos.remove(c);
+                eliminado = true;
+            }
+        }
+        if (eliminado) {
             vista.mostrarMensaje("Congreso eliminado correctamente.");
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } else {
+            vista.mostrarMensaje("No se encontró ningún congreso con ese ID.");
         }
     }
 
     public void buscarCongresoPorId() {
-        try {
-            int id = vista.obtenerIdCongreso();
-            Congreso congreso = congresoDAO.getCongresoById(id);
-            vista.mostrarCongreso(congreso);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        int id = vista.obtenerIdCongreso();
+        boolean encontrado = false;
+        for (Congreso c : congresos) {
+            if (c.getId() == id) {
+                vista.mostrarCongreso(c);
+                encontrado = true;
+            }
+        }
+        if (!encontrado) {
+            vista.mostrarMensaje("No se encontró ningún congreso con ese ID.");
+        }
+    }
+
+    public void actualizarCongreso() {
+        Congreso actualizado = vista.obtenerDatosActualizados();
+        boolean modificado = false;
+        for (int i = 0; i < congresos.size(); i++) {
+            if (congresos.get(i).getId() == actualizado.getId()) {
+                congresos.set(i, actualizado);
+                modificado = true;
+            }
+        }
+        if (modificado) {
+            vista.mostrarMensaje("Congreso actualizado correctamente.");
+        } else {
+            vista.mostrarMensaje("No se encontró ningún congreso con ese ID.");
         }
     }
 }

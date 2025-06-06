@@ -1,74 +1,168 @@
 package app;
 
-import controller.ControllerPersona;
-
+import controller.*;
 import java.util.Scanner;
 
 /**
  * Clase Main que se ejecuta al inicio del programa y desde la que se muestra el menu con las
  * opciones
- * @autor Diego Fernando Valencia Correa 1ºK
+ * @author Diego Fernando Valencia Correa 1ºK
  * @version 14-04-2025
  */
 public class Main {
+
+    public static final int OPCION_MAX_PROPUESTAS = 12;
+    public static final int OPCION_MAX_MENU = 5;
+    public static final int OPCION_MAX_PERSONAS = 14;
+    public static final int OPCION_MAX_LEYES = 6;
+    public static final int OPCION_MAX_PAISES = 6;
+
+
     public static void main(String[] args) {
 
         int opcion = 0;
 
-        // Condicionales para los menús
-        boolean menuPrincipal = opcion < 1 && opcion > 5;
-        boolean menuPropuestas = opcion < 1 && opcion > 5;
-        boolean menuPersonas = opcion < 1 && opcion > 14;
-
         do {
             mostrarMenu();
-            while (menuPrincipal){
+            while (opcionMenuPrincipal(opcion)){
                 opcion = introducirOpcion();
-                if (menuPrincipal) System.out.print("Por favor, introduce una opcion entre 1 y 5: ");
+                if (opcionMenuPrincipal(opcion)) System.out.print("Por favor, introduce una opcion entre 1 y 5: ");
             }
             switch (opcion) {
                 case 1 -> {
                     opcion = 0;
                     mostrarMenuPropuestas();
-                    while (menuPropuestas){
+                    ControllerPropuesta controllerPropuesta = new ControllerPropuesta();
+                    ControllerVotar controllerVotar = new ControllerVotar();
+                    while (opcionMenuPropuestas(opcion)){
                         opcion = introducirOpcion();
-                        if (menuPropuestas) System.out.print("Por favor, introduce una opcion entre 1 y 5: ");
+                        if (opcionMenuPropuestas(opcion)) System.out.print("Por favor, introduce una opcion entre 1 y " + OPCION_MAX_PROPUESTAS + ": ");
                     }
+                    switch (opcion){
+                        case 1 -> {
+                            controllerPropuesta.mostrarTodasLasPropuestas();
+                        }
+                        case 2 -> {
+                            controllerPropuesta.mostrarPropuestaPorId();
+                        }
+                        case 3 -> {
+                            controllerPropuesta.mostrarPropuestaPorIdCongreso();
+                        }
+                        case 4 -> {
+                            controllerPropuesta.mostrarPropuestaPorNombrePais();
+                        }
+                        case 5 -> {
+                            controllerPropuesta.insertarPropuesta();
+                        }
+                        case 6 -> {
+                            controllerPropuesta.actualizarPropuesta();
+                        }
+                        case 7 -> {
+                            controllerVotar.insertarVoto();
+                        }
+                        case 8 -> {
+                            controllerVotar.mostrarTodosLosVotos();
+                        }
+                        case 9 -> {
+                            controllerVotar.mostrarVotosPorNumeroPasaporte();
+                        }
+                        case 10 -> {
+                            controllerVotar.mostrarVotosPorIdPropuesta();
+                        }
+                        case 11 -> {
+                            controllerVotar.mostrarVotosPorNumeroPasaporteEIdPropuesta();
+                        }
+                        case 12 -> {
+                        }
+                    }
+                    opcion = 0;
                 }
                 case 2 -> {
-                    opcion = 0;
                     mostrarMenuPersonas();
-                    while (menuPersonas){
+                    ControllerPersona controllerPersona = new ControllerPersona();
+                    ControllerPolitico controllerPolitico = new ControllerPolitico();
+                    ControllerCiudadano controllerCiudadano = new ControllerCiudadano();
+                    opcion = 0;
+                    while (opcionMenuPersonas(opcion)){
                         opcion = introducirOpcion();
-                        if (menuPersonas)
+                        if (opcionMenuPersonas(opcion))
                             System.out.println("Por favor, introduce una opcion entre 1 y 14: ");
-                    } switch (opcion) {
-                        case 1 -> System.out.println("");
-                        case 2 -> System.out.println("");
-                        case 3 -> System.out.println("");
-                        case 4 -> System.out.println("");
-                        case 5 -> System.out.println("");
-                        case 6 -> System.out.println("");
-                        case 7 -> System.out.println("");
-                        case 8 -> System.out.println("");
-                        case 9 -> System.out.println("");
-                        case 10 -> System.out.println("");
-                        case 11 -> System.out.println("");
-                        case 12 -> System.out.println("");
-                        case 13 -> System.out.println("");
-                        case 14 -> System.out.println("");
                     }
+                    switch (opcion) {
+                        case 1 -> controllerPersona.mostrarTodasLasPersonas();
+                        case 2 -> controllerPersona.mostarPersonaPasaporte();
+                        case 3 -> controllerPersona.eliminarPersona();
+                        case 4 -> controllerPolitico.mostrarTodosLosPoliticos();
+                        case 5 -> controllerPolitico.mostrarPoliticoPasaporte();
+                        case 6 -> controllerPolitico.crearPolitco();
+                        case 7 -> controllerPolitico.acutalizarPolitico();
+                        case 8 -> controllerCiudadano.mostrarTodosLosCiudadanos();
+                        case 9 -> controllerCiudadano.mostrarCiudadanoPasaporte();
+                        case 10 -> controllerCiudadano.crearCiudadano();
+                        case 11 -> controllerCiudadano.actualizarCiudadano();
+                        case 12 ->{}
+                    }
+                    opcion = 0;
                 }
                 case 3 -> {
                     opcion = 0;
-                    System.out.println("Persona actualizada correctamente.");
+                    mostrarMenuLeyes();
+                    ControllerLey controllerLey = new ControllerLey();
+                    while (opcionMenuLeyes(opcion)){
+                        opcion = introducirOpcion();
+                        if (opcionMenuLeyes(opcion)) System.out.print("Por favor, introduce una opcion entre 1 y 5: ");
+                    }
+                    switch (opcion){
+                        case 1 -> {
+                            controllerLey.mostrarTodasLasLeyes();
+                        }
+                        case 2 -> {
+                            controllerLey.insertarLey();
+                        }
+                        case 3 -> {
+                            controllerLey.mostrarLeyPorId();
+                        }
+                        case 4 -> {
+                            controllerLey.actualizarLey();
+                        }
+                        case 5 -> {
+                            controllerLey.borrarLey();
+                        }
+                        case 6 -> {
+                        }
+                    }
+                    opcion = 0;
                 }
                 case 4 -> {
                     opcion = 0;
-                    System.out.println("Persona eliminada correctamente.");
+                    mostrarMenuPaises();
+                    ControllerPais controllerPais = new ControllerPais();
+                    while (opcionMenuPaises(opcion)){
+                        opcion = introducirOpcion();
+                        if (opcionMenuPaises(opcion)) System.out.print("Por favor, introduce una opcion entre 1 y 5: ");
+                    }
+                    switch (opcion){
+                        case 1 -> {
+                            controllerPais.mostrarTodosLosPaises();
+                        }
+                        case 2 -> {
+                            controllerPais.buscarPaisPorId();
+                        }
+                        case 3 -> {
+                            controllerPais.crearPais();
+                        }
+                        case 4 -> {
+                            controllerPais.actualizarPais();
+                        }
+                        case 5 -> {
+                            controllerPais.eliminarPais();
+                        }
+                        case 6 -> {
+                        }
+                    }
+                    opcion = 0;
                 }
                 case 5 -> {
-                    opcion = 0;
                     System.out.println("Saliendo...");
                 }
             }
@@ -90,16 +184,44 @@ public class Main {
         System.out.print("Por favor, seleccione la opcione que desee consultar (1-5): ");
     }
 
+    public static boolean opcionMenuPrincipal(int opcion){
+        return opcion < 1 || opcion > OPCION_MAX_MENU;
+    }
+
+    public static boolean opcionMenuPropuestas(int opcion){
+        return opcion < 1 || opcion > OPCION_MAX_PROPUESTAS;
+    }
+
+    public static boolean opcionMenuPersonas(int opcion){
+        return opcion < 1 || opcion > OPCION_MAX_PERSONAS;
+    }
+
+    public static boolean opcionMenuLeyes(int opcion){
+        return opcion < 1 || opcion > OPCION_MAX_LEYES;
+    }
+
+    public static boolean opcionMenuPaises(int opcion){
+        return opcion < 1 || opcion > OPCION_MAX_PAISES;
+    }
+
     /**
      * Metodo que muestra el menu de opciones principal
      */
     public static void mostrarMenuPropuestas(){
         System.out.println("--- Menu de Propuestas ---");
-        System.out.println("1. Propuestas");
-        System.out.println("2. Personas");
-        System.out.println("3. Leyes");
-        System.out.println("4. Paises");
-        System.out.println("5. Salir");
+        System.out.println("1. Mostrar todas las propuestas");
+        System.out.println("2. Mostrar propuestas por id");
+        System.out.println("3. Mostrar propuestas por id de congreso");
+        System.out.println("4. Mostrar propuestas por nombre de país");
+        System.out.println("5. Insertar propuesta");
+        System.out.println("6. Actualizar propuesta");
+        System.out.println("7. Insertar un voto");
+        System.out.println("8. Mostrar todos los votos");
+        System.out.println("9. Mostrar votos por número de pasaporte");
+        System.out.println("10. Mostrar votos por id de propuesta");
+        System.out.println("11. Muestra voto por número de pasaporte e id de propuesta");
+        System.out.println("12. Volver atrás");
+        System.out.print("Por favor, seleccione la opcione que desee consultar (1-"+OPCION_MAX_PROPUESTAS+"): ");
     }
 
     /**
@@ -110,20 +232,19 @@ public class Main {
                 --- Menus de Personas ---
                 1. Mostrar todas las personas
                 2. Mostrar persona por su pasaporte
-                3. Crear persona
-                4. Modificar persona
-                5. Eliminar persona
+                3. Eliminar persona
                 --- Politico ---
-                6. Mostrar todos los politicos
-                7. Mostrar politico por su pasaporte
-                8. Crear politico
-                9. Retirar un politico
-                10. Eliminar politico
+                4. Mostrar todos los politicos
+                5. Mostrar politico por número de pasaporte
+                6. Crear politico
+                7. Actualizar politico
                 --- Ciudadano ---
-                11. Mostrar todos los ciudadanos
-                12. Mostrar ciudadano por su pasaporte
-                13. Crear ciudadano
-                14. Eliminar ciudadano
+                8. Mostrar todos los ciudadanos
+                9. Buscar ciudadano por número de pasaporte
+                10. Crear ciudadano
+                11. Actualizar ciudadano
+                
+                12. Volver atrás
                 """);
     }
 
@@ -131,14 +252,28 @@ public class Main {
      * Metodo que muestra el menu de opciones principal
      */
     public static void mostrarMenuLeyes(){
-
+        System.out.println("--- Menu de Leyes ---");
+        System.out.println("1. Mostrar todas las leyes");
+        System.out.println("2. Insertar Ley");
+        System.out.println("3. Mostrar ley por id");
+        System.out.println("4. Actualizar Ley");
+        System.out.println("5. Borrar Ley");
+        System.out.println("6. Volver atrás");
+        System.out.print("Por favor, seleccione la opcione que desee consultar (1-6): ");
     }
 
     /**
      * Metodo que muestra el menu de opciones principal
      */
     public static void mostrarMenuPaises(){
-
+        System.out.println("--- Menu de Paises ---");
+        System.out.println("1. Mostrar todos los paises");
+        System.out.println("2. Buscar pais por id");
+        System.out.println("3. Crear pais");
+        System.out.println("4. Actualizar pais");
+        System.out.println("5. Eliminar pais");
+        System.out.println("6. Volver atrás");
+        System.out.print("Por favor, seleccione la opcione que desee consultar (1-6): ");
     }
 
     public static int introducirOpcion() {
@@ -154,7 +289,6 @@ public class Main {
             } catch (Exception e) {
                 System.out.print("Por favor, introduce un número: ");
                 correcto = false;
-                scanner.next();
             }
         }
 

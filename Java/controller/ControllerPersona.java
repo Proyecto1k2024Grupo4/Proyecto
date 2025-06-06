@@ -66,8 +66,8 @@ public class ControllerPersona {
      */
     public void actualizarPersona() {
         try {
-            String pasaporte = vistaPersona.obtenerPasaporte();
             Persona persona = vistaPersona.crearPersona();
+            String pasaporte = persona.getNumPasaporte();
             personaDAO.updatePersona(persona, pasaporte);
         } catch (SQLException e) {
             e.printStackTrace();

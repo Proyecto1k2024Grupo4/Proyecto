@@ -37,15 +37,15 @@ public class VistaPersona {
     public Persona crearPersona (){
         String pasaporte = obtenerPasaporte();
         System.out.println("Introduce el nombre");
-        String nombre = scan.next();
+        String nombre = scan.nextLine();
         System.out.println("Introduce el primer apellido");
-        String apellido1 = scan.next();
+        String apellido1 = scan.nextLine();
         System.out.println("Introduce el segundo apellido");
-        String apellido2 = scan.next();
+        String apellido2 = scan.nextLine();
         System.out.println("Introduce la fecha de nacimiento");
         Date fecha = obtenerFecha();
         System.out.println("Introduce el sexo(H,M)");
-        Sexo sexo = Sexo.valueOf(scan.next());
+        Sexo sexo = Sexo.valueOf(scan.nextLine());
         System.out.println("Introduce el pais (codigo)");
         int pais = scan.nextInt();
         return new Persona(pasaporte, nombre, apellido1, apellido2, fecha, sexo, pais);
@@ -60,7 +60,7 @@ public class VistaPersona {
         boolean bien = false;
         while (!bien) {
             System.out.println("Introduce el pasaporte");
-            numPasaporte = scan.next();
+            numPasaporte = scan.nextLine();
             if (!(numPasaporte.length() > 16))
                 bien = true;
             else
@@ -88,15 +88,15 @@ public class VistaPersona {
     public Politico crearPolitico(){
         String pasaporte = obtenerPasaporte();
         System.out.println("Introduce el nombre");
-        String nombre = scan.next();
+        String nombre = scan.nextLine();
         System.out.println("Introduce el primer apellido");
-        String apellido1 = scan.next();
+        String apellido1 = scan.nextLine();
         System.out.println("Introduce el segundo apellido");
-        String apellido2 = scan.next();
+        String apellido2 = scan.nextLine();
         System.out.println("Introduce la fecha de nacimiento");
         Date fecha = obtenerFecha();
         System.out.println("Introduce el sexo(H,M)");
-        Sexo sexo = Sexo.valueOf(scan.next());
+        Sexo sexo = Sexo.valueOf(scan.nextLine());
         System.out.println("Introduce el pais (codigo)");
         int pais = scan.nextInt();
         System.out.println("Introduce la fecha de iniciacion");
@@ -131,9 +131,9 @@ public class VistaPersona {
                 correcto = true;
                 fecha = Date.valueOf(LocalDate.parse(scan.nextLine()));
             } catch (Exception e){
+                System.out.println(e.getMessage());
                 System.out.println("Fecha incorrecta, por favor introduce la fecha con este formato (año-mes-dia) (Ejemplo: 1999-01-01): ");
                 correcto = false;
-                scan.next();
             }
         }
         return fecha;
