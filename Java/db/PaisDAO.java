@@ -1,12 +1,14 @@
-package com.iesochoa.ejemplodbjavafx.db;
+package db;
 
-
-import com.iesochoa.ejemplodbjavafx.model.Pais;
-
+import model.Pais;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *   @author ABDELMOGHIT SAMINI 1KDAM
+ * Clase PaisDAO que proporciona acceso a la base de datos para la entidad Pais.
+ */
 public class PaisDAO {
     private static PaisDAO instance;
     private Connection connection;
@@ -15,7 +17,6 @@ public class PaisDAO {
     private static final String SELECT_ALL_QUERY = "SELECT * FROM PAIS";
     private static final String SELECT_BY_ID_QUERY = "SELECT * FROM PAIS WHERE id = ?";
     private static final String UPDATE_QUERY = "UPDATE PAIS SET nombre = ? WHERE id = ?";
-    private static final String SELECT_PAISES_POR_NOMBRE = "SELECT * FROM PAIS WHERE nombre LIKE ?";
     private static final String DELETE_QUERY = "DELETE FROM PAIS WHERE id = ?";
 
     private PaisDAO() {
@@ -78,18 +79,5 @@ public class PaisDAO {
                 resultSet.getInt("id"),
                 resultSet.getString("nombre")
         );
-    }
-    public List<Pais> selectPaisesPorNombre(String nombre) throws SQLException {
-        List<Pais> lista = new ArrayList<>();
-        String nombreLike = "%" + nombre + "%";
-        try (PreparedStatement ps = connection.prepareStatement(SELECT_PAISES_POR_NOMBRE)) {
-            ps.setString(1, nombreLike);
-            try (ResultSet rs = ps.executeQuery()) {
-                while (rs.next()) {
-                    lista.add(resultSetToPais(rs));
-                }
-            }
-        }
-        return lista;
     }
 }
