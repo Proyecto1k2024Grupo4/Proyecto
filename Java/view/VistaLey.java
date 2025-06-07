@@ -39,11 +39,12 @@ public class VistaLey {
      * @param ley
      */
     public void mostrarLey(Ley ley){
-        System.out.println(ley != null ? ley : "No existe una ley con ese ID.");
+        System.out.println(ley);
     }
 
     /**
      * Metodo que pide los datos al usuario y crea una ley
+     * @param conId si es true, pedirá también el ID (para actualizar).
      * @return Ley con los datos proporcionados
      */
     public Ley crearLey(boolean conId){

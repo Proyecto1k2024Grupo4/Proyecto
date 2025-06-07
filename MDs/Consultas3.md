@@ -24,21 +24,21 @@
 ``` sql
 select * from PERSONA p where not exists (select * from PERSONA p2 where p2.fnac < p.fnac);
 ```
-![alt text](image-12.png)
+![alt text](imagenes/image-12.png)
 
 ### 2. Selecciona el código de la ley con la fecha de aplicación más lejana
 
 ``` sql
 select id from LEY where fechaAplicacion = (select max(fechaAplicacion) from LEY);
 ```
-![alt text](image-11.png)
+![alt text](imagenes/image-11.png)
 
 ### 3. Selecciona el número de pasaporte y nombre de todos los políticos cuya fecha de iniciación no sea la más antigua de su país
 
 ``` sql
 select p.numPasaporte, p.nombre from PERSONA p join POLITICO po on p.numPasaporte = po.numPasaporte where po.fechaIniciacion > any (select po2.fechaIniciacion from POLITICO po2 join PERSONA p2 on po2.numPasaporte = p2.numPasaporte where p2.paisNacimiento = p.paisNacimiento);
 ```
-![alt text](image-21.png)
+![alt text](imagenes/image-21.png)
 
 ### 4. Listar propuestas donde todos sus votos son positivos:
 
@@ -46,7 +46,7 @@ select p.numPasaporte, p.nombre from PERSONA p join POLITICO po on p.numPasaport
 select v2.idPropuesta from VOTAR v2 group by v2.idPropuesta having count(*) = 
 (select count(*) from VOTAR v3 where decision = 1 group by v3.idPropuesta having v3.idPropuesta = v2.idPropuesta);
 ```
-![alt text](image-28.png)
+![alt text](imagenes/image-28.png)
 
 
 ### 5. Obtener la/las propuesta con la fecha de proposición más antigua:
@@ -58,7 +58,7 @@ WHERE fechaProposicion = (
     SELECT MIN(fechaProposicion) FROM PROPUESTA
 );
 ```
-![alt text](image-23.png)
+![alt text](imagenes/image-23.png)
 
 <br><br>
 
@@ -80,7 +80,7 @@ SELECT pa.nombre, pp.total_politicos
 from PoliticosPorPais pp
 join PAIS pa ON pp.idPais = pa.id;
 ```
-![alt text](image-24.png)
+![alt text](imagenes/image-24.png)
 
 ### 2. Obten la propuesta con más votos
 ``` sql
@@ -95,7 +95,7 @@ join PROPUESTA P ON vp.idPropuesta = P.id
 order by  vp.total_votos DESC
 LIMIT 1;
 ```
-![alt text](image-25.png)
+![alt text](imagenes/image-25.png)
 
 <br><br>
 
@@ -112,8 +112,8 @@ p.nombre, pa.nombre as model.Pais, count(*) over (partition by p.paisNacimiento)
 from CIUDADANO c join PERSONA p on p.numPasaporte = c.numPasaporte
 join PAIS pa on pa.id = p.paisNacimiento;
 ```
-![alt text](image-26.png)
-![alt text](image-29.png)
+![alt text](imagenes/image-26.png)
+![alt text](imagenes/image-29.png)
 
 <br>
 
@@ -127,18 +127,18 @@ EXPLAIN SELECT titulo FROM PROPUESTA WHERE estado = 'ACEPTACION' order by fechaP
 ```
 
 **Plan de ejecución antes de la creación del índice:**
-![alt text](image-13.png)
+![alt text](imagenes/image-13.png)
 
 **Índice en la tabla PROPUESTA para optimizar búsquedas por estado y fecha**
 
 ``` sql
 CREATE INDEX idx_estado_fecha ON PROPUESTA(estado, fechaProposicion);
 ```
-![alt text](image-19.png)
+![alt text](imagenes/image-19.png)
 
 
 **Plan de ejecución después de la creación del índice:**
-![alt text](image-14.png)
+![alt text](imagenes/image-14.png)
 
 
 ### Consulta 2 para plan de ejecución 
@@ -147,13 +147,13 @@ EXPLAIN SELECT idPropuesta, COUNT(*) as totalVotosFavor FROM VOTAR WHERE decisio
 ```
 
 **Plan de ejecución antes de la creación del índice:**
-![alt text](image-15.png)
+![alt text](imagenes/image-15.png)
 
 **Índice en la tabla VOTAR para mejorar la búsqueda por idPropuesta:**
 ``` sql
 CREATE INDEX idx_votacion_propuesta ON VOTAR(decision);
 ```
-![alt text](image-17.png)
+![alt text](imagenes/image-17.png)
 
 **Plan de ejecución después de la creación del índice:**
-![alt text](image-18.png)
+![alt text](imagenes/image-18.png)

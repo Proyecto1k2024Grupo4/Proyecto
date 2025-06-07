@@ -25,7 +25,7 @@ end;
 //
 delimiter ;
 ```
-![alt text](image-39.png)
+![alt text](imagenes/image-39.png)
 
 **2. Evento que se ejectua a final de cada mes que crea una tabla en la que guardamos los votos de las propuestas**
 
@@ -59,12 +59,12 @@ end;
 //
 delimiter ;
 ````
-![alt text](image-40.png)
+![alt text](imagenes/image-40.png)
 
 <br>
 
 **Comprobación de que ambos eventos están activos**
-![alt text](image-41.png)
+![alt text](imagenes/image-41.png)
 
 <br>
 
@@ -85,7 +85,7 @@ end;
 //
 delimiter ;
 ```
-![alt text](image-45.png)
+![alt text](imagenes/image-45.png)
 
  **2. Cada vez que se inserte un nuevo país se creará automaticamente un código civil para este**
 
@@ -103,15 +103,15 @@ end;
 //
 delimiter ;
 ```
-![alt text](image-46.png)
+![alt text](imagenes/image-46.png)
 
 
 <br>
 
 **Funcionamiento de los trigger**
 
-![alt text](image-47.png)
-![alt text](image-48.png)
+![alt text](imagenes/image-47.png)
+![alt text](imagenes/image-48.png)
 
 
 <br>
@@ -145,8 +145,8 @@ end;
 //
 delimiter ;
 ```
-![alt text](image-53.png)
-![alt text](image-50.png)
+![alt text](imagenes/image-53.png)
+![alt text](imagenes/image-50.png)
 
 
 **2. Procedimiento que inserta una persona y un ciudadano al mismo tiempo**
@@ -178,8 +178,8 @@ end;
 delimiter ;
 ```
 
-![alt text](image-54.png)
-![alt text](image-55.png)
+![alt text](imagenes/image-54.png)
+![alt text](imagenes/image-55.png)
 
 
 <br>
@@ -242,8 +242,8 @@ delimiter ;
 
 ```
 
-![alt text](image-57.png)
-![alt text](image-58.png)
+![alt text](imagenes/image-57.png)
+![alt text](imagenes/image-58.png)
 
 
 **2. Procedimiento en el que se introduce datos sobre una ley, en caso de que la ley exista se hace un update de los campos que pueden ser alterados, si no existe, se crea.**
@@ -300,7 +300,7 @@ end;
 delimiter ;
 ```
 
-![alt text](image-62.png)
-![alt text](image-60.png)
-![alt text](image-63.png)
+![alt text](imagenes/image-62.png)
+![alt text](imagenes/image-60.png)
+![alt text](imagenes/image-63.png)
 

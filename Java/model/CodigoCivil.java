@@ -26,6 +26,11 @@ public class CodigoCivil {
         this.fecha = fecha;
     }
 
+    public CodigoCivil(int id, int idPais) {
+        this.id = id;
+        this.idPais = idPais;
+    }
+
     /**
      * Constructor de la clase CodigoCivil.
      * @param id Identificador del código civil.
@@ -92,7 +97,7 @@ public class CodigoCivil {
     public int getIdPais() {
         return idPais;
     }
-      /**
+    /**
      * Obtiene lista de Leyes.
      *
      * @return La lista de leyes.
@@ -118,9 +123,5 @@ public class CodigoCivil {
                 ", idPais=" + idPais +
                 ", leyes=" + leyes +
                 '}';
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 }

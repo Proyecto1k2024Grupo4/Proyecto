@@ -4,6 +4,7 @@ import db.LeyDAO;
 import model.Ley;
 import view.VistaLey;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**

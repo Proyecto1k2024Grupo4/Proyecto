@@ -204,8 +204,8 @@ public class VistaPropuesta {
             try {
                 correcto = true;
                 if(primeraVez){
-                    fecha = Date.valueOf(LocalDate.parse(fechaIntroducidaAntes));
                     primeraVez = false;
+                    fecha = Date.valueOf(LocalDate.parse(fechaIntroducidaAntes));
                 } else {
                     fecha = Date.valueOf(LocalDate.parse(scanner.nextLine()));
                 }

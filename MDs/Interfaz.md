@@ -9,22 +9,22 @@
 <br>
 
 #### Página de Inicio de Sesión
-![alt text](image-30.png)
+![alt text](imagenes/image-30.png)
 
 #### Página Principal
-![alt text](image-31.png)
+![alt text](imagenes/image-31.png)
 
 #### Página de Propuestas
-![alt text](image-32.png)
+![alt text](imagenes/image-32.png)
 
 #### Página de Políticos
-![alt text](image-33.png)
+![alt text](imagenes/image-33.png)
 
 #### Página de Código Civil
-![alt text](image-34.png)
+![alt text](imagenes/image-34.png)
 
 #### Página de Perfil de model.Ciudadano
-![alt text](image-37.png)
+![alt text](imagenes/image-37.png)
 
 #### Página de Perfil de Político
-![alt text](image-38.png)
+![alt text](imagenes/image-38.png)

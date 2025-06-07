@@ -21,7 +21,7 @@ public class ControllerPais {
      Crea una instancia de ControllerPais inicializando el DAO y la vista.
      */
     public ControllerPais() {
-        paisDAO = PaisDAO.getInstance();
+        this.paisDAO = PaisDAO.getInstance();
         vista = new VistaPais();
     }
 /**
