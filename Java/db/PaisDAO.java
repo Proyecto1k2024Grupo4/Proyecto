@@ -1,22 +1,21 @@
-package db;
+package com.iesochoa.ejemplodbjavafx.db;
 
-import model.Pais;
+
+import com.iesochoa.ejemplodbjavafx.model.Pais;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *   @author ABDELMOGHIT SAMINI 1KDAM
- * Clase PaisDAO que proporciona acceso a la base de datos para la entidad Pais.
- */
 public class PaisDAO {
     private static PaisDAO instance;
     private Connection connection;
 
-    private static final String INSERT_QUERY = "INSERT INTO PAIS (nombre) VALUES (?)";
+    public static final String PROCEDIMIENTO_INSERT = "{ CALL insertar_pais(?) }";
     private static final String SELECT_ALL_QUERY = "SELECT * FROM PAIS";
     private static final String SELECT_BY_ID_QUERY = "SELECT * FROM PAIS WHERE id = ?";
     private static final String UPDATE_QUERY = "UPDATE PAIS SET nombre = ? WHERE id = ?";
+    private static final String SELECT_PAISES_POR_NOMBRE = "SELECT * FROM PAIS WHERE nombre LIKE ?";
     private static final String DELETE_QUERY = "DELETE FROM PAIS WHERE id = ?";
 
     private PaisDAO() {
@@ -31,9 +30,9 @@ public class PaisDAO {
     }
 
     public void insertPais(Pais pais) throws SQLException {
-        try (PreparedStatement statement = connection.prepareStatement(INSERT_QUERY)) {
-            statement.setString(1, pais.getNombre());
-            statement.executeUpdate();
+        try (CallableStatement cs = connection.prepareCall(PROCEDIMIENTO_INSERT)) {
+            cs.setString(1, pais.getNombre());
+            cs.execute();
         }
     }
 
@@ -79,5 +78,18 @@ public class PaisDAO {
                 resultSet.getInt("id"),
                 resultSet.getString("nombre")
         );
+    }
+    public List<Pais> selectPaisesPorNombre(String nombre) throws SQLException {
+        List<Pais> lista = new ArrayList<>();
+        String nombreLike = "%" + nombre + "%";
+        try (PreparedStatement ps = connection.prepareStatement(SELECT_PAISES_POR_NOMBRE)) {
+            ps.setString(1, nombreLike);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    lista.add(resultSetToPais(rs));
+                }
+            }
+        }
+        return lista;
     }
 }
