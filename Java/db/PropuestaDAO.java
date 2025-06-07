@@ -23,11 +23,13 @@ public class PropuestaDAO {
     private Connection connection;
 
     // SENTENCIAS SQL
-    private static final String INSERT_QUERY = "insert into PROPUESTA(titulo, descripcion, fechaExpiracion, estado, idCongreso, numPasaportePolitico, fechaProposicion, fechaAceptacion, fechaPublicacion) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String INSERT_QUERY = "insert into PROPUESTA(titulo, descripcion, fechaExpiracion, estado, " +
+            "idCongreso, numPasaportePolitico, fechaProposicion, fechaAceptacion, fechaPublicacion) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String SELECT_ALL_QUERY = "select * from PROPUESTA";
     private static final String SELECT_BY_ID_QUERY = "select * from PROPUESTA where id = ?";
     private static final String SELECT_BY_ID_CONGRESO_QUERY = "select * from PROPUESTA where idCongreso = ?";
-    private static final String SELECT_BY_NAME_PAIS = "select pr.* from PAIS p join CODIGO_CIVIL c on p.id = c.idPais join PROPUESTA pr on c.id = pr.idCongreso where p.nombre = ?";
+    private static final String SELECT_BY_NAME_PAIS = "select pr.* from PAIS p join CODIGO_CIVIL c on p.id = c.idPais join " +
+            "PROPUESTA pr on c.id = pr.idCongreso where p.nombre = ?";
     private static final String UPDATE_BY_PROPUESTA_QUERY = "update PROPUESTA set titulo = ?, descripcion = ?, fechaExpiracion = ?, estado = ?, " +
             "numPasaportePolitico = ?, fechaProposicion = ?, fechaAceptacion = ?, fechaPublicacion = ? where id = ?";
 
