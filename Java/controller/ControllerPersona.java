@@ -61,13 +61,22 @@ public class ControllerPersona {
         }
     }
 
+    public void mostrarPersonaPais(){
+        try {
+            List<Persona> personas = personaDAO.getAllPersonasPais(vistaPersona.pedirPais());
+            vistaPersona.mostrarPersonas(personas);
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * Metodo para actualizar a una persona con nuevos datos
      */
     public void actualizarPersona() {
         try {
-            String pasaporte = vistaPersona.obtenerPasaporte();
             Persona persona = vistaPersona.crearPersona();
+            String pasaporte = persona.getNumPasaporte();
             personaDAO.updatePersona(persona, pasaporte);
         } catch (SQLException e) {
             e.printStackTrace();

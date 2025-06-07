@@ -1,6 +1,7 @@
 package db;
 
 import model.Ciudadano;
+import model.Persona;
 import model.Sexo;
 
 import java.sql.Connection;
@@ -23,9 +24,10 @@ public class CiudadanoDAO {
     private Connection connection;
 
     //Consultas SQL
-    private static final String INSERT_QUERY = "INSERT INTO CIUDADANO (numPasaporte) VALUES (?)";
-    private static final String SELECT_ALL_QUERY = "SELECT * FROM CIUDADANO";
-    private static final String SELECT_BY_PASAPORTE_QUERY = "SELECT * FROM CIUDADANO WHERE numPasaporte = ?";
+    private static final String INSERT_QUERY = "CALL insertar_ciudadano (?, ?, ?, ?, ?, ?, ?)";
+    private static final String SELECT_ALL_QUERY = "SELECT P.* FROM PERSONA P JOIN CIUDADANO C ON P.numPasaporte = C.numPasaporte";
+    private static final String SELECT_BY_PASAPORTE_QUERY = "SELECT P.* FROM PERSONA P JOIN CIUDADANO C ON P.numPasaporte = C.numPasaporte WHERE C.numPasaporte = ?";
+    private static final String UPDATE_QUERY = "CALL actualizar_ciudadano (?, ?, ?, ?, ?, ?, ?)";
     private static final String DELETE_QUERY = "DELETE FROM CIUDADANO WHERE numPasaporte = ?";
     private static final String TOTAL_CIUDADANOS_QUERY = "SELECT COUNT(*) FROM CIUDADANO";
 
@@ -53,6 +55,12 @@ public class CiudadanoDAO {
     public void insertarCiudadano(Ciudadano ciudadano) throws SQLException {
         try (PreparedStatement statement = connection.prepareStatement(INSERT_QUERY)){
             statement.setString(1, ciudadano.getNumPasaporte());
+            statement.setString(2, ciudadano.getNombre());
+            statement.setString(3, ciudadano.getPrimerApellido());
+            statement.setString(4, ciudadano.getSegundoApellido());
+            statement.setDate(5, ciudadano.getFnac());
+            statement.setString(6, String.valueOf(ciudadano.getSexo()));
+            statement.setString(7, String.valueOf(ciudadano.getPaisNacimiento()));
             statement.executeUpdate();
         }
     }
@@ -96,7 +104,7 @@ public class CiudadanoDAO {
      * @throws SQLException
      */
     private Ciudadano resultSetToCiudadano(ResultSet resultSet) throws SQLException {
-        return new Ciudadano(
+        Persona persona = new Persona(
                 resultSet.getString("numPasaporte"),
                 resultSet.getString("nombre"),
                 resultSet.getString("primerApellido"),
@@ -105,7 +113,22 @@ public class CiudadanoDAO {
                 Sexo.valueOf(resultSet.getString("sexo")),
                 resultSet.getInt("paisNacimiento")
         );
+        return new Ciudadano(persona);
     }
+
+    public void actualizarCiudadano(Ciudadano ciudadano) throws SQLException {
+        try (PreparedStatement statement = connection.prepareStatement(UPDATE_QUERY)){
+            statement.setString(1, ciudadano.getNumPasaporte());
+            statement.setString(2, ciudadano.getNombre());
+            statement.setString(3, ciudadano.getPrimerApellido());
+            statement.setString(4, ciudadano.getSegundoApellido());
+            statement.setDate(5, ciudadano.getFnac());
+            statement.setString(6, String.valueOf(ciudadano.getSexo()));
+            statement.setString(7, String.valueOf(ciudadano.getPaisNacimiento()));
+            statement.executeUpdate();
+        }
+    }
+
     /**
      * Metodo que borra a un ciudadano a partir de su numero de pasaporte
      * @param numPasaporte

@@ -25,12 +25,13 @@ public class PersonaDAO {
 
     //Consultas SQL predefinidas
     private static final String INSERT_QUERY = "INSERT INTO PERSONA (numPasaporte, nombre, primerApellido, segundoApellido, fnac, sexo, paisNacimiento)" +
-            "VALUES (?, ?, ?, ?, ?,? ,?)";
+            "VALUES (?, ?, ?, ?, ?, ?,?)";
     private static final String SELECT_ALL_QUERY = "SELECT * FROM PERSONA";
+    private static final String SELECT_ALL_PAIS_QUERY = "SELECT * FROM PERSONA WHERE paisNacimiento = ?";
     private static final String SELECT_BY_PASAPORTE_QUERY = "SELECT * FROM PERSONA WHERE numPasaporte = ?";
     private static final String UPDATE_QUERY = "UPDATE PERSONA SET nombre = ?, primerApellido = ?, segundoApellido = ?, fnac = ?, sexo = ?, paisNacimiento = ?" +
             "WHERE numPasaporte = ?";
-    private static final String DELETE_QUERY = "DELETE FROM PERSONA WHERE numPasaporte = ?";
+    private static final String DELETE_QUERY = "CALL eliminar(?)";
     private static final String TOTAL_PERSONAS_QUERY = "SELECT COUNT(*) FROM PERSONA";
 
     /*
@@ -77,6 +78,18 @@ public class PersonaDAO {
     public List<Persona> getAllPersonas() throws SQLException {
         List<Persona> personas = new ArrayList<>();
         try (PreparedStatement statement = connection.prepareStatement(SELECT_ALL_QUERY)){
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                personas.add(resultSetToPersona(resultSet));
+            }
+        }
+        return personas;
+    }
+
+    public List<Persona> getAllPersonasPais(int pais) throws SQLException {
+        List<Persona> personas = new ArrayList<>();
+        try (PreparedStatement statement = connection.prepareStatement(SELECT_ALL_PAIS_QUERY)) {
+            statement.setInt(1, pais);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 personas.add(resultSetToPersona(resultSet));
