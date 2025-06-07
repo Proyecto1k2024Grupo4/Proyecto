@@ -93,7 +93,7 @@ public class PropuestaDAO {
     /**
      * Metodo que devuelve todas las propuestas en un List
      * @return List con todas las propuestas
-     * @throws SQLException Excepcion SQL
+     * @throws SQLException Excepción SQL
      */
     public List<Propuesta> getAllPropuesta() throws SQLException{
         List<Propuesta> propuestas = new ArrayList<>();

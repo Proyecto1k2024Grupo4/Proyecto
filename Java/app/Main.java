@@ -31,7 +31,7 @@ public class Main {
             mostrarMenu();
             while (opcionMenuPrincipal(opcion)) {
                 opcion = introducirOpcion();
-                if (opcionMenuPrincipal(opcion)) System.out.print("Por favor, introduce una opcion entre 1 y 5: ");
+                if (opcionMenuPrincipal(opcion)) System.out.print("Por favor, introduce una opcion entre 1 y " + OPCION_MAX_MENU + ": ");
             }
             switch (opcion) {
                 case 1 -> {
