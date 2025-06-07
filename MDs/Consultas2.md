@@ -14,7 +14,7 @@ from PROPUESTA pr join VOTAR v on pr.id = v.idPropuesta
 group by pr.id;
 ```
 
-![resultado](imagen-11.png)
+![resultado](imagenes/imagen-11.png)
 
 **2. Cuantas personas hay en cada país que han nacido antes del 2000**
 
@@ -25,7 +25,7 @@ where pe.fnac < '2000/1/1'
 group by pa.nombre;
 ```
 
-![resultado](imagen-12.png)
+![resultado](imagenes/imagen-12.png)
 
 **3. Obten el número de políticos que hay en cada país**
 
@@ -36,7 +36,7 @@ left join POLITICO po on pe.numPasaporte = po.numPasaporte
 group by pa.nombre;
 ```
 
-![resultado](imagen-13.png)
+![resultado](imagenes/imagen-13.png)
 
 **4. Obten las propuestas que hayan sido aceptadas (las que tienen más votos a favor que en contra)**
 
@@ -47,7 +47,7 @@ group by pr.id
 having sum(v.decision = 1) > sum(v.decision = 0);
 ```
 
-![resultado](imagen-14.png)
+![resultado](imagenes/imagen-14.png)
 
 **5. Obten el pasaporte de los politicos, el id de sus propuestas y la suma del número de propuestas**
 
@@ -58,7 +58,7 @@ group by po.numPasaporte, pr.id
 with rollup;
 ```
 
-![resultado](imagen-15.png)
+![resultado](imagenes/imagen-15.png)
 
 **6. Obten el número de políticos por congreso de los congresos que hayan aceptado más de una propuesta**
 
@@ -71,7 +71,7 @@ group by c.id
 having count(po.numPasaporte) > 1;
 ```
 
-![resultado](imagen-16.png)
+![resultado](imagenes/imagen-16.png)
 
 **7. Obten los dos paises con la mayor media de edad en personas**
 
@@ -83,7 +83,7 @@ order by mediaEdad desc
 limit 2;
 ```
 
-![resultado](imagen-17.png)
+![resultado](imagenes/imagen-17.png)
 
 ### Consulta con función ventana
 
@@ -96,7 +96,7 @@ from CIUDADANO c join PERSONA p on p.numPasaporte = c.numPasaporte
 join PAIS pa on pa.id = p.paisNacimiento;
 ```
 
-![resultado](imagen-18.png)
+![resultado](imagenes/imagen-18.png)
 
 ### Consultas con vistas 
 
@@ -109,7 +109,7 @@ from PERSONA;
 
 ```
 
-![resultado](imagen-19.png)
+![resultado](imagenes/imagen-19.png)
 
 **2. Queremos crear una vista para saber cuantos votos han recibido las propuestas**
 
@@ -120,7 +120,7 @@ from PROPUESTA pr join VOTAR v on pr.id = v.idPropuesta
 group by pr.id;
 ```
 
-![resultado](imagen-20.png)
+![resultado](imagenes/imagen-20.png)
 
 
 
