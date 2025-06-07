@@ -87,24 +87,35 @@ public class VistaPersona {
     //Metodos para los politicos
     public Politico crearPolitico(){
         String pasaporte = obtenerPasaporte();
+
         System.out.println("Introduce el nombre");
         String nombre = scan.nextLine();
+
         System.out.println("Introduce el primer apellido");
         String apellido1 = scan.nextLine();
+
         System.out.println("Introduce el segundo apellido");
         String apellido2 = scan.nextLine();
+
         System.out.println("Introduce la fecha de nacimiento");
         Date fecha = obtenerFecha();
+
         System.out.println("Introduce el sexo(H,M)");
         Sexo sexo = Sexo.valueOf(scan.nextLine());
+
         System.out.println("Introduce el pais (codigo)");
         int pais = scan.nextInt();
+        scan.nextLine();
+
         System.out.println("Introduce la fecha de iniciacion");
         Date fechaInicio = obtenerFecha();
+
         System.out.println("Introduce la fecha de retirada");
         Date fechaRetirada = obtenerFecha();
+
         System.out.println("Introduce el congreso (id)");
         int congreso = scan.nextInt();
+
         return new Politico(pasaporte, nombre, apellido1, apellido2, fecha, sexo, pais, fechaInicio, fechaRetirada, congreso);
     }
 

@@ -31,7 +31,7 @@ public class PersonaDAO {
     private static final String SELECT_BY_PASAPORTE_QUERY = "SELECT * FROM PERSONA WHERE numPasaporte = ?";
     private static final String UPDATE_QUERY = "UPDATE PERSONA SET nombre = ?, primerApellido = ?, segundoApellido = ?, fnac = ?, sexo = ?, paisNacimiento = ?" +
             "WHERE numPasaporte = ?";
-    private static final String DELETE_QUERY = "DELETE FROM PERSONA WHERE numPasaporte = ?";
+    private static final String DELETE_QUERY = "CALL eliminar(?)";
     private static final String TOTAL_PERSONAS_QUERY = "SELECT COUNT(*) FROM PERSONA";
 
     /*
