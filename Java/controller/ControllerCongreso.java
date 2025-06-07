@@ -13,22 +13,36 @@ import java.util.List;
 public class ControllerCongreso {
     private List<Congreso> congresos;
     private VistaCongreso vista;
-
+     /**
+         * Constructor que inicializa la lista de congresos y la vista asociada.
+         */
     public ControllerCongreso() {
         congresos = new ArrayList<>();
         vista = new VistaCongreso();
     }
 
+     /**
+     * Muestra todos los congresos almacenados utilizando la vista.
+     */
     public void mostrarTodosLosCongresos() {
         vista.mostrarCongresos(congresos);
     }
 
+         /**
+     * Crea un nuevo congreso solicitando los datos a la vista
+     * y lo añade a la lista de congresos.
+     * Muestra un mensaje de confirmación tras la creación.
+     */
     public void crearCongreso() {
         Congreso nuevoCongreso = vista.crearCongreso();
         congresos.add(nuevoCongreso);
         vista.mostrarMensaje("Congreso creado correctamente.");
     }
 
+    /**
+     * Elimina un congreso de la lista según el ID proporcionado por la vista.
+     * Muestra un mensaje indicando si la eliminación fue exitosa o no.
+     */
     public void eliminarCongreso() {
         int id = vista.obtenerIdCongreso();
         boolean eliminado = false;
@@ -46,6 +60,10 @@ public class ControllerCongreso {
         }
     }
 
+    /**
+     * Busca un congreso por ID  y lo muestra.
+     * Si no se encuentra, muestra un mensaje indicándolo.
+     */
     public void buscarCongresoPorId() {
         int id = vista.obtenerIdCongreso();
         boolean encontrado = false;
@@ -60,6 +78,11 @@ public class ControllerCongreso {
         }
     }
 
+    /**
+     * Actualiza los datos de un congreso existente.
+     * Solicita los datos actualizados a la vista y reemplaza el congreso correspondiente.
+     * Muestra un mensaje según si se realizó la actualización correctamente.
+     */
     public void actualizarCongreso() {
         Congreso actualizado = vista.obtenerDatosActualizados();
         boolean modificado = false;
