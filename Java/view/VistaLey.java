@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Clase
+ * Clase VistaLey que se encarga de pedir o mostrar datos sobre las leyes a los usuarios
  * @author Diego Fernando Valencia Correa 1ºK
  * @version 14-04-2025
  */

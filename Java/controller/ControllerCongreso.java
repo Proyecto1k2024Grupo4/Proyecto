@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *  @author ABDELMOGHIT SAMINI 1KDAM
  * Controlador para gestionar una lista de congresos.
+ * @author ABDELMOGHIT SAMINI 1KDAM
  */
 public class ControllerCongreso {
     private List<Congreso> congresos;

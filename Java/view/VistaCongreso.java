@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- *  @author ABDELMOGHIT SAMINI 1KDAM
  * Clase VistaCongreso que gestiona la interacción con el usuario para los objetos Congreso.
+ * @author ABDELMOGHIT SAMINI 1KDAM
  */
 public class VistaCongreso {
     private Scanner scanner = new Scanner(System.in);

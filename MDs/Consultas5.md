@@ -7,6 +7,7 @@ Estas son consultas que no vienen de una tarea sino que han sido añadidas por v
 - Jonathan Villalba Moran
 - Samini Abdel
 
+<br>
 
 ### Procedimiento que crea un país, un congreso y un código civil al mismo tiempo.
 ``` sql
@@ -28,6 +29,7 @@ END;
 //
 DELIMITER ;
 ```
+<br>
 
 ### Procedimiento que crea un ciudadano y una persona al mismo tiempo.
 ``` sql
@@ -41,6 +43,7 @@ END;
 //
 DELIMITER ;
 ```
+<br>
 
 ### Procedimiento que crea un político y una persona al mismo tiempo.
 ``` sql
@@ -55,6 +58,7 @@ END;
 //
 DELIMITER ;
 ```
+<br>
 
 ### Actualizar ciudadano y persona al mismo tiempo.
 ``` sql
@@ -70,6 +74,7 @@ END;
 //
 DELIMITER ;
 ```
+<br>
 
 
 ### Actualizar político y persona al mismo tiempo.
@@ -77,7 +82,7 @@ DELIMITER ;
 DELIMITER //
 CREATE OR REPLACE PROCEDURE actualizar_politico (IN numPasaporte_ VARCHAR(64), IN nombre_ VARCHAR(32), IN primerApellido_ VARCHAR(32),
     IN segundoApellido_ VARCHAR(32), IN fnac_ DATE, IN sexo_ char(1), IN paisNacimiento_ INT UNSIGNED, IN fechaIniciacion_ DATE , IN fechaRetirada_ DATE,
-    IN idCongreso INT UNSIGNED)
+    IN idCongreso_ INT UNSIGNED)
 BEGIN
     UPDATE PERSONA SET numPasaporte = numPasaporte_, nombre = nombre_, primerApellido = primerApellido_, 
         segundoApellido = segundoApellido_, fnac = fnac_, sexo = sexo_, paisNacimiento = paisNacimiento_ 

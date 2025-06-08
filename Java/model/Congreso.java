@@ -2,9 +2,9 @@ package model;
 
 import java.util.ArrayList;
 /**
- * @author ABDELMOGHIT SAMINI 1KDAM
  * Representa un Congreso con su ID, el ID del país y la lista de políticos.
  * Permite aceptar, publicar propuestas y convertir a formatos JSON y XML.
+ * @author ABDELMOGHIT SAMINI 1KDAM
  */
 public class Congreso {
 

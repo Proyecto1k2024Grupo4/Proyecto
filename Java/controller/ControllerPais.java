@@ -9,10 +9,10 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 /**
- *  @author ABDELMOGHIT SAMINI 1KDAM
  * Controlador para gestionar operaciones CRUD de la entidad País.
  * Esta clase conecta la vista (VistaPais) con la capa de acceso a datos (PaisDAO),
  * proporcionando métodos para listar, buscar, crear, actualizar y eliminar países.
+ * @author ABDELMOGHIT SAMINI 1KDAM
  */
 public class ControllerPais {
     private PaisDAO paisDAO;

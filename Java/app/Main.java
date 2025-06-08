@@ -1,12 +1,13 @@
 package app;
 
 import controller.*;
+import db.DBConnection;
+
 import java.util.Scanner;
 
 /**
  * Clase Main que se ejecuta al inicio del programa y desde la que se muestran los distintos menús y se piden
  * las opciones.
- *
  * @author Diego Fernando Valencia Correa 1ºK
  * @version 07-06-2025
  */
@@ -125,6 +126,7 @@ public class Main {
                     opcion = 0;
                 }
                 case 5 -> {
+                    DBConnection.closeConnection();
                     System.out.println("Saliendo...");
                 }
             } // Fin del switch
@@ -255,9 +257,7 @@ public class Main {
         System.out.println("3. Mostrar ley por id");
         System.out.println("4. Actualizar Ley");
         System.out.println("5. Borrar Ley");
-        System.out.println("6. Mostrar Ley por Código Civil");
-        System.out.println("7. Mostrar Ley por País");
-        System.out.println("8. Volver atrás");
+        System.out.println("6. Volver atrás");
         System.out.print("Por favor, seleccione la opcione que desee consultar (1-6): ");
     }
 

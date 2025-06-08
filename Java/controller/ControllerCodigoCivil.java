@@ -8,8 +8,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- * @author ABDELMOGHIT SAMINI 1KDAM
  * Controlador para gestionar las operaciones relacionadas con Código Civil.
+ * @author ABDELMOGHIT SAMINI 1KDAM
  */
 public class ControllerCodigoCivil {
     private CodigoCivilDAO codigoDAO;

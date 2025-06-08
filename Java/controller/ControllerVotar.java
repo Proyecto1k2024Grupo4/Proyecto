@@ -7,7 +7,7 @@ import view.VistaVotar;
 import java.util.List;
 
 /**
- * Clase
+ * Clase que sirve para gestionar todas las operaciones relacionadas con los votos
  * @autor Diego Fernando Valencia Correa 1ºK
  * @version 14-04-2025
  */

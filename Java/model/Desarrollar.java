@@ -1,5 +1,10 @@
 package model;
 
+/**
+ * Representa la tabla Desarrollar y almacena el ID de la Ley y el ID de la propuesta
+ * que la desarrolla.
+ * @author ABDELMOGHIT SAMINI 1KDAM
+ */
 public class Desarrollar {
     private int idPropuesta;
     private int idLey;

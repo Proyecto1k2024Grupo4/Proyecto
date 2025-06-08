@@ -6,6 +6,10 @@ import java.sql.Date;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Vista del Código Civil que se encarga de pedir o mostrar datos a los usuarios
+ * @author ABDELMOGHIT SAMINI 1KDAM
+ */
 public class VistaCodigoCivil {
     private final Scanner scanner = new Scanner(System.in);
 

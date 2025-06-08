@@ -9,10 +9,10 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 /**
- *  * @author ABDELMOGHIT SAMINI 1KDAM
  * Controlador encargado de gestionar las relaciones entre propuestas y leyes mediante la entidad 'Desarrollar'.
  * Se encarga de coordinar las operaciones CRUD: creación, eliminación y búsqueda de relaciones, interactuando con la capa de datos (DesarrollarDAO) y
  * mostrando resultados al usuario a través de la vista (VistaDesarrollar).
+ * @author ABDELMOGHIT SAMINI 1KDAM
  */
 public class ControllerDesarrollar {
     private DesarrollarDAO desarrollarDAO;

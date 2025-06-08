@@ -5,6 +5,10 @@ import model.Pais;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Vista sobre Pais que se encarga de pedir o mostrar datos a los usuarios
+ * @author ABDELMOGHIT SAMINI 1KDAM
+ */
 public class VistaPais {
     private Scanner scanner = new Scanner(System.in);
 

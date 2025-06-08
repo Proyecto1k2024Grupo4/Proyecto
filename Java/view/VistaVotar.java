@@ -6,7 +6,8 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Clase
+ * Clase VistaVotar que se encarga de pedir o mostrar los datos relacionados
+ * con los votos a los usuarios
  * @autor Diego Fernando Valencia Correa 1ºK
  * @version 14-04-2025
  */

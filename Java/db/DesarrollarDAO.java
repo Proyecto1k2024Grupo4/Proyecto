@@ -6,11 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
-    @author ABDELMOGHIT SAMINI 1KDAM
-    Gestiona la relación entre propuestas y leyes, permitiendo
-    insertar nuevas asociaciones, consultar las existentes y eliminarlas.
-    Implementa el patrón singleton para reutilizar la conexión.
+ *  Gestiona la relación entre propuestas y leyes, permitiendo
+ *  insertar nuevas asociaciones, consultar las existentes y eliminarlas.
+ *  Implementa el patrón singleton para reutilizar la conexión.
+ *  @author ABDELMOGHIT SAMINI 1KDAM
  */
+
 public class DesarrollarDAO {
     private static DesarrollarDAO instance;
     private Connection connection;
