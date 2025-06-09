@@ -8,29 +8,29 @@ Sistema de Gestión de Votaciones y Propuestas de Reforma Legal a Nivel Internac
 PROP-IN (Propuestas Internacionales) es un proyecto en el que se recogen las propuestas de reforma de ley de los distintos países con los que trabajamos. 
 Además se guardan las leyes y votaciones, que agilizamos mediante nuestra aplicación en la que se puede votar.
 
-## Participantes:
+## Participantes 👥
 - [Diego Fernando Valencia Correa](https://github.com/DocD1306)
 - [Jonathan Villalba Moran](https://github.com/JonathanWick21)
 - [Abdel Moghit Samini](https://github.com/Samini04)
 
 <br>
 
-## Tabla de contenidos
+## Tabla de contenidos 📃
 
-#### Diseño de la base de datos
+#### Diseño de la base de datos 🔵
 
 - [Modelo Entidad-Relacion](MDs/Modelo_Entidad-Relacion.md)
 - [Modelo Relacional](MDs/Modelo-Relacional.md)
 - [Diccionario de Datos](MDs/Diccionario_De_Datos.md)
 - [Restricciones de Borrado/Modificación de tablas](MDs/Restricciones_Borrado_Tablas.md)
 
-#### Desarrollo de la base de datos en SQL
+#### Desarrollo de la base de datos en SQL 🔵
 
 - [Instrucciones DDL](MDs/Instrucciones_DDL.md)
 - [Script para vaciar las tablas](MDs/Script_Vaciar_Tablas.md)
 - [Instrucciones DML](MDs/Instrucciones_DML.md)
 
-#### Consultas sobre la base de datos
+#### Consultas sobre la base de datos 🔵
 - [Consultas Sencillas](MDs/Consultas.md)
 - [Consultas Agregadas](MDs/Consultas2.md)
 - [Subconsultas](MDs/Consultas3.md)
@@ -39,18 +39,18 @@ Además se guardan las leyes y votaciones, que agilizamos mediante nuestra aplic
 
 
 
-#### Implementación en Java
+#### Implementación en Java ☕
 
 - [UML](MDs/UML.md)
 - [Codigo Java](/Java/)
 - [Repartición de Clases Java](MDs/reparticionDAO.md)
 - [Documentación JavaDoc](https://proyecto1k2024grupo4.github.io/Proyecto/)
 
-#### Modelos para la transmisión de datos
+#### Modelos para la transmisión de datos 💾
 
 - [XML & JSON](MDs/XML_JSON.md)
 
-#### Diseño de la interfaz de la aplicación
+#### Diseño de la interfaz de la aplicación 🖥️
 
 - [Diseño de la interfaz](MDs/Interfaz.md)
 
