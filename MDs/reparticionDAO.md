@@ -1,4 +1,4 @@
-# Repartición de creación de clases DAO
+# Repartición de creación de clases de Java
 
 - Diego Fernando Valencia Correa ->
     - Propuesta

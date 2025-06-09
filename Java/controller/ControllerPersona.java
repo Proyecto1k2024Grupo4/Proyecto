@@ -8,11 +8,10 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- * Controlador para la gestión de personas, actua de intermediario entre vistaPersona y PersonaDAO
+ * Controlador para la gestión de personas, actúa de intermediario entre VistaPersona y PersonaDAO
  * @author Jonathan Villaba Moran 1ºK
  * @version 14/04/2025
  */
-
 public class ControllerPersona {
     private PersonaDAO personaDAO;
     private VistaPersona vistaPersona;

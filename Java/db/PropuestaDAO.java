@@ -91,7 +91,7 @@ public class PropuestaDAO {
 
 
     /**
-     * Metodo que devuelve todas las propuestas en un List
+     * Función que devuelve todas las propuestas en un List
      * @return List con todas las propuestas
      * @throws SQLException Excepción SQL
      */

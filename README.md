@@ -43,7 +43,7 @@ Además se guardan las leyes y votaciones, que agilizamos mediante nuestra aplic
 
 - [UML](MDs/UML.md)
 - [Codigo Java](/Java/)
-- [Repartición de tareas MVC / DAO](MDs/reparticionDAO.md)
+- [Repartición de Clases Java](MDs/reparticionDAO.md)
 - [Documentación JavaDoc](https://proyecto1k2024grupo4.github.io/Proyecto/)
 
 #### Modelos para la transmisión de datos
